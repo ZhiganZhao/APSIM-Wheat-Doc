@@ -166,8 +166,8 @@
 <p>Several status variables are defined for each leaf cohort, which can be used in other modules to describe the current status of leaf cohort, i.e. <code>IsNotAppeared</code>, <code>IsGrowing</code>, <code>IsAlive</code>, <code>IsGreen</code>, <code>IsNotSenescing</code>, <code>Senescing</code>, <code>isFullyExpanded</code>, <code>ShouldBeDead</code>, <code>IsAppeared</code> and <code>IsInitialised</code>.</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-life-cycle"></span>
-<div id="htmlwidget-f28f38c6712e818fe69c" style="width:95%;height:470.4px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f28f38c6712e818fe69c">{"x":{"diagram":"sequenceDiagram;\n\tInitialized->>Appeared: Appearance \n\tAppeared->>Expanded: GrowthDuration\n\tExpanded->>Senescing: LagDuration\n\tSenescing->>Senesced: SenescenceDuration\n\tSenesced->>Detaching: DetachmentLagDuration\n\tDetaching->>Detached: DetachmentDuration\n    Initialized->Appeared: IsNotAppeared\n    Initialized->Expanded: IsGrowing\n\tInitialized->>Senesced: IsAlive\n\tInitialized->>Senesced: IsGreen\n\tInitialized->>Senescing: IsNotSenescing\n\tSenescing->>Senesced: IsSenescing\n\tExpanded->>Detached: IsFullyExpanded\n\tSenesced->>Detached: ShouldBeDead\n\tSenesced->>Detached: Finished\n\tAppeared->>Detached: IsAppeared\n\tInitialized->>Detached: IsInitialised\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b7e91d24e70da27c5bcc" style="width:95%;height:470.4px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b7e91d24e70da27c5bcc">{"x":{"diagram":"sequenceDiagram;\n\tInitialized->>Appeared: Appearance \n\tAppeared->>Expanded: GrowthDuration\n\tExpanded->>Senescing: LagDuration\n\tSenescing->>Senesced: SenescenceDuration\n\tSenesced->>Detaching: DetachmentLagDuration\n\tDetaching->>Detached: DetachmentDuration\n    Initialized->Appeared: IsNotAppeared\n    Initialized->Expanded: IsGrowing\n\tInitialized->>Senesced: IsAlive\n\tInitialized->>Senesced: IsGreen\n\tInitialized->>Senescing: IsNotSenescing\n\tSenescing->>Senesced: IsSenescing\n\tExpanded->>Detached: IsFullyExpanded\n\tSenesced->>Detached: ShouldBeDead\n\tSenesced->>Detached: Finished\n\tAppeared->>Detached: IsAppeared\n\tInitialized->>Detached: IsInitialised\n"},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 8.1: The life cycle of a leaf cohort.
 </p>
@@ -184,7 +184,7 @@ Figure 8.1: The life cycle of a leaf cohort.
 <p>Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of potential appearance of tip number are more than 1 (Figure <a href="sec-main-stem.html#fig:str-delta-tip">4.4</a>). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than 2 of appeared tip number (Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-number">8.2</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:leaf-cohort-number"></span>
-<img src="leaf_files/figure-html/leaf-cohort-number-1.png" alt="The initialized and appeared leaf cohort number in the main stem" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-cohort-number-1.png" alt="The initialized and appeared leaf cohort number in the main stem" width="80%" />
 <p class="caption">
 Figure 8.2: The initialized and appeared leaf cohort number in the main stem
 </p>
@@ -221,14 +221,14 @@ Figure \@ref(fig:leaf-cohort-number) shows the number of leaf cohort for expandi
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-cohort-no-1.png" alt="The number of leaf cohort with certain status including initialised, appeared, expanded, green, dead" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-cohort-no-1.png" alt="The number of leaf cohort with certain status including initialised, appeared, expanded, green, dead" width="80%" />
 <p class="caption">(\#fig:leaf-cohort-no)The number of leaf cohort with certain status including initialised, appeared, expanded, green, dead</p>
 </div>
 </div>
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-cohort-changing-no-1.png" alt="The number of leaf cohort with certain status including expanding and senescing" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-cohort-changing-no-1.png" alt="The number of leaf cohort with certain status including expanding and senescing" width="80%" />
 <p class="caption">(\#fig:leaf-cohort-changing-no)The number of leaf cohort with certain status including expanding and senescing</p>
 </div>
 </div>
@@ -240,7 +240,7 @@ After appearance, leaf development is accelerated by the drought stress through 
 
 <div class="fig-input">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-development-drought-1.png" alt="Drought stress accelerates leaf development. Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7." width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-development-drought-1.png" alt="Drought stress accelerates leaf development. Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7." width="80%" />
 <p class="caption">(\#fig:leaf-development-drought)Drought stress accelerates leaf development. Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7.</p>
 </div>
 </div>
@@ -268,7 +268,7 @@ The total leaf number is multiplied by leaf cohort number and stem number (Figur
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-number-1.png" alt="Appeared number of green, senesced and total leaves" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-number-1.png" alt="Appeared number of green, senesced and total leaves" width="80%" />
 <p class="caption">(\#fig:leaf-number)Appeared number of green, senesced and total leaves</p>
 </div>
 </div>
@@ -326,7 +326,7 @@ In the test simulation, the maximum leaf areas are increasing from Rank 1 to Ran
 The potential leaf area is calculated by a logistic equation as a function of thermal time after leaf appearance. The shape of logistic equation is determiend by parameter `LeafSizeShapeParameter` with default value `0.3` (Fig. \@ref(fig:size-function)). 
 
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/size-function-1.png" alt="The size function of leaf area development" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/size-function-1.png" alt="The size function of leaf area development" width="80%" />
 <p class="caption">(\#fig:size-function)The size function of leaf area development</p>
 </div>
 
@@ -367,7 +367,7 @@ Leaf area index (LAI) are calculated for green leaf ($\text{LAI}_{g}$), dead lea
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-lai-1.png" alt="Leaf area index" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-lai-1.png" alt="Leaf area index" width="80%" />
 <p class="caption">(\#fig:leaf-lai)Leaf area index</p>
 </div>
 </div>
@@ -434,7 +434,7 @@ The extinction coefficient of green leaf is adjusted by water stress which is th
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-cover-1.png" alt="Coverage" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-cover-1.png" alt="Coverage" width="80%" />
 <p class="caption">(\#fig:leaf-cover)Coverage</p>
 </div>
 </div>
@@ -449,7 +449,7 @@ The extinction coefficient of green leaf is adjusted by water stress which is th
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-biomass-1.png" alt="Leaf biomass" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-biomass-1.png" alt="Leaf biomass" width="80%" />
 <p class="caption">(\#fig:leaf-biomass)Leaf biomass</p>
 </div>
 </div>
@@ -458,7 +458,7 @@ The extinction coefficient of green leaf is adjusted by water stress which is th
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-specific-leaf-area-1.png" alt="Specific leaf area" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-specific-leaf-area-1.png" alt="Specific leaf area" width="80%" />
 <p class="caption">(\#fig:leaf-specific-leaf-area)Specific leaf area</p>
 </div>
 </div>
@@ -518,7 +518,7 @@ $$F_{t,\ photo}=h_{t,\ photo}[W_{maxt}T_{max}+(1-W_{maxt})T_{min}]$$
 
 <div class="fig-input">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/biomass-ft-1.png" alt="The temperature factor which influences radiation use efficiency" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/biomass-ft-1.png" alt="The temperature factor which influences radiation use efficiency" width="80%" />
 <p class="caption">(\#fig:biomass-ft)The temperature factor which influences radiation use efficiency</p>
 </div>
 </div>
@@ -536,7 +536,7 @@ where $C_{N}$ is the nitrogen concentration of `Leaf` parts; $R_{N,\,expan}$ is 
 
 <div class="fig-input">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/biomass-fn-1.png" alt="The nitrogen factor which influences radiation use efficiency" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/biomass-fn-1.png" alt="The nitrogen factor which influences radiation use efficiency" width="80%" />
 <p class="caption">(\#fig:biomass-fn)The nitrogen factor which influences radiation use efficiency</p>
 </div>
 </div>
@@ -562,7 +562,7 @@ $$
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-supply-1.png" alt="Biomass supply from leaf" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-supply-1.png" alt="Biomass supply from leaf" width="80%" />
 <p class="caption">(\#fig:leaf-supply)Biomass supply from leaf</p>
 </div>
 </div>
@@ -573,7 +573,7 @@ $$
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-demand-1.png" alt="Biomass demand by leaf" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-demand-1.png" alt="Biomass demand by leaf" width="80%" />
 <p class="caption">(\#fig:leaf-demand)Biomass demand by leaf</p>
 </div>
 </div>
@@ -582,7 +582,7 @@ $$
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-allocated-1.png" alt="Actual allocated biomass for leaf" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-allocated-1.png" alt="Actual allocated biomass for leaf" width="80%" />
 <p class="caption">(\#fig:leaf-allocated)Actual allocated biomass for leaf</p>
 </div>
 </div>
@@ -592,7 +592,7 @@ $$
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-live-1.png" alt="Dynamic of leaf biomass (Live component)" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-live-1.png" alt="Dynamic of leaf biomass (Live component)" width="80%" />
 <p class="caption">(\#fig:leaf-live)Dynamic of leaf biomass (Live component)</p>
 </div>
 </div>
@@ -600,7 +600,7 @@ $$
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-dead-1.png" alt="Dynamic of leaf biomass (Dead component)" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-dead-1.png" alt="Dynamic of leaf biomass (Dead component)" width="80%" />
 <p class="caption">(\#fig:leaf-dead)Dynamic of leaf biomass (Dead component)</p>
 </div>
 </div>
@@ -611,7 +611,7 @@ $$
 
 <div class="fig-output">
 <div class="figure" style="text-align: center">
-<img src="leaf_files/figure-html/leaf-weight-1.png" alt="Dynamic of leaf biomass (Total)" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/leaf-weight-1.png" alt="Dynamic of leaf biomass (Total)" width="80%" />
 <p class="caption">(\#fig:leaf-weight)Dynamic of leaf biomass (Total)</p>
 </div>
 </div>

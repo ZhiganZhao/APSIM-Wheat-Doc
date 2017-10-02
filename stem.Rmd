@@ -1,6 +1,6 @@
 # Stem {#cha:stem}
 
-```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
+```{r stem-setup, message=FALSE, warning=FALSE, echo=FALSE}
 source('_setup.R')
 ```
 

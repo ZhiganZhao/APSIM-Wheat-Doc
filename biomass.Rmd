@@ -1,7 +1,7 @@
 # Biomass {#cha:biomass}
 
 
-```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
+```{r biomass-setup, message=FALSE, warning=FALSE, echo=FALSE}
 source('_setup.R')
 ```
 

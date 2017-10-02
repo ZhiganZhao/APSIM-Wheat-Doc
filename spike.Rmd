@@ -1,7 +1,7 @@
 # Spike {#cha:spike}
 
 
-```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
+```{r spike-setup, message=FALSE, warning=FALSE, echo=FALSE}
 source('_setup.R')
 ```
 
