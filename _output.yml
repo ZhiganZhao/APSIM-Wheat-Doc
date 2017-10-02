@@ -1,0 +1,35 @@
+bookdown::gitbook:
+  includes:
+    in_header: _includes/header.html
+    after_body: _includes/after_body.html
+  css: _includes/style.css
+  split_bib: false
+  split_by: section
+  toc_depth: 3
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./">Documentation of ASPIM-Wheat</a></li>
+      after: |
+        <li><a href="https://byzheng.github.io/APSIM-Wheat-Sens" target="blank">Sensitivity analysis</a></li>
+        <li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
+        <li><a href="http://github.com/APSIMInitiative/ApsimX" target="blank">Next generation of APSIM</a></li>
+        <li><a href="http://byzheng.github.io/ApsimX/Documentation/html/index.html" target="blank">Developer documentation</a></li>
+    edit:
+      link: https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/%s
+    sharing:
+      facebook: no
+      twitter: no
+      google: no
+      weibo: no
+      instapper: no
+      vk: no
+      all: no
+bookdown::pdf_book:
+  includes:
+    in_header: _includes/preamble.tex
+  keep_tex: yes
+  latex_engine: pdflatex
+  citation_package: natbib
+

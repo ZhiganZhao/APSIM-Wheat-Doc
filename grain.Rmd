@@ -1,0 +1,121 @@
+# Grain {#cha:grain}
+
+
+
+```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
+source('_setup.R')
+```
+
+
+## Grain number {#sec:grain-number}
+
+The number of grains per plant ($N_{g}$) is determined by the `Stem` and `Spike` total biomass at `Flowering` (including `Live` and `Dead`).
+$$
+N_{g}=R_{g}(W_{stem} + W_{spike})
+$$
+where $W_{stem}$ and $W_{spike}$ are the stem and spkie total biomass at flowering, respectively. R_{g} is the grain number per gram stem and spike, with default value at `r get_fixed_value(pmf, '//Name[text()="GrainsPerGramOfStem"]')` grain g<sup>-1</sup>.
+
+
+
+
+## Supply {#sec:grain-supply}
+
+No biomass supply is considered in the `Grain` organ (Fig. \@ref(fig:grain-supply)).
+
+
+<div class="fig-output">
+```{r grain-supply, fig.asp = 0.5, fig.cap='Biomass supply from grain'}
+y_cols <- c('Wheat.Grain.DMSupply.Fixation',
+            'Wheat.Grain.DMSupply.Retranslocation',
+            'Wheat.Grain.DMSupply.Reallocation')
+
+plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+            y_lab = 'Demand (g/d)', ncol = 3)
+
+```
+</div>
+
+
+## Demand {#sec:grain-demand}
+The grain demand is seperated into two periods (i.e. from `Flowering` to `StartGrainFill` and from `StartGrainFill` to `EndGrainFill`). 
+
+
+<div class="fig-output">
+```{r grain-demand, fig.asp = 1, fig.cap='Biomass demand by grain'}
+y_cols <- c('Wheat.Grain.DMDemand.Structural',
+'Wheat.Grain.DMDemand.Storage',
+'Wheat.Grain.DMDemand.Metabolic')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Demand (g/d)', ncol = 3)
+
+```
+</div>
+
+## Biomass dynamic {#sec:grain-dynamic}
+
+`Grain` only considers the `Live` conponent, No `Dead` component.
+```{block, type="rmdnote"}
+The actual allocations equals to zero in the figure below, which might cause by a bug in the APSIM next generation.
+```
+
+
+<div class="fig-output">
+```{r grain-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for grain'}
+y_cols <- c('Wheat.Grain.Allocated.StructuralWt',
+'Wheat.Grain.Allocated.StorageWt',
+'Wheat.Grain.Allocated.MetabolicWt')
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r grain-weight, fig.asp = 1, fig.cap='Dynamic of grain biomass (Total)'}
+y_cols <- c('Wheat.GrainWt')
+
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)')
+
+```
+</div>
+
+
+
+
+
+<div class="fig-output">
+```{r grain-live, fig.asp = 1, fig.cap='Dynamic of grain biomass (Live component)'}
+y_cols <- c('Wheat.Grain.Live.StructuralWt',
+'Wheat.Grain.Live.StorageWt',
+'Wheat.Grain.Live.MetabolicWt')
+
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r grain-dead, fig.asp = 0.5, fig.cap='Dynamic of grain biomass (Dead component)'}
+y_cols <- c('Wheat.Grain.Dead.StructuralWt',
+'Wheat.Grain.Dead.StorageWt',
+'Wheat.Grain.Dead.MetabolicWt')
+
+
+plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+
+

@@ -1,0 +1,217 @@
+# Biomass {#cha:biomass}
+
+
+```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
+source('_setup.R')
+```
+
+The biomass and nitrogen of each organ is separated into two pools (i.e. `Live` and `Dead`). Each pool is separated into three components (i.e. `Structural`, `Metabolic`, `Storage`) [@BrownPlantModellingFramework2014].
+
+
+* **Structural biomass and N** are essential for the growth of the organ. They remain within the organ once it has been allocated and are passed from Live to Dead pools as the organ senesces.
+* **Metabolic biomass and N** are essential for growth and their concentration can influence the function of organs (e.g. photosynthetic efficiency of the leaf depends on Metabolic nitrogen content). Metabolic biomass and nitrogen may be reallocated (moved to another organ upon senescence of this organ) or retranslocated
+(moved to another organ at any time when supplies do not meet the structural and metabolic biomass demands of growing organs).
+* **Storage biomass and N** are non-essential to the function of an organ. They will be allocated to an organ only when all other organs have received their Structural and Metabolic allocations and may be reallocated or retranslocated.
+
+
+
+## Pool {#sec:biomass-pool}
+All organs have the `Live` group, but only `Leaf` has the `Dead` group.
+
+```{r biomass-live-dead, results='asis'}
+
+report %>% 
+    select(matches('Wheat\\..+\\.(Live|Dead)\\..+')) %>% 
+    assertr::verify(ncol(.) == 30) %>% 
+    summarise_all(funs(sum(. > 0))) %>% 
+    gather(trait, value) %>% 
+    separate(trait, into = c('Crop', 'Organ', 'Biomass', 'Pool')) %>% 
+    group_by(Organ, Biomass) %>% 
+    summarise(value = sum(value)) %>% 
+    ungroup() %>% 
+    mutate(value = ifelse(value > 0, 'X', '-')) %>% 
+    mutate(Biomass = factor(Biomass, levels = c('Live', 'Dead')),
+           Organ = factor(Organ, levels = c('Grain', "Root", "Leaf", "Spike", "Stem"))) %>% 
+    spread(Biomass, value) %>% 
+    knitr::kable(align = "c",
+                 caption = 'The live and dead groups of biomass () in all organs. X and - indicate the organ has and has not the group, respectively.')
+```
+
+
+
+## Supply {#sec:biomass-supply}
+
+Biomass supplies are divied into three sources, i.e fixation (i.e. photosynthesis), retanslocation, reallocation (Table \@ref(tab:biomass-supply-type)). The only source of fixation is organ `Leaf`. The sources of retanslocation include organs `Spike` and `Stem`. No reallocation is considered in the wheat model. See details in the organs about the dynamic of biomass supply. 
+
+
+```{r biomass-supply-type, results='asis'}
+
+report %>% 
+    select(matches('Wheat\\..+\\.DMSupply\\..+')) %>% 
+    assertr::verify(ncol(.) == 15) %>% 
+    summarise_all(funs(sum(. > 0))) %>% 
+    gather(trait, value) %>% 
+    mutate(value = ifelse(value > 0, 'X', '-')) %>% 
+    separate(trait, into = c('Crop', 'Organ', 'DMSupply', 'Pool')) %>% 
+    select(Organ, Pool, value) %>%
+    mutate(Pool = factor(Pool, levels = c('Fixation', 'Retranslocation', 'Reallocation')),
+           Organ = factor(Organ, levels = c('Grain', "Root", "Leaf", "Spike", "Stem"))) %>% 
+    spread(Pool, value) %>% 
+    knitr::kable(align = "c",
+                 caption = 'The source of biomass supply in all organs. X and - indicate the organ has and has not the source, respectively.')
+```
+
+
+
+
+<div class="fig-output">
+```{r biomass-supply-total, fig.asp = 1, fig.cap='Biomass total supply from all organs'}
+y_cols <- c('Wheat.DMSupply')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Fixation (g/d)')
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r biomass-supply-fixation, fig.asp = 1, fig.cap='Biomass fixation from all organs'}
+y_cols <- c('Wheat.Grain.DMSupply.Fixation',
+            'Wheat.Root.DMSupply.Fixation',
+            'Wheat.Leaf.DMSupply.Fixation',
+            'Wheat.Spike.DMSupply.Fixation',
+            'Wheat.Stem.DMSupply.Fixation')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Fixation (g/d)', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r biomass-supply-retranslocation, fig.asp = 1, fig.cap='Biomass retranslocation from all organs'}
+y_cols <- c('Wheat.Grain.DMSupply.Retranslocation',
+            'Wheat.Root.DMSupply.Retranslocation',
+            'Wheat.Leaf.DMSupply.Retranslocation',
+            'Wheat.Spike.DMSupply.Retranslocation',
+            'Wheat.Stem.DMSupply.Retranslocation')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Retranslocation', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r biomass-supply-reallocation, fig.asp = 1, fig.cap='Biomass reallocation from all organs'}
+y_cols <- c('Wheat.Grain.DMSupply.Reallocation',
+            'Wheat.Root.DMSupply.Reallocation',
+            'Wheat.Leaf.DMSupply.Reallocation',
+            'Wheat.Spike.DMSupply.Reallocation',
+            'Wheat.Stem.DMSupply.Reallocation')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Reallocation', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+
+## Demand {#sec:biomass-demand}
+
+Depending on the organ, not all components are considered (Table \@ref(tab:biomass-component-type)). `Structural` component is considered in all organs. `Metabolic` component is only considerred in `Leaf` (Chapter \@ref(cha:leaf)). `Storage` component is only considered in `Stem` (Chapter \@ref(cha:stem)) and `Spike` (Chapter \@ref(cha:spike)).
+
+```{r biomass-component-type, results='asis'}
+report %>% 
+    select(matches('Wheat\\..+\\.DMDemand\\..+')) %>% 
+    assertr::verify(ncol(.) == 15) %>% 
+    summarise_all(funs(sum(. > 0))) %>% 
+    gather(trait, value) %>% 
+    mutate(value = ifelse(value > 0, 'X', '-')) %>% 
+    separate(trait, into = c('Crop', 'Organ', 'DMDemand', 'Pool')) %>% 
+    select(Organ, Pool, value) %>%
+    mutate(Pool = factor(Pool, levels = c('Structural', 'Metabolic', 'Storage')),
+           Organ = factor(Organ, levels = c('Grain', "Root", "Leaf", "Spike", "Stem"))) %>% 
+    spread(Pool, value) %>% 
+    knitr::kable(align = "c",
+                 caption = 'The three components of biomass in all organs. X and - indicate the organ has and has not the component, respectively.')
+```
+
+
+`Stem` and `Root` demands determine as the fraction of daily `Fixation` (Fig. \@ref(fig:stem-demand-fraction), and \@ref(fig:root-demand-fraction)). The `Spike` demand determines as the head number and growth duration (Fig. \@ref(fig:spike-demand)).
+
+
+<div class="fig-output">
+```{r biomass-demand-structural, fig.asp = 1, fig.cap='Biomass structural demand from all organs'}
+y_cols <- c('Wheat.Grain.DMDemand.Structural',
+            'Wheat.Root.DMDemand.Structural',
+            'Wheat.Leaf.DMDemand.Structural',
+            'Wheat.Spike.DMDemand.Structural',
+            'Wheat.Stem.DMDemand.Structural')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Structural demand (g/g)', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r biomass-demand-metabolic, fig.asp = 1, fig.cap='Biomass metabolic demand from all organs'}
+y_cols <- c('Wheat.Grain.DMDemand.Metabolic',
+            'Wheat.Root.DMDemand.Metabolic',
+            'Wheat.Leaf.DMDemand.Metabolic',
+            'Wheat.Spike.DMDemand.Metabolic',
+            'Wheat.Stem.DMDemand.Metabolic')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Metabolic demand (g/d)', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+<div class="fig-output">
+```{r biomass-demand-storage, fig.asp = 1, fig.cap='Biomass storage demand from all organs'}
+y_cols <- c('Wheat.Grain.DMDemand.Storage',
+            'Wheat.Root.DMDemand.Storage',
+            'Wheat.Leaf.DMDemand.Storage',
+            'Wheat.Spike.DMDemand.Storage',
+            'Wheat.Stem.DMDemand.Storage')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Storage demand (g/d)', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+## Conversion efficiency (Growth respiration) {#sec-conversion-efficiency}
+
+The allocated biomass of an organ is lost through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).
+
+<div class="fig-input">
+```{r biomass-conversion-efficiency, fig.asp = 1, fig.cap='Biomass conversion efficiency from all organs'}
+y_cols <- c('Wheat.Grain.DMConversionEfficiency',
+            'Wheat.Root.DMConversionEfficiency',
+            'Wheat.Leaf.DMConversionEfficiency',
+            'Wheat.Spike.DMConversionEfficiency',
+            'Wheat.Stem.DMConversionEfficiency')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+            y_lab = 'Storage demand (g/d)', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>

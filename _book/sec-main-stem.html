@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Documentation of APSIM-Wheat</title>
+  <meta name="description" content="Documentation of APSIM-Wheat">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Documentation of APSIM-Wheat" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Documentation of APSIM-Wheat" />
+  <meta name="github-repo" content="byzheng/APSIM-Wheat" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Documentation of APSIM-Wheat" />
+  
+  <meta name="twitter:description" content="Documentation of APSIM-Wheat" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="sec-str-phyllochron.html">
+<link rel="next" href="cha-biomass.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-0.9.2/DiagrammeR.js"></script>
+<script type = "text/javascript">
+
+</script>
+
+
+
+<link rel="stylesheet" href="_includes\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Documentation of ASPIM-Wheat</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="contributors-of-this-documentation.html"><a href="contributors-of-this-documentation.html"><i class="fa fa-check"></i><b>1.1</b> Contributors of this documentation</a></li>
+<li class="chapter" data-level="1.2" data-path="how-to-contribute.html"><a href="how-to-contribute.html"><i class="fa fa-check"></i><b>1.2</b> How to contribute?</a></li>
+<li class="chapter" data-level="1.3" data-path="how-to-document-your-own-simulation.html"><a href="how-to-document-your-own-simulation.html"><i class="fa fa-check"></i><b>1.3</b> How to document your own simulation</a></li>
+<li class="chapter" data-level="1.4" data-path="conventions.html"><a href="conventions.html"><i class="fa fa-check"></i><b>1.4</b> Conventions</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="conventions.html"><a href="conventions.html#figures"><i class="fa fa-check"></i><b>1.4.1</b> Figures</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="software-information.html"><a href="software-information.html"><i class="fa fa-check"></i><b>1.5</b> Software information</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cha-overview.html"><a href="cha-overview.html"><i class="fa fa-check"></i><b>2</b> Overview</a><ul>
+<li class="chapter" data-level="2.1" data-path="sec-overview-organ.html"><a href="sec-overview-organ.html"><i class="fa fa-check"></i><b>2.1</b> Organs</a></li>
+<li class="chapter" data-level="2.2" data-path="sec-overview-terminology.html"><a href="sec-overview-terminology.html"><i class="fa fa-check"></i><b>2.2</b> Terminology</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="sec-overview-terminology.html"><a href="sec-overview-terminology.html#phenology"><i class="fa fa-check"></i><b>2.2.1</b> Phenology</a></li>
+<li class="chapter" data-level="2.2.2" data-path="sec-overview-terminology.html"><a href="sec-overview-terminology.html#structure"><i class="fa fa-check"></i><b>2.2.2</b> Structure</a></li>
+<li class="chapter" data-level="2.2.3" data-path="sec-overview-terminology.html"><a href="sec-overview-terminology.html#leaf"><i class="fa fa-check"></i><b>2.2.3</b> Leaf</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cha-phenology.html"><a href="cha-phenology.html"><i class="fa fa-check"></i><b>3</b> Phenology</a><ul>
+<li class="chapter" data-level="3.1" data-path="sec-phe-thermal-time.html"><a href="sec-phe-thermal-time.html"><i class="fa fa-check"></i><b>3.1</b> Thermal time</a></li>
+<li class="chapter" data-level="3.2" data-path="sec-phe-stage-period.html"><a href="sec-phe-stage-period.html"><i class="fa fa-check"></i><b>3.2</b> Stages and periods</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cha-structure.html"><a href="cha-structure.html"><i class="fa fa-check"></i><b>4</b> Structure</a><ul>
+<li class="chapter" data-level="4.1" data-path="sec-str-phyllochron.html"><a href="sec-str-phyllochron.html"><i class="fa fa-check"></i><b>4.1</b> Phyllochron</a></li>
+<li class="chapter" data-level="4.2" data-path="sec-main-stem.html"><a href="sec-main-stem.html"><i class="fa fa-check"></i><b>4.2</b> Initialization and appearance of leaf tips on main stem</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
+<li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Pool</a></li>
+<li class="chapter" data-level="5.2" data-path="sec-biomass-supply.html"><a href="sec-biomass-supply.html"><i class="fa fa-check"></i><b>5.2</b> Supply</a></li>
+<li class="chapter" data-level="5.3" data-path="sec-biomass-demand.html"><a href="sec-biomass-demand.html"><i class="fa fa-check"></i><b>5.3</b> Demand</a></li>
+<li class="chapter" data-level="5.4" data-path="sec-conversion-efficiency.html"><a href="sec-conversion-efficiency.html"><i class="fa fa-check"></i><b>5.4</b> Conversion efficiency (Growth respiration)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cha-grain.html"><a href="cha-grain.html"><i class="fa fa-check"></i><b>6</b> Grain</a><ul>
+<li class="chapter" data-level="6.1" data-path="sec-grain-number.html"><a href="sec-grain-number.html"><i class="fa fa-check"></i><b>6.1</b> Grain number</a></li>
+<li class="chapter" data-level="6.2" data-path="sec-grain-supply.html"><a href="sec-grain-supply.html"><i class="fa fa-check"></i><b>6.2</b> Supply</a></li>
+<li class="chapter" data-level="6.3" data-path="sec-grain-demand.html"><a href="sec-grain-demand.html"><i class="fa fa-check"></i><b>6.3</b> Demand</a></li>
+<li class="chapter" data-level="6.4" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html"><i class="fa fa-check"></i><b>6.4</b> Biomass dynamic</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cha-root.html"><a href="cha-root.html"><i class="fa fa-check"></i><b>7</b> Root</a><ul>
+<li class="chapter" data-level="7.1" data-path="sec-root-length.html"><a href="sec-root-length.html"><i class="fa fa-check"></i><b>7.1</b> Root length</a></li>
+<li class="chapter" data-level="7.2" data-path="sec-root-supply.html"><a href="sec-root-supply.html"><i class="fa fa-check"></i><b>7.2</b> Supply</a></li>
+<li class="chapter" data-level="7.3" data-path="sec-root-demand.html"><a href="sec-root-demand.html"><i class="fa fa-check"></i><b>7.3</b> Demand</a></li>
+<li class="chapter" data-level="7.4" data-path="sec-root-biomass.html"><a href="sec-root-biomass.html"><i class="fa fa-check"></i><b>7.4</b> Biomass dynamic</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cha-leaf.html"><a href="cha-leaf.html"><i class="fa fa-check"></i><b>8</b> Leaf</a><ul>
+<li class="chapter" data-level="8.1" data-path="sec-leaf-growth-cycle.html"><a href="sec-leaf-growth-cycle.html"><i class="fa fa-check"></i><b>8.1</b> Life growth cycle</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="sec-leaf-growth-cycle.html"><a href="sec-leaf-growth-cycle.html#leaf-age"><i class="fa fa-check"></i><b>8.1.1</b> leaf age</a></li>
+<li class="chapter" data-level="8.1.2" data-path="sec-leaf-growth-cycle.html"><a href="sec-leaf-growth-cycle.html#leaf-initialization-and-appearance"><i class="fa fa-check"></i><b>8.1.2</b> Leaf initialization and appearance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
+<li class="chapter" data-level="9.1" data-path="sec-spike-supply.html"><a href="sec-spike-supply.html"><i class="fa fa-check"></i><b>9.1</b> Supply</a></li>
+<li class="chapter" data-level="9.2" data-path="spike-demand.html"><a href="spike-demand.html"><i class="fa fa-check"></i><b>9.2</b> Demand</a></li>
+<li class="chapter" data-level="9.3" data-path="spike-biomass.html"><a href="spike-biomass.html"><i class="fa fa-check"></i><b>9.3</b> Biomass dynamic</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="cha-stem.html"><a href="cha-stem.html"><i class="fa fa-check"></i><b>10</b> Stem</a><ul>
+<li class="chapter" data-level="10.1" data-path="sec-stem-supply.html"><a href="sec-stem-supply.html"><i class="fa fa-check"></i><b>10.1</b> Supply</a></li>
+<li class="chapter" data-level="10.2" data-path="sec-stem-demand.html"><a href="sec-stem-demand.html"><i class="fa fa-check"></i><b>10.2</b> Demand</a></li>
+<li class="chapter" data-level="10.3" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html"><i class="fa fa-check"></i><b>10.3</b> Biomass dynamic</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="cha-water.html"><a href="cha-water.html"><i class="fa fa-check"></i><b>11</b> Water</a></li>
+<li class="chapter" data-level="12" data-path="cha-nitrogen.html"><a href="cha-nitrogen.html"><i class="fa fa-check"></i><b>12</b> Nitrogen</a></li>
+<li class="chapter" data-level="13" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>13</b> Reference</a></li>
+<li class="divider"></li>
+<li><a href="https://byzheng.github.io/APSIM-Wheat-Sens" target="blank">Sensitivity analysis</a></li>
+<li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
+<li><a href="http://github.com/APSIMInitiative/ApsimX" target="blank">Next generation of APSIM</a></li>
+<li><a href="http://byzheng.github.io/ApsimX/Documentation/html/index.html" target="blank">Developer documentation</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Documentation of APSIM-Wheat</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sec:main-stem" class="section level2">
+<h2><span class="header-section-number">4.2</span> Initialization and appearance of leaf tips on main stem</h2>
+<p>At <code>Germination</code> stage, 2 new leaf cohorts or tips are initialized at the main stem. At <code>Emergence</code> stage, 1 leaf cohort or tip is appeared at the main stem, and 1 more leaf cohort is initialized. The potential appearance of leaf tip number (<span class="math inline">\(N_{p, tip}\)</span>) is initialized as 1.</p>
+<p>After <code>Emergence</code>, the potential appearance of tip number in the main stem (<span class="math inline">\(N_{p, tip}\)</span>) is daily increased according to the daily phyllochron (Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron">4.3</a>) and thermal time (Section <a href="sec-phe-thermal-time.html#sec:phe-thermal-time">3.1</a>) until <code>Maturity</code> (Fig. <a href="sec-main-stem.html#fig:str-delta-tip">4.4</a> and <a href="sec-main-stem.html#fig:str-tips">4.5</a>. <span class="math inline">\(N_{p, tip}\)</span> should stop increasing when final leaf number is reached).</p>
+<p><span class="math display">\[
+ \Delta N_{p, tip} = \frac{\Delta TT_{t}}{P_{phy}}
+\]</span></p>
+<p>where, <span class="math inline">\(N_{p, tip}\)</span> is the daily increase of leaf tip number (Fig. <a href="sec-main-stem.html#fig:str-delta-tip">4.4</a>), <span class="math inline">\(\Delta TT_{t}\)</span> is the daily thermal time, <span class="math inline">\(P_{phy}\)</span> is the phyllochron calculated at today.</p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:str-delta-tip"></span>
+<img src="structure_files/figure-html/str-delta-tip-1.png" alt="Daily increase of tip number in main stem" width="80%" />
+<p class="caption">
+Figure 4.4: Daily increase of tip number in main stem
+</p>
+</div>
+</div>
+<p>Potential appearance of tip number in main stem (<span class="math inline">\(N_{p, tip}\)</span>) are summarized daily increases since <code>Emergence</code>, plus the appeared leaf tip at <code>Emergence</code> (1 for wheat model) (Fig. <a href="sec-main-stem.html#fig:str-tips">4.5</a>).</p>
+<p><span class="math display">\[
+    N_{p, tip}=\sum_{t=T_{0}}^{T}\Delta N_{p, tip} + 1
+\]</span></p>
+<p>where, <span class="math inline">\(T_{0}\)</span> is day of <code>Emergence</code>. <span class="math inline">\(T\)</span> is today. In the Structure model, the tip numbers are not calculated for branches or tillers, but only for main stem (Figure <a href="#fig:node-number"><strong>??</strong></a>).</p>
+<p>Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of <span class="math inline">\(N_{p, tip}\)</span> are more than 1 (Figure <a href="sec-main-stem.html#fig:str-delta-tip">4.4</a>). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than 2 of appeared tip number.</p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:str-tips"></span>
+<img src="structure_files/figure-html/str-tips-1.png" alt="Tips number in main stem" width="80%" />
+<p class="caption">
+Figure 4.5: Tips number in main stem
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:str-haun-stage"></span>
+<img src="structure_files/figure-html/str-haun-stage-1.png" alt="Haun stage in main stem" width="80%" />
+<p class="caption">
+Figure 4.6: Haun stage in main stem
+</p>
+</div>
+</div>
+<!-- 
+
+
+
+
+
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/node-number-1.png" alt="Primordia and node number in main stem" width="80%" />
+<p class="caption">(\#fig:node-number)Primordia and node number in main stem</p>
+</div>
+</div>
+
+
+<div class="rmdimportant">
+<p>The node numbers in the main stem are not necessary integar to simulate the variation of primordia number in the actual field. Consequently all attibutes of flag leaf are proportionally reduced (e.g. growth duration and maximum area).</p>
+</div>
+
+## Tillering
+
+
+The apex number in a plant ($A$) is increased by branching ($\Delta A_{B} $) and decreased by mortality ($\Delta A_{M} $). New tillers are initialized when increase of the node number in main stem ($\Delta N_{node}$) is more than 1. In the leaf cohort model, tiller number represents by the cohort size (i.e. the number of leaves in a cohort). 
+
+$$
+A = \sum_{i=1}^{N_{node}}{(\Delta A_{B} - \Delta A_{M})}
+$$
+
+### Branching
+
+The branching rate in a plant is specified by parameter BranchingRate ($\Delta A_{B}$) and is calculated as potential branching rate and several stress factors (i.e. nitrogen stress, total coverage, and water stress). From stage Emergence to Terminal Spikelet (Section \@ref(stage-period)), the potential branching rate is defined as a function of number of appeared cohorts in the main stem (Figure \@ref(fig:str-branching-rate)) which follow the pattern of Fibonacci sequence. Beyond this period, the branching rate is set as zero. 
+
+<div class="fig-input">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/str-branching-rate-1.png" alt="Potential branching rate of APSIM-Wheat as a function of appreared cohort number" width="80%" />
+<p class="caption">(\#fig:str-branching-rate)Potential branching rate of APSIM-Wheat as a function of appreared cohort number</p>
+</div>
+</div>
+
+
+
+Two stresses are defined in the APSIM-Wheat including nitrogen and WSC. A simple sensitivity analysis indicates the branching rate is too sensitive to WSC with default values (x = [0.1, 0.2]; y = [0, 1]). So, this feature is disabled for further analysis. 
+
+The nitrogen stress is calculated as a function of fraction of nitrogen supply relative to nitrogen demand which is exported from the Arbitrator module (Chapter \@ref(cha:arbitrator)). Wheat module assumes no nitrogen stress when the nitrogen supply is bigger than 1.5 times of nitrogen demand (Figure \@ref(fig:branching-rate-nstress)). Nitrogen stress linearly increases when supply/demand ratio less then 1.5 (<font color="red">Reference required.</font>)
+
+
+<div class="fig-input">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/str-branching-factor-1.png" alt="The factors to influence of branching rate (nitrogen stress, total coverage and water stress). The final multiplier of branching rate is the minimum values of the " width="80%" />
+<p class="caption">(\#fig:str-branching-factor)The factors to influence of branching rate (nitrogen stress, total coverage and water stress). The final multiplier of branching rate is the minimum values of the </p>
+</div>
+</div>
+
+
+
+
+
+<div class="rmderror">
+<p>The values for total coverage are 0.1 and 0.25 in the wheat validation model. I would expect much higher coverage to stop tillering.</p>
+</div>
+
+
+<div class="rmderror">
+<p>The step functions or leaf cohort model in the tillering processing cause that the tiller dynamic is too sensitive to the stage of terminal spikelet.</p>
+</div>
+
+
+
+Figure \@ref(fig:tiller-number) shows the branching rate and total branching number in the test simulation without nitrogen stress on branching rate during branching period (from Emergence to Terminal Spikelet, Figure \@ref(fig:nitrogen-fn)).
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/tiller-number-1.png" alt="The branching rate and branch number for wheat" width="80%" />
+<p class="caption">(\#fig:tiller-number)The branching rate and branch number for wheat</p>
+</div>
+</div>
+
+
+
+
+
+<div class="rmdimportant">
+<p>It seems PMF uses the branching rate one day before to calculate the branch number.</p>
+</div>
+
+
+
+### Mortality {#sec-structure-mortality}
+
+Two types of mortality are considered in the apex model, i.e. smaller tiller at terminal spikelet and low growth rate. For any types of tiller mortality, the plant does not reduce the population of existing leaf cohort, but number of apex, then reduce the population size of new leaf cohort. 
+
+At the terminal spikelet, all tillers with less than 4 leaves are stopped to growth new leaves.
+
+
+
+Branching mortality starts from the Flag leaf until Flowering which defines as a function of moving mean tiller growth rate (Figure \@ref(fig:mortality-growth-rate). The mean tiller growth rate is calculated as the 5 days moving means of tiller growth rate, which is calculated by the daily biomass supply divides thermal time and total stem population.  <font color="red">Reference required.</font>
+
+
+<div class="rmderror">
+<p>Need to check the mortality caused by growth rate.</p>
+</div>
+
+
+<div class="fig-input">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/mortality-growth-rate-1.png" alt="Tiller mortality as a function of moving mean tiller growth rate" width="80%" />
+<p class="caption">(\#fig:mortality-growth-rate)Tiller mortality as a function of moving mean tiller growth rate</p>
+</div>
+</div>
+
+
+<div class="rmderror">
+<p>Not sure why the tiller mortality starts from Flag leaf, not terminal spikelet, even the whole growth season</p>
+</div>
+
+
+
+
+Figure \@ref(fig:tiller-growth-rate-factor) and \@ref(fig:tiller-growth-rate) show the mean tiller growth rate and the three factors to calculate it in the test simulation.
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/tiller-growth-rate-1.png" alt="The moving tiller growth rate" width="80%" />
+<p class="caption">(\#fig:tiller-growth-rate)The moving tiller growth rate</p>
+</div>
+</div>
+
+
+
+<div class="fig-output">
+
+</div>
+
+
+
+
+<div class="fig-output">
+
+</div>
+
+
+
+As the primary bud number is equal to 1, the plant total node number and total primary node number are the same (Figure \@ref(fig:plant-node-number)). Figure \@ref(fig:plant-node-number) show the total node number as the results of tiller appearing and mortality.
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/plant-node-number-1.png" alt="Total plant node number" width="80%" />
+<p class="caption">(\#fig:plant-node-number)Total plant node number</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+## Plant and Main-Stem Population
+
+Plant population ($P$) is initialized at sowing from Sow event, and daily reduced by the plant mortality ($\Delta P$).
+$$
+    P=P_{0} - \sum_{t=T_{0}}^{T}(\Delta P)
+$$
+
+where, $P_{0}$ is the sown population, which initialized at sowing.
+
+Population of main stem ($P_{ms}$) is calculated according to plant population ($P$) and primary bud number ($N_{bud}$) with default value 1 for wheat. The unit of $P_{ms}$ is per square meter.
+$$
+    P_{ms}=P \times N_{bud}
+$$
+
+Total stem population ($P_{stem}$) is summed up population of main stem ($P_{ms}$) and branches (($P_{branch}$)).
+$$
+    P_{stem} = P_{ms} + P_{branch}
+$$
+
+In the test simulation, the plant density ($P$) is 150 plants m^2^, so population of main stem ($P_{ms}$) equals to plant density (Figure \@ref(fig:plant-population)). From Emergence to terminal spikelet, the population of total stem ($P_{stem}$) multiply by stem number and plant density (Figure \@ref(fig:tiller-number)). 
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/str-plant-population-1.png" alt="The total population of main stem and all stems" width="80%" />
+<p class="caption">(\#fig:str-plant-population)The total population of main stem and all stems</p>
+</div>
+</div>
+
+
+
+
+
+## Canopy height
+The canopy height is calculated as the potential height and adjusted by water stress. 
+
+
+<div class="fig-input">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/str-potential-height-1.png" alt="Potential canopy height" width="80%" />
+<p class="caption">(\#fig:str-potential-height)Potential canopy height</p>
+</div>
+</div>
+
+
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="structure_files/figure-html/str-height-1.png" alt="The simulated canopy height" width="80%" />
+<p class="caption">(\#fig:str-height)The simulated canopy height</p>
+</div>
+</div>
+
+-->
+
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sec-str-phyllochron.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cha-biomass.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/structure.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

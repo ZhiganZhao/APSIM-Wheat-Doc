@@ -1,0 +1,150 @@
+# Root {#cha:root}
+
+
+```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
+source('_setup.R')
+```
+
+
+Only `Structural` is considered in the three components of biomass for `Root`. The biomass allocation depending on the fraction of daily fixation (i.e. photosynthesis).
+
+
+
+## Root length {#sec:root-length}
+
+
+<div class="fig-output">
+```{r root-length, fig.asp = 1, fig.cap='Root length'}
+y_cols <- c('Wheat.Root.Length')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Root length (m?)')
+
+```
+</div>
+
+
+
+
+
+## Supply {#sec:root-supply}
+
+No biomass supply is considered in the `Root` organ (Fig. \@ref(fig:root-supply)).
+
+<div class="fig-output">
+```{r root-supply, fig.asp = 0.5, fig.cap='Biomass supply from root'}
+y_cols <- c('Wheat.Root.DMSupply.Fixation',
+            'Wheat.Root.DMSupply.Retranslocation',
+            'Wheat.Root.DMSupply.Reallocation')
+
+plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+            y_lab = 'Demand (g/d)', ncol = 3)
+
+```
+</div>
+
+
+## Demand {#sec:root-demand}
+
+The daily biomass demand of `Root` is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (`Emergence`) to Stage 8 (`End of grain filling`). The fraction of root demand is 0.2 until `Flowering time`, then reduces into 0.02 until `End of grain filling` (Fig. \@ref(fig:root-demand-fraction)). Only structural demand is considered in the `Root` organ (Fig. \@ref(fig:root-demand)). 
+
+
+
+```{block, type='rmdnote', echo=TRUE}
+Photosynthate is not partitioned into root after heading [@Fangsituassessmentnew2016].
+```
+
+
+
+<div class="fig-input">
+```{r root-demand-fraction, fig.asp = 0.5, fig.cap='Fraction of root demand in the total fixation '}
+y_cols <- c('Wheat.Root.DMDemandFraction')
+plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+            y_lab = 'Fraction of total fixation', ncol = 3)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r root-demand, fig.asp = 1, fig.cap='Biomass demand by root'}
+y_cols <- c('Wheat.Root.DMDemand.Structural',
+'Wheat.Root.DMDemand.Storage',
+'Wheat.Root.DMDemand.Metabolic')
+
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Demand (g/d)', ncol = 3)
+
+```
+</div>
+
+## Biomass dynamic {#sec:root-biomass}
+
+The actual allocation (Fig. \@ref(fig:root-allocated)) is determined by the actual daily biomass supply (Fig. \@ref(fig:biomass-supply-total)) which may be smaller than than biomass demand (Fig. \@ref(fig:root-demand)). 
+
+<div class="fig-output">
+```{r root-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for root'}
+y_cols <- c('Wheat.Root.Allocated.StructuralWt',
+'Wheat.Root.Allocated.StorageWt',
+'Wheat.Root.Allocated.MetabolicWt')
+
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+The daily loss of roots is calculated using a SenescenceRate function (0.005 in the default value).  All senesced material is automatically detached and added to the soil fresh organic matter (FOM) pool.  
+
+<div class="fig-output">
+```{r root-detached, fig.asp = 1, fig.cap='Detached biomass from root into soil organic.'}
+y_cols <- c('Wheat.Root.Detached.StructuralWt',
+'Wheat.Root.Detached.StorageWt',
+'Wheat.Root.Detached.MetabolicWt')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+Finally `Root` biomass increases until `flowering time`, then gradually decreases as the senescence is more than allocation (Fig. \@ref(fig:root-weight)). All biomass is allocated into `Live` component (Fig. \@ref(fig:root-live)), as the senescenced `Root` immediately is detached and contributed into soil FOM (Fig. \@ref(fig:root-dead)).
+
+<div class="fig-output">
+```{r root-weight, fig.asp = 1, fig.cap='Dynamic of root biomass (Total)'}
+y_cols <- c('Wheat.RootWt')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r root-live, fig.asp = 1, fig.cap='Dynamic of root biomass (Live component)'}
+y_cols <- c('Wheat.Root.Live.StructuralWt',
+'Wheat.Root.Live.StorageWt',
+'Wheat.Root.Live.MetabolicWt')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r root-dead, fig.asp = 0.5, fig.cap='Dynamic of root biomass (Dead component)'}
+y_cols <- c('Wheat.Root.Dead.StructuralWt',
+'Wheat.Root.Dead.StorageWt',
+'Wheat.Root.Dead.MetabolicWt')
+plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+

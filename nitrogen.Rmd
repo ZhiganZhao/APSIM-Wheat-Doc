@@ -1,0 +1,33 @@
+# Nitrogen {#cha:nitrogen}
+
+
+
+```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
+source('_setup.R')
+```
+
+<div class="fig-output">
+```{r nitrogen-functional-nitrogen, fig.cap='Coverage'}
+y_cols <- c(
+    'Wheat.Leaf.Fn')
+plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Ratio of functional nitrogen')
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r nitrogen-fn, fig.cap='The fraction of nitrogen supply relative to nitrogen demand???'}
+y_cols <- c('Wheat.Arbitrator.FN')
+
+p <- plot_report(
+    report %>% filter(Wheat.Phenology.Stage < 10),
+            x_var, y_cols, x_lab = x_lab, y_lab = 'Ratio of nitrogen supply and demand???')
+p + geom_hline(yintercept = 1.5)
+
+```
+</div>
+
+

@@ -1,0 +1,81 @@
+---
+title: "Documentation of APSIM-Wheat"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [citation.bib]
+biblio-style: citation.csl
+link-citations: yes
+github-repo: byzheng/APSIM-Wheat
+description: "Documentation of APSIM-Wheat"
+
+---
+
+
+# Introduction
+
+```{block, type = 'rmdimportant', echo=TRUE}
+This documentation is based on the current version of [APSIM-Wheat module](https://github.com/APSIMInitiative/ApsimX/tree/d9717df5ef24f6d3f1eb4c301726c213960017bb) with a few modifications in the next generation updated on 17-August-2017.
+```
+
+
+```{block, type='rmdnote', echo=TRUE}
+A simulation is setup to demo the relationship among traits based on the cv. Hartog with high nitrogen and irrigation management under 15TraitMod experiment. The values in the figures below could be variable in other environments.
+```
+
+
+```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
+source('_setup.R')
+```
+
+
+
+This is only a documentation for Wheat model in [next generation of APSIM](https://github.com/APSIMInitiative/ApsimX) with our own understanding.
+
+The main contents include 
+
+- Detail description of science parts of APSIM-Wheat model
+- Figures of default parameters
+- Figures of general outputs
+
+
+## Contributors of this documentation
+ * Bangyou Zheng <bangyou.zheng@csiro.au>
+ * Karine Chenu <karine.chenu@uq.edu.au>
+ * Scott Chapman <scott.chapman@csiro.au>
+ * Enli Wang <enli.wang@csiro.au>
+
+
+
+## How to contribute?
+
+This documentation is wrote by [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org). I suggest you firstly to read the introduction about [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org), then fork this repository into your github account. Feel free to submit a pull request. 
+
+## How to document your own simulation
+
+The new document can be easily generated for any other simulations using following steps.
+
+* Install the required software including [R](https://cran.r-project.org/), [RStudio](https://www.rstudio.com/), [Bookdown](https://bookdown.org/yihui/bookdown) and other depended packages.
+* Fork or download all source codes from [git repository](https://github.com/byzheng/APSIM-Wheat-Doc).
+* Replace your own simulation.apsimx under simulation subfolder. Your apsimx file should only have `ONE` simulation and include all report variables used in the report, which can be found in the report replacement of the existing apsimx file.
+* Click `Build book` in the RStudio interface.
+
+## Conventions
+
+### Figures
+
+Figures in the documentation are classified into two categories with different backgrounds, i.e. `Input` and `Output`. `Input` figures show default parameter values (not genetypic values) or dynamic parameter values (depending on the other status variables) in the apsimx model. `Output` figures show reportable variables in the in the apsimx model. The `Input` and `Output` variable names only show the last section (separated by full stop) or specified names to save spaces in the figures.
+
+Most of figures use two time serial variables, i.e. `Stage` and `Accumulated thermal time since sowing`. However, only `Stage` is used if all values are constant (e.g. Fig. \@ref(fig:root-supply)), or stage based input variables.
+
+The key stages are displayed in all figures (Section \@ref(sec:phe-stage-period)) including `G` for stage 2 `Germination`, `T` for stage 4 `Terminal Spikelet`, `F` for stage 6 `Flowering`, `E` for stage 8 `End of Grain Filling`.
+
+
+## Software information
+
+The R session information when compiling this book is shown below:
+
+```{r session}
+sessionInfo()
+```
+

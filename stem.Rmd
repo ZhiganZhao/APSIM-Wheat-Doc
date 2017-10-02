@@ -1,0 +1,130 @@
+# Stem {#cha:stem}
+
+```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
+source('_setup.R')
+```
+
+
+`Stem` provides biomass through retranslocation, requires biomass a proportion of daily fixation (i.e. photosynthesis in `Leaf`). The biomass is allocated into two components, i..e `Structural` and `Storage`. No `Metabolic` is considered.
+
+
+## Supply {#sec:stem-supply}
+
+In `Stem`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:stem-supply)). Daily retranslocation is the proportion of current storage ($W_{stem, storage}$). The default value of proportion is 0.5 since `StartGrainFill`, i.e. retranslocatable biomsss is 50% during grain filling (Fig. \@ref(fig:stem-retran-factor)).
+
+
+<div class="fig-input">
+```{r stem-retran-factor, fig.asp = 0.5, fig.cap='Growth duration of stem development'}
+y_cols <- c('Wheat.Stem.DMRetranslocationFactor')
+report %>% 
+    # filter(Wheat.Phenology.Stage > 5) %>% 
+    plot_report(x_var2, y_cols, x_lab = x_lab,
+            y_lab = 'Growth duration (oCd)')
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r stem-supply, fig.asp = 1, fig.cap='Biomass supply from stem'}
+y_cols <- c('Wheat.Stem.DMSupply.Fixation',
+            'Wheat.Stem.DMSupply.Retranslocation',
+            'Wheat.Stem.DMSupply.Reallocation')
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Demand (g/d)', ncol = 3)
+
+```
+</div>
+
+
+## Demand {#sec:stem-demand}
+
+The daily biomass demand of `Stem` is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (`Emergence`) to Stage 6 (`Flowering time`) (Fig. \@ref(fig:stem-demand-fraction)) and increases at Stage 4 (`Terminal spikelet`) (Fig. \@ref(fig:stem-demand-fraction)). After `Flowering time`, no biomass allocated into stem (Fig. \@ref(fig:stem-demand)).  
+
+<div class="fig-input">
+```{r stem-demand-fraction, fig.asp = 1, fig.cap='Fraction of stem demand in the total fixation '}
+y_cols <- c('Wheat.Stem.DMDemandFraction')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Fraction of total fixation')
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r stem-demand, fig.asp = 1, fig.cap='Biomass demand by stem'}
+y_cols <- c('Wheat.Stem.DMDemand.Structural',
+'Wheat.Stem.DMDemand.Storage',
+'Wheat.Stem.DMDemand.Metabolic')
+
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Demand (g/d)', ncol = 3)
+
+```
+</div>
+
+## Biomass dynamic {#sec:stem-biomass}
+
+The actual allocation reflects the increase of structural component, and retranslocation of storage component (Fig. \@ref(fig:stem-allocated)). `Stem` only considers the `Live` biomass (Fig. \@ref(fig:stem-live), no `Dead` biomass (Fig. \@ref(fig:stem-dead)).
+
+
+<div class="fig-output">
+```{r stem-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for stem'}
+y_cols <- c('Wheat.Stem.Allocated.StructuralWt',
+'Wheat.Stem.Allocated.StorageWt',
+'Wheat.Stem.Allocated.MetabolicWt')
+
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r stem-weight, fig.asp = 1, fig.cap='Dynamic of stem biomass (Total)'}
+y_cols <- c('Wheat.StemWt')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)')
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r stem-live, fig.asp = 1, fig.cap='Dynamic of stem biomass (Live component)'}
+y_cols <- c('Wheat.Stem.Live.StructuralWt',
+'Wheat.Stem.Live.StorageWt',
+'Wheat.Stem.Live.MetabolicWt')
+
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r stem-dead, fig.asp = 0.5, fig.cap='Dynamic of stem biomass (Dead component)'}
+y_cols <- c('Wheat.Stem.Dead.StructuralWt',
+'Wheat.Stem.Dead.StorageWt',
+'Wheat.Stem.Dead.MetabolicWt')
+
+
+plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+
+
