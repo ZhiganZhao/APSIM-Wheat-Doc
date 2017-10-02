@@ -34,7 +34,7 @@ report %>%
            Organ = factor(Organ, levels = c('Grain', "Root", "Leaf", "Spike", "Stem"))) %>% 
     spread(Biomass, value) %>% 
     knitr::kable(align = "c",
-                 caption = 'The live and dead groups of biomass () in all organs. X and - indicate the organ has and has not the group, respectively.')
+                 caption = 'The live and dead groups of biomass in all organs. X and - indicate the organ has and has not the group, respectively.')
 ```
 
 

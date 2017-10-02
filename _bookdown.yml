@@ -1,6 +1,6 @@
 book_filename: "APSIM-Wheat"
 chapter_name: "Chapter "
-new_session: yes
+new_session: false
 rmd_files:
   - "index.Rmd"
   - "overview.Rmd"
