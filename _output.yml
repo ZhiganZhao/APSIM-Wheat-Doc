@@ -12,10 +12,9 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Documentation of ASPIM-Wheat</a></li>
       after: |
-        <li><a href="https://byzheng.github.io/APSIM-Wheat-Sens" target="blank">Sensitivity analysis</a></li>
+        <li><a href="https://apsim-wheat-sens.bangyou.me" target="blank">Sensitivity analysis</a></li>
         <li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
         <li><a href="http://github.com/APSIMInitiative/ApsimX" target="blank">Next generation of APSIM</a></li>
-        <li><a href="http://byzheng.github.io/ApsimX/Documentation/html/index.html" target="blank">Developer documentation</a></li>
     edit:
       link: https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/%s
     sharing:
