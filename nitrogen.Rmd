@@ -6,16 +6,6 @@
 source('_setup.R')
 ```
 
-<div class="fig-output">
-```{r nitrogen-functional-nitrogen, fig.cap='Coverage'}
-y_cols <- c(
-    'Wheat.Leaf.Fn')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Ratio of functional nitrogen')
-
-```
-</div>
-
-
 
 
 <div class="fig-output">

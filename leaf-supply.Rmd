@@ -1,0 +1,113 @@
+## Supply {#sec:leaf-supply}
+
+In `Leaf` organ, the biomass supply only sources from `Fixation` (i.e. photosynthesis, Fig. \@ref(fig:leaf-supply)). Three photosynthesis models are implemented in the APSIM next generation,
+
+### Radiation use efficiency model
+
+The radiation-limited dry-biomass accumulation ($\Delta Q_{r}$) is calculated by the intercepted radiation ($I$), radiation use efficiency ($RUE$).
+
+$$
+\Delta Q_{r}=I \times RUE
+$$
+
+#### Radiation interception {-}
+
+Radiation interception is calculated from the leaf area index (LAI, m$^{2}$ m$^{-2}$) and the extinction coefficient ($k$) [@MonsiFactorLightPlant2005]. 
+
+$$
+I=I_{0}(1-\exp(-k\times LAI)
+$$
+
+
+where $I_{0}$ is the total radiation at the top of the canopy (MJ) which is directly imported from weather records. Extinction coefficient ($k$) set as a constant value  `r get_fixed_value(pmf, '//Leaf/Constant/Name[text()="ExtinctionCoeff"]')`.  
+
+
+#### Actual radiation use efficiency {-}
+
+The actual $RUE$ (g MJ$^{\text{-1}}$) is calculated as the potential $RUE$ ($RUE_p$) and several reduction factors, including plant nutrition ($F_{n,\ photo}$), air temperature($F_{t,\ photo}$), vapour pressure deficit ($F_{vpd}$), water supply ($F_w$) and atmospheric CO2 concentration ($F_{co2}$).
+
+$$
+RUE = RUE_{p} \times \min{(F_{t,\ photo}, F_{n,\ photo}, F_{VPD})} \times F_W \times F_{CO2}
+$$
+
+**The potential RUE ($RUE_p$)** has a default value `r get_fixed_value(pmf, '//RUEModel/Constant/Name[text()="RUE"]')`.
+
+**The temperature factor ($F_t$)** is calculated as a function of average daily temperature weighted toward maximum temperature according to the specified `MaximumTemperatureWeighting` factor ($W_{maxt}$) with default value `r get_xml_value(pmf, '//RUEModel/WeightedTemperatureFunction/MaximumTemperatureWeighting')`.
+
+
+$$
+F_{t,\ photo}=h_{t,\ photo}[W_{maxt}T_{max}+(1-W_{maxt})T_{min}]
+$$
+
+
+<div class="fig-input">
+```{r biomass-ft, fig.asp = 0.5, fig.cap='The temperature factor which influences radiation use efficiency'}
+xpath <- '//RUEModel/WeightedTemperatureFunction/Name[text()="FT"]'
+plot_xypair(pmf, xpath, x_lab = 'Average daily temperature weighted toward maximum temperature', y_lab = 'Temperature factor to photosynthesis')
+```
+</div>
+
+
+**The plant nutrition factor** is determined by the ratio of functional nitrogen in leaf (Fig. \@ref(fig:leaf-nitrogen-functional-n)) and the multiplier of nitrogen stress (Fig. \@ref(fig:leaf-rue-fn)).
+
+<div class="fig-input">
+```{r leaf-rue-fn, fig.asp = 0.5, fig.cap='The nitrogen factor which influences radiation use efficiency'}
+xpath <- '//RUEModel/LinearInterpolationFunction/Name[text()="FN"]'
+plot_xypair(pmf, xpath, x_lab = 'Ratio of functional nitrogen in leaf.',
+            y_lab = 'Nitrogen factor to photosynthesis')
+
+```
+</div>
+
+**Water stress factor**
+
+$F_{W}$ quantifies water stress and is calculated as <i>Leaf.Transpiration</i>/<i>Leaf.WaterDemand</i>, where <i>Leaf.Transpiration</i> is the minimum of <i>Leaf.WaterDemand</i> and <i>Root.WaterUptake</i>
+
+```{block, type = 'rmdnote', echo=TRUE}
+Need to further check
+```
+
+
+<div class="fig-input">
+```{r leaf-rue-fw, fig.asp = 0.5, fig.cap='The water factor which influences radiation use efficiency'}
+xpath <- '//RUEModel/LinearInterpolationFunction/Name[text()="FW"]'
+plot_xypair(pmf, xpath, x_lab = 'Water stress',
+            y_lab = 'Water factor to photosynthesis')
+
+```
+</div>
+
+
+**CO$_{\text{2}}$ factor** is calculated by a function of environmental CO$_{\text{2}}$ concentration ($C$, ppm; $C$ > 350 ppm) and daily mean temperature ($T_{mean}$ < 50&deg;C) as published by @ReyengaModellingglobalchange1999
+
+$$
+f_{c}=\frac{(C-C_{i})(350+2C_{i})}{(C+2C_{i})(350-C_{i})}
+$$
+
+where $C_{i}$ is the temperature dependent CO$_{\text{2}}$ compensation point (ppm) and is derived from the following function. 
+$$
+C_{i}=\frac{163-T_{mean}}{5-0.1T_{mean}}
+$$
+
+
+
+<!--
+### Enli's photosynthesis model
+
+### Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)
+-->
+
+
+<div class="fig-output">
+```{r leaf-supply, fig.asp = 1, fig.cap='Biomass supply from leaf'}
+y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
+            'Wheat.Leaf.DMSupply.Retranslocation',
+            'Wheat.Leaf.DMSupply.Reallocation')
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Demand (g/d)', ncol = 3)
+
+```
+</div>
+
+

@@ -12,16 +12,11 @@ description: "Documentation of APSIM-Wheat"
 ---
 
 
-# Introduction
+# Introduction {#cha:intro}
 
-```{block, type = 'rmdimportant', echo=TRUE}
 This documentation is based on the current version of [APSIM-Wheat module](https://github.com/APSIMInitiative/ApsimX/tree/d9717df5ef24f6d3f1eb4c301726c213960017bb) with a few modifications in the next generation updated on 17-August-2017.
-```
 
-
-```{block, type='rmdnote', echo=TRUE}
 A simulation is setup to demo the relationship among traits based on the cv. Hartog with high nitrogen and irrigation management under 15TraitMod experiment. The values in the figures below could be variable in other environments.
-```
 
 
 ```{r index-setup, message=FALSE, warning=FALSE, echo=FALSE}
@@ -39,7 +34,7 @@ The main contents include
 - Figures of general outputs
 
 
-## Contributors of this documentation
+## Contributors of this documentation {#sec:intro-contribution}
  * Bangyou Zheng <bangyou.zheng@csiro.au>
  * Karine Chenu <karine.chenu@uq.edu.au>
  * Scott Chapman <scott.chapman@csiro.au>
@@ -47,11 +42,10 @@ The main contents include
 
 
 
-## How to contribute?
+## How to contribute {#sec:intro-own-contribution}
 
 This documentation is wrote by [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org). I suggest you firstly to read the introduction about [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org), then fork this repository into your github account. Feel free to submit a pull request. 
 
-## How to document your own simulation
 
 The new document can be easily generated for any other simulations using following steps.
 
@@ -60,7 +54,7 @@ The new document can be easily generated for any other simulations using followi
 * Replace your own simulation.apsimx under simulation subfolder. Your apsimx file should only have `ONE` simulation and include all report variables used in the report, which can be found in the report replacement of the existing apsimx file.
 * Click `Build book` in the RStudio interface.
 
-## Conventions
+## Conventions {#sec:intro-convention}
 
 ### Figures
 
@@ -71,7 +65,7 @@ Most of figures use two time serial variables, i.e. `Stage` and `Accumulated the
 The key stages are displayed in all figures (Section \@ref(sec:phe-stage-period)) including `G` for stage 2 `Germination`, `T` for stage 4 `Terminal Spikelet`, `F` for stage 6 `Flowering`, `E` for stage 8 `End of Grain Filling`.
 
 
-## Software information
+## Software information {#sec:intro-software}
 
 The R session information when compiling this book is shown below:
 

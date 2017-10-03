@@ -26,12 +26,3 @@ bookdown::gitbook:
       instapper: no
       vk: no
       all: no
-bookdown::pdf_book:
-  includes:
-    in_header: _includes/preamble.tex
-  keep_tex: yes
-  toc: yes
-  number_sections: yes
-  latex_engine: xelatex
-  citation_package: natbib
-

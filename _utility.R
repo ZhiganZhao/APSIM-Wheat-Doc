@@ -17,8 +17,7 @@ new_breaks <- function(x) {
 
 
 plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
-                        panel = FALSE, y_labels = NULL, ncol = 1,
-                        cohort = FALSE) {
+                        panel = FALSE, y_labels = NULL, ncol = 1) {
     library(ggplot2)
     # x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
     # x_var_n <- list()
@@ -57,9 +56,15 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
             p <- p + facet_grid(Trait~XVar, scales = 'free')
         }
     } else {
-        p <- p +
-            geom_line(aes(colour = Trait)) +
-            geom_point(aes(colour = Trait))
+        if (length(y_cols) > 1) {
+            p <- p +
+                geom_line(aes(colour = Trait)) +
+                geom_point(aes(colour = Trait))
+        } else {
+            p <- p +
+                geom_line() +
+                geom_point()
+        }
         if (length(x_var) > 1) {
             p <- p + facet_wrap(~XVar, scales = 'free_x', ncol = 1)
         }
@@ -89,38 +94,64 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
 
     p <- p + geom_text(aes(x, y = y_rng[1], label = name), data = key_stage, vjust = 0) +
         ylim(y_rng)
-
-    if (cohort) {
-        cohort_appear <- df %>%
-            tbl_df() %>%
-            filter(Wheat.Leaf.AppearedCohortNo > 0) %>%
-            select(x_var, Wheat.Leaf.AppearedCohortNo) %>%
-            group_by(Wheat.Leaf.AppearedCohortNo) %>%
-            slice(1) %>%
-            ungroup() %>%
-            gather(XVar, XValue, -Wheat.Leaf.AppearedCohortNo) %>%
-            mutate(XVar = gsub('.*\\.(.*)', '\\1', XVar))    %>%
-            mutate(XVar = factor(XVar, levels = x_var_name)) %>%
-            left_join(pd, by = c('XVar', 'XValue'))
-        p <- p +
-            geom_point(aes(XValue, YValue), data = cohort_appear) +
-            geom_text(aes(XValue, y_rng[2], label = Wheat.Leaf.AppearedCohortNo), data = cohort_appear,
-                      size = 3)
-    }
-
     p
 }
 
 
 
 
-plot_report_vector <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
-                        unique = FALSE) {
+plot_report_rank <- function(df, y_cols, y_lab = 'Value', y_labels = NULL, ncol = 1) {
     library(ggplot2)
-    # x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
-    # x_var_n <- list()
-    # x_var_n[[x_var_name]] <- x_var
+    x_var <- 'Wheat.Leaf.AppearedCohortNo'
+    cols <- c(x_var, y_cols)
+    x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
+    y_cols_name <- gsub('.*\\.(.*)', '\\1', y_cols)
 
+    # Find the appearance date for each leaf cohort
+    pd <- df %>%
+        tbl_df() %>%
+        filter(Wheat.Leaf.AppearedCohortNo > 0) %>%
+        select(cols) %>%
+        group_by(Wheat.Leaf.AppearedCohortNo) %>%
+        slice(1) %>%
+        ungroup() %>%
+        gather(Trait, Value, -Wheat.Leaf.AppearedCohortNo) %>%
+        rename(No = Wheat.Leaf.AppearedCohortNo)
+    if (!is.null(y_labels)) {
+        pd <- pd %>%
+            left_join(data_frame(Trait = y_cols, Label = y_labels), by = 'Trait') %>%
+            select(-Trait) %>%
+            rename(Trait = Label) %>%
+            mutate(Trait = factor(Trait, levels = y_labels))
+    } else {
+        pd <- pd %>%
+            mutate(Trait = gsub('.*\\.(.*)', '\\1', Trait)) %>%
+            mutate(Trait = factor(Trait, levels = y_cols_name))
+    }
+
+    p <- ggplot(pd, aes(No, Value))
+    if (length(y_cols) > 1) {
+        p <- p +
+            geom_line(aes(colour = Trait)) +
+            geom_point(aes(colour = Trait))
+    } else {
+        p <- p +
+            geom_line() +
+            geom_point()
+    }
+    p <- p + theme_bw() +
+        theme(legend.position = 'bottom') +
+        xlab('Rank') + ylab(y_lab) +
+        guides(colour = guide_legend(title = '', ncol = ncol))
+    p <- p +
+        scale_x_continuous(breaks = seq(1, max(pd$No)), minor_breaks = seq(1, max(pd$No)))
+    p
+}
+
+
+plot_report_vector <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
+                        rank = FALSE) {
+    library(ggplot2)
     col_names <- grepl(paste(y_cols, collapse = '|'), names(df)) | (names(df) %in% x_var)
     pd <- df[,col_names]
     names(pd) <- gsub('\\:|\\(|\\)', '_', names(pd))
@@ -128,54 +159,50 @@ plot_report_vector <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value'
     y_cols_new <- names(pd)[!(names(pd) %in% x_var)]
 
     pd <- pd %>%
+        tbl_df() %>%
         gather_(key_col = 'Trait', value_col = 'Value', gather_cols = y_cols_new) %>%
-        mutate(
-            Trait = gsub('.*\\.(.*)', '\\1', Trait),
-            Index = gsub('(.*)\\d+_\\d+_(\\d+)_', '\\2', Trait),
-            Trait = gsub('(.*)\\d+_\\d+_(\\d+)_', '\\1', Trait),
-            Index = factor(as.numeric(as.character(Index)))
-            ) %>%
+        mutate(Index = gsub('^(.*)\\d+\\.\\d+\\.(\\d+)\\.$', '\\2', Trait),
+            Trait = gsub('^(.*)\\d+\\.\\d+\\.(\\d+)\\.$', '\\1', Trait),
+            Index = factor(as.numeric(as.character(Index)))) %>%
         gather_(key_col = 'XVar', value_col = 'XValue', gather_cols = x_var) %>%
         mutate(XVar = gsub('.*\\.(.*)', '\\1', XVar))
     x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
     pd <- pd %>%
         mutate(XVar = factor(XVar, levels = x_var_name))
-    if (!unique) {
+    if (!rank) {
 
         p <-  ggplot(pd, aes(XValue, Value, colour = Index)) +
             geom_line()
 
-    } else {
-        pd <- pd %>%
-            group_by(Trait, XVar, Index) %>%
-            filter(Value > 0) %>%
-            filter(Value == max(Value), XValue == min(XValue))
-         p <- ggplot(pd, aes(XValue, Value, colour = Index)) +
-            geom_text(aes(XValue, Value, label = Index), vjust = 1.2) +
+        p <- p +
             geom_point() +
             theme_bw() +
             theme(legend.position = 'bottom') +
             xlab(x_lab) + ylab(y_lab) +
             guides(colour = guide_legend(title = ''))
 
-    }
-    p <- p +
-        geom_point() +
-        theme_bw() +
-        theme(legend.position = 'bottom') +
-        xlab(x_lab) + ylab(y_lab) +
-        guides(colour = guide_legend(title = ''))
-
-    if (length(x_var) > 1 & length(y_cols) > 1) {
-        p <- p + facet_grid(Trait~XVar, scales = 'free_x')
-    } else if (length(x_var) > 1) {
-        p <- p + facet_wrap(~XVar, scales = 'free_x', ncol = 1)
-    }
+        if (length(x_var) > 1 & length(y_cols) > 1) {
+            p <- p + facet_grid(Trait~XVar, scales = 'free_x')
+        } else if (length(x_var) > 1) {
+            p <- p + facet_wrap(~XVar, scales = 'free_x', ncol = 1)
+        }
 
 
-    if (length(grep('Stage', x_var)) > 0) {
-        p <- p +
-            scale_x_continuous(breaks = new_breaks)
+        if (length(grep('Stage', x_var)) > 0) {
+            p <- p +
+                scale_x_continuous(breaks = new_breaks)
+        }
+
+    } else {
+        pd <- pd %>%
+            group_by(Trait, Index) %>%
+            filter(Value > 0) %>%
+            filter(Value == max(Value), XValue == min(XValue)) %>%
+            slice(1)
+         p <- ggplot(pd, aes(Index, Value)) +
+            geom_point() +
+            theme_bw() +
+            xlab('Rank') + ylab(y_lab)
     }
     p
 
@@ -189,7 +216,7 @@ plot_xypair <- function(pmf, xpath, x_lab, y_lab, label = xpath) {
 
     df <- list()
     for (i in seq(along = xpath)) {
-        xypair <- xml_find_first(pmf, xpath = paste0(xpath[i], '/following-sibling::XYPairs'))
+        xypair <- xml_find_all(pmf, xpath = paste0(xpath[i], '/following-sibling::XYPairs'))
         if (length(xypair) == 0) {
             xypair <- xml_find_first(pmf, xpath = paste0(xpath[i], '/XYPairs'))
         }
@@ -198,12 +225,17 @@ plot_xypair <- function(pmf, xpath, x_lab, y_lab, label = xpath) {
         }
 
 
+        if (length(xypair) > 1) {
+            stop(paste0('Find multiple xpath: ', xpath[i], '.'))
+        }
+
         x <- as.numeric(xml_text(xml_children(xml_find_first(xypair, 'X'))))
         y <- as.numeric(xml_text(xml_children(xml_find_first(xypair, 'Y'))))
 
         df[[i]] <- data.frame(x = x, y = y, label = label[i], stringsAsFactors = FALSE)
     }
     df <- bind_rows(df)
+    df$label <- factor(df$label, levels = label)
     p <- ggplot(df, aes(x, y)) +
         geom_point() +
         geom_line() +

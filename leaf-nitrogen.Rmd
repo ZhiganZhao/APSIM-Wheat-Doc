@@ -1,0 +1,58 @@
+## Nitrogen {#sec:leaf-nigrogen}
+
+
+### Functional nitrogen
+
+Ratio of leaf functional nitrogen ($f_{N,\,leaf}$) quantifys the nitrogen stress status of the plant and represents the concentration of metabolic N relative the maximum potentil metabolic N content of the leaf.
+
+
+$$
+f_{N,\,photo}=R_{N,\,photo}\frac{C_{N}-C_{N,\,min}}{C_{N,\,crit}-C_{N,\,min}}
+$$
+
+where $C_{N}$ is the nitrogen concentration of `Leaf` parts; $R_{N,\,expan}$ is multiplier for nitrogen deficit effect on phenology which is specified by `N_fact_photo` in the wheat.xml and default value is 1.5.
+
+
+```{block, type='rmdnote'}
+The block below is the actural codes to calculate the ratio of functional nitrogen. Need to further digging to find out details.
+```
+
+```
+if (CohortParameters == null)
+	return 1;
+
+
+double f;
+double functionalNConc = (CohortParameters.CriticalNConc.Value() -
+						  CohortParameters.MinimumNConc.Value() * CohortParameters.StructuralFraction.Value()) *
+						 (1 / (1 - CohortParameters.StructuralFraction.Value()));
+if (functionalNConc <= 0)
+	f = 1;
+else
+	f = Math.Max(0.0, Math.Min(Live.MetabolicNConc / functionalNConc, 1.0));
+
+return f;
+```
+
+<div class="fig-input">
+```{r leaf-nconc, fig.asp = 1, fig.cap='Actual allocated biomass for leaf'}
+y_cols <- c('Wheat.Leaf.CohortParameters.MinimumNConc',
+'Wheat.Leaf.CohortParameters.CriticalNConc',
+'Wheat.Leaf.CohortParameters.MaximumNConc')
+y_labels <- c('Minimum', 'Critical', 'Maximum')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3,
+            y_labels = y_labels)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r leaf-nitrogen-functional-n, fig.cap='Ratio of functional nitrogen'}
+y_cols <- c('Wheat.Leaf.Fn')
+plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Ratio of functional nitrogen')
+
+```
+</div>
+

@@ -1,0 +1,151 @@
+## Life growth cycle {#sec:leaf-growth-cycle}
+
+The growth cycle of leaf cohort is divided into 7 stages and 6 periods from `Initialized` to `Detached`. The length of each period depends on the `phylochron` during `Appearance` from `Initialized` to `Appeared` (fixed by `r node_count(pmf, '//LeafCohort')` initial leaves at `Germination`). Other periods are configured by `CohortParameters` at `Appearance`, so that parameter values are determined by the values of status variables at the day of leaf cohort `Appearance` if they depend on other variables.
+
+Several status variables are defined for each leaf cohort, which can be used in other modules to describe the current status of leaf cohort, i.e. `IsNotAppeared`, `IsGrowing`, `IsAlive`, `IsGreen`, `IsNotSenescing`, `Senescing`, `isFullyExpanded`, `ShouldBeDead`, `IsAppeared` and `IsInitialised`. 
+
+<div class="fig-input">
+```{r leaf-life-cycle, out.width='95%', fig.asp=0.7, fig.cap='The life cycle of a leaf cohort.'}
+
+DiagrammeR("sequenceDiagram;
+	Initialized->>Appeared: Appearance 
+	Appeared->>Expanded: GrowthDuration
+	Expanded->>Senescing: LagDuration
+	Senescing->>Senesced: SenescenceDuration
+	Senesced->>Detaching: DetachmentLagDuration
+	Detaching->>Detached: DetachmentDuration
+    Initialized->Appeared: IsNotAppeared
+    Initialized->Expanded: IsGrowing
+	Initialized->>Senesced: IsAlive
+	Initialized->>Senesced: IsGreen
+	Initialized->>Senescing: IsNotSenescing
+	Senescing->>Senesced: IsSenescing
+	Expanded->>Detached: IsFullyExpanded
+	Senesced->>Detached: ShouldBeDead
+	Senesced->>Detached: Finished
+	Appeared->>Detached: IsAppeared
+	Initialized->>Detached: IsInitialised
+")
+```
+</div>
+
+
+
+### leaf age
+
+The age of leaf cohort is defined as the thermal time after appearance, (i.e. keep zero after initialization). As the default values of `DetachmentLagDuration` and `DetachmentDuration` are set as `1000000` <sup>&deg;</sup>Cd, the cohort age keeps increasing until growth stage `ReadyForHarvesting`. The age of first leaf cohort starts from  200 <sup>&deg;</sup>Cd.
+
+
+### Leaf initialization and appearance
+
+At `Germination`, `r node_count(pmf, '//LeafCohort')` new leaf cohorts are initialized with initial leaf area `r paste(get_xml_value(pmf, '//LeafCohort//Area'), collapse = ', ')` mm^2^. The inital leaf area simulates seed biomass or embryo size. 
+
+At `Emergence` stage, `r sum(get_xml_value(pmf, '//LeafCohort//Area') > 0)` leaf cohort is appeared at the main stem, and `r sum(get_xml_value(pmf, '//LeafCohort//Area') > 0)` new leaf cohort is initialized. 
+
+After `Emergence` and before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort initialises and an existing leaf cohot appears when increases of potential appearance of tip number are more than 1 (Figure \@ref(fig:str-delta-tip)). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than `r node_count(pmf, '//LeafCohort')`  of appeared tip number (Fig. \@ref(fig:leaf-cohort-number)).
+
+<div class="fig-output">
+```{r leaf-cohort-number, fig.cap='The initialized and appeared leaf cohort number in the main stem'}
+y_cols <- c('Wheat.Leaf.AppearedCohortNo',
+            'Wheat.Leaf.InitialisedCohortNo')
+y_labels <- c('Appeared', 'Initialised')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Number', ncol = 2, y_labels = y_labels)
+
+```
+</div>
+
+
+### Leaf growth and senescing
+
+**Growth (expansion) duration**
+
+Leaf expansion of cohort $i$ starts from appearance of leaf tip $i$, i.e. the expansion of leaf cohort in the sheath is ignored which does not contribute to green leaf or leaf area index. The growth duration of spring wheat is close to one phylochron as the synchronization of leaf blade and sheath [@SkinnerElongationGrassLeaf1995]. The growth duration is set as 1.3 phyllochron in default. The growth duration is adjusted for fraction of flag leaf (Fig. \@ref(fig:str-leaf-fraction)) to simulate the variation of final leaf number in a population.
+
+**Lag duration**
+
+Lag duration (full functional duration) is defined as 4 phyllochrons for leaf appeared during vegetative period (from `Emergence` to `TerminalSpikelet`) and adjusted by leaf age. For leaf cohort appeared during stem elongation period (from `TerminalSpikelet` to `FlagLeaf`), the lag duration equals to total length from stage `FlagLeaf` to stage `EndGrainFill` minus 3 phyllochron (`senescence duration`), i.e. flag leaf is completely death at the stage `EndGrainFill`. 
+
+
+**Senescene duration**
+
+Senescence duration is defined as 3 phyllochrons in default.
+
+As the variation of phyllochron (Fig. \@ref(fig:str-phyllochron)), the growth, lag and senescence durations also change by cohort rank (Fig. \@ref(fig:leaf-duration)). The growth duration of flag leaf is shorter than secondary leaf as the fraction of flag leaf.
+
+<div class="fig-input">
+```{r leaf-duration, fig.asp=0.5, fig.cap='Senescene duration of leaf cohort which is determined at appearance of leaf cohort. The black dots indicate the appearances of leaf cohorts'}
+y_cols <- c('Wheat.Leaf.CohortParameters.GrowthDuration',
+            'Wheat.Leaf.CohortParameters.LagDuration',
+    'Wheat.Leaf.CohortParameters.SenescenceDuration')
+y_labels <- c('Growth', 'Lag', 'Senescence')
+plot_report_rank(report, y_cols, 
+    y_lab = 'Duration of leaf cohort (oCd)',
+    ncol = 3, y_labels = y_labels)
+```
+</div>
+
+
+Figures \@ref(fig:leaf-cohort-changing-no) and \@ref(fig:leaf-cohort-status-no) shows the number of leaf cohorts changing status including expanding and senescing and at certain status including expanded, green, and dead, respectively.
+
+<div class="fig-output">
+```{r leaf-cohort-changing-no, fig.asp = 1, fig.cap="The number of leaf cohort with certain status including expanding and senescing"}
+y_cols <- c("Wheat.Leaf.ExpandingCohortNo",
+            "Wheat.Leaf.SenescingCohortNo")
+y_labels <- gsub('Wheat\\.Leaf\\.(.+)CohortNo', "\\1", y_cols)
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Fixation (g/d)',  y_labels = y_labels,
+            ncol = 2)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r leaf-cohort-status-no, fig.asp = 1, fig.cap="The number of leaf cohort with certain status including expanded, green, dead"}
+y_cols <- c("Wheat.Leaf.ExpandedCohortNo",
+            "Wheat.Leaf.GreenCohortNo",
+            "Wheat.Leaf.DeadCohortNo")
+y_labels <- gsub('Wheat\\.Leaf\\.(.+)CohortNo', "\\1", y_cols)
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Fixation (g/d)',  y_labels = y_labels,
+            ncol = 3)
+
+```
+</div>
+
+
+
+
+### Detachment lag and detachment durations
+Detachment lag and detachment durations for leaf cohort are set as a big value `1000000` which assumes no detachment in wheat leaf. Actually all leaves are detached at `Harvesting` event. 
+
+
+<!--
+
+### Drought stress on leaf development
+
+After appearance, leaf development is accelerated by the drought stress through increasing the daily thermal time, i.e. leaf age is accelerated by drought. The factor of acceleration depends on the ratio of water supply and demand (Figure \@ref(fig:water-supply-demand-ratio)). Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7 (The values in Figure \@ref(fig:leaf-development-drought) plus one).
+
+
+<div class="fig-input">
+```{r leaf-development-drought, fig.asp = 0.75, fig.cap='Drought stress accelerates leaf development. Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7.'}
+
+
+#xpath <- '//AddFunction[Name="DroughtInducedSenAcceleration"]/MultiplyFunction[Name="Stress"]/LinearInterpolationFunction[Name="StressFactor"]'
+#plot_xypair(pmf, xpath, x_lab = 'Ratio of water supply and demand', y_lab = 'Ratio of acceleration of thermal time')
+```
+</div>
+
+
+```csharp
+//Acellerate thermal time accumulation if crop is water stressed.
+double _ThermalTime;
+if ((LeafCohortParameters.DroughtInducedSenAcceleration != null) && (IsFullyExpanded))
+    _ThermalTime = TT * LeafCohortParameters.DroughtInducedSenAcceleration.Value;
+else _ThermalTime = TT;
+
+```
+
+
+-->

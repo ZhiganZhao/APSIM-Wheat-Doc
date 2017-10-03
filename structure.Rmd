@@ -147,6 +147,21 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 </div>
 
 
+
+
+The fraction of final leaf is set as 1, but return the actual fraction of the final leaf if the last leaf has appeared. 
+
+<div class="fig-output">
+```{r str-leaf-fraction, fig.asp=0.5, fig.cap='Fraction of leaf cohort'}
+y_cols <- c(
+    'Wheat.Structure.NextLeafProportion')
+
+plot_report_rank(report, y_cols, y_lab = 'Fraction of leaf cohort')
+```
+</div>
+
+
+
 <!-- 
 
 
@@ -200,11 +215,11 @@ The nitrogen stress is calculated as a function of fraction of nitrogen supply r
 
 <div class="fig-input">
 ```{r str-branching-factor, fig.asp = 1.25, fig.cap='The factors to influence of branching rate (nitrogen stress, total coverage and water stress). The final multiplier of branching rate is the minimum values of the '}
-xpath <- c('//MinimumFunction//Name[text()="NitrogenEffect"]', 
-           '//MinimumFunction//Name[text()="CoverEffect"]', 
-           '//MinimumFunction//Name[text()="WaterStressEffect"]')
-plot_xypair(pmf, xpath, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
-            label = c('Nitrogen stress', 'Total coverage', 'Water stress'))
+#xpath <- c('//MinimumFunction//Name[text()="NitrogenEffect"]', 
+#           '//MinimumFunction//Name[text()="CoverEffect"]', 
+#           '//MinimumFunction//Name[text()="WaterStressEffect"]')
+# plot_xypair(pmf, xpath, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
+#            label = c('Nitrogen stress', 'Total coverage', 'Water stress'))
 
 ```
 </div>

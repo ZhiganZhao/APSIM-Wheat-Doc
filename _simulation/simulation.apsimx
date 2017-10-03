@@ -14,9 +14,17 @@
         <string>[Wheat].Leaf.CohortParameters.GrowthDuration.Value() as Wheat.Leaf.CohortParameters.GrowthDuration</string>
         <string>[Wheat].Leaf.CohortParameters.LagDuration.Value() as Wheat.Leaf.CohortParameters.LagDuration</string>
         <string>[Wheat].Leaf.CohortParameters.SenescenceDuration.Value() as Wheat.Leaf.CohortParameters.SenescenceDuration</string>
-        <string>[Wheat].Leaf.CohortParameters.SenescenceDuration.Value() as Wheat.Leaf.CohortParameters.SenescenceDuration</string>
         <string>[Wheat].Leaf.CohortParameters.DetachmentLagDuration.Value() as Wheat.Leaf.CohortParameters.DetachmentLagDuration</string>
         <string>[Wheat].Leaf.CohortParameters.DetachmentDuration.Value() as Wheat.Leaf.CohortParameters.DetachmentDuration</string>
+        <string>[Wheat].Leaf.CohortParameters.MinimumNConc.Value() as Wheat.Leaf.CohortParameters.MinimumNConc</string>
+        <string>[Wheat].Leaf.CohortParameters.CriticalNConc.Value() as Wheat.Leaf.CohortParameters.CriticalNConc</string>
+        <string>[Wheat].Leaf.CohortParameters.MaximumNConc.Value() as Wheat.Leaf.CohortParameters.MaximumNConc</string>
+        <string>[Wheat].Leaf.CohortParameters.MaxArea.Value() as Wheat.Leaf.CohortParameters.MaxArea</string>
+        <string>[Wheat].Leaf.CohortParameters.CellDivisionStress.Value() as Wheat.Leaf.CohortParameters.CellDivisionStress</string>
+        <string>[Wheat].Leaf.CohortParameters.ExpansionStress.Value() as Wheat.Leaf.CohortParameters.ExpansionStress</string>
+        <string>[Wheat].Leaf.CohortParameters.SpecificLeafAreaMax.Value() as Wheat.Leaf.CohortParameters.SpecificLeafAreaMax</string>
+        <string>[Wheat].Leaf.CohortParameters.SpecificLeafAreaMin.Value() as Wheat.Leaf.CohortParameters.SpecificLeafAreaMin</string>
+        <string />
         <string />
         <string />
         <string />
@@ -24,6 +32,8 @@
         <string>[Wheat].Structure.PotLeafTipsAppeared</string>
         <string>[Wheat].Structure.LeafTipsAppeared</string>
         <string>[Wheat].Structure.HaunStage</string>
+        <string>[Wheat].Structure.NextLeafProportion</string>
+        <string />
         <string>[Wheat].Spike.DMRetranslocationFactor.Value() as Wheat.Spike.DMRetranslocationFactor</string>
         <string>[Wheat].Stem.DMRetranslocationFactor.Value() as Wheat.Stem.DMRetranslocationFactor</string>
         <string />
@@ -95,9 +105,9 @@
         <string />
         <string />
         <string>[Wheat].Leaf.CohortAge[1:11]</string>
-        <string>[Wheat].Leaf.MaxLeafArea[1:11]</string>
         <string>[Wheat].Leaf.CohortArea[1:11]</string>
         <string>[Wheat].Leaf.CohortSize[1:11]</string>
+        <string>[Wheat].Leaf.CohortMaxArea[1:11]</string>
         <string>[Wheat].Leaf.CohortSLA[1:11]</string>
         <string>[Wheat].Leaf.CohortLagDuration[1:11]</string>
         <string>[Wheat].Leaf.CohortGrowthDuration[1:11]</string>
