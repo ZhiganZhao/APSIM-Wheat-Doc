@@ -6,13 +6,13 @@ source('_setup.R')
 ```
 
 
-Leaf cohort model is used in the APSIM-Wheat.
+The apex model is developed to simulate leaf dynamic based on leaf cohort model.
 
 
 
 ## Life growth cycle {#sec:leaf-growth-cycle}
 
-The growth cycle of leaf cohort is divided into 7 stages and 6 periods from `Initialized` to `Detached`. The length of each period depends on the `plastrochron` and `phylochron` for initialization and appearance and is configured by `CohortParameters` for others.
+The growth cycle of leaf cohort is divided into 7 stages and 6 periods from `Initialized` to `Detached`. The length of each period depends on the `phylochron` during `Appearance` from `Initialized` to `Appeared` (fixed by `r node_count(pmf, '//LeafCohort')` initial leaves at `Germination`). Other periods are configured by `CohortParameters` at `Appearance`, so that parameter values are determined by the values of status variables at the day of leaf cohort `Appearance` if they depend on other variables.
 
 Several status variables are defined for each leaf cohort, which can be used in other modules to describe the current status of leaf cohort, i.e. `IsNotAppeared`, `IsGrowing`, `IsAlive`, `IsGreen`, `IsNotSenescing`, `Senescing`, `isFullyExpanded`, `ShouldBeDead`, `IsAppeared` and `IsInitialised`. 
 
@@ -54,7 +54,7 @@ At `Germination`, `r node_count(pmf, '//LeafCohort')` new leaf cohorts are initi
 
 At `Emergence` stage, `r sum(get_xml_value(pmf, '//LeafCohort//Area') > 0)` leaf cohort is appeared at the main stem, and `r sum(get_xml_value(pmf, '//LeafCohort//Area') > 0)` new leaf cohort is initialized. 
 
-Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of potential appearance of tip number are more than 1 (Figure \@ref(fig:str-delta-tip)). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than `r node_count(pmf, '//LeafCohort')`  of appeared tip number (Fig. \@ref(fig:leaf-cohort-number)).
+After `Emergence` and before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort initialises and an existing leaf cohot appears when increases of potential appearance of tip number are more than 1 (Figure \@ref(fig:str-delta-tip)). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than `r node_count(pmf, '//LeafCohort')`  of appeared tip number (Fig. \@ref(fig:leaf-cohort-number)).
 
 <div class="fig-output">
 ```{r leaf-cohort-number, fig.cap='The initialized and appeared leaf cohort number in the main stem'}
@@ -67,64 +67,39 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 ```
 </div>
 
-<!-- 
-### Growth duration
 
-Leaf expansion of cohort $i$ starts from appearance of leaf tip $i$, i.e. the expansion of leaf cohort in the sheath is ignored which does not contribute to green leaf or leaf area index. The growth duration of spring wheat is close to one phylochron as the synchronization of leaf blade and sheath   [@SkinnerElongationGrassLeaf1995].
+### Leaf growth and senescing
 
-As the variation of phyllochron (Fig. \@ref(fig:sec:str-phyllochron)), the growth duration also changes by cohort rank. The growth duration of flag leaf is shorter than secondary leaf as the fraction of flag leaf (Fig. \@ref(fig:final-leaf-fraction).
+**Growth (expansion) duration**
 
-<div class="fig-output">
-```{r leaf-growth-duration, fig.cap='Growth duration of leaf cohort which is determined at appearance of leaf cohort.'}
-# y_cols <- c(
-#     'Wheat.Leaf.CohortGrowthDuration')
-# plot_report_vector(
-#     report, x_var, y_cols, x_lab = x_lab,
-#     y_lab = 'Growth duration of leaf cohort (oCd)')
+Leaf expansion of cohort $i$ starts from appearance of leaf tip $i$, i.e. the expansion of leaf cohort in the sheath is ignored which does not contribute to green leaf or leaf area index. The growth duration of spring wheat is close to one phylochron as the synchronization of leaf blade and sheath [@SkinnerElongationGrassLeaf1995]. The growth duration is set as 1.3 phyllochron in default.
 
+**Lag duration**
+
+Lag duration (full functional duration) is defined as 4 phyllochrons for leaf appeared during vegetative period (from `Emergence` to `TerminalSpikelet`) and adjusted by leaf age. For leaf cohort appeared during stem elongation period (from `TerminalSpikelet` to `FlagLeaf`), the lag duration equals to total length from stage `FlagLeaf` to stage `EndGrainFill` minus 3 phyllochron (`senescence duration`), i.e. flag leaf is completely death at the stage `EndGrainFill`. 
+
+
+**Senescene duration**
+
+Senescence duration is defined as 3 phyllochrons in default.
+
+As the variation of phyllochron (Fig. \@ref(fig:str-phyllochron)), the growth, lag and senescence durations also change by cohort rank (Fig. \@ref(fig:leaf-duration)). The growth duration of flag leaf is shorter than secondary leaf as the fraction of flag leaf.
+
+<div class="fig-input">
+```{r leaf-duration, fig.asp=0.5, fig.cap='Senescene duration of leaf cohort which is determined at appearance of leaf cohort. The black dots indicate the appearances of leaf cohorts'}
+y_cols <- c('Wheat.Leaf.CohortParameters.GrowthDuration',
+            'Wheat.Leaf.CohortParameters.LagDuration',
+    'Wheat.Leaf.CohortParameters.SenescenceDuration')
+y_labels <- c('Growth', 'Lag', 'Senescence')
+plot_report(
+    report, x_var2, y_cols, x_lab = x_lab,
+    y_lab = 'Duration of leaf cohort (oCd)',
+    ncol = 3, y_labels = y_labels, cohort = TRUE)
 ```
 </div>
 
 
-### Lag duration 
-
-Lag duration (full functional duration) is defined as 4 phyllochrons for leaf appeared during vegetative period (from emergence to terminal spikelet). For leaf cohort appeared during stem elongation period (from terminal spikelet to flag leaf), the lag duration equals to total length from stage `FlagLeaf` to stage `EndGrainFill` minus 3 phyllochron (`senescence duration`), i.e. flag leaf is completely death at the stage `EndGrainFill`. 
-
-
-<div class="fig-output">
-```{r leaf-lag-duration, fig.cap='Lag duration of leaf cohort which is determined at appearance of leaf cohort.'}
-# y_cols <- c(
-#     'Wheat.Leaf.CohortLagDuration')
-# plot_report_vector(
-#     report, x_var, y_cols, x_lab = x_lab,
-#     y_lab = 'Lag duration of leaf cohort (oCd)', unique = TRUE)
-
-
-```
-</div>
-
-### Senescene and detachment duration
-
-Senescence duration is defined as 3 phyllochrons. Detachment lag and detachment duration are set as a big value `1000000` which assumes no detachment in wheat. Actually all leaves are detached at `Harvesting` event. 
-
-Figure \@ref(fig:leaf-cohort-number) shows the number of leaf cohort for expanding, initialized, appeared, senescing and dead cohort.
-
-
-
-<div class="fig-output">
-```{r leaf-cohort-no, fig.asp = 1, fig.cap="The number of leaf cohort with certain status including initialised, appeared, expanded, green, dead"}
-y_cols <- c("Wheat.Leaf.InitialisedCohortNo",
-            "Wheat.Leaf.AppearedCohortNo",
-            "Wheat.Leaf.ExpandedCohortNo",
-            "Wheat.Leaf.GreenCohortNo",
-            "Wheat.Leaf.DeadCohortNo")
-y_labels <- gsub('Wheat\\.Leaf\\.(.+)CohortNo', "\\1", y_cols)
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
-            y_lab = 'Fixation (g/d)',  y_labels = y_labels,
-            ncol = 5)
-
-```
-</div>
+Figures \@ref(fig:leaf-cohort-changing-no) and \@ref(fig:leaf-cohort-status-no) shows the number of leaf cohorts changing status including expanding and senescing and at certain status including expanded, green, and dead, respectively.
 
 <div class="fig-output">
 ```{r leaf-cohort-changing-no, fig.asp = 1, fig.cap="The number of leaf cohort with certain status including expanding and senescing"}
@@ -137,6 +112,125 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 
 ```
 </div>
+
+
+<div class="fig-output">
+```{r leaf-cohort-status-no, fig.asp = 1, fig.cap="The number of leaf cohort with certain status including expanded, green, dead"}
+y_cols <- c("Wheat.Leaf.ExpandedCohortNo",
+            "Wheat.Leaf.GreenCohortNo",
+            "Wheat.Leaf.DeadCohortNo")
+y_labels <- gsub('Wheat\\.Leaf\\.(.+)CohortNo', "\\1", y_cols)
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Fixation (g/d)',  y_labels = y_labels,
+            ncol = 3)
+
+```
+</div>
+
+
+
+
+### Detachment lag and detachment durations
+Detachment lag and detachment durations for leaf cohort are set as a big value `1000000` which assumes no detachment in wheat leaf. Actually all leaves are detached at `Harvesting` event. 
+
+
+## Supply {#sec:leaf-supply}
+
+In `Leaf` organ, the biomass supply only sources from `Fixation` (i.e. photosynthesis, Fig. \@ref(fig:leaf-supply)). Three photosynthesis models are implemented in the APSIM next generation.
+
+### RUE model
+
+
+### Enli's photosynthesis model
+
+### Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)
+
+
+<div class="fig-output">
+```{r leaf-supply, fig.asp = 1, fig.cap='Biomass supply from leaf'}
+y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
+            'Wheat.Leaf.DMSupply.Retranslocation',
+            'Wheat.Leaf.DMSupply.Reallocation')
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Demand (g/d)', ncol = 3)
+
+```
+</div>
+
+
+
+
+## Demand {#sec:leaf-deman}
+
+<div class="fig-output">
+```{r leaf-demand, fig.asp = 1, fig.cap='Biomass demand by leaf'}
+y_cols <- c('Wheat.Leaf.DMDemand.Structural',
+'Wheat.Leaf.DMDemand.Storage',
+'Wheat.Leaf.DMDemand.Metabolic')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Demand (g/d)', ncol = 3)
+
+```
+</div>
+
+## Biomass dynamic {#sec:leaf-biomass}
+
+<div class="fig-output">
+```{r leaf-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for leaf'}
+y_cols <- c('Wheat.Leaf.Allocated.StructuralWt',
+'Wheat.Leaf.Allocated.StorageWt',
+'Wheat.Leaf.Allocated.MetabolicWt')
+
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r leaf-weight, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Total)'}
+y_cols <- c('Wheat.LeafWt',
+             'Wheat.Leaf.LiveWeight', 
+             'Wheat.Leaf.DeadWeight')
+y_labels <- c('Total', 'Live', 'Dead')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3, y_labels = y_labels)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r leaf-live, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Live component)'}
+y_cols <- c('Wheat.Leaf.Live.StructuralWt',
+'Wheat.Leaf.Live.StorageWt',
+'Wheat.Leaf.Live.MetabolicWt')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r leaf-dead, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Dead component)'}
+y_cols <- c('Wheat.Leaf.Dead.StructuralWt',
+'Wheat.Leaf.Dead.StorageWt',
+'Wheat.Leaf.Dead.MetabolicWt')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass (g/m2)', ncol = 3)
+```
+</div>
+
+
+
+
+<!-- 
 
 ### Drought stress on leaf development
 
@@ -441,19 +535,6 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Coverage')
 
 
 
-## Biomass supply
-
-## Biomass demand
-
-<div class="fig-output">
-```{r leaf-biomass, fig.cap='Leaf biomass'}
-y_cols <- c(
-    'Wheat.Leaf.LiveWeight', 
-'Wheat.Leaf.DeadWeight')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Leaf biomass (g/m2)')
-
-```
-</div>
 
 
 
@@ -565,97 +646,6 @@ $$
 
 
 
-## Supply
-
-
-<div class="fig-output">
-```{r leaf-supply, fig.asp = 1, fig.cap='Biomass supply from leaf'}
-y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
-            'Wheat.Leaf.DMSupply.Retranslocation',
-            'Wheat.Leaf.DMSupply.Reallocation')
-
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
-            y_lab = 'Demand (g/d)')
-
-```
-</div>
-
-
-## Demand
-
-
-<div class="fig-output">
-```{r leaf-demand, fig.asp = 1, fig.cap='Biomass demand by leaf'}
-y_cols <- c('Wheat.Leaf.DMDemand.Structural',
-'Wheat.Leaf.DMDemand.Storage',
-'Wheat.Leaf.DMDemand.Metabolic')
-
-
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
-            y_lab = 'Demand (g/d)')
-
-```
-</div>
-
-## Actual allocation
-
-<div class="fig-output">
-```{r leaf-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for leaf'}
-y_cols <- c('Wheat.Leaf.Allocated.StructuralWt',
-'Wheat.Leaf.Allocated.StorageWt',
-'Wheat.Leaf.Allocated.MetabolicWt')
-
-
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
-            y_lab = 'Biomass (g/m2)')
-
-```
-</div>
-
-
-## Biomass dynamic
-
-<div class="fig-output">
-```{r leaf-live, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Live component)'}
-y_cols <- c('Wheat.Leaf.Live.StructuralWt',
-'Wheat.Leaf.Live.StorageWt',
-'Wheat.Leaf.Live.MetabolicWt')
-
-
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
-            y_lab = 'Biomass (g/m2)')
-
-```
-</div>
-
-
-<div class="fig-output">
-```{r leaf-dead, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Dead component)'}
-y_cols <- c('Wheat.Leaf.Dead.StructuralWt',
-'Wheat.Leaf.Dead.StorageWt',
-'Wheat.Leaf.Dead.MetabolicWt')
-
-
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
-            y_lab = 'Biomass (g/m2)')
-
-```
-</div>
-
-
-
-
-
-<div class="fig-output">
-```{r leaf-weight, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Total)'}
-y_cols <- c('Wheat.LeafWt')
-
-
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
-            y_lab = 'Biomass (g/m2)')
-
-```
-</div>
 
 
 -->

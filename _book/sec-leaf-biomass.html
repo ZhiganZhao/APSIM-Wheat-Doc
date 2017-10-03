@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Documentation of APSIM-Wheat</title>
+  <meta name="description" content="Documentation of APSIM-Wheat">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Documentation of APSIM-Wheat" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Documentation of APSIM-Wheat" />
+  <meta name="github-repo" content="byzheng/APSIM-Wheat" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Documentation of APSIM-Wheat" />
+  
+  <meta name="twitter:description" content="Documentation of APSIM-Wheat" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="sec-leaf-deman.html">
+<link rel="next" href="cha-spike.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-0.9.2/DiagrammeR.js"></script>
+<script type = "text/javascript">
+
+</script>
+
+
+
+<link rel="stylesheet" href="_includes\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Documentation of ASPIM-Wheat</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="contributors-of-this-documentation.html"><a href="contributors-of-this-documentation.html"><i class="fa fa-check"></i><b>1.1</b> Contributors of this documentation</a></li>
+<li class="chapter" data-level="1.2" data-path="how-to-contribute.html"><a href="how-to-contribute.html"><i class="fa fa-check"></i><b>1.2</b> How to contribute?</a></li>
+<li class="chapter" data-level="1.3" data-path="how-to-document-your-own-simulation.html"><a href="how-to-document-your-own-simulation.html"><i class="fa fa-check"></i><b>1.3</b> How to document your own simulation</a></li>
+<li class="chapter" data-level="1.4" data-path="conventions.html"><a href="conventions.html"><i class="fa fa-check"></i><b>1.4</b> Conventions</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="conventions.html"><a href="conventions.html#figures"><i class="fa fa-check"></i><b>1.4.1</b> Figures</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="software-information.html"><a href="software-information.html"><i class="fa fa-check"></i><b>1.5</b> Software information</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cha-overview.html"><a href="cha-overview.html"><i class="fa fa-check"></i><b>2</b> Overview</a><ul>
+<li class="chapter" data-level="2.1" data-path="sec-overview-organ.html"><a href="sec-overview-organ.html"><i class="fa fa-check"></i><b>2.1</b> Organs</a></li>
+<li class="chapter" data-level="2.2" data-path="sec-overview-terminology.html"><a href="sec-overview-terminology.html"><i class="fa fa-check"></i><b>2.2</b> Terminology</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="sec-overview-terminology.html"><a href="sec-overview-terminology.html#phenology"><i class="fa fa-check"></i><b>2.2.1</b> Phenology</a></li>
+<li class="chapter" data-level="2.2.2" data-path="sec-overview-terminology.html"><a href="sec-overview-terminology.html#structure"><i class="fa fa-check"></i><b>2.2.2</b> Structure</a></li>
+<li class="chapter" data-level="2.2.3" data-path="sec-overview-terminology.html"><a href="sec-overview-terminology.html#leaf"><i class="fa fa-check"></i><b>2.2.3</b> Leaf</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cha-phenology.html"><a href="cha-phenology.html"><i class="fa fa-check"></i><b>3</b> Phenology</a><ul>
+<li class="chapter" data-level="3.1" data-path="sec-phe-thermal-time.html"><a href="sec-phe-thermal-time.html"><i class="fa fa-check"></i><b>3.1</b> Thermal time</a></li>
+<li class="chapter" data-level="3.2" data-path="sec-phe-stage-period.html"><a href="sec-phe-stage-period.html"><i class="fa fa-check"></i><b>3.2</b> Stages and periods</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cha-structure.html"><a href="cha-structure.html"><i class="fa fa-check"></i><b>4</b> Structure</a><ul>
+<li class="chapter" data-level="4.1" data-path="sec-str-phyllochron.html"><a href="sec-str-phyllochron.html"><i class="fa fa-check"></i><b>4.1</b> Phyllochron</a></li>
+<li class="chapter" data-level="4.2" data-path="sec-main-stem.html"><a href="sec-main-stem.html"><i class="fa fa-check"></i><b>4.2</b> Initialization and appearance of leaf tips on main stem</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
+<li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Pool</a></li>
+<li class="chapter" data-level="5.2" data-path="sec-biomass-supply.html"><a href="sec-biomass-supply.html"><i class="fa fa-check"></i><b>5.2</b> Supply</a></li>
+<li class="chapter" data-level="5.3" data-path="sec-biomass-demand.html"><a href="sec-biomass-demand.html"><i class="fa fa-check"></i><b>5.3</b> Demand</a></li>
+<li class="chapter" data-level="5.4" data-path="sec-conversion-efficiency.html"><a href="sec-conversion-efficiency.html"><i class="fa fa-check"></i><b>5.4</b> Conversion efficiency (Growth respiration)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cha-grain.html"><a href="cha-grain.html"><i class="fa fa-check"></i><b>6</b> Grain</a><ul>
+<li class="chapter" data-level="6.1" data-path="sec-grain-number.html"><a href="sec-grain-number.html"><i class="fa fa-check"></i><b>6.1</b> Grain number</a></li>
+<li class="chapter" data-level="6.2" data-path="sec-grain-supply.html"><a href="sec-grain-supply.html"><i class="fa fa-check"></i><b>6.2</b> Supply</a></li>
+<li class="chapter" data-level="6.3" data-path="sec-grain-demand.html"><a href="sec-grain-demand.html"><i class="fa fa-check"></i><b>6.3</b> Demand</a></li>
+<li class="chapter" data-level="6.4" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html"><i class="fa fa-check"></i><b>6.4</b> Biomass dynamic</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cha-root.html"><a href="cha-root.html"><i class="fa fa-check"></i><b>7</b> Root</a><ul>
+<li class="chapter" data-level="7.1" data-path="sec-root-length.html"><a href="sec-root-length.html"><i class="fa fa-check"></i><b>7.1</b> Root length</a></li>
+<li class="chapter" data-level="7.2" data-path="sec-root-supply.html"><a href="sec-root-supply.html"><i class="fa fa-check"></i><b>7.2</b> Supply</a></li>
+<li class="chapter" data-level="7.3" data-path="sec-root-demand.html"><a href="sec-root-demand.html"><i class="fa fa-check"></i><b>7.3</b> Demand</a></li>
+<li class="chapter" data-level="7.4" data-path="sec-root-biomass.html"><a href="sec-root-biomass.html"><i class="fa fa-check"></i><b>7.4</b> Biomass dynamic</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cha-leaf.html"><a href="cha-leaf.html"><i class="fa fa-check"></i><b>8</b> Leaf</a><ul>
+<li class="chapter" data-level="8.1" data-path="sec-leaf-growth-cycle.html"><a href="sec-leaf-growth-cycle.html"><i class="fa fa-check"></i><b>8.1</b> Life growth cycle</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="sec-leaf-growth-cycle.html"><a href="sec-leaf-growth-cycle.html#leaf-age"><i class="fa fa-check"></i><b>8.1.1</b> leaf age</a></li>
+<li class="chapter" data-level="8.1.2" data-path="sec-leaf-growth-cycle.html"><a href="sec-leaf-growth-cycle.html#leaf-initialization-and-appearance"><i class="fa fa-check"></i><b>8.1.2</b> Leaf initialization and appearance</a></li>
+<li class="chapter" data-level="8.1.3" data-path="sec-leaf-growth-cycle.html"><a href="sec-leaf-growth-cycle.html#leaf-growth-and-senescing"><i class="fa fa-check"></i><b>8.1.3</b> Leaf growth and senescing</a></li>
+<li class="chapter" data-level="8.1.4" data-path="sec-leaf-growth-cycle.html"><a href="sec-leaf-growth-cycle.html#detachment-lag-and-detachment-durations"><i class="fa fa-check"></i><b>8.1.4</b> Detachment lag and detachment durations</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.2</b> Supply</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#rue-model"><i class="fa fa-check"></i><b>8.2.1</b> RUE model</a></li>
+<li class="chapter" data-level="8.2.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#enlis-photosynthesis-model"><i class="fa fa-check"></i><b>8.2.2</b> Enli’s photosynthesis model</a></li>
+<li class="chapter" data-level="8.2.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#layered-canopy-photosynthesis-model-with-transpiration-or-dcaps"><i class="fa fa-check"></i><b>8.2.3</b> Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.3</b> Demand</a></li>
+<li class="chapter" data-level="8.4" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.4</b> Biomass dynamic</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
+<li class="chapter" data-level="9.1" data-path="sec-spike-supply.html"><a href="sec-spike-supply.html"><i class="fa fa-check"></i><b>9.1</b> Supply</a></li>
+<li class="chapter" data-level="9.2" data-path="spike-demand.html"><a href="spike-demand.html"><i class="fa fa-check"></i><b>9.2</b> Demand</a></li>
+<li class="chapter" data-level="9.3" data-path="spike-biomass.html"><a href="spike-biomass.html"><i class="fa fa-check"></i><b>9.3</b> Biomass dynamic</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="cha-stem.html"><a href="cha-stem.html"><i class="fa fa-check"></i><b>10</b> Stem</a><ul>
+<li class="chapter" data-level="10.1" data-path="sec-stem-supply.html"><a href="sec-stem-supply.html"><i class="fa fa-check"></i><b>10.1</b> Supply</a></li>
+<li class="chapter" data-level="10.2" data-path="sec-stem-demand.html"><a href="sec-stem-demand.html"><i class="fa fa-check"></i><b>10.2</b> Demand</a></li>
+<li class="chapter" data-level="10.3" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html"><i class="fa fa-check"></i><b>10.3</b> Biomass dynamic</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="cha-water.html"><a href="cha-water.html"><i class="fa fa-check"></i><b>11</b> Water</a></li>
+<li class="chapter" data-level="12" data-path="cha-nitrogen.html"><a href="cha-nitrogen.html"><i class="fa fa-check"></i><b>12</b> Nitrogen</a></li>
+<li class="chapter" data-level="13" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>13</b> Reference</a></li>
+<li class="divider"></li>
+<li><a href="https://byzheng.github.io/APSIM-Wheat-Sens" target="blank">Sensitivity analysis</a></li>
+<li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
+<li><a href="http://github.com/APSIMInitiative/ApsimX" target="blank">Next generation of APSIM</a></li>
+<li><a href="http://byzheng.github.io/ApsimX/Documentation/html/index.html" target="blank">Developer documentation</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Documentation of APSIM-Wheat</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sec:leaf-biomass" class="section level2">
+<h2><span class="header-section-number">8.4</span> Biomass dynamic</h2>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-allocated"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-allocated-1.png" alt="Actual allocated biomass for leaf" width="80%" />
+<p class="caption">
+Figure 8.8: Actual allocated biomass for leaf
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-weight"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-weight-1.png" alt="Dynamic of leaf biomass (Total)" width="80%" />
+<p class="caption">
+Figure 8.9: Dynamic of leaf biomass (Total)
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-live"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-live-1.png" alt="Dynamic of leaf biomass (Live component)" width="80%" />
+<p class="caption">
+Figure 8.10: Dynamic of leaf biomass (Live component)
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-dead"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-dead-1.png" alt="Dynamic of leaf biomass (Dead component)" width="80%" />
+<p class="caption">
+Figure 8.11: Dynamic of leaf biomass (Dead component)
+</p>
+</div>
+</div>
+<!-- 
+
+### Drought stress on leaf development
+
+After appearance, leaf development is accelerated by the drought stress through increasing the daily thermal time, i.e. leaf age is accelerated by drought. The factor of acceleration depends on the ratio of water supply and demand (Figure \@ref(fig:water-supply-demand-ratio)). Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7 (The values in Figure \@ref(fig:leaf-development-drought) plus one).
+
+
+<div class="fig-input">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/leaf-development-drought-1.png" alt="Drought stress accelerates leaf development. Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7." width="80%" />
+<p class="caption">(\#fig:leaf-development-drought)Drought stress accelerates leaf development. Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7.</p>
+</div>
+</div>
+
+
+```csharp
+//Acellerate thermal time accumulation if crop is water stressed.
+double _ThermalTime;
+if ((LeafCohortParameters.DroughtInducedSenAcceleration != null) && (IsFullyExpanded))
+    _ThermalTime = TT * LeafCohortParameters.DroughtInducedSenAcceleration.Value;
+else _ThermalTime = TT;
+
+```
+
+
+## Cohort population
+
+Cohort population is initialized as the total stem population at appearance of leaf cohort, and proportionally reduced by plant and stem mortalities (\@ref(#sec-structure-mortality)) at each day after appearance.
+
+<div class='fig-output'>
+
+</div>
+
+The total leaf number is multiplied by leaf cohort number and stem number (Figure \@ref(fig:leaf-number)).
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/leaf-number-1.png" alt="Appeared number of green, senesced and total leaves" width="80%" />
+<p class="caption">(\#fig:leaf-number)Appeared number of green, senesced and total leaves</p>
+</div>
+</div>
+
+
+
+<div class="rmdimportant">
+<p>The tiller death is detached from plants, but leaf death isn't detached.</p>
+</div>
+
+
+The fraction of final leaf is set as 1, but return the actual fraction of the final leaf if the last leaf has appeared. 
+
+<div class="fig-output">
+
+</div>
+
+
+
+## Development of leaf size
+
+During the growth duration of each cohort, the daily increase of leaf area is detemined by the minimum increase of water ($\Delta A_{water}$) and carbon ($\Delta A_{carbon}$) constrained leaf area. 
+
+
+### Maximum (potential) leaf area
+
+The maximum leaf area of each leaf cohort is determined by potential maximum leaf area and reduced by cell division stress and final leaf fraction when leaf cohort is appeared. 
+
+
+The potential maximum leaf areas by rank are specified by two parameters the maximum leaf area in all leaves (`AreaLargestLeaves` with default value 2600 mm^2^) and an age factor (Figure \@ref(fig:maximum-area-age)). The age factor is assumed leaf areas are linearly increasing from stage `Emergence` to `Terminal spikelet`, and all leaves appeared after stage `Terminal Spikelet` have the same maximum leaf area (the last three leaves in the current configuration of plastochron and phyllochron, Figure \@ref(fig:node-number)).
+
+<div class="rmbimportant">
+<p>The function of maximum leaf size is proposed to change. Documentation needs to update.</p>
+</div>
+
+
+<div class="fig-input">
+
+</div>
+
+
+
+The stress factor of cell division is determined by water (Figure \@ref(fig:water-supply-demand-ratio)) and nitrogen stresses (Figure \@ref(fig:nitrogen-functional-nitrogen)). Stress of cell division is averaged by cell division stress factors from initialization to appearance.
+
+In the test simulation, the maximum leaf areas are increasing from Rank 1 to Rank 9, then decreasing to flag leaf (Figure \@ref(fig:leaf-cohort-max-area)), which is caused by nitrogen stress after terminal spikelet (Figure \@ref(fig:nitrogen-functional-nitrogen)). 
+
+<div class="fig-output">
+
+</div>
+
+
+
+### Potential expansion of leaf cohort
+
+The potential leaf area is calculated by a logistic equation as a function of thermal time after leaf appearance. The shape of logistic equation is determiend by parameter `LeafSizeShapeParameter` with default value `0.3` (Fig. \@ref(fig:size-function)). 
+
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/size-function-1.png" alt="The size function of leaf area development" width="80%" />
+<p class="caption">(\#fig:size-function)The size function of leaf area development</p>
+</div>
+
+
+
+### Water constrained leaf area
+
+The potential increase of leaf area is reduced by `ExpansionStress` with default value 1
+
+
+
+### Carbon constrained leaf area
+
+<div class="fig-output">
+
+</div>
+
+
+
+
+<div class="fig-output">
+
+</div>
+
+
+Not sure about the meaning of leaf size?
+
+<div class="fig-output">
+
+</div>
+
+
+
+
+
+Leaf area index (LAI) are calculated for green leaf ($\text{LAI}_{g}$), dead leaf ($\text{LAI}_{d}$), and total leaf ($\text{LAI}_{t}$). 
+
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/leaf-lai-1.png" alt="Leaf area index" width="80%" />
+<p class="caption">(\#fig:leaf-lai)Leaf area index</p>
+</div>
+</div>
+
+
+### Leaf senescence
+
+During the period of leaf senescene, the daily fraction of leaf senescence is linearly related with thermal time.
+
+
+<div class="fig-output">
+
+</div>
+
+
+
+## Ground coverage
+
+and coverage are calculated for green leaf ($C_g$), dead leaf ($C_d$), and total leaf ($C_t$) from LAI and extinction coefficient for green leaf ($k_{g}$) and dead leaf ($k_{d}$). 
+
+$$
+C_{g}=C_{max}(1-\exp(-k_{g}\frac{\text{LAI}_{g}}{C_{max}}))
+$$
+
+As the default value of maximum coverage ($C_{max}$) is 1, the function is reduced to
+$$
+C_{g}=1-\exp(-k_{g}\text{LAI}_{g})
+$$
+
+The similar equation is used for dead coverage.
+
+$$
+C_{d}=1-\exp(-k_{d}\text{LAI}_{d})
+$$
+
+Total coverage ($C_t$) is calculated from coverage of green and dead leaves.
+$$
+    C_{t} = 1 - (1 - C_{g})(1 - C_{d})
+$$
+
+The extinction coefficient for dead leaf ($k_{d}$) is defined as 0.3. The extinction coefficient for green leaf ($k_{g}$) is calculated by parameter `ExtinctionCoeff` which is depending on LAI and water stress.  
+
+In the current version of APSIM-Wheat, extinction coefficient is set as 0.5 without variation as leaf area index. 
+
+<div class="rmdnote">
+<p>Extinction coefficient of dead leaf (<span class="math inline"><em>k</em><sub><em>d</em></sub></span>) is not setable in the APSIM User Interface which is defined in the xml file.</p>
+</div>
+
+
+<div class="fig-input">
+
+</div>
+
+The extinction coefficient of green leaf is adjusted by water stress which is the ratio of water supply and demand. No adjustment is applied to extinction coefficient if water supply is more than water demand. However, extinction coefficient is reduced when water supply is less than water demand (Figure \@ref(fig:k-water-stress), i.e. $k$ = 0.25 when no water supply).
+
+<div class="fig-input">
+
+</div>
+
+
+
+
+
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/leaf-cover-1.png" alt="Coverage" width="80%" />
+<p class="caption">(\#fig:leaf-cover)Coverage</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/leaf-specific-leaf-area-1.png" alt="Specific leaf area" width="80%" />
+<p class="caption">(\#fig:leaf-specific-leaf-area)Specific leaf area</p>
+</div>
+</div>
+
+
+<div class="fig-output">
+
+</div>
+
+<div class="rmdwarning">
+<p>Why does specific leaf area of flag leaf decrease after a few days of appearance.</p>
+</div>
+
+
+## Frost impact 
+
+Kill a fraction in all leaves ...
+
+
+## Biomass supply (Photosynthesis)
+
+The daily biomass accumulation ($\Delta Q$) corresponds to dry-matter above-ground biomass, and is calculated as a potential biomass accumulation resulting from radiation interception ($\Delta Q_{r}$) that is limited by soil water deficiency ($\Delta Q_{w}$).
+
+### Potential biomass accumulation from radiation use efficiency
+
+The radiation-limited dry-biomass accumulation ($\Delta Q_{r}$) is calculated by the intercepted radiation ($I$), radiation use efficiency ($RUE$).
+
+$$
+\Delta Q_{r}=I \times RUE
+$$
+
+#### Radiation interception
+
+Radiation interception is calculated from the leaf area index (LAI, m$^{2}$ m$^{-2}$) and the extinction coefficient (*k*) [@MonsiFactorLightPlant2005]. 
+$$
+I=I_{0}(1-\exp(-k\times LAI)
+$$
+
+
+where $I_{0}$ is the total radiation at the top of the canopy (MJ) which is directly imported from weather records. Extinction coefficient ($k$) set as a constant value 0.5 in current version of APSIM.
+
+#### Actual radiation use efficiency
+
+The actual $RUE$ (g MJ$^{\text{-1}}$) is calculated as the potential $RUE$ ($RUE_p$) and several reduction factors, including plant nutrition ($F_{n,\ photo}$), air temperature($F_{t,\ photo}$), vapour pressure deficit ($F_{vpd}$), water supply ($F_w$) and atmospheric CO2 concentration ($F_{co2}$).
+
+\begin{equation}
+RUE = RUE_p \times \min{(F_{t,\ photo}, F_{n,\ photo}, F_{VPD})} \times F_W \times F_{CO2}
+\end{equation}
+
+*The potential RUE ($RUE_p$)* has a default value 1.5 in the current version of APSIM.
+
+*The temperature factor ($F_t$)* is calculated as a function of average daily temperature weighted toward maximum temperature according to the specified `MaximumTemperatureWeighting` factor ($W_{maxt}$) with default value 0.75 (reference).
+
+
+$$F_{t,\ photo}=h_{t,\ photo}[W_{maxt}T_{max}+(1-W_{maxt})T_{min}]$$
+
+
+<div class="fig-input">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/biomass-ft-1.png" alt="The temperature factor which influences radiation use efficiency" width="80%" />
+<p class="caption">(\#fig:biomass-ft)The temperature factor which influences radiation use efficiency</p>
+</div>
+</div>
+
+
+*The plant nutrition factor* $f_{n,\,photo}$ is determined by the difference between leaf nitrogen concentration and leaf minimum and critical nitrogen concentration.
+
+$$
+f_{N,\,photo}=R_{N,\,photo}\sum_{leaf}\frac{C_{N}-C_{N,\,min}}{C_{N,\,crit}-C_{N,\,min}}
+$$
+
+
+where $C_{N}$ is the nitrogen concentration of `Leaf` parts; $R_{N,\,expan}$ is multiplier for nitrogen deficit effect on phenology which is specified by `N_fact_photo` in the wheat.xml and default value is 1.5.
+
+
+<div class="fig-input">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/biomass-fn-1.png" alt="The nitrogen factor which influences radiation use efficiency" width="80%" />
+<p class="caption">(\#fig:biomass-fn)The nitrogen factor which influences radiation use efficiency</p>
+</div>
+</div>
+
+**Water stress factor**
+
+
+For C3 plants (like wheat),  **The CO$_{\text{2}}$ factor** is calculated by a function of environmental CO$_{\text{2}}$ concentration ($C$, ppm; $C$ > 350 ppm) and daily mean temperature ($T_{mean}$ < 50&deg;C) as published by @ReyengaModellingglobalchange1999
+
+$$
+f_{c}=\frac{(C-C_{i})(350+2C_{i})}{(C+2C_{i})(350-C_{i})}
+$$
+
+where $C_{i}$ is the temperature dependent CO$_{\text{2}}$ compensation point (ppm) and is derived from the following function. 
+$$
+C_{i}=\frac{163-T_{mean}}{5-0.1T_{mean}}
+$$
+
+
+
+
+
+-->
+
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sec-leaf-deman.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cha-spike.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/leaf.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

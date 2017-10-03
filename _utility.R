@@ -17,7 +17,8 @@ new_breaks <- function(x) {
 
 
 plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
-                        panel = FALSE, y_labels = NULL, ncol = 1) {
+                        panel = FALSE, y_labels = NULL, ncol = 1,
+                        cohort = FALSE) {
     library(ggplot2)
     # x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
     # x_var_n <- list()
@@ -25,6 +26,8 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
     cols <- c(x_var, y_cols)
     x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
     y_cols_name <- gsub('.*\\.(.*)', '\\1', y_cols)
+
+    # Find the appearance date for each leaf cohort
     pd <- df %>%
         select(cols) %>%
         gather_(key_col = 'Trait', value_col = 'YValue', gather_cols = y_cols) %>%
@@ -82,11 +85,29 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
             key_stage <- bind_rows(key_stage, ks2)
 
     }
-
     y_rng <- ggplot_build(p)$layout$panel_ranges[[1]]$y.range
 
     p <- p + geom_text(aes(x, y = y_rng[1], label = name), data = key_stage, vjust = 0) +
         ylim(y_rng)
+
+    if (cohort) {
+        cohort_appear <- df %>%
+            tbl_df() %>%
+            filter(Wheat.Leaf.AppearedCohortNo > 0) %>%
+            select(x_var, Wheat.Leaf.AppearedCohortNo) %>%
+            group_by(Wheat.Leaf.AppearedCohortNo) %>%
+            slice(1) %>%
+            ungroup() %>%
+            gather(XVar, XValue, -Wheat.Leaf.AppearedCohortNo) %>%
+            mutate(XVar = gsub('.*\\.(.*)', '\\1', XVar))    %>%
+            mutate(XVar = factor(XVar, levels = x_var_name)) %>%
+            left_join(pd, by = c('XVar', 'XValue'))
+        p <- p +
+            geom_point(aes(XValue, YValue), data = cohort_appear) +
+            geom_text(aes(XValue, y_rng[2], label = Wheat.Leaf.AppearedCohortNo), data = cohort_appear,
+                      size = 3)
+    }
+
     p
 }
 
