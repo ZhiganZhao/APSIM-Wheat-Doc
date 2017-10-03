@@ -215,3 +215,11 @@ plot_report(report, x_var2, y_cols, x_lab = x_lab,
 
 ```
 </div>
+
+## Biomass partitioning
+
+The biomass partitions into structural and metabolic components firstly according to the relative demands. The remaining biomass allocates into storage according to the relative demands.
+
+
+
+
