@@ -17,7 +17,7 @@ new_breaks <- function(x) {
 
 
 plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
-                        panel = FALSE, y_labels = NULL, ncol = 1) {
+                        panel = FALSE, y_labels = NULL, ncol = 1, type = 'point') {
     library(ggplot2)
     # x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
     # x_var_n <- list()
@@ -46,6 +46,8 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
     }
 
     p <- ggplot(pd, aes(XValue, YValue))
+
+
     if (panel) {
         p <- p +
             geom_line() +
@@ -57,9 +59,14 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
         }
     } else {
         if (length(y_cols) > 1) {
-            p <- p +
-                geom_line(aes(colour = Trait)) +
-                geom_point(aes(colour = Trait))
+            if (type == 'area') {
+                p <- p +
+                    geom_area(aes(fill = Trait))
+            } else {
+                p <- p +
+                    geom_line(aes(colour = Trait)) +
+                    geom_point(aes(colour = Trait))
+            }
         } else {
             p <- p +
                 geom_line() +

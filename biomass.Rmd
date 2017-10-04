@@ -150,6 +150,24 @@ report %>%
 `Stem` and `Root` demands determine as the fraction of daily `Fixation` (Fig. \@ref(fig:stem-demand-fraction), and \@ref(fig:root-demand-fraction)). The `Spike` demand determines as the head number and growth duration (Fig. \@ref(fig:spike-demand)).
 
 
+
+<div class="fig-output">
+```{r biomass-demand-organ, fig.asp = 1, fig.cap='Total biomass demand for structural and metabolic from each organ'}
+y_cols <- c('Wheat.DMDemand.SM.Grain',
+            'Wheat.DMDemand.SM.Root',
+            'Wheat.DMDemand.SM.Leaf',
+            'Wheat.DMDemand.SM.Spike',
+            'Wheat.DMDemand.SM.Stem')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Structural and metabolic demand (g/g)', y_labels = y_labels,
+            ncol = 5, type = 'area')
+```
+</div>
+
+
+
+
 <div class="fig-output">
 ```{r biomass-demand-structural, fig.asp = 1, fig.cap='Biomass structural demand from all organs'}
 y_cols <- c('Wheat.Grain.DMDemand.Structural',
@@ -218,7 +236,89 @@ plot_report(report, x_var2, y_cols, x_lab = x_lab,
 
 ## Biomass partitioning
 
-The biomass partitions into structural and metabolic components firstly according to the relative demands. The remaining biomass allocates into storage according to the relative demands.
+The biomass partitions into structural and metabolic components firstly according to the relative demands. The remaining biomass allocates into storage according to the relative demands. The greatest storage demand of stem can store all remaining daily supply. 
+
+
+
+<div class="fig-output">
+```{r biomass-supply-demand-str-met, fig.asp = 1, fig.cap='Daily biomass supply, and structural and metabolic demands for all organs'}
+y_cols <- c('Wheat.DMSupply', 'Wheat.DMDemand.StructuralMetabolic')
+y_labels <- c('Supply', 'Demand')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass supply and demand', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r biomass-supply-demand-sto, fig.asp = 1, fig.cap='Daily biomass supply, and storage demand for all organs'}
+y_cols <- c('Wheat.DMSupply', 'Wheat.DMDemand')
+y_labels <- c('Supply', 'Demand')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Biomass supply and demand', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r biomass-allocated-structural, fig.asp = 1, fig.cap='Biomass structural allocation from all organs'}
+y_cols <- c('Wheat.Grain.Allocated.StructuralWt',
+            'Wheat.Root.Allocated.StructuralWt',
+            'Wheat.Leaf.Allocated.StructuralWt',
+            'Wheat.Spike.Allocated.StructuralWt',
+            'Wheat.Stem.Allocated.StructuralWt')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Structural allocation', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r biomass-allocated-metabolic, fig.asp = 1, fig.cap='Biomass metabolic allocation from all organs'}
+y_cols <- c('Wheat.Grain.Allocated.MetabolicWt',
+            'Wheat.Root.Allocated.MetabolicWt',
+            'Wheat.Leaf.Allocated.MetabolicWt',
+            'Wheat.Spike.Allocated.MetabolicWt',
+            'Wheat.Stem.Allocated.MetabolicWt')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Metabolic allocation', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
+
+
+
+
+
+<div class="fig-output">
+```{r biomass-allocated-storage, fig.asp = 1, fig.cap='Biomass storage allocation from all organs'}
+y_cols <- c('Wheat.Grain.Allocated.StorageWt',
+            'Wheat.Root.Allocated.StorageWt',
+            'Wheat.Leaf.Allocated.StorageWt',
+            'Wheat.Spike.Allocated.StorageWt',
+            'Wheat.Stem.Allocated.StorageWt')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Storage allocation', y_labels = y_labels,
+            ncol = 5)
+
+```
+</div>
+
 
 
 

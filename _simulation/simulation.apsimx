@@ -25,8 +25,18 @@
         <string>[Wheat].Leaf.CohortParameters.SpecificLeafAreaMax.Value() as Wheat.Leaf.CohortParameters.SpecificLeafAreaMax</string>
         <string>[Wheat].Leaf.CohortParameters.SpecificLeafAreaMin.Value() as Wheat.Leaf.CohortParameters.SpecificLeafAreaMin</string>
         <string />
+        <string>[Wheat].Spike.DMDemand.Structural + [Wheat].Spike.DMDemand.Storage + [Wheat].Spike.DMDemand.Metabolic as Wheat.DMDemand.Spike</string>
+        <string>[Wheat].Root.DMDemand.Structural + [Wheat].Root.DMDemand.Storage + [Wheat].Root.DMDemand.Metabolic as Wheat.DMDemand.Root</string>
+        <string>[Wheat].Leaf.DMDemand.Structural + [Wheat].Leaf.DMDemand.Storage + [Wheat].Leaf.DMDemand.Metabolic as Wheat.DMDemand.Leaf</string>
+        <string>[Wheat].Grain.DMDemand.Structural + [Wheat].Grain.DMDemand.Storage + [Wheat].Grain.DMDemand.Metabolic as Wheat.DMDemand.Grain</string>
+        <string>[Wheat].Stem.DMDemand.Structural + [Wheat].Stem.DMDemand.Storage + [Wheat].Stem.DMDemand.Metabolic as Wheat.DMDemand.Stem</string>
         <string />
         <string />
+        <string>[Wheat].Spike.DMDemand.Structural + [Wheat].Spike.DMDemand.Metabolic as Wheat.DMDemand.SM.Spike</string>
+        <string>[Wheat].Root.DMDemand.Structural + [Wheat].Root.DMDemand.Metabolic as Wheat.DMDemand.SM.Root</string>
+        <string>[Wheat].Leaf.DMDemand.Structural + [Wheat].Leaf.DMDemand.Metabolic as Wheat.DMDemand.SM.Leaf</string>
+        <string>[Wheat].Grain.DMDemand.Structural + [Wheat].Grain.DMDemand.Metabolic as Wheat.DMDemand.SM.Grain</string>
+        <string>[Wheat].Stem.DMDemand.Structural + [Wheat].Stem.DMDemand.Metabolic as Wheat.DMDemand.SM.Stem</string>
         <string />
         <string>[Wheat].Structure.CohortToInitialise</string>
         <string>[Wheat].Structure.PotLeafTipsAppeared</string>
@@ -243,6 +253,11 @@
         <string />
         <string />
         <string>[Wheat].Grain.DMSupply.Fixation + [Wheat].Root.DMSupply.Fixation + [Wheat].Leaf.DMSupply.Fixation + [Wheat].Spike.DMSupply.Fixation + [Wheat].Stem.DMSupply.Fixation +  [Wheat].Grain.DMSupply.Retranslocation + [Wheat].Root.DMSupply.Retranslocation + [Wheat].Leaf.DMSupply.Retranslocation + [Wheat].Spike.DMSupply.Retranslocation + [Wheat].Stem.DMSupply.Retranslocation + [Wheat].Grain.DMSupply.Reallocation + [Wheat].Root.DMSupply.Reallocation + [Wheat].Leaf.DMSupply.Reallocation + [Wheat].Spike.DMSupply.Reallocation + [Wheat].Stem.DMSupply.Reallocation as Wheat.DMSupply</string>
+        <string>[Wheat].Root.DMDemand.Structural + [Wheat].Root.DMDemand.Storage + [Wheat].Root.DMDemand.Metabolic + [Wheat].Grain.DMDemand.Structural + [Wheat].Grain.DMDemand.Storage + [Wheat].Grain.DMDemand.Metabolic + [Wheat].Spike.DMDemand.Structural + [Wheat].Spike.DMDemand.Storage + [Wheat].Spike.DMDemand.Metabolic + [Wheat].Stem.DMDemand.Structural + [Wheat].Stem.DMDemand.Storage + [Wheat].Stem.DMDemand.Metabolic + [Wheat].Leaf.DMDemand.Structural + [Wheat].Leaf.DMDemand.Storage + [Wheat].Leaf.DMDemand.Metabolic as Wheat.DMDemand</string>
+        <string>[Wheat].Root.DMDemand.Structural + [Wheat].Grain.DMDemand.Structural + [Wheat].Spike.DMDemand.Structural + [Wheat].Stem.DMDemand.Structural + [Wheat].Leaf.DMDemand.Structural as Wheat.DMDemand.Structural</string>
+        <string>[Wheat].Root.DMDemand.Metabolic + [Wheat].Grain.DMDemand.Metabolic + [Wheat].Spike.DMDemand.Metabolic + [Wheat].Stem.DMDemand.Metabolic + [Wheat].Leaf.DMDemand.Metabolic as Wheat.DMDemand.Metabolic</string>
+        <string>[Wheat].Root.DMDemand.Storage + [Wheat].Grain.DMDemand.Storage + [Wheat].Spike.DMDemand.Storage + [Wheat].Stem.DMDemand.Storage + [Wheat].Leaf.DMDemand.Storage as Wheat.DMDemand.Storage</string>
+        <string>[Wheat].Root.DMDemand.Structural + [Wheat].Grain.DMDemand.Structural + [Wheat].Spike.DMDemand.Structural + [Wheat].Stem.DMDemand.Structural + [Wheat].Leaf.DMDemand.Structural + [Wheat].Root.DMDemand.Metabolic + [Wheat].Grain.DMDemand.Metabolic + [Wheat].Spike.DMDemand.Metabolic + [Wheat].Stem.DMDemand.Metabolic + [Wheat].Leaf.DMDemand.Metabolic as Wheat.DMDemand.StructuralMetabolic</string>
       </VariableNames>
       <EventNames>
         <string>[Clock].DoReport</string>
