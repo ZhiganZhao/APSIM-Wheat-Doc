@@ -9,6 +9,8 @@ source('_setup.R')
 
 ## Grain number {#sec:grain-number}
 
+Grain number is correlated with stem [ref] and/or spike [@SlaferGeneticimprovementeffectspreanthesis1990;@GonzalezPhotoperiodstemelongation2005] dry weight at anthesis.
+
 The number of grains per plant ($N_{g}$) is determined by the `Stem` and `Spike` total biomass at `Flowering` (including `Live` and `Dead`).
 $$
 N_{g}=R_{g}(W_{stem} + W_{spike})

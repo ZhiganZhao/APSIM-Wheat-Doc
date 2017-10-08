@@ -11,6 +11,7 @@
       <VariableNames>
         <string>[Clock].Today</string>
         <string />
+        <string />
         <string>[Wheat].Leaf.CohortParameters.GrowthDuration.Value() as Wheat.Leaf.CohortParameters.GrowthDuration</string>
         <string>[Wheat].Leaf.CohortParameters.LagDuration.Value() as Wheat.Leaf.CohortParameters.LagDuration</string>
         <string>[Wheat].Leaf.CohortParameters.SenescenceDuration.Value() as Wheat.Leaf.CohortParameters.SenescenceDuration</string>
@@ -250,6 +251,18 @@
         <string>[Wheat].Root.Detached.StructuralWt</string>
         <string>[Wheat].Root.Detached.StorageWt</string>
         <string>[Wheat].Root.Detached.MetabolicWt</string>
+        <string />
+        <string />
+        <string>[Wheat].Leaf.Live.StructuralWt + [Wheat].Leaf.Live.StorageWt + [Wheat].Leaf.Live.MetabolicWt as Wheat.Leaf.LiveWt</string>
+        <string>[Wheat].Root.Live.StructuralWt + [Wheat].Root.Live.StorageWt + [Wheat].Root.Live.MetabolicWt as Wheat.Root.LiveWt</string>
+        <string>[Wheat].Grain.Live.StructuralWt + [Wheat].Grain.Live.StorageWt + [Wheat].Grain.Live.MetabolicWt as Wheat.Grain.LiveWt</string>
+        <string>[Wheat].Spike.Live.StructuralWt + [Wheat].Spike.Live.StorageWt + [Wheat].Spike.Live.MetabolicWt as Wheat.Spike.LiveWt</string>
+        <string>[Wheat].Stem.Live.StructuralWt + [Wheat].Stem.Live.StorageWt + [Wheat].Stem.Live.MetabolicWt as Wheat.Stem.LiveWt</string>
+        <string>[Wheat].Leaf.Dead.StructuralWt + [Wheat].Leaf.Dead.StorageWt + [Wheat].Leaf.Dead.MetabolicWt as Wheat.Leaf.DeadWt</string>
+        <string>[Wheat].Root.Dead.StructuralWt + [Wheat].Root.Dead.StorageWt + [Wheat].Root.Dead.MetabolicWt as Wheat.Root.DeadWt</string>
+        <string>[Wheat].Grain.Dead.StructuralWt + [Wheat].Grain.Dead.StorageWt + [Wheat].Grain.Dead.MetabolicWt as Wheat.Grain.DeadWt</string>
+        <string>[Wheat].Spike.Dead.StructuralWt + [Wheat].Spike.Dead.StorageWt + [Wheat].Spike.Dead.MetabolicWt as Wheat.Spike.DeadWt</string>
+        <string>[Wheat].Stem.Dead.StructuralWt + [Wheat].Stem.Dead.StorageWt + [Wheat].Stem.Dead.MetabolicWt as Wheat.Stem.DeadWt</string>
         <string />
         <string />
         <string>[Wheat].Grain.DMSupply.Fixation + [Wheat].Root.DMSupply.Fixation + [Wheat].Leaf.DMSupply.Fixation + [Wheat].Spike.DMSupply.Fixation + [Wheat].Stem.DMSupply.Fixation +  [Wheat].Grain.DMSupply.Retranslocation + [Wheat].Root.DMSupply.Retranslocation + [Wheat].Leaf.DMSupply.Retranslocation + [Wheat].Spike.DMSupply.Retranslocation + [Wheat].Stem.DMSupply.Retranslocation + [Wheat].Grain.DMSupply.Reallocation + [Wheat].Root.DMSupply.Reallocation + [Wheat].Leaf.DMSupply.Reallocation + [Wheat].Spike.DMSupply.Reallocation + [Wheat].Stem.DMSupply.Reallocation as Wheat.DMSupply</string>

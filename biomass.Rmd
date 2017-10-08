@@ -5,6 +5,8 @@
 source('_setup.R')
 ```
 
+The wheat is mainly source limited in APSIM-Wheat model. 
+
 The biomass and nitrogen of each organ is separated into two pools (i.e. `Live` and `Dead`). Each pool is separated into three components (i.e. `Structural`, `Metabolic`, `Storage`) [@BrownPlantModellingFramework2014].
 
 
@@ -15,8 +17,9 @@ The biomass and nitrogen of each organ is separated into two pools (i.e. `Live` 
 
 
 
-## Pool {#sec:biomass-pool}
-All organs have the `Live` group, but only `Leaf` has the `Dead` group.
+## Biomass pool {#sec:biomass-pool}
+
+All organs have the `Live` pool, but only `Leaf` has the `Dead` pool.
 
 ```{r biomass-live-dead, results='asis'}
 
@@ -36,6 +39,24 @@ report %>%
     knitr::kable(align = "c",
                  caption = 'The live and dead groups of biomass in all organs. X and - indicate the organ has and has not the group, respectively.')
 ```
+
+
+
+<div class="fig-output">
+```{r biomass-live-weight, fig.asp = 1, fig.cap='Biomass fixation from all organs'}
+y_cols <- c('Wheat.Grain.LiveWt',
+            'Wheat.Root.LiveWt',
+            'Wheat.Leaf.LiveWt',
+            'Wheat.Spike.LiveWt',
+            'Wheat.Stem.LiveWt')
+y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Fixation (g/d)', y_labels = y_labels,
+            ncol = 5, type = 'area')
+
+```
+</div>
+
 
 
 
