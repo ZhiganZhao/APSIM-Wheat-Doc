@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-str-phyllochron.html">
-<link rel="next" href="cha-biomass.html">
+<link rel="prev" href="sec-final-leaf-number.html">
+<link rel="next" href="tillering.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -97,7 +97,12 @@
 </ul></li>
 <li class="chapter" data-level="4" data-path="cha-structure.html"><a href="cha-structure.html"><i class="fa fa-check"></i><b>4</b> Structure</a><ul>
 <li class="chapter" data-level="4.1" data-path="sec-str-phyllochron.html"><a href="sec-str-phyllochron.html"><i class="fa fa-check"></i><b>4.1</b> Phyllochron</a></li>
-<li class="chapter" data-level="4.2" data-path="sec-main-stem.html"><a href="sec-main-stem.html"><i class="fa fa-check"></i><b>4.2</b> Initialization and appearance of leaf tips on main stem</a></li>
+<li class="chapter" data-level="4.2" data-path="sec-final-leaf-number.html"><a href="sec-final-leaf-number.html"><i class="fa fa-check"></i><b>4.2</b> Final leaf number</a></li>
+<li class="chapter" data-level="4.3" data-path="sec-main-stem.html"><a href="sec-main-stem.html"><i class="fa fa-check"></i><b>4.3</b> Initialization and appearance of leaf tips on main stem</a></li>
+<li class="chapter" data-level="4.4" data-path="tillering.html"><a href="tillering.html"><i class="fa fa-check"></i><b>4.4</b> Tillering</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="tillering.html"><a href="tillering.html#branching-rate"><i class="fa fa-check"></i><b>4.4.1</b> Branching rate</a></li>
+<li class="chapter" data-level="4.4.2" data-path="tillering.html"><a href="tillering.html#sec-structure-mortality"><i class="fa fa-check"></i><b>4.4.2</b> Mortality</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
 <li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Biomass pool</a></li>
@@ -178,264 +183,54 @@
 
             <section class="normal" id="section-">
 <div id="sec:main-stem" class="section level2">
-<h2><span class="header-section-number">4.2</span> Initialization and appearance of leaf tips on main stem</h2>
+<h2><span class="header-section-number">4.3</span> Initialization and appearance of leaf tips on main stem</h2>
 <p>At <code>Germination</code> stage, 2 new leaf cohorts or tips are initialized at the main stem. At <code>Emergence</code> stage, 1 leaf cohort or tip is appeared at the main stem, and 1 more leaf cohort is initialized. The potential appearance of leaf tip number (<span class="math inline">\(N_{p, tip}\)</span>) is initialized as 1.</p>
-<p>After <code>Emergence</code>, the potential appearance of tip number in the main stem (<span class="math inline">\(N_{p, tip}\)</span>) is daily increased according to the daily phyllochron (Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron">4.3</a>) and thermal time (Section <a href="sec-phe-thermal-time.html#sec:phe-thermal-time">3.1</a>) until <code>Maturity</code> (Fig. <a href="sec-main-stem.html#fig:str-delta-tip">4.4</a> and <a href="sec-main-stem.html#fig:str-tips">4.5</a>. <span class="math inline">\(N_{p, tip}\)</span> should stop increasing when final leaf number is reached).</p>
+<p>After <code>Emergence</code>, the potential appearance of tip number in the main stem (<span class="math inline">\(N_{p, tip}\)</span>) is daily increased according to the daily phyllochron (Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron">4.3</a>) and thermal time (Section <a href="sec-phe-thermal-time.html#sec:phe-thermal-time">3.1</a>) until <code>Maturity</code> (Fig. <a href="sec-main-stem.html#fig:str-delta-tip">4.5</a> and <a href="sec-main-stem.html#fig:str-tips">4.6</a>. <span class="math inline">\(N_{p, tip}\)</span> should stop increasing when final leaf number is reached).</p>
 <p><span class="math display">\[
  \Delta N_{p, tip} = \frac{\Delta TT_{t}}{P_{phy}}
 \]</span></p>
-<p>where, <span class="math inline">\(N_{p, tip}\)</span> is the daily increase of leaf tip number (Fig. <a href="sec-main-stem.html#fig:str-delta-tip">4.4</a>), <span class="math inline">\(\Delta TT_{t}\)</span> is the daily thermal time, <span class="math inline">\(P_{phy}\)</span> is the phyllochron calculated at today.</p>
+<p>where, <span class="math inline">\(N_{p, tip}\)</span> is the daily increase of leaf tip number (Fig. <a href="sec-main-stem.html#fig:str-delta-tip">4.5</a>), <span class="math inline">\(\Delta TT_{t}\)</span> is the daily thermal time, <span class="math inline">\(P_{phy}\)</span> is the phyllochron calculated at today.</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:str-delta-tip"></span>
-<img src="APSIM-Wheat_files/figure-html/str-delta-tip-1.png" alt="Daily increase of tip number in main stem" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/str-delta-tip-1.png" alt="Daily increase of tip number in main stem. There is no point to consider increase of tip number after stage 4 (terminal spikelet), although model exports increase of tip number in the whole growth season" width="80%" />
 <p class="caption">
-Figure 4.4: Daily increase of tip number in main stem
+Figure 4.5: Daily increase of tip number in main stem. There is no point to consider increase of tip number after stage 4 (terminal spikelet), although model exports increase of tip number in the whole growth season
 </p>
 </div>
 </div>
-<p>Potential appearance of tip number in main stem (<span class="math inline">\(N_{p, tip}\)</span>) are summarized daily increases since <code>Emergence</code>, plus the appeared leaf tip at <code>Emergence</code> (1 for wheat model) (Fig. <a href="sec-main-stem.html#fig:str-tips">4.5</a>).</p>
+<p>Potential appearance of tip number in main stem (<span class="math inline">\(N_{p, tip}\)</span>) are summarized daily increases since <code>Emergence</code>, plus the appeared leaf tip at <code>Emergence</code> (1 for wheat model) (Fig. <a href="sec-main-stem.html#fig:str-tips">4.6</a>).</p>
 <p><span class="math display">\[
     N_{p, tip}=\sum_{t=T_{0}}^{T}\Delta N_{p, tip} + 1
 \]</span></p>
 <p>where, <span class="math inline">\(T_{0}\)</span> is day of <code>Emergence</code>. <span class="math inline">\(T\)</span> is today. In the Structure model, the tip numbers are not calculated for branches or tillers, but only for main stem (Figure <a href="#fig:node-number"><strong>??</strong></a>).</p>
-<p>Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of <span class="math inline">\(N_{p, tip}\)</span> are more than 1 (Figure <a href="sec-main-stem.html#fig:str-delta-tip">4.4</a>). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than 2 of appeared tip number.</p>
+<p>Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of <span class="math inline">\(N_{p, tip}\)</span> are more than 1 (Figure <a href="sec-main-stem.html#fig:str-delta-tip">4.5</a>). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than 2 of appeared tip number.</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:str-tips"></span>
-<img src="APSIM-Wheat_files/figure-html/str-tips-1.png" alt="Tips number in main stem" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/str-tips-1.png" alt="Tips number in main stem. The potential appeared tip number keeps increasing after flag leaf, which is only a model output and need to be fixed." width="80%" />
 <p class="caption">
-Figure 4.5: Tips number in main stem
+Figure 4.6: Tips number in main stem. The potential appeared tip number keeps increasing after flag leaf, which is only a model output and need to be fixed.
 </p>
 </div>
 </div>
+<p>Huan stage is exported as the output variable <code>LeafTipsAppeared</code>.</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:str-haun-stage"></span>
 <img src="APSIM-Wheat_files/figure-html/str-haun-stage-1.png" alt="Haun stage in main stem" width="80%" />
 <p class="caption">
-Figure 4.6: Haun stage in main stem
+Figure 4.7: Haun stage in main stem
 </p>
 </div>
 </div>
-<p>The fraction of final leaf is set as 1, but return the actual fraction of the final leaf if the last leaf has appeared.</p>
+<p>The fraction of final leaf is used to simulate the variation of final leaf number in a population. The fraction of leaf cohort is set as 1 for all leaf cohort, except the flag leaf which equal to decimal part of final leaf number (Fig. <a href="sec-final-leaf-number.html#fig:str-final-leaf-number">4.4</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:str-leaf-fraction"></span>
 <img src="APSIM-Wheat_files/figure-html/str-leaf-fraction-1.png" alt="Fraction of leaf cohort" width="80%" />
 <p class="caption">
-Figure 4.7: Fraction of leaf cohort
+Figure 4.8: Fraction of leaf cohort
 </p>
 </div>
 </div>
-<!-- 
-
-
-
-
-
-
-<div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/node-number-1.png" alt="Primordia and node number in main stem" width="80%" />
-<p class="caption">(\#fig:node-number)Primordia and node number in main stem</p>
 </div>
-</div>
-
-
-<div class="rmdimportant">
-<p>The node numbers in the main stem are not necessary integar to simulate the variation of primordia number in the actual field. Consequently all attibutes of flag leaf are proportionally reduced (e.g. growth duration and maximum area).</p>
-</div>
-
-## Tillering
-
-
-The apex number in a plant ($A$) is increased by branching ($\Delta A_{B} $) and decreased by mortality ($\Delta A_{M} $). New tillers are initialized when increase of the node number in main stem ($\Delta N_{node}$) is more than 1. In the leaf cohort model, tiller number represents by the cohort size (i.e. the number of leaves in a cohort). 
-
-$$
-A = \sum_{i=1}^{N_{node}}{(\Delta A_{B} - \Delta A_{M})}
-$$
-
-### Branching
-
-The branching rate in a plant is specified by parameter BranchingRate ($\Delta A_{B}$) and is calculated as potential branching rate and several stress factors (i.e. nitrogen stress, total coverage, and water stress). From stage Emergence to Terminal Spikelet (Section \@ref(stage-period)), the potential branching rate is defined as a function of number of appeared cohorts in the main stem (Figure \@ref(fig:str-branching-rate)) which follow the pattern of Fibonacci sequence. Beyond this period, the branching rate is set as zero. 
-
-<div class="fig-input">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/str-branching-rate-1.png" alt="Potential branching rate of APSIM-Wheat as a function of appreared cohort number" width="80%" />
-<p class="caption">(\#fig:str-branching-rate)Potential branching rate of APSIM-Wheat as a function of appreared cohort number</p>
-</div>
-</div>
-
-
-
-Two stresses are defined in the APSIM-Wheat including nitrogen and WSC. A simple sensitivity analysis indicates the branching rate is too sensitive to WSC with default values (x = [0.1, 0.2]; y = [0, 1]). So, this feature is disabled for further analysis. 
-
-The nitrogen stress is calculated as a function of fraction of nitrogen supply relative to nitrogen demand which is exported from the Arbitrator module (Chapter \@ref(cha:arbitrator)). Wheat module assumes no nitrogen stress when the nitrogen supply is bigger than 1.5 times of nitrogen demand (Figure \@ref(fig:branching-rate-nstress)). Nitrogen stress linearly increases when supply/demand ratio less then 1.5 (<font color="red">Reference required.</font>)
-
-
-<div class="fig-input">
-
-</div>
-
-
-
-
-
-<div class="rmderror">
-<p>The values for total coverage are 0.1 and 0.25 in the wheat validation model. I would expect much higher coverage to stop tillering.</p>
-</div>
-
-
-<div class="rmderror">
-<p>The step functions or leaf cohort model in the tillering processing cause that the tiller dynamic is too sensitive to the stage of terminal spikelet.</p>
-</div>
-
-
-
-Figure \@ref(fig:tiller-number) shows the branching rate and total branching number in the test simulation without nitrogen stress on branching rate during branching period (from Emergence to Terminal Spikelet, Figure \@ref(fig:nitrogen-fn)).
-
-<div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/tiller-number-1.png" alt="The branching rate and branch number for wheat" width="80%" />
-<p class="caption">(\#fig:tiller-number)The branching rate and branch number for wheat</p>
-</div>
-</div>
-
-
-
-
-
-<div class="rmdimportant">
-<p>It seems PMF uses the branching rate one day before to calculate the branch number.</p>
-</div>
-
-
-
-### Mortality {#sec-structure-mortality}
-
-Two types of mortality are considered in the apex model, i.e. smaller tiller at terminal spikelet and low growth rate. For any types of tiller mortality, the plant does not reduce the population of existing leaf cohort, but number of apex, then reduce the population size of new leaf cohort. 
-
-At the terminal spikelet, all tillers with less than 4 leaves are stopped to growth new leaves.
-
-
-
-Branching mortality starts from the Flag leaf until Flowering which defines as a function of moving mean tiller growth rate (Figure \@ref(fig:mortality-growth-rate). The mean tiller growth rate is calculated as the 5 days moving means of tiller growth rate, which is calculated by the daily biomass supply divides thermal time and total stem population.  <font color="red">Reference required.</font>
-
-
-<div class="rmderror">
-<p>Need to check the mortality caused by growth rate.</p>
-</div>
-
-
-<div class="fig-input">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/mortality-growth-rate-1.png" alt="Tiller mortality as a function of moving mean tiller growth rate" width="80%" />
-<p class="caption">(\#fig:mortality-growth-rate)Tiller mortality as a function of moving mean tiller growth rate</p>
-</div>
-</div>
-
-
-<div class="rmderror">
-<p>Not sure why the tiller mortality starts from Flag leaf, not terminal spikelet, even the whole growth season</p>
-</div>
-
-
-
-
-Figure \@ref(fig:tiller-growth-rate-factor) and \@ref(fig:tiller-growth-rate) show the mean tiller growth rate and the three factors to calculate it in the test simulation.
-
-<div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/tiller-growth-rate-1.png" alt="The moving tiller growth rate" width="80%" />
-<p class="caption">(\#fig:tiller-growth-rate)The moving tiller growth rate</p>
-</div>
-</div>
-
-
-
-<div class="fig-output">
-
-</div>
-
-
-
-
-<div class="fig-output">
-
-</div>
-
-
-
-As the primary bud number is equal to 1, the plant total node number and total primary node number are the same (Figure \@ref(fig:plant-node-number)). Figure \@ref(fig:plant-node-number) show the total node number as the results of tiller appearing and mortality.
-
-<div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/plant-node-number-1.png" alt="Total plant node number" width="80%" />
-<p class="caption">(\#fig:plant-node-number)Total plant node number</p>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-## Plant and Main-Stem Population
-
-Plant population ($P$) is initialized at sowing from Sow event, and daily reduced by the plant mortality ($\Delta P$).
-$$
-    P=P_{0} - \sum_{t=T_{0}}^{T}(\Delta P)
-$$
-
-where, $P_{0}$ is the sown population, which initialized at sowing.
-
-Population of main stem ($P_{ms}$) is calculated according to plant population ($P$) and primary bud number ($N_{bud}$) with default value 1 for wheat. The unit of $P_{ms}$ is per square meter.
-$$
-    P_{ms}=P \times N_{bud}
-$$
-
-Total stem population ($P_{stem}$) is summed up population of main stem ($P_{ms}$) and branches (($P_{branch}$)).
-$$
-    P_{stem} = P_{ms} + P_{branch}
-$$
-
-In the test simulation, the plant density ($P$) is 150 plants m^2^, so population of main stem ($P_{ms}$) equals to plant density (Figure \@ref(fig:plant-population)). From Emergence to terminal spikelet, the population of total stem ($P_{stem}$) multiply by stem number and plant density (Figure \@ref(fig:tiller-number)). 
-
-<div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/str-plant-population-1.png" alt="The total population of main stem and all stems" width="80%" />
-<p class="caption">(\#fig:str-plant-population)The total population of main stem and all stems</p>
-</div>
-</div>
-
-
-
-
-
-## Canopy height
-The canopy height is calculated as the potential height and adjusted by water stress. 
-
-
-<div class="fig-input">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/str-potential-height-1.png" alt="Potential canopy height" width="80%" />
-<p class="caption">(\#fig:str-potential-height)Potential canopy height</p>
-</div>
-</div>
-
-
-
-<div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/str-height-1.png" alt="The simulated canopy height" width="80%" />
-<p class="caption">(\#fig:str-height)The simulated canopy height</p>
-</div>
-</div>
-
--->
-
-</div>
-<!-- </div> -->
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -450,8 +245,8 @@ The canopy height is calculated as the potential height and adjusted by water st
           </div>
         </div>
       </div>
-<a href="sec-str-phyllochron.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cha-biomass.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sec-final-leaf-number.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tillering.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

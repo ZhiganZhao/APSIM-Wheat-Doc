@@ -11,6 +11,10 @@
       <VariableNames>
         <string>[Clock].Today</string>
         <string />
+        <string>[Wheat].Structure.ApexNum</string>
+        <string>[Wheat].Structure.BranchingRate.StressFactors.NitrogenEffect.Value() as Wheat.Structure.BranchingRate.StressFactors.NitrogenEffect</string>
+        <string>[Wheat].Structure.BranchingRate.StressFactors.WaterStressEffect.Value() as Wheat.Structure.BranchingRate.StressFactors.WaterStressEffect</string>
+        <string>[Wheat].Structure.BranchingRate.StressFactors.CoverEffect.Value() as Wheat.Structure.BranchingRate.StressFactors.CoverEffect</string>
         <string />
         <string>[Wheat].Leaf.CohortParameters.GrowthDuration.Value() as Wheat.Leaf.CohortParameters.GrowthDuration</string>
         <string>[Wheat].Leaf.CohortParameters.LagDuration.Value() as Wheat.Leaf.CohortParameters.LagDuration</string>

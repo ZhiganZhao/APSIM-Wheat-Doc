@@ -20,10 +20,10 @@ The development of wheat leaves and tillers are simulated with an apex model whi
 
 The phyllochron is the intervening period between the sequential emergence of leaf tips on the main stem of a wheat [@mcmaster_re-examining_2003].
 
-The non-linear reponse of temperature on phyllchron were observed by Friend et al. [-@friend_leaf_1962]  and Cao and Moss [-@cao_temperature_1989]. The soil temperature provided more accurately prediction of leaf development than air temperature [@JamiesonPredictionleafappearance1995]. However, a simple linear reponse of phyllochron to air temperature works surprusingly well in predicting phyllochron for most field conditions [@mcmaster_re-examining_2003]. If improvements are desired, the use of non-linear reponses and soil temperature shows promise [@JamiesonPredictionleafappearance1995; @YanEquationModellingTemperature1999]. Consequently, we assume the linear reponse of air temperature on leaf appearance (phyllochorn).  
+The non-linear reponse of temperature on phyllchron were observed by Friend et al. [-@friend_leaf_1962] and Cao and Moss [-@cao_temperature_1989]. The soil temperature provided more accurately prediction of leaf development than air temperature [@JamiesonPredictionleafappearance1995]. However, a simple linear reponse of phyllochron to air temperature works surprusingly well in predicting phyllochron for most field conditions [@mcmaster_re-examining_2003]. If improvements are desired, the use of non-linear reponses and soil temperature shows promise [@JamiesonPredictionleafappearance1995; @YanEquationModellingTemperature1999]. Consequently, we assume the linear reponse of air temperature on leaf appearance (phyllochorn).  
 
 
-The base phyllochron is a genotypic parameter with default value `r get_fixed_value(pmf, '//Name[text()="BasePhyllochron"]')`, but is chagned by most of cultivars. Based on [@JamiesonPredictionleafappearance1995], leaf appearance could be described by a base phyllochron determined between leaves 3 and 7 and a phyllochron that was 70% of base phyllochron for leaves < 3 and 140% of base phyllochroen for leaves > 7 (Fig. \@ref(fig:str-phyllochron-age)). The phyllochron also is adjusted by photoperiod [reference required] through increasing pholochron in the shorter day length (Fig. \@ref(fig:str-phyllochron-ppd)).
+The base phyllochron is a genotypic parameter with default value `r get_fixed_value(pmf, '//Name[text()="BasePhyllochron"]')`, but is chagned for most of cultivars. Based on [@JamiesonPredictionleafappearance1995], leaf appearance could be described by a base phyllochron determined between leaves 3 and 7 and a phyllochron that was 70% of base phyllochron for leaves < 3 and 140% of base phyllochroen for leaves > 7 (Fig. \@ref(fig:str-phyllochron-age)). The phyllochron also is adjusted by photoperiod [reference required] through increasing pholochron in the shorter day length (Fig. \@ref(fig:str-phyllochron-ppd)).
 
 
 <div class="fig-input">
@@ -58,35 +58,19 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Phyllochron (oCd)')
 </div>
 
 
-<!--
 ## Final leaf number {#sec:final-leaf-number}
 
-Brown et al. [-@BrownIntegrationmolecularphysiological2013] showed final leaf number (FLN) could be estimated as 2.86 + HSTS * 1.1 where HSTS is the the Haun stage at terminal spikelet. To caputre this in the wheat model we have set the initial number of primordia (determined by the number of initialleaf objects on the leaf class) to 3 and have set this function to produce primordia 10% faster than mainstem leaves.  Primordia are initiated until the therminal spikelet stage and then the number remains fixed, giving final leaf number.
 
-The final leaf number in the main stem (FinalLeafNumber, Section \@ref(output-structure)) equal to minimum leaf number, plus the increases of leaf number which are caused by delay of wheat development (vernalization and and photoperiod effects). The minimum leaf number is a genotypic parameter to represent 
-
-[Need to describe the vernalization and photoperiod effects on leaf number].
-
+Will be documented...
 
 <div class="fig-output">
-```{r final-leaf-number, fig.cap='Final leaf number in main stem'}
+```{r str-final-leaf-number, fig.asp=0.5, fig.cap='Final leaf number in main stem'}
 y_cols <- c(
     'Wheat.Structure.FinalLeafNumber')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Final node number in main stem')
+plot_report(report, x_var2, y_cols, x_lab = x_lab, y_lab = 'Final node number in main stem')
 
 ```
 </div>
-
-
-
-
-```{block, type='rmdimportant', echo=TRUE}
-The final node number is daily updated and gradually decreased as the photoperiod (longer day length) and vernalization (satisfication of vernalization requirement) effects. 
-
-Need to check the response of day length and vernalization requirement on leaf number. 
-```
-
---> 
 
 ## Initialization and appearance of leaf tips on main stem {#sec:main-stem}
 
@@ -104,10 +88,11 @@ where, $N_{p, tip}$ is the daily increase of leaf tip number (Fig. \@ref(fig:str
 
 
 <div class="fig-output">
-```{r str-delta-tip, fig.asp=1, fig.cap='Daily increase of tip number in main stem'}
+```{r str-delta-tip, fig.asp=0.5, fig.cap='Daily increase of tip number in main stem. There is no point to consider increase of tip number after stage 4 (terminal spikelet), although model exports increase of tip number in the whole growth season'}
 y_cols <- c('Wheat.Structure.DeltaTipNumber')
-
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+report %>% 
+    # filter(Wheat.Phenology.Stage <= 4) %>% 
+    plot_report(x_var2, y_cols, x_lab = x_lab, 
             y_lab = 'Daily increase of tip number')
 ```
 </div>
@@ -125,7 +110,7 @@ where, $T_{0}$ is day of `Emergence`.  $T$ is today. In the Structure model, the
 Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of $N_{p, tip}$ are more than 1 (Figure \@ref(fig:str-delta-tip)). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than `r node_count(pmf, '//LeafCohort')`  of appeared tip number.
 
 <div class="fig-output">
-```{r str-tips, fig.asp=1, fig.cap='Tips number in main stem'}
+```{r str-tips, fig.asp=1, fig.cap='Tips number in main stem. The potential appeared tip number keeps increasing after flag leaf, which is only a model output and need to be fixed.'}
 y_cols <- c('Wheat.Structure.CohortToInitialise',
     'Wheat.Structure.PotLeafTipsAppeared', 
     'Wheat.Structure.LeafTipsAppeared')
@@ -135,7 +120,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 </div>
 
 
-
+Huan stage is exported as the output variable `LeafTipsAppeared`.    
 
 <div class="fig-output">
 ```{r str-haun-stage, fig.cap='Haun stage in main stem'}
@@ -148,58 +133,50 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 
 
 
-
-The fraction of final leaf is set as 1, but return the actual fraction of the final leaf if the last leaf has appeared. 
+The fraction of final leaf is used to simulate the variation of final leaf number in a population. The fraction of leaf cohort is set as 1 for all leaf cohort, except the flag leaf which equal to decimal part of final leaf number (Fig. \@ref(fig:str-final-leaf-number)). 
 
 <div class="fig-output">
 ```{r str-leaf-fraction, fig.asp=0.5, fig.cap='Fraction of leaf cohort'}
 y_cols <- c(
     'Wheat.Structure.NextLeafProportion')
-
 plot_report_rank(report, y_cols, y_lab = 'Fraction of leaf cohort')
 ```
 </div>
 
 
 
-<!-- 
 
 
 
 
 
-
-<div class="fig-output">
-```{r node-number, fig.cap='Primordia and node number in main stem'}
-y_cols <- c(
-    'Wheat.Structure.LeafTipsAppeared')
-
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Node number in main stem') +
-    scale_y_continuous(breaks = seq(0, 15))
-
-```
-</div>
-
-
-```{block, type='rmdimportant', echo=TRUE}
-The node numbers in the main stem are not necessary integar to simulate the variation of primordia number in the actual field. Consequently all attibutes of flag leaf are proportionally reduced (e.g. growth duration and maximum area).
-```
 
 ## Tillering
 
-
-The apex number in a plant ($A$) is increased by branching ($\Delta A_{B} $) and decreased by mortality ($\Delta A_{M} $). New tillers are initialized when increase of the node number in main stem ($\Delta N_{node}$) is more than 1. In the leaf cohort model, tiller number represents by the cohort size (i.e. the number of leaves in a cohort). 
-
+At `Emergence`, the apex number equals to `1`. The apex number in a plant ($A$) is increased by branching ($\Delta A_{B} $) and decreased by mortality ($\Delta A_{M} $) in every day.
 $$
 A = \sum_{i=1}^{N_{node}}{(\Delta A_{B} - \Delta A_{M})}
 $$
 
-### Branching
 
-The branching rate in a plant is specified by parameter BranchingRate ($\Delta A_{B}$) and is calculated as potential branching rate and several stress factors (i.e. nitrogen stress, total coverage, and water stress). From stage Emergence to Terminal Spikelet (Section \@ref(stage-period)), the potential branching rate is defined as a function of number of appeared cohorts in the main stem (Figure \@ref(fig:str-branching-rate)) which follow the pattern of Fibonacci sequence. Beyond this period, the branching rate is set as zero. 
+
+<div class="fig-output">
+```{r str-apex-number, fig.asp=1, fig.cap='Apex number in the main stem'}
+y_cols <- c('Wheat.Structure.ApexNum')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Number', ncol = 3)
+```
+</div>
+
+
+
+
+### Branching rate
+
+The branching rate in a plant is specified by parameter BranchingRate ($\Delta A_{B}$) and is calculated as potential branching rate (Fig. \@ref(fig:str-branching-rate)) and several stress factors (i.e. nitrogen stress, total coverage, and water stress). From stage Emergence to Terminal Spikelet (Section \@ref(stage-period)), the potential branching rate is defined as a function of number of appeared cohorts in the main stem (Figure \@ref(fig:str-branching-rate)) which follow the pattern of Fibonacci sequence. Beyond this period, the branching rate is set as zero. 
 
 <div class="fig-input">
-```{r str-branching-rate, fig.asp = 0.75, fig.cap='Potential branching rate of APSIM-Wheat as a function of appreared cohort number'}
+```{r str-branching-rate, fig.asp = 0.5, fig.cap='Potential branching rate of APSIM-Wheat as a function of appreared cohort number'}
 xpath <- '//Name[text()="PotentialBranchingRate"]'
 plot_xypair(pmf, xpath, x_lab = 'Number of appeared cohorts', y_lab = 'Branching rate')
 
@@ -215,11 +192,28 @@ The nitrogen stress is calculated as a function of fraction of nitrogen supply r
 
 <div class="fig-input">
 ```{r str-branching-factor, fig.asp = 1.25, fig.cap='The factors to influence of branching rate (nitrogen stress, total coverage and water stress). The final multiplier of branching rate is the minimum values of the '}
-#xpath <- c('//MinimumFunction//Name[text()="NitrogenEffect"]', 
-#           '//MinimumFunction//Name[text()="CoverEffect"]', 
-#           '//MinimumFunction//Name[text()="WaterStressEffect"]')
-# plot_xypair(pmf, xpath, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
-#            label = c('Nitrogen stress', 'Total coverage', 'Water stress'))
+xpath <- paste0('//MultiplyFunction/Name[text()="BranchingRate"]',
+                '/following-sibling::MinimumFunction', 
+                '/Name[text()="StressFactors"]',
+                '/following-sibling::LinearInterpolationFunction', 
+                '/Name[text()="',
+                c('NitrogenEffect', 'CoverEffect', 'WaterStressEffect'), '"]')
+plot_xypair(pmf, xpath, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
+           label = c('Nitrogen stress', 'Total coverage', 'Water stress'))
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r str-branching-stress, fig.cap='The stress factors for branching rate'}
+y_cols <- c('Wheat.Structure.BranchingRate.StressFactors.NitrogenEffect', 
+            'Wheat.Structure.BranchingRate.StressFactors.CoverEffect',
+            'Wheat.Structure.BranchingRate.StressFactors.WaterStressEffect')
+y_labels <- c('Nitrogen', 'Cover', 'Water')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Stress factor', ncol = 3, y_labels = y_labels)
 
 ```
 </div>
@@ -228,38 +222,21 @@ The nitrogen stress is calculated as a function of fraction of nitrogen supply r
 
 
 
-```{block, type='rmderror', echo=TRUE}
-The values for total coverage are 0.1 and 0.25 in the wheat validation model. I would expect much higher coverage to stop tillering.
-```
 
-
-```{block, type='rmderror', echo=TRUE}
-The step functions or leaf cohort model in the tillering processing cause that the tiller dynamic is too sensitive to the stage of terminal spikelet. 
-```
-
-
-
-Figure \@ref(fig:tiller-number) shows the branching rate and total branching number in the test simulation without nitrogen stress on branching rate during branching period (from Emergence to Terminal Spikelet, Figure \@ref(fig:nitrogen-fn)).
+Figure \@ref(fig:str-tiller-number) shows the branching rate and total branching number in the test simulation without nitrogen stress on branching rate during branching period (from Emergence to Terminal Spikelet.
 
 <div class="fig-output">
-```{r tiller-number, fig.cap='The branching rate and branch number for wheat'}
+```{r str-tiller-number, fig.cap='The branching rate and branch number for wheat'}
 y_cols <- c('Wheat.Structure.BranchNumber', 
             'Wheat.Structure.BranchingRate',
             'Wheat.Structure.BranchMortality')
 
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Branch number or branching rate') +
-    scale_y_continuous(breaks = seq(1, 10))
+plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Branch number or branching rate') 
 
 ```
 </div>
 
 
-
-
-
-```{block, type='rmdimportant', echo=TRUE}
-It seems PMF uses the branching rate one day before to calculate the branch number.
-```
 
 
 
@@ -271,33 +248,31 @@ At the terminal spikelet, all tillers with less than `r get_fixed_value(pmf, '//
 
 
 
-Branching mortality starts from the Flag leaf until Flowering which defines as a function of moving mean tiller growth rate (Figure \@ref(fig:mortality-growth-rate). The mean tiller growth rate is calculated as the 5 days moving means of tiller growth rate, which is calculated by the daily biomass supply divides thermal time and total stem population.  <font color="red">Reference required.</font>
-
-
-```{block, type='rmderror', echo=TRUE}
-Need to check the mortality caused by growth rate.
-```
+Branching mortality starts from the Flag leaf until Flowering which defines as a function of moving mean tiller growth rate (Figure \@ref(fig:str-mortality-growth-rate). The mean tiller growth rate is calculated as the 5 days moving means of tiller growth rate, which is calculated by the daily biomass supply divides thermal time and total stem population.  <font color="red">Reference required.</font>
 
 
 <div class="fig-input">
-```{r mortality-growth-rate, fig.asp=0.75, fig.cap='Tiller mortality as a function of moving mean tiller growth rate'}
-xpath <- '//Name[text()="MortalityPerDegDay"]'
+```{r str-mortality-growth-rate, fig.asp=0.75, fig.cap='Tiller mortality as a function of moving mean tiller growth rate'}
+xpath <- '//PhaseLookup/Name[text()="MortalityPerDegDay"]'
+xpath <- paste0('//PhaseLookup/Name[text()="BranchMortality"]',
+                '/following-sibling::PhaseLookupValue', 
+                '/Name[text()="MortalityPhase"]',
+                '/following-sibling::MultiplyFunction', 
+                '/Name[text()="Mortality"]',
+                '/following-sibling::LinearInterpolationFunction', 
+                '/Name[text()="MortalityPerDegDay"]')
 plot_xypair(pmf, xpath, x_lab = 'Moving mean tiller growth rate', y_lab = 'Branch motality')
 ```
 </div>
 
 
-```{block, type='rmderror', echo=TRUE}
-Not sure why the tiller mortality starts from Flag leaf, not terminal spikelet, even the whole growth season
-```
 
 
 
-
-Figure \@ref(fig:tiller-growth-rate-factor) and \@ref(fig:tiller-growth-rate) show the mean tiller growth rate and the three factors to calculate it in the test simulation.
+Figure \@ref(fig:str-tiller-growth-rate-factor) shows the mean tiller growth rate and the three factors to calculate it in the test simulation.
 
 <div class="fig-output">
-```{r tiller-growth-rate, fig.cap='The moving tiller growth rate'}
+```{r str-tiller-growth-rate, fig.cap='The moving tiller growth rate'}
 y_cols <- c(
     'Wheat.Structure.MeanTillerGrowthRate')
 plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Moving tiller growth rate')
@@ -307,14 +282,15 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Moving tiller growth 
 
 
 
+
 <div class="fig-output">
-```{r tiller-growth-rate-factor, fig.asp=1.25, fig.cap='Three factors to calculate the tiller growth rate'}
-# y_cols <- c(
-#     'Wheat.Arbitrator.DMSupply',
-#     'Wheat.Phenology.ThermalTime',
-#     'Wheat.Structure.TotalStemPopn')
-# plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Three factors to calculate the tiller growth rate.',
-#             panel = TRUE)
+```{r str-tiller-number-mo, fig.cap='The mortality of tillers'}
+y_cols <- c(
+
+    'Wheat.Structure.BranchMortality',
+    'Wheat.Structure.ProportionBranchMortality',
+            'Wheat.Structure.ProportionPlantMortality')
+plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Mortality of branching', ncol = 3)
 
 ```
 </div>
@@ -322,40 +298,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Moving tiller growth 
 
 
 
-<div class="fig-output">
-```{r tiller-number-mo, fig.cap='The mortality of tillers'}
-# y_cols <- c(
-#     
-#     'Wheat.Structure.BranchMortality',
-#     'Wheat.Structure.ProportionBranchMortality', 
-#             'Wheat.Structure.ProportionPlantMortality')
-# plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Mortality of branching')
-
-```
-</div>
-
-
-
-As the primary bud number is equal to 1, the plant total node number and total primary node number are the same (Figure \@ref(fig:plant-node-number)). Figure \@ref(fig:plant-node-number) show the total node number as the results of tiller appearing and mortality.
-
-<div class="fig-output">
-```{r plant-node-number, fig.cap='Total plant node number'}
-y_cols <- c('Wheat.Structure.PlantTotalNodeNo', 'Wheat.Structure.PrimaryBudTotalNodeNo')
-
-plot_report(report,
-            x_var, y_cols, x_lab = x_lab, y_lab = 'Total plant node number')
-
-```
-</div>
-
-
-
-
-
-
-
-
-
+<!--
 ## Plant and Main-Stem Population
 
 Plant population ($P$) is initialized at sowing from Sow event, and daily reduced by the plant mortality ($\Delta P$).
@@ -414,6 +357,9 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Canopy height (mm)')
 
 ```
 </div>
+
+
+New tillers are initialized when increase of the node number in main stem ($\Delta N_{node}$) is more than 1. In the leaf cohort model, tiller number represents by the cohort size (i.e. the number of leaves in a cohort). 
 
 -->
 

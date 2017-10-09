@@ -97,7 +97,12 @@
 </ul></li>
 <li class="chapter" data-level="4" data-path="cha-structure.html"><a href="cha-structure.html"><i class="fa fa-check"></i><b>4</b> Structure</a><ul>
 <li class="chapter" data-level="4.1" data-path="sec-str-phyllochron.html"><a href="sec-str-phyllochron.html"><i class="fa fa-check"></i><b>4.1</b> Phyllochron</a></li>
-<li class="chapter" data-level="4.2" data-path="sec-main-stem.html"><a href="sec-main-stem.html"><i class="fa fa-check"></i><b>4.2</b> Initialization and appearance of leaf tips on main stem</a></li>
+<li class="chapter" data-level="4.2" data-path="sec-final-leaf-number.html"><a href="sec-final-leaf-number.html"><i class="fa fa-check"></i><b>4.2</b> Final leaf number</a></li>
+<li class="chapter" data-level="4.3" data-path="sec-main-stem.html"><a href="sec-main-stem.html"><i class="fa fa-check"></i><b>4.3</b> Initialization and appearance of leaf tips on main stem</a></li>
+<li class="chapter" data-level="4.4" data-path="tillering.html"><a href="tillering.html"><i class="fa fa-check"></i><b>4.4</b> Tillering</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="tillering.html"><a href="tillering.html#branching-rate"><i class="fa fa-check"></i><b>4.4.1</b> Branching rate</a></li>
+<li class="chapter" data-level="4.4.2" data-path="tillering.html"><a href="tillering.html#sec-structure-mortality"><i class="fa fa-check"></i><b>4.4.2</b> Mortality</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
 <li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Biomass pool</a></li>
@@ -198,7 +203,7 @@ Figure 8.1: The life cycle of a leaf cohort.
 <h3><span class="header-section-number">8.1.2</span> Leaf initialization and appearance</h3>
 <p>At <code>Germination</code>, 2 new leaf cohorts are initialized with initial leaf area 200, 0 mm<sup>2</sup>. The inital leaf area simulates seed biomass or embryo size.</p>
 <p>At <code>Emergence</code> stage, 1 leaf cohort is appeared at the main stem, and 1 new leaf cohort is initialized.</p>
-<p>After <code>Emergence</code> and before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort initialises and an existing leaf cohot appears when increases of potential appearance of tip number are more than 1 (Figure <a href="sec-main-stem.html#fig:str-delta-tip">4.4</a>). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than 2 of appeared tip number (Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-number">8.2</a>).</p>
+<p>After <code>Emergence</code> and before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort initialises and an existing leaf cohot appears when increases of potential appearance of tip number are more than 1 (Figure <a href="sec-main-stem.html#fig:str-delta-tip">4.5</a>). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than 2 of appeared tip number (Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-number">8.2</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:leaf-cohort-number"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-cohort-number-1.png" alt="The initialized and appeared leaf cohort number in the main stem" width="80%" />
@@ -211,7 +216,7 @@ Figure 8.2: The initialized and appeared leaf cohort number in the main stem
 <div id="leaf-growth-and-senescing" class="section level3">
 <h3><span class="header-section-number">8.1.3</span> Leaf growth and senescing</h3>
 <p><strong>Growth (expansion) duration</strong></p>
-<p>Leaf expansion of cohort <span class="math inline">\(i\)</span> starts from appearance of leaf tip <span class="math inline">\(i\)</span>, i.e. the expansion of leaf cohort in the sheath is ignored which does not contribute to green leaf or leaf area index. The growth duration of spring wheat is close to one phylochron as the synchronization of leaf blade and sheath <span class="citation">(Skinner and Nelson <a href="cha-reference.html#ref-SkinnerElongationGrassLeaf1995">1995</a>)</span>. The growth duration is set as 1.3 phyllochron in default. The growth duration is adjusted for fraction of flag leaf (Fig. <a href="sec-main-stem.html#fig:str-leaf-fraction">4.7</a>) to simulate the variation of final leaf number in a population.</p>
+<p>Leaf expansion of cohort <span class="math inline">\(i\)</span> starts from appearance of leaf tip <span class="math inline">\(i\)</span>, i.e. the expansion of leaf cohort in the sheath is ignored which does not contribute to green leaf or leaf area index. The growth duration of spring wheat is close to one phylochron as the synchronization of leaf blade and sheath <span class="citation">(Skinner and Nelson <a href="cha-reference.html#ref-SkinnerElongationGrassLeaf1995">1995</a>)</span>. The growth duration is set as 1.3 phyllochron in default. The growth duration is adjusted for fraction of flag leaf (Fig. <a href="sec-main-stem.html#fig:str-leaf-fraction">4.8</a>) to simulate the variation of final leaf number in a population.</p>
 <p><strong>Lag duration</strong></p>
 <p>Lag duration (full functional duration) is defined as 4 phyllochrons for leaf appeared during vegetative period (from <code>Emergence</code> to <code>TerminalSpikelet</code>) and adjusted by leaf age. For leaf cohort appeared during stem elongation period (from <code>TerminalSpikelet</code> to <code>FlagLeaf</code>), the lag duration equals to total length from stage <code>FlagLeaf</code> to stage <code>EndGrainFill</code> minus 3 phyllochron (<code>senescence duration</code>), i.e. flag leaf is completely death at the stage <code>EndGrainFill</code>.</p>
 <p><strong>Senescene duration</strong></p>

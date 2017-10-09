@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="cha-structure.html">
-<link rel="next" href="sec-main-stem.html">
+<link rel="next" href="sec-final-leaf-number.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -97,7 +97,12 @@
 </ul></li>
 <li class="chapter" data-level="4" data-path="cha-structure.html"><a href="cha-structure.html"><i class="fa fa-check"></i><b>4</b> Structure</a><ul>
 <li class="chapter" data-level="4.1" data-path="sec-str-phyllochron.html"><a href="sec-str-phyllochron.html"><i class="fa fa-check"></i><b>4.1</b> Phyllochron</a></li>
-<li class="chapter" data-level="4.2" data-path="sec-main-stem.html"><a href="sec-main-stem.html"><i class="fa fa-check"></i><b>4.2</b> Initialization and appearance of leaf tips on main stem</a></li>
+<li class="chapter" data-level="4.2" data-path="sec-final-leaf-number.html"><a href="sec-final-leaf-number.html"><i class="fa fa-check"></i><b>4.2</b> Final leaf number</a></li>
+<li class="chapter" data-level="4.3" data-path="sec-main-stem.html"><a href="sec-main-stem.html"><i class="fa fa-check"></i><b>4.3</b> Initialization and appearance of leaf tips on main stem</a></li>
+<li class="chapter" data-level="4.4" data-path="tillering.html"><a href="tillering.html"><i class="fa fa-check"></i><b>4.4</b> Tillering</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="tillering.html"><a href="tillering.html#branching-rate"><i class="fa fa-check"></i><b>4.4.1</b> Branching rate</a></li>
+<li class="chapter" data-level="4.4.2" data-path="tillering.html"><a href="tillering.html#sec-structure-mortality"><i class="fa fa-check"></i><b>4.4.2</b> Mortality</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
 <li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Biomass pool</a></li>
@@ -181,7 +186,7 @@
 <h2><span class="header-section-number">4.1</span> Phyllochron</h2>
 <p>The phyllochron is the intervening period between the sequential emergence of leaf tips on the main stem of a wheat <span class="citation">(McMaster and Hunt <a href="cha-reference.html#ref-mcmaster_re-examining_2003">2003</a>)</span>.</p>
 <p>The non-linear reponse of temperature on phyllchron were observed by Friend et al. <span class="citation">(<a href="cha-reference.html#ref-friend_leaf_1962">1962</a>)</span> and Cao and Moss <span class="citation">(<a href="cha-reference.html#ref-cao_temperature_1989">1989</a>)</span>. The soil temperature provided more accurately prediction of leaf development than air temperature <span class="citation">(Jamieson et al. <a href="cha-reference.html#ref-JamiesonPredictionleafappearance1995">1995</a>)</span>. However, a simple linear reponse of phyllochron to air temperature works surprusingly well in predicting phyllochron for most field conditions <span class="citation">(McMaster and Hunt <a href="cha-reference.html#ref-mcmaster_re-examining_2003">2003</a>)</span>. If improvements are desired, the use of non-linear reponses and soil temperature shows promise <span class="citation">(Jamieson et al. <a href="cha-reference.html#ref-JamiesonPredictionleafappearance1995">1995</a>; Yan and Hunt <a href="cha-reference.html#ref-YanEquationModellingTemperature1999">1999</a>)</span>. Consequently, we assume the linear reponse of air temperature on leaf appearance (phyllochorn).</p>
-<p>The base phyllochron is a genotypic parameter with default value 120, but is chagned by most of cultivars. Based on <span class="citation">(Jamieson et al. <a href="cha-reference.html#ref-JamiesonPredictionleafappearance1995">1995</a>)</span>, leaf appearance could be described by a base phyllochron determined between leaves 3 and 7 and a phyllochron that was 70% of base phyllochron for leaves &lt; 3 and 140% of base phyllochroen for leaves &gt; 7 (Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron-age">4.1</a>). The phyllochron also is adjusted by photoperiod [reference required] through increasing pholochron in the shorter day length (Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron-ppd">4.2</a>).</p>
+<p>The base phyllochron is a genotypic parameter with default value 120, but is chagned for most of cultivars. Based on <span class="citation">(Jamieson et al. <a href="cha-reference.html#ref-JamiesonPredictionleafappearance1995">1995</a>)</span>, leaf appearance could be described by a base phyllochron determined between leaves 3 and 7 and a phyllochron that was 70% of base phyllochron for leaves &lt; 3 and 140% of base phyllochroen for leaves &gt; 7 (Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron-age">4.1</a>). The phyllochron also is adjusted by photoperiod [reference required] through increasing pholochron in the shorter day length (Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron-ppd">4.2</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:str-phyllochron-age"></span>
 <img src="APSIM-Wheat_files/figure-html/str-phyllochron-age-1.png" alt="Phyllochron of leaf cohort is depending on the rank on the main stem" width="80%" />
@@ -207,32 +212,6 @@ Figure 4.3: The actual phyllochron in the testing environment
 </p>
 </div>
 </div>
-<!--
-## Final leaf number {#sec:final-leaf-number}
-
-Brown et al. [-@BrownIntegrationmolecularphysiological2013] showed final leaf number (FLN) could be estimated as 2.86 + HSTS * 1.1 where HSTS is the the Haun stage at terminal spikelet. To caputre this in the wheat model we have set the initial number of primordia (determined by the number of initialleaf objects on the leaf class) to 3 and have set this function to produce primordia 10% faster than mainstem leaves.  Primordia are initiated until the therminal spikelet stage and then the number remains fixed, giving final leaf number.
-
-The final leaf number in the main stem (FinalLeafNumber, Section \@ref(output-structure)) equal to minimum leaf number, plus the increases of leaf number which are caused by delay of wheat development (vernalization and and photoperiod effects). The minimum leaf number is a genotypic parameter to represent 
-
-[Need to describe the vernalization and photoperiod effects on leaf number].
-
-
-<div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/final-leaf-number-1.png" alt="Final leaf number in main stem" width="80%" />
-<p class="caption">(\#fig:final-leaf-number)Final leaf number in main stem</p>
-</div>
-</div>
-
-
-
-
-<div class="rmdimportant">
-<p>The final node number is daily updated and gradually decreased as the photoperiod (longer day length) and vernalization (satisfication of vernalization requirement) effects.</p>
-<p>Need to check the response of day length and vernalization requirement on leaf number.</p>
-</div>
-
--->
 </div>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
@@ -249,7 +228,7 @@ The final leaf number in the main stem (FinalLeafNumber, Section \@ref(output-st
         </div>
       </div>
 <a href="cha-structure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-main-stem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sec-final-leaf-number.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
