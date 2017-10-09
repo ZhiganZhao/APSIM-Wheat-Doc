@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-grain-number.html">
-<link rel="next" href="sec-grain-demand.html">
+<link rel="prev" href="sec-main-stem.html">
+<link rel="next" href="cha-biomass.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -182,18 +182,149 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:grain-supply" class="section level2">
-<h2><span class="header-section-number">6.2</span> Supply</h2>
-<p>No biomass supply is considered in the <code>Grain</code> organ (Fig. <a href="sec-grain-supply.html#fig:grain-supply">5.16</a>).</p>
+<div id="sec:str-tillering" class="section level2">
+<h2><span class="header-section-number">4.4</span> Tillering</h2>
+<p>At <code>Emergence</code>, the apex number equals to <code>1</code>. The apex number in a plant (<span class="math inline">\(A\)</span>) is increased by branching ($A_{B} <span class="math inline">\() and decreased by mortality (\)</span>A_{M} $) in every day. <span class="math display">\[
+A = \sum_{i=1}^{N_{node}}{(\Delta A_{B} - \Delta A_{M})}
+\]</span></p>
 <div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:grain-supply"></span>
-<img src="APSIM-Wheat_files/figure-html/grain-supply-1.png" alt="Biomass supply from grain" width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:str-apex-number"></span>
+<img src="APSIM-Wheat_files/figure-html/str-apex-number-1.png" alt="Apex number in the main stem" width="80%" />
 <p class="caption">
-Figure 5.16: Biomass supply from grain
+Figure 4.9: Apex number in the main stem
+</p>
+</div>
+</div>
+<div id="branching-rate" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Branching rate</h3>
+<p>The branching rate in a plant is specified by parameter BranchingRate (<span class="math inline">\(\Delta A_{B}\)</span>) and is calculated as potential branching rate (Fig. <a href="sec-str-tillering.html#fig:str-branching-rate">4.10</a>) and several stress factors (i.e. nitrogen stress, total coverage, and water stress). From stage Emergence to Terminal Spikelet (Section <a href="#stage-period"><strong>??</strong></a>), the potential branching rate is defined as a function of number of appeared cohorts in the main stem (Figure <a href="sec-str-tillering.html#fig:str-branching-rate">4.10</a>) which follow the pattern of Fibonacci sequence. Beyond this period, the branching rate is set as zero.</p>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:str-branching-rate"></span>
+<img src="APSIM-Wheat_files/figure-html/str-branching-rate-1.png" alt="Potential branching rate of APSIM-Wheat as a function of appreared cohort number" width="80%" />
+<p class="caption">
+Figure 4.10: Potential branching rate of APSIM-Wheat as a function of appreared cohort number
+</p>
+</div>
+</div>
+<p>Two stresses are defined in the APSIM-Wheat including nitrogen and WSC. A simple sensitivity analysis indicates the branching rate is too sensitive to WSC with default values (x = [0.1, 0.2]; y = [0, 1]). So, this feature is disabled for further analysis.</p>
+<p>The nitrogen stress is calculated as a function of fraction of nitrogen supply relative to nitrogen demand which is exported from the Arbitrator module (Chapter <a href="#cha:arbitrator"><strong>??</strong></a>). Wheat module assumes no nitrogen stress when the nitrogen supply is bigger than 1.5 times of nitrogen demand (Figure <a href="#fig:branching-rate-nstress"><strong>??</strong></a>). Nitrogen stress linearly increases when supply/demand ratio less then 1.5 (<font color="red">Reference required.</font>)</p>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:str-branching-factor"></span>
+<img src="APSIM-Wheat_files/figure-html/str-branching-factor-1.png" alt="The factors to influence of branching rate (nitrogen stress, total coverage and water stress). The final multiplier of branching rate is the minimum values of the " width="80%" />
+<p class="caption">
+Figure 4.11: The factors to influence of branching rate (nitrogen stress, total coverage and water stress). The final multiplier of branching rate is the minimum values of the
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:str-branching-stress"></span>
+<img src="APSIM-Wheat_files/figure-html/str-branching-stress-1.png" alt="The stress factors for branching rate" width="80%" />
+<p class="caption">
+Figure 4.12: The stress factors for branching rate
+</p>
+</div>
+</div>
+<p>Figure <a href="sec-str-tillering.html#fig:str-tiller-number">4.13</a> shows the branching rate and total branching number in the test simulation without nitrogen stress on branching rate during branching period (from Emergence to Terminal Spikelet.</p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:str-tiller-number"></span>
+<img src="APSIM-Wheat_files/figure-html/str-tiller-number-1.png" alt="The branching rate and branch number for wheat" width="80%" />
+<p class="caption">
+Figure 4.13: The branching rate and branch number for wheat
 </p>
 </div>
 </div>
 </div>
+<div id="sec-structure-mortality" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> Mortality</h3>
+<p>Two types of mortality are considered in the apex model, i.e. smaller tiller at terminal spikelet and low growth rate. For any types of tiller mortality, the plant does not reduce the population of existing leaf cohort, but number of apex, then reduce the population size of new leaf cohort.</p>
+<p>At the terminal spikelet, all tillers with less than 4 leaves are stopped to growth new leaves.</p>
+<p>Branching mortality starts from the Flag leaf until Flowering which defines as a function of moving mean tiller growth rate (Figure <a href="sec-str-tillering.html#fig:str-mortality-growth-rate">4.14</a>. The mean tiller growth rate is calculated as the 5 days moving means of tiller growth rate, which is calculated by the daily biomass supply divides thermal time and total stem population. <font color="red">Reference required.</font></p>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:str-mortality-growth-rate"></span>
+<img src="APSIM-Wheat_files/figure-html/str-mortality-growth-rate-1.png" alt="Tiller mortality as a function of moving mean tiller growth rate" width="80%" />
+<p class="caption">
+Figure 4.14: Tiller mortality as a function of moving mean tiller growth rate
+</p>
+</div>
+</div>
+<p>Figure <a href="#fig:str-tiller-growth-rate-factor"><strong>??</strong></a> shows the mean tiller growth rate and the three factors to calculate it in the test simulation.</p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:str-tiller-growth-rate"></span>
+<img src="APSIM-Wheat_files/figure-html/str-tiller-growth-rate-1.png" alt="The moving tiller growth rate" width="80%" />
+<p class="caption">
+Figure 4.15: The moving tiller growth rate
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:str-tiller-number-mo"></span>
+<img src="APSIM-Wheat_files/figure-html/str-tiller-number-mo-1.png" alt="The mortality of tillers" width="80%" />
+<p class="caption">
+Figure 4.16: The mortality of tillers
+</p>
+</div>
+</div>
+<!--
+## Plant and Main-Stem Population
+
+Plant population ($P$) is initialized at sowing from Sow event, and daily reduced by the plant mortality ($\Delta P$).
+$$
+    P=P_{0} - \sum_{t=T_{0}}^{T}(\Delta P)
+$$
+
+where, $P_{0}$ is the sown population, which initialized at sowing.
+
+Population of main stem ($P_{ms}$) is calculated according to plant population ($P$) and primary bud number ($N_{bud}$) with default value 1 for wheat. The unit of $P_{ms}$ is per square meter.
+$$
+    P_{ms}=P \times N_{bud}
+$$
+
+Total stem population ($P_{stem}$) is summed up population of main stem ($P_{ms}$) and branches (($P_{branch}$)).
+$$
+    P_{stem} = P_{ms} + P_{branch}
+$$
+
+In the test simulation, the plant density ($P$) is 150 plants m^2^, so population of main stem ($P_{ms}$) equals to plant density (Figure \@ref(fig:plant-population)). From Emergence to terminal spikelet, the population of total stem ($P_{stem}$) multiply by stem number and plant density (Figure \@ref(fig:tiller-number)). 
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/str-plant-population-1.png" alt="The total population of main stem and all stems" width="80%" />
+<p class="caption">(\#fig:str-plant-population)The total population of main stem and all stems</p>
+</div>
+</div>
+
+
+
+
+
+## Canopy height
+The canopy height is calculated as the potential height and adjusted by water stress. 
+
+
+<div class="fig-input">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/str-potential-height-1.png" alt="Potential canopy height" width="80%" />
+<p class="caption">(\#fig:str-potential-height)Potential canopy height</p>
+</div>
+</div>
+
+
+
+<div class="fig-output">
+<div class="figure" style="text-align: center">
+<img src="APSIM-Wheat_files/figure-html/str-height-1.png" alt="The simulated canopy height" width="80%" />
+<p class="caption">(\#fig:str-height)The simulated canopy height</p>
+</div>
+</div>
+
+
+New tillers are initialized when increase of the node number in main stem ($\Delta N_{node}$) is more than 1. In the leaf cohort model, tiller number represents by the cohort size (i.e. the number of leaves in a cohort). 
+
+-->
+
+</div>
+</div>
+<!-- </div> -->
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -208,8 +339,8 @@ Figure 5.16: Biomass supply from grain
           </div>
         </div>
       </div>
-<a href="sec-grain-number.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-grain-demand.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sec-main-stem.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cha-biomass.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -238,7 +369,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/grain.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/structure.Rmd",
 "text": "Edit"
 },
 "download": null,
