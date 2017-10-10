@@ -63,10 +63,9 @@ plot_xypair(pmf, xpath, x_lab = 'Ratio of functional nitrogen in leaf.',
 
 $F_{W}$ quantifies water stress and is calculated as <i>Leaf.Transpiration</i>/<i>Leaf.WaterDemand</i>, where <i>Leaf.Transpiration</i> is the minimum of <i>Leaf.WaterDemand</i> and <i>Root.WaterUptake</i>
 
-```{block, type = 'rmdnote', echo=TRUE}
+<!--
 Need to further check
-```
-
+-->
 
 <div class="fig-input">
 ```{r leaf-rue-fw, fig.asp = 0.5, fig.cap='The water factor which influences radiation use efficiency'}

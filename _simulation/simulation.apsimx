@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Simulations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="16">
+<Simulations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="18">
   <Name>Simulations</Name>
   <Replacements>
     <Name>Replacements</Name>
@@ -128,11 +128,11 @@
         <string>[Wheat].Leaf.CohortGrowthDuration[1:11]</string>
         <string>[Wheat].Leaf.CohortDeltaWaterConstrainedArea[1:11]</string>
         <string>[Wheat].Leaf.CohortDeltaCarbonConstrainedArea[1:11]</string>
-        <string>[Wheat].Leaf.CohortLivePopulation[1:11]</string>
+        <string>[Wheat].Leaf.LivePopulation[1:11]</string>
         <string>[Wheat].Leaf.CohortSenescedFrac[1:11]</string>
         <string />
         <string>[Wheat].Leaf.FinalLeafFraction</string>
-        <string />
+        <string>[Wheat].Leaf.LiveStemNumber</string>
         <string />
         <string>[Wheat].Leaf.LAI</string>
         <string>[Wheat].Leaf.LAIDead</string>
@@ -141,8 +141,8 @@
         <string>[Wheat].Leaf.CoverGreen</string>
         <string>[Wheat].Leaf.CoverTotal</string>
         <string />
-        <string>[Wheat].Leaf.CohortLive.Wt as Wheat.Leaf.LiveWeight</string>
-        <string>[Wheat].Leaf.CohortDead.Wt as Wheat.Leaf.DeadWeight</string>
+        <string>[Wheat].Leaf.Live.Wt as Wheat.Leaf.LiveWeight</string>
+        <string>[Wheat].Leaf.Dead.Wt as Wheat.Leaf.DeadWeight</string>
         <string>[Wheat].Leaf.SpecificArea</string>
         <string>[Wheat].Leaf.Fn</string>
         <string />
@@ -1336,14 +1336,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
       </Structure>
       <ReproductiveOrgan>
         <Name>Grain</Name>
-        <Biomass>
-          <Name>Live</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Biomass>
-        <Biomass>
-          <Name>Dead</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Biomass>
         <HoldFunction>
           <Name>NumberFunction</Name>
           <MultiplyFunction>
@@ -1641,23 +1633,17 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
         <GrowthRespiration>0</GrowthRespiration>
         <MaintenanceRespiration>0</MaintenanceRespiration>
         <RipeStage>Ripe</RipeStage>
+        <Live>
+          <Name>Biomass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+        </Live>
+        <Dead>
+          <Name>Biomass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+        </Dead>
       </ReproductiveOrgan>
       <Root>
         <Name>Root</Name>
-        <CompositeBiomass>
-          <Name>Live</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Propertys>
-            <string>[Root].LayerLive</string>
-          </Propertys>
-        </CompositeBiomass>
-        <CompositeBiomass>
-          <Name>Dead</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Propertys>
-            <string>[Root].LayerDead</string>
-          </Propertys>
-        </CompositeBiomass>
         <Constant>
           <Name>KLModifier</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
@@ -2017,20 +2003,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <ApexGroupSize />
           <ApexGroupAge />
         </LeafCohort>
-        <CompositeBiomass>
-          <Name>Live</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Propertys>
-            <string>[Leaf].CohortLive</string>
-          </Propertys>
-        </CompositeBiomass>
-        <CompositeBiomass>
-          <Name>Dead</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Propertys>
-            <string>[Leaf].CohortDead</string>
-          </Propertys>
-        </CompositeBiomass>
         <ArrayBiomass>
           <Name>CohortArrayLive</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
@@ -2975,14 +2947,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           </AddFunction>
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </PopulationBasedDemandFunction>
-        <Biomass>
-          <Name>Live</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Biomass>
-        <Biomass>
-          <Name>Dead</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Biomass>
         <Constant>
           <Name>NReallocationFactor</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
@@ -3153,17 +3117,17 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <Units>0-1</Units>
         </Constant>
         <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Live>
+          <Name>Biomass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+        </Live>
+        <Dead>
+          <Name>Biomass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+        </Dead>
       </GenericOrgan>
       <GenericOrgan>
         <Name>Stem</Name>
-        <Biomass>
-          <Name>Live</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Biomass>
-        <Biomass>
-          <Name>Dead</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Biomass>
         <PhaseLookup>
           <Name>StructuralFraction</Name>
           <PhaseLookupValue>
@@ -3447,6 +3411,14 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <Units>0-1</Units>
         </Constant>
         <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Live>
+          <Name>Biomass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+        </Live>
+        <Dead>
+          <Name>Biomass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+        </Dead>
       </GenericOrgan>
       <CompositeBiomass>
         <Name>AboveGround</Name>
@@ -4749,7 +4721,7 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
           <Name>hartog</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <Operation>
-            <Date>2015-05-21T00:00:00</Date>
+            <Date>2015-05-21</Date>
             <Action>[wheat].Sow(cultivar:"hartog", population:150, depth:40, rowSpacing:250);</Action>
           </Operation>
         </Operations>
@@ -5132,7 +5104,7 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
           <Name>Sowing</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <Operation>
-            <Date>2015-05-21T00:00:00</Date>
+            <Date>2015-05-21</Date>
             <Action>[wheat].Sow(cultivar:"hartog", population:150, depth:40, rowSpacing:250);</Action>
           </Operation>
         </Operations>
@@ -5231,7 +5203,7 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
             <string>[Wheat].Leaf.CohortGrowthDuration[1:11]</string>
             <string>[Wheat].Leaf.CohortDeltaWaterConstrainedArea[1:11]</string>
             <string>[Wheat].Leaf.CohortDeltaCarbonConstrainedArea[1:11]</string>
-            <string>[Wheat].Leaf.CohortLivePopulation[1:11]</string>
+            <string>[Wheat].Leaf.LivePopulation[1:11]</string>
             <string />
             <string>[Wheat].Leaf.AppearedCohortNo</string>
             <string>[Wheat].Leaf.InitialisedCohortNo</string>
@@ -5253,8 +5225,8 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
             <string>[Wheat].Leaf.CoverGreen</string>
             <string>[Wheat].Leaf.CoverTotal</string>
             <string />
-            <string>[Wheat].Leaf.CohortLive.Wt as Wheat.Leaf.LiveWeight</string>
-            <string>[Wheat].Leaf.CohortDead.Wt as Wheat.Leaf.DeadWeight</string>
+            <string>[Wheat].Leaf.Live.Wt as Wheat.Leaf.LiveWeight</string>
+            <string>[Wheat].Leaf.Dead.Wt as Wheat.Leaf.DeadWeight</string>
             <string>[Wheat].Leaf.SpecificArea</string>
             <string>[Wheat].Leaf.Fn</string>
             <string />

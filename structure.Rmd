@@ -298,9 +298,20 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Mortality of branchin
 
 
 
-<!--
 ## Plant and Main-Stem Population
 
+
+<div class="fig-output">
+```{r str-live-stem-number, fig.cap='Total stem population and live stem number.'}
+y_cols <- c('Wheat.Structure.TotalStemPopn',
+    'Wheat.Leaf.LiveStemNumber')
+plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Stem population', ncol = 3)
+
+```
+</div>
+
+
+<!--
 Plant population ($P$) is initialized at sowing from Sow event, and daily reduced by the plant mortality ($\Delta P$).
 $$
     P=P_{0} - \sum_{t=T_{0}}^{T}(\Delta P)
