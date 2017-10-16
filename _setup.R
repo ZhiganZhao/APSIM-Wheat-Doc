@@ -5,9 +5,8 @@ opts_chunk$set(
     out.width = '80%', fig.asp = 1,
     warning = FALSE, fig.align = 'center',
     message = FALSE)
-library(readr)
-library(tidyverse)
-library(assertive)
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(assertive))
 library(xml2)
 library(DiagrammeR)
 library(RSQLite)

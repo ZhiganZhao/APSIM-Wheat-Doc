@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="sec-str-tillering.html">
-<link rel="next" href="cha-biomass.html">
+<link rel="next" href="canopy-height.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -104,6 +104,7 @@
 <li class="chapter" data-level="4.4.2" data-path="sec-str-tillering.html"><a href="sec-str-tillering.html#sec-structure-mortality"><i class="fa fa-check"></i><b>4.4.2</b> Mortality</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="plant-and-main-stem-population.html"><a href="plant-and-main-stem-population.html"><i class="fa fa-check"></i><b>4.5</b> Plant and Main-Stem Population</a></li>
+<li class="chapter" data-level="4.6" data-path="canopy-height.html"><a href="canopy-height.html"><i class="fa fa-check"></i><b>4.6</b> Canopy height</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
 <li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Biomass pool</a></li>
@@ -185,72 +186,24 @@
             <section class="normal" id="section-">
 <div id="plant-and-main-stem-population" class="section level2">
 <h2><span class="header-section-number">4.5</span> Plant and Main-Stem Population</h2>
+<p>No plant mortality is considerred in the wheat model.</p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:str-polulation"></span>
+<img src="APSIM-Wheat_files/figure-html/str-polulation-1.png" alt="Plant population." width="80%" />
+<p class="caption">
+Figure 4.17: Plant population.
+</p>
+</div>
+</div>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:str-live-stem-number"></span>
 <img src="APSIM-Wheat_files/figure-html/str-live-stem-number-1.png" alt="Total stem population and live stem number." width="80%" />
 <p class="caption">
-Figure 4.17: Total stem population and live stem number.
+Figure 4.18: Total stem population and live stem number.
 </p>
 </div>
 </div>
-<!--
-Plant population ($P$) is initialized at sowing from Sow event, and daily reduced by the plant mortality ($\Delta P$).
-$$
-    P=P_{0} - \sum_{t=T_{0}}^{T}(\Delta P)
-$$
-
-where, $P_{0}$ is the sown population, which initialized at sowing.
-
-Population of main stem ($P_{ms}$) is calculated according to plant population ($P$) and primary bud number ($N_{bud}$) with default value 1 for wheat. The unit of $P_{ms}$ is per square meter.
-$$
-    P_{ms}=P \times N_{bud}
-$$
-
-Total stem population ($P_{stem}$) is summed up population of main stem ($P_{ms}$) and branches (($P_{branch}$)).
-$$
-    P_{stem} = P_{ms} + P_{branch}
-$$
-
-In the test simulation, the plant density ($P$) is 150 plants m^2^, so population of main stem ($P_{ms}$) equals to plant density (Figure \@ref(fig:plant-population)). From Emergence to terminal spikelet, the population of total stem ($P_{stem}$) multiply by stem number and plant density (Figure \@ref(fig:tiller-number)). 
-
-<div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/str-plant-population-1.png" alt="The total population of main stem and all stems" width="80%" />
-<p class="caption">(\#fig:str-plant-population)The total population of main stem and all stems</p>
 </div>
-</div>
-
-
-
-
-
-## Canopy height
-The canopy height is calculated as the potential height and adjusted by water stress. 
-
-
-<div class="fig-input">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/str-potential-height-1.png" alt="Potential canopy height" width="80%" />
-<p class="caption">(\#fig:str-potential-height)Potential canopy height</p>
-</div>
-</div>
-
-
-
-<div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/str-height-1.png" alt="The simulated canopy height" width="80%" />
-<p class="caption">(\#fig:str-height)The simulated canopy height</p>
-</div>
-</div>
-
-
-New tillers are initialized when increase of the node number in main stem ($\Delta N_{node}$) is more than 1. In the leaf cohort model, tiller number represents by the cohort size (i.e. the number of leaves in a cohort). 
-
--->
-
-</div>
-<!-- </div> -->
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -266,7 +219,7 @@ New tillers are initialized when increase of the node number in main stem ($\Del
         </div>
       </div>
 <a href="sec-str-tillering.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cha-biomass.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="canopy-height.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

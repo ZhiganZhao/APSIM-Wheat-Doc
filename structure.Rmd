@@ -300,6 +300,18 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Mortality of branchin
 
 ## Plant and Main-Stem Population
 
+No plant mortality is considerred in the wheat model. 
+
+<div class="fig-output">
+```{r str-polulation, fig.asp = 0.5, fig.cap='Plant population.'}
+y_cols <- c('Wheat.Structure.MainStemPopn')
+plot_report(report, x_var2, y_cols, x_lab = 'Growth stage', y_lab = 'Plant population', ncol = 3)
+
+```
+</div>
+
+
+
 
 <div class="fig-output">
 ```{r str-live-stem-number, fig.cap='Total stem population and live stem number.'}
@@ -311,50 +323,23 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Stem population', nco
 </div>
 
 
-<!--
-Plant population ($P$) is initialized at sowing from Sow event, and daily reduced by the plant mortality ($\Delta P$).
-$$
-    P=P_{0} - \sum_{t=T_{0}}^{T}(\Delta P)
-$$
 
-where, $P_{0}$ is the sown population, which initialized at sowing.
+## Canopy height
+The canopy height (Fig. \@ref(fig:str-height)) is calculated as the potential height (Fig. \@ref(fig:str-potential-height)) and adjusted by water stress (Fig. \@ref(fig:str-height-water-stress)). 
 
-Population of main stem ($P_{ms}$) is calculated according to plant population ($P$) and primary bud number ($N_{bud}$) with default value 1 for wheat. The unit of $P_{ms}$ is per square meter.
-$$
-    P_{ms}=P \times N_{bud}
-$$
 
-Total stem population ($P_{stem}$) is summed up population of main stem ($P_{ms}$) and branches (($P_{branch}$)).
-$$
-    P_{stem} = P_{ms} + P_{branch}
-$$
-
-In the test simulation, the plant density ($P$) is 150 plants m^2^, so population of main stem ($P_{ms}$) equals to plant density (Figure \@ref(fig:plant-population)). From Emergence to terminal spikelet, the population of total stem ($P_{stem}$) multiply by stem number and plant density (Figure \@ref(fig:tiller-number)). 
-
-<div class="fig-output">
-```{r str-plant-population, fig.cap='The total population of main stem and all stems'}
-y_cols <- c('Wheat.Structure.MainStemPopn',
-            'Wheat.Structure.TotalStemPopn')
-
-plot_report(
-    report %>% filter(Wheat.Phenology.Stage < 10),
-            x_var, y_cols, x_lab = x_lab, y_lab = 'Total population of main stem and all stems')
-
+<div class="fig-input">
+```{r str-potential-height, fig.asp=0.5, fig.cap='Potential canopy height'}
+xpath <- '//HeightFunction/LinearInterpolationFunction/Name[text()="PotentialHeight"]'
+plot_xypair(pmf, xpath, x_lab = 'Stage', y_lab = 'Potential canopy height (mm)')
 ```
 </div>
 
 
-
-
-
-## Canopy height
-The canopy height is calculated as the potential height and adjusted by water stress. 
-
-
 <div class="fig-input">
-```{r str-potential-height, fig.asp=0.75, fig.cap='Potential canopy height'}
-xpath <- '//Name[text()="PotentialHeight"]'
-plot_xypair(pmf, xpath, x_lab = 'Stage', y_lab = 'Potential canopy height (mm)')
+```{r str-height-water-stress, fig.asp=0.5, fig.cap='The impact of water stress on canopy height'}
+xpath <- '//HeightFunction/LinearInterpolationFunction/Name[text()="WaterStress"]'
+plot_xypair(pmf, xpath, x_lab = 'water-supply-demand-ratio', y_lab = 'Potential canopy height (mm)')
 ```
 </div>
 
@@ -368,11 +353,3 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Canopy height (mm)')
 
 ```
 </div>
-
-
-New tillers are initialized when increase of the node number in main stem ($\Delta N_{node}$) is more than 1. In the leaf cohort model, tiller number represents by the cohort size (i.e. the number of leaves in a cohort). 
-
--->
-
-
-

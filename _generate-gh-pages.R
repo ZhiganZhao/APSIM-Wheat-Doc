@@ -4,6 +4,9 @@
 # unlink('_bookdown_files', recursive = TRUE)
 
 tryCatch({
+    if (file.exists('APSIM-Wheat.Rmd')) {
+        file.remove('APSIM-Wheat.Rmd')
+    }
     bookdown::render_book('.')
     links <- list.files('_book', '*.html', full.names = TRUE)
     links_info <- file.info(links)
