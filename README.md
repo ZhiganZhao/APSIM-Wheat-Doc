@@ -1,7 +1,4 @@
 
-[![Build Status](https://travis-ci.org/byzheng/APSIM-Wheat-Doc.svg?branch=master)](https://travis-ci.org/byzheng/APSIM-Wheat-Doc)
-
-
 # Documentation of APSIM-Wheat
 
 This is a developing documentation for Wheat model in [next generation of APSIM](https://github.com/APSIMInitiative/ApsimX).
