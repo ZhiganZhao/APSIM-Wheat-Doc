@@ -324,8 +324,14 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Stem population', nco
 
 
 
-## Canopy height
+## Canopy height {#sec:canopy-height}
 The canopy height (Fig. \@ref(fig:str-height)) is calculated as the potential height (Fig. \@ref(fig:str-potential-height)) and adjusted by water stress (Fig. \@ref(fig:str-height-water-stress)). 
+
+
+```{block, type="rmdnote"}
+Height is not used in other parts of wheat model.
+```
+
 
 
 <div class="fig-input">
