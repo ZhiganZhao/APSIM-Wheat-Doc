@@ -104,7 +104,7 @@
 <li class="chapter" data-level="4.4.2" data-path="sec-str-tillering.html"><a href="sec-str-tillering.html#sec-structure-mortality"><i class="fa fa-check"></i><b>4.4.2</b> Mortality</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="plant-and-main-stem-population.html"><a href="plant-and-main-stem-population.html"><i class="fa fa-check"></i><b>4.5</b> Plant and Main-Stem Population</a></li>
-<li class="chapter" data-level="4.6" data-path="canopy-height.html"><a href="canopy-height.html"><i class="fa fa-check"></i><b>4.6</b> Canopy height</a></li>
+<li class="chapter" data-level="4.6" data-path="sec-canopy-height.html"><a href="sec-canopy-height.html"><i class="fa fa-check"></i><b>4.6</b> Canopy height</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
 <li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Biomass pool</a></li>
@@ -204,7 +204,7 @@ Figure 4.5: Daily increase of tip number in main stem. There is no point to cons
 <p><span class="math display">\[
     N_{p, tip}=\sum_{t=T_{0}}^{T}\Delta N_{p, tip} + 1
 \]</span></p>
-<p>where, <span class="math inline">\(T_{0}\)</span> is day of <code>Emergence</code>. <span class="math inline">\(T\)</span> is today. In the Structure model, the tip numbers are not calculated for branches or tillers, but only for main stem (Figure <a href="#fig:node-number"><strong>??</strong></a>).</p>
+<p>where, <span class="math inline">\(T_{0}\)</span> is day of <code>Emergence</code>. <span class="math inline">\(T\)</span> is today. In the Structure model, the tip numbers are not calculated for branches or tillers, but only for main stem (Figure <a href="sec-main-stem.html#fig:str-tips">4.6</a>).</p>
 <p>Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of <span class="math inline">\(N_{p, tip}\)</span> are more than 1 (Figure <a href="sec-main-stem.html#fig:str-delta-tip">4.5</a>). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than 2 of appeared tip number.</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:str-tips"></span>

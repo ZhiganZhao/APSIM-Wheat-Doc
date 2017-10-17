@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-stem-supply.html">
-<link rel="next" href="sec-stem-biomass.html">
+<link rel="prev" href="plant-and-main-stem-population.html">
+<link rel="next" href="cha-biomass.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -104,7 +104,7 @@
 <li class="chapter" data-level="4.4.2" data-path="sec-str-tillering.html"><a href="sec-str-tillering.html#sec-structure-mortality"><i class="fa fa-check"></i><b>4.4.2</b> Mortality</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="plant-and-main-stem-population.html"><a href="plant-and-main-stem-population.html"><i class="fa fa-check"></i><b>4.5</b> Plant and Main-Stem Population</a></li>
-<li class="chapter" data-level="4.6" data-path="canopy-height.html"><a href="canopy-height.html"><i class="fa fa-check"></i><b>4.6</b> Canopy height</a></li>
+<li class="chapter" data-level="4.6" data-path="sec-canopy-height.html"><a href="sec-canopy-height.html"><i class="fa fa-check"></i><b>4.6</b> Canopy height</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
 <li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Biomass pool</a></li>
@@ -184,26 +184,36 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:stem-demand" class="section level2">
-<h2><span class="header-section-number">10.2</span> Demand</h2>
-<p>The daily biomass demand of <code>Stem</code> is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (<code>Emergence</code>) to Stage 6 (<code>Flowering time</code>) (Fig. <a href="sec-stem-demand.html#fig:stem-demand-fraction">10.3</a>) and increases at Stage 4 (<code>Terminal spikelet</code>) (Fig. <a href="sec-stem-demand.html#fig:stem-demand-fraction">10.3</a>). After <code>Flowering time</code>, no biomass allocated into stem (Fig. <a href="sec-stem-demand.html#fig:stem-demand">10.4</a>).</p>
+<div id="sec:canopy-height" class="section level2">
+<h2><span class="header-section-number">4.6</span> Canopy height</h2>
+<p>The canopy height (Fig. <a href="sec-canopy-height.html#fig:str-height">4.21</a>) is calculated as the potential height (Fig. <a href="sec-canopy-height.html#fig:str-potential-height">4.19</a>) and adjusted by water stress (Fig. <a href="sec-canopy-height.html#fig:str-height-water-stress">4.20</a>).</p>
 <div class="fig-input">
-<div class="figure" style="text-align: center"><span id="fig:stem-demand-fraction"></span>
-<img src="APSIM-Wheat_files/figure-html/stem-demand-fraction-1.png" alt="Fraction of stem demand in the total fixation " width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:str-potential-height"></span>
+<img src="APSIM-Wheat_files/figure-html/str-potential-height-1.png" alt="Potential canopy height" width="80%" />
 <p class="caption">
-Figure 10.3: Fraction of stem demand in the total fixation
+Figure 4.19: Potential canopy height
+</p>
+</div>
+</div>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:str-height-water-stress"></span>
+<img src="APSIM-Wheat_files/figure-html/str-height-water-stress-1.png" alt="The impact of water stress on canopy height" width="80%" />
+<p class="caption">
+Figure 4.20: The impact of water stress on canopy height
 </p>
 </div>
 </div>
 <div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:stem-demand"></span>
-<img src="APSIM-Wheat_files/figure-html/stem-demand-1.png" alt="Biomass demand by stem" width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:str-height"></span>
+<img src="APSIM-Wheat_files/figure-html/str-height-1.png" alt="The simulated canopy height" width="80%" />
 <p class="caption">
-Figure 10.4: Biomass demand by stem
+Figure 4.21: The simulated canopy height
 </p>
 </div>
 </div>
+
 </div>
+<!-- </div> -->
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -218,8 +228,8 @@ Figure 10.4: Biomass demand by stem
           </div>
         </div>
       </div>
-<a href="sec-stem-supply.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-stem-biomass.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="plant-and-main-stem-population.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cha-biomass.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -248,7 +258,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/stem.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/structure.Rmd",
 "text": "Edit"
 },
 "download": null,

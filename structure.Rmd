@@ -105,7 +105,7 @@ $$
     N_{p, tip}=\sum_{t=T_{0}}^{T}\Delta N_{p, tip} + 1
 $$
 
-where, $T_{0}$ is day of `Emergence`.  $T$ is today. In the Structure model, the tip numbers are not calculated for branches or tillers, but only for main stem (Figure \@ref(fig:node-number)). 
+where, $T_{0}$ is day of `Emergence`.  $T$ is today. In the Structure model, the tip numbers are not calculated for branches or tillers, but only for main stem (Figure \@ref(fig:str-tips)). 
 
 Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of $N_{p, tip}$ are more than 1 (Figure \@ref(fig:str-delta-tip)). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than `r node_count(pmf, '//LeafCohort')`  of appeared tip number.
 
@@ -173,7 +173,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 
 ### Branching rate
 
-The branching rate in a plant is specified by parameter BranchingRate ($\Delta A_{B}$) and is calculated as potential branching rate (Fig. \@ref(fig:str-branching-rate)) and several stress factors (i.e. nitrogen stress, total coverage, and water stress). From stage Emergence to Terminal Spikelet (Section \@ref(stage-period)), the potential branching rate is defined as a function of number of appeared cohorts in the main stem (Figure \@ref(fig:str-branching-rate)) which follow the pattern of Fibonacci sequence. Beyond this period, the branching rate is set as zero. 
+The branching rate in a plant is specified by parameter BranchingRate ($\Delta A_{B}$) and is calculated as potential branching rate (Fig. \@ref(fig:str-branching-rate)) and several stress factors (i.e. nitrogen stress, total coverage, and water stress). From stage Emergence to Terminal Spikelet (Section \@ref(sec:phe-stage-period)), the potential branching rate is defined as a function of number of appeared cohorts in the main stem (Figure \@ref(fig:str-branching-rate)) which follow the pattern of Fibonacci sequence. Beyond this period, the branching rate is set as zero. 
 
 <div class="fig-input">
 ```{r str-branching-rate, fig.asp = 0.5, fig.cap='Potential branching rate of APSIM-Wheat as a function of appreared cohort number'}
@@ -187,7 +187,7 @@ plot_xypair(pmf, xpath, x_lab = 'Number of appeared cohorts', y_lab = 'Branching
 
 Two stresses are defined in the APSIM-Wheat including nitrogen and WSC. A simple sensitivity analysis indicates the branching rate is too sensitive to WSC with default values (x = [0.1, 0.2]; y = [0, 1]). So, this feature is disabled for further analysis. 
 
-The nitrogen stress is calculated as a function of fraction of nitrogen supply relative to nitrogen demand which is exported from the Arbitrator module (Chapter \@ref(cha:arbitrator)). Wheat module assumes no nitrogen stress when the nitrogen supply is bigger than 1.5 times of nitrogen demand (Figure \@ref(fig:branching-rate-nstress)). Nitrogen stress linearly increases when supply/demand ratio less then 1.5 (<font color="red">Reference required.</font>)
+The nitrogen stress is calculated as a function of fraction of nitrogen supply relative to nitrogen demand which is exported from the Arbitrator module. Wheat module assumes no nitrogen stress when the nitrogen supply is bigger than 1.5 times of nitrogen demand (Figure \@ref(fig:str-branching-factor)). Nitrogen stress linearly increases when supply/demand ratio less then 1.5 (<font color="red">Reference required.</font>)
 
 
 <div class="fig-input">
@@ -269,7 +269,7 @@ plot_xypair(pmf, xpath, x_lab = 'Moving mean tiller growth rate', y_lab = 'Branc
 
 
 
-Figure \@ref(fig:str-tiller-growth-rate-factor) shows the mean tiller growth rate and the three factors to calculate it in the test simulation.
+Figure \@ref(fig:str-tiller-growth-rate) shows the mean tiller growth rate and the three factors to calculate it in the test simulation.
 
 <div class="fig-output">
 ```{r str-tiller-growth-rate, fig.cap='The moving tiller growth rate'}
@@ -303,7 +303,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Mortality of branchin
 No plant mortality is considerred in the wheat model. 
 
 <div class="fig-output">
-```{r str-polulation, fig.asp = 0.5, fig.cap='Plant population.'}
+```{r str-population, fig.asp = 0.5, fig.cap='Plant population.'}
 y_cols <- c('Wheat.Structure.MainStemPopn')
 plot_report(report, x_var2, y_cols, x_lab = 'Growth stage', y_lab = 'Plant population', ncol = 3)
 
