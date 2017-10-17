@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-leaf-nigrogen.html">
-<link rel="next" href="sec-spike-supply.html">
+<link rel="prev" href="cha-root.html">
+<link rel="next" href="sec-root-supply.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -184,9 +184,43 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cha:spike" class="section level1">
-<h1><span class="header-section-number">Chapter 9</span> Spike</h1>
-<p><code>Spike</code> provides biomass through retranslocation, requires biomass depending on the population and potential spike weight. The biomass is allocated into two components, i..e <code>Structural</code> and <code>Storage</code>. No <code>Metabolic</code> is considered.</p> 
+<div id="sec:root-growth" class="section level2">
+<h2><span class="header-section-number">7.1</span> Root Growth</h2>
+<p>Roots grow downwards through the soil profile, with initial depth determined by sowng depth and the growth rate determined by RootFrontVelocity.</p>
+<p>The RootFrontVelocity is modified by multiplying it by the soil’s XF value; which represents any resistance posed by the soil to root extension. Root depth is also constrained by a maximum root depth.</p>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:root-front-velocity-temp"></span>
+<img src="APSIM-Wheat_files/figure-html/root-front-velocity-temp-1.png" alt="Root depth" width="80%" />
+<p class="caption">
+Figure 7.1: Root depth
+</p>
+</div>
+</div>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:root-front-velocity"></span>
+<img src="APSIM-Wheat_files/figure-html/root-front-velocity-1.png" alt="Root depth" width="80%" />
+<p class="caption">
+Figure 7.2: Root depth
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:root-depth"></span>
+<img src="APSIM-Wheat_files/figure-html/root-depth-1.png" alt="Root depth" width="80%" />
+<p class="caption">
+Figure 7.3: Root depth
+</p>
+</div>
+</div>
+<p>Root length growth is calculated using the daily DM partitioned to roots and a specific root length. Root proliferation in layers is calculated using an approach similar to the generalised equimarginal criterion used in economics. The uptake of water and N per unit root length is used to partition new root material into layers of higher ‘return on investment’.</p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:root-length"></span>
+<img src="APSIM-Wheat_files/figure-html/root-length-1.png" alt="Root length" width="80%" />
+<p class="caption">
+Figure 7.4: Root length
+</p>
+</div>
+</div>
 </div>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
@@ -202,8 +236,8 @@
           </div>
         </div>
       </div>
-<a href="sec-leaf-nigrogen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-spike-supply.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cha-root.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sec-root-supply.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -232,7 +266,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/spike.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/root.Rmd",
 "text": "Edit"
 },
 "download": null,

@@ -10,7 +10,48 @@ Only `Structural` is considered in the three components of biomass for `Root`. T
 
 
 
-## Root length {#sec:root-length}
+## Root Growth {#sec:root-growth}
+
+Roots grow downwards through the soil profile, with initial depth determined by sowng depth and the growth rate determined by RootFrontVelocity. 
+
+The RootFrontVelocity is modified by multiplying it by the soil's XF value; which represents any resistance posed by the soil to root extension. 
+Root depth is also constrained by a maximum root depth.
+
+
+<div class="fig-input">
+```{r root-front-velocity-temp, fig.asp = 1, fig.cap='Root depth'}
+xpath <- 'Wheat.Root.RootFrontVelocity.TemperatureFactor'
+plot_xypair(pmf, xpath, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
+           label = c('Nitrogen stress', 'Total coverage', 'Water stress'))
+
+```
+</div>
+
+
+
+<div class="fig-input">
+```{r root-front-velocity, fig.asp = 1, fig.cap='Root depth'}
+y_cols <- c('Wheat.Root.RootFrontVelocity')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Root depth (mm)')
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r root-depth, fig.asp = 1, fig.cap='Root depth'}
+y_cols <- c('Wheat.Root.Depth')
+plot_report(report, x_var, y_cols, x_lab = x_lab, 
+            y_lab = 'Root depth (mm)')
+
+```
+</div>
+
+
+
+Root length growth is calculated using the daily DM partitioned to roots and a specific root length.  Root proliferation in layers is calculated using an approach similar to the generalised equimarginal criterion used in economics.  The uptake of water and N per unit root length is used to partition new root material into layers of higher 'return on investment'.
 
 
 <div class="fig-output">

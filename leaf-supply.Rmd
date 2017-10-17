@@ -2,6 +2,11 @@
 
 In `Leaf` organ, the biomass supply only sources from `Fixation` (i.e. photosynthesis, Fig. \@ref(fig:leaf-supply)). Three photosynthesis models are implemented in the APSIM next generation,
 
+```{r leaf-supply-config}
+name_rue <- 'Wheat.Leaf.Photosynthesis_RUE'
+```
+
+
 ### Radiation use efficiency model
 
 The radiation-limited dry-biomass accumulation ($\Delta Q_{r}$) is calculated by the intercepted radiation ($I$), radiation use efficiency ($RUE$).
@@ -42,7 +47,7 @@ $$
 
 <div class="fig-input">
 ```{r biomass-ft, fig.asp = 0.5, fig.cap='The temperature factor which influences radiation use efficiency'}
-xpath <- '//RUEModel/WeightedTemperatureFunction/Name[text()="FT"]'
+xpath <- paste0(name_rue, '.FT')
 plot_xypair(pmf, xpath, x_lab = 'Average daily temperature weighted toward maximum temperature', y_lab = 'Temperature factor to photosynthesis')
 ```
 </div>
@@ -52,7 +57,7 @@ plot_xypair(pmf, xpath, x_lab = 'Average daily temperature weighted toward maxim
 
 <div class="fig-input">
 ```{r leaf-rue-fn, fig.asp = 0.5, fig.cap='The nitrogen factor which influences radiation use efficiency'}
-xpath <- '//RUEModel/LinearInterpolationFunction/Name[text()="FN"]'
+xpath <- paste0(name_rue, '.FN')
 plot_xypair(pmf, xpath, x_lab = 'Ratio of functional nitrogen in leaf.',
             y_lab = 'Nitrogen factor to photosynthesis')
 
@@ -69,7 +74,7 @@ Need to further check
 
 <div class="fig-input">
 ```{r leaf-rue-fw, fig.asp = 0.5, fig.cap='The water factor which influences radiation use efficiency'}
-xpath <- '//RUEModel/LinearInterpolationFunction/Name[text()="FW"]'
+xpath <- paste0(name_rue, '.FW')
 plot_xypair(pmf, xpath, x_lab = 'Water stress',
             y_lab = 'Water factor to photosynthesis')
 

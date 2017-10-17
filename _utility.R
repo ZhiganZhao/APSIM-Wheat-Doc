@@ -220,6 +220,15 @@ plot_report_vector <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value'
 
 
 plot_xypair <- function(pmf, xpath, x_lab, y_lab, label = xpath) {
+    # Restructure xpath if APSIM format is used (i.e. contain a dot in the path)
+    if (sum(grepl('^Wheat', xpath)) != length(xpath)) {
+        stop('xpath should start with Wheat')
+    }
+    xpath <- xpath %>%
+            map_chr( function(x) stringr::str_split(x, '\\.')[[1]] %>%
+            paste0('/Name[text()="', ., '"]') %>%
+            paste(collapse = '/following-sibling::*') %>%
+            paste0('//.', .))
 
     df <- list()
     for (i in seq(along = xpath)) {

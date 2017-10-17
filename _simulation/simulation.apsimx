@@ -11,6 +11,8 @@
       <VariableNames>
         <string>[Clock].Today</string>
         <string />
+        <string>[Wheat].Root.RootFrontVelocity.Value() as Wheat.Root.RootFrontVelocity</string>
+        <string />
         <string>[Wheat].Structure.ApexNum</string>
         <string>[Wheat].Structure.BranchingRate.StressFactors.NitrogenEffect.Value() as Wheat.Structure.BranchingRate.StressFactors.NitrogenEffect</string>
         <string>[Wheat].Structure.BranchingRate.StressFactors.WaterStressEffect.Value() as Wheat.Structure.BranchingRate.StressFactors.WaterStressEffect</string>
@@ -251,6 +253,7 @@
         <string>[Wheat].Root.DMSupply.Reallocation</string>
         <string>[Wheat].Root.Wt as Wheat.RootWt</string>
         <string>[Wheat].Root.Length</string>
+        <string>[Wheat].Root.Depth</string>
         <string />
         <string>[Wheat].Root.Detached.StructuralWt</string>
         <string>[Wheat].Root.Detached.StorageWt</string>
@@ -2632,6 +2635,7 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
             <Values>0.5 0.75 1 1 1 1 1 1 1 1 1 1</Values>
           </ArrayFunction>
           <IncludeInDocumentation>true</IncludeInDocumentation>
+          <ExpansionStressValue>0</ExpansionStressValue>
         </LeafCohortParameters>
         <RUEModel>
           <Name>Photosynthesis_RUE</Name>

@@ -28,7 +28,7 @@ The base phyllochron is a genotypic parameter with default value `r get_fixed_va
 
 <div class="fig-input">
 ```{r str-phyllochron-age, fig.asp = 0.5, fig.cap='Phyllochron of leaf cohort is depending on the rank on the main stem'}
-xpath <- '//Name[text()="LeafStageFactor"]'
+xpath <- 'Wheat.Structure.Phyllochron.LeafStageFactor'
 plot_xypair(pmf, xpath, x_lab = 'Appeared cohorted number', y_lab = 'Mulitiplier of base phyllochron') +
     scale_x_continuous(breaks = seq(1, 14))
 
@@ -39,7 +39,7 @@ plot_xypair(pmf, xpath, x_lab = 'Appeared cohorted number', y_lab = 'Mulitiplier
 
 <div class="fig-input">
 ```{r str-phyllochron-ppd, fig.asp = 0.5, fig.cap='The multiplier of phyllochron which is effected by daily photoperiod length.'}
-xpath <- '//MultiplyFunction//Name[text()="PhotoPeriodEffect"]'
+xpath <- 'Wheat.Structure.Phyllochron.PhotoPeriodEffect'
 plot_xypair(pmf, xpath, x_lab = 'Daily photoperiod (h)', y_lab = 'Mulitiplier of base phyllochron') +
     scale_x_continuous(breaks = seq(6, 15))
 
@@ -177,7 +177,7 @@ The branching rate in a plant is specified by parameter BranchingRate ($\Delta A
 
 <div class="fig-input">
 ```{r str-branching-rate, fig.asp = 0.5, fig.cap='Potential branching rate of APSIM-Wheat as a function of appreared cohort number'}
-xpath <- '//Name[text()="PotentialBranchingRate"]'
+xpath <- 'Wheat.Structure.BranchingRate.PotentialBranchingRate.Vegetative.PotentialBranchingRate'
 plot_xypair(pmf, xpath, x_lab = 'Number of appeared cohorts', y_lab = 'Branching rate')
 
 ```
@@ -192,12 +192,8 @@ The nitrogen stress is calculated as a function of fraction of nitrogen supply r
 
 <div class="fig-input">
 ```{r str-branching-factor, fig.asp = 1.25, fig.cap='The factors to influence of branching rate (nitrogen stress, total coverage and water stress). The final multiplier of branching rate is the minimum values of the '}
-xpath <- paste0('//MultiplyFunction/Name[text()="BranchingRate"]',
-                '/following-sibling::MinimumFunction', 
-                '/Name[text()="StressFactors"]',
-                '/following-sibling::LinearInterpolationFunction', 
-                '/Name[text()="',
-                c('NitrogenEffect', 'CoverEffect', 'WaterStressEffect'), '"]')
+xpath <- paste0('Wheat.Structure.BranchingRate.StressFactors.',
+                c('NitrogenEffect', 'CoverEffect', 'WaterStressEffect'))
 plot_xypair(pmf, xpath, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
            label = c('Nitrogen stress', 'Total coverage', 'Water stress'))
 
@@ -253,14 +249,7 @@ Branching mortality starts from the Flag leaf until Flowering which defines as a
 
 <div class="fig-input">
 ```{r str-mortality-growth-rate, fig.asp=0.75, fig.cap='Tiller mortality as a function of moving mean tiller growth rate'}
-xpath <- '//PhaseLookup/Name[text()="MortalityPerDegDay"]'
-xpath <- paste0('//PhaseLookup/Name[text()="BranchMortality"]',
-                '/following-sibling::PhaseLookupValue', 
-                '/Name[text()="MortalityPhase"]',
-                '/following-sibling::MultiplyFunction', 
-                '/Name[text()="Mortality"]',
-                '/following-sibling::LinearInterpolationFunction', 
-                '/Name[text()="MortalityPerDegDay"]')
+xpath <- 'Wheat.Structure.BranchMortality.MortalityPhase.Mortality.MortalityPerDegDay'
 plot_xypair(pmf, xpath, x_lab = 'Moving mean tiller growth rate', y_lab = 'Branch motality')
 ```
 </div>
@@ -328,15 +317,11 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Stem population', nco
 The canopy height (Fig. \@ref(fig:str-height)) is calculated as the potential height (Fig. \@ref(fig:str-potential-height)) and adjusted by water stress (Fig. \@ref(fig:str-height-water-stress)). 
 
 
-```{block, type="rmdnote"}
-Height is not used in other parts of wheat model.
-```
-
 
 
 <div class="fig-input">
 ```{r str-potential-height, fig.asp=0.5, fig.cap='Potential canopy height'}
-xpath <- '//HeightFunction/LinearInterpolationFunction/Name[text()="PotentialHeight"]'
+xpath <- 'Wheat.Structure.HeightModel.PotentialHeight'
 plot_xypair(pmf, xpath, x_lab = 'Stage', y_lab = 'Potential canopy height (mm)')
 ```
 </div>
@@ -344,7 +329,7 @@ plot_xypair(pmf, xpath, x_lab = 'Stage', y_lab = 'Potential canopy height (mm)')
 
 <div class="fig-input">
 ```{r str-height-water-stress, fig.asp=0.5, fig.cap='The impact of water stress on canopy height'}
-xpath <- '//HeightFunction/LinearInterpolationFunction/Name[text()="WaterStress"]'
+xpath <- 'Wheat.Structure.HeightModel.WaterStress'
 plot_xypair(pmf, xpath, x_lab = 'water-supply-demand-ratio', y_lab = 'Potential canopy height (mm)')
 ```
 </div>
