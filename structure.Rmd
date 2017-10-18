@@ -23,7 +23,7 @@ The phyllochron is the intervening period between the sequential emergence of le
 The non-linear reponse of temperature on phyllchron were observed by Friend et al. [-@friend_leaf_1962] and Cao and Moss [-@cao_temperature_1989]. The soil temperature provided more accurately prediction of leaf development than air temperature [@JamiesonPredictionleafappearance1995]. However, a simple linear reponse of phyllochron to air temperature works surprusingly well in predicting phyllochron for most field conditions [@mcmaster_re-examining_2003]. If improvements are desired, the use of non-linear reponses and soil temperature shows promise [@JamiesonPredictionleafappearance1995; @YanEquationModellingTemperature1999]. Consequently, we assume the linear reponse of air temperature on leaf appearance (phyllochorn).  
 
 
-The base phyllochron is a genotypic parameter with default value `r get_fixed_value(pmf, '//Name[text()="BasePhyllochron"]')`, but is chagned for most of cultivars. Based on [@JamiesonPredictionleafappearance1995], leaf appearance could be described by a base phyllochron determined between leaves 3 and 7 and a phyllochron that was 70% of base phyllochron for leaves < 3 and 140% of base phyllochroen for leaves > 7 (Fig. \@ref(fig:str-phyllochron-age)). The phyllochron also is adjusted by photoperiod [reference required] through increasing pholochron in the shorter day length (Fig. \@ref(fig:str-phyllochron-ppd)).
+The base phyllochron is a genotypic parameter with default value `r get_fixed_value(pmf, 'Wheat.Structure.Phyllochron.BasePhyllochron')`, but is chagned for most of cultivars. Based on [@JamiesonPredictionleafappearance1995], leaf appearance could be described by a base phyllochron determined between leaves 3 and 7 and a phyllochron that was 70% of base phyllochron for leaves < 3 and 140% of base phyllochroen for leaves > 7 (Fig. \@ref(fig:str-phyllochron-age)). The phyllochron also is adjusted by photoperiod [reference required] through increasing pholochron in the shorter day length (Fig. \@ref(fig:str-phyllochron-ppd)).
 
 
 <div class="fig-input">
@@ -240,7 +240,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Branch number or bran
 
 Two types of mortality are considered in the apex model, i.e. smaller tiller at terminal spikelet and low growth rate. For any types of tiller mortality, the plant does not reduce the population of existing leaf cohort, but number of apex, then reduce the population size of new leaf cohort. 
 
-At the terminal spikelet, all tillers with less than `r get_fixed_value(pmf, '//Name[text()="StemSenescenceAge"]')` leaves are stopped to growth new leaves.
+At the terminal spikelet, all tillers with less than `r get_fixed_value(pmf, 'Wheat.Structure.StemSenescenceAge')` leaves are stopped to growth new leaves.
 
 
 

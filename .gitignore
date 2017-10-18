@@ -4,3 +4,6 @@
 /_bookdown_files
 APSIM-Wheat.rds
 _scripts
+*_cache
+*_files
+APSIM-Wheat.Rmd

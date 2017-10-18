@@ -1,6 +1,6 @@
 ## Demand {#sec:leaf-deman}
 
-The leaf demand is summarised for all leaf cohorts in the expanding period (Figs \@ref(fig:leaf-life-cycle) and \@ref(fig:leaf-cohort-changing-no)), so that there is no leaf demand after `FlagLeaf`. No `Storage` demand is considered in the leaf organ. As the structural fraction is defined as `r get_fixed_value(pmf, '//Leaf/Constant/Name[text()="StructuralFraction"]')`, the structural and metabolic demands have the same values in the whole life cycle. 
+The leaf demand is summarised for all leaf cohorts in the expanding period (Figs \@ref(fig:leaf-life-cycle) and \@ref(fig:leaf-cohort-changing-no)), so that there is no leaf demand after `FlagLeaf`. No `Storage` demand is considered in the leaf organ. As the structural fraction is defined as `r get_fixed_value(pmf, 'Wheat.Leaf.StructuralFraction')`, the structural and metabolic demands have the same values in the whole life cycle. 
 
 The daily demand ($D_{leaf}$) is the minimum between potential leaf area ($\Delta A_{p}$, Section \@ref(sec:leaf-potential-area)) and water stressed ($\Delta A_{w}$, Section \@ref(sec:leaf-water-area)) leaf area.
 

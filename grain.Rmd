@@ -15,7 +15,7 @@ The number of grains per plant ($N_{g}$) is determined by the `Stem` and `Spike`
 $$
 N_{g}=R_{g}(W_{stem} + W_{spike})
 $$
-where $W_{stem}$ and $W_{spike}$ are the stem and spkie total biomass at flowering, respectively. R_{g} is the grain number per gram stem and spike, with default value at `r get_fixed_value(pmf, '//Name[text()="GrainsPerGramOfStem"]')` grain g<sup>-1</sup>.
+where $W_{stem}$ and $W_{spike}$ are the stem and spkie total biomass at flowering, respectively. R_{g} is the grain number per gram stem and spike, with default value at `r get_fixed_value(pmf, 'Wheat.Grain.NumberFunction.GrainNumber.GrainsPerGramOfStem')` grain g<sup>-1</sup>.
 
 
 

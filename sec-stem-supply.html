@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="cha-leaf.html">
-<link rel="next" href="sec-leaf-area.html">
+<link rel="prev" href="cha-stem.html">
+<link rel="next" href="sec-stem-demand.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -184,99 +184,24 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:leaf-growth-cycle" class="section level2">
-<h2><span class="header-section-number">8.1</span> Life growth cycle</h2>
-<p>The growth cycle of leaf cohort is divided into 7 stages and 6 periods from <code>Initialized</code> to <code>Detached</code>. The length of each period depends on the <code>phylochron</code> during <code>Appearance</code> from <code>Initialized</code> to <code>Appeared</code> (fixed by 2 initial leaves at <code>Germination</code>). Other periods are configured by <code>CohortParameters</code> at <code>Appearance</code>, so that parameter values are determined by the values of status variables at the day of leaf cohort <code>Appearance</code> if they depend on other variables.</p>
-<p>Several status variables are defined for each leaf cohort, which can be used in other modules to describe the current status of leaf cohort, i.e. <code>IsNotAppeared</code>, <code>IsGrowing</code>, <code>IsAlive</code>, <code>IsGreen</code>, <code>IsNotSenescing</code>, <code>Senescing</code>, <code>isFullyExpanded</code>, <code>ShouldBeDead</code>, <code>IsAppeared</code> and <code>IsInitialised</code>.</p>
+<div id="sec:stem-supply" class="section level2">
+<h2><span class="header-section-number">10.1</span> Supply</h2>
+<p>In <code>Stem</code>, the biomass supply only sources from retranslocation (Fig. <a href="sec-stem-supply.html#fig:stem-supply">10.2</a>). Daily retranslocation is the proportion of current storage (<span class="math inline">\(W_{stem, storage}\)</span>). The default value of proportion is 0.5 since <code>StartGrainFill</code>, i.e. retranslocatable biomsss is 50% during grain filling (Fig. <a href="sec-stem-supply.html#fig:stem-retran-factor">10.1</a>).</p>
 <div class="fig-input">
-<div class="figure" style="text-align: center"><span id="fig:leaf-life-cycle"></span>
-<div id="htmlwidget-ddd32808660eac4b8681" style="width:95%;height:470.4px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ddd32808660eac4b8681">{"x":{"diagram":"sequenceDiagram;\n\tInitialized->>Appeared: Appearance \n\tAppeared->>Expanded: GrowthDuration\n\tExpanded->>Senescing: LagDuration\n\tSenescing->>Senesced: SenescenceDuration\n\tSenesced->>Detaching: DetachmentLagDuration\n\tDetaching->>Detached: DetachmentDuration\n    Initialized->Appeared: IsNotAppeared\n    Initialized->Expanded: IsGrowing\n\tInitialized->>Senesced: IsAlive\n\tInitialized->>Senesced: IsGreen\n\tInitialized->>Senescing: IsNotSenescing\n\tSenescing->>Senesced: IsSenescing\n\tExpanded->>Detached: IsFullyExpanded\n\tSenesced->>Detached: ShouldBeDead\n\tSenesced->>Detached: Finished\n\tAppeared->>Detached: IsAppeared\n\tInitialized->>Detached: IsInitialised\n"},"evals":[],"jsHooks":[]}</script>
+<div class="figure" style="text-align: center"><span id="fig:stem-retran-factor"></span>
+<img src="APSIM-Wheat_files/figure-html/stem-retran-factor-1.png" alt="Growth duration of stem development" width="80%" />
 <p class="caption">
-Figure 8.1: The life cycle of a leaf cohort.
-</p>
-</div>
-</div>
-<div id="leaf-age" class="section level3">
-<h3><span class="header-section-number">8.1.1</span> leaf age</h3>
-<p>The age of leaf cohort is defined as the thermal time after appearance, (i.e. keep zero after initialization). As the default values of <code>DetachmentLagDuration</code> and <code>DetachmentDuration</code> are set as <code>1000000</code> <sup>°</sup>Cd, the cohort age keeps increasing until growth stage <code>ReadyForHarvesting</code>. The age of first leaf cohort starts from 200 <sup>°</sup>Cd.</p>
-</div>
-<div id="leaf-initialization-and-appearance" class="section level3">
-<h3><span class="header-section-number">8.1.2</span> Leaf initialization and appearance</h3>
-<p>At <code>Germination</code>, 2 new leaf cohorts are initialized with initial leaf area 200, 0 mm<sup>2</sup>. The inital leaf area simulates seed biomass or embryo size.</p>
-<p>At <code>Emergence</code> stage, 1 leaf cohort is appeared at the main stem, and 1 new leaf cohort is initialized.</p>
-<p>After <code>Emergence</code> and before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort initialises and an existing leaf cohot appears when increases of potential appearance of tip number are more than 1 (Figure <a href="sec-main-stem.html#fig:str-delta-tip">4.5</a>). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than 2 of appeared tip number (Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-number">8.2</a>).</p>
-<div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-cohort-number"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-cohort-number-1.png" alt="The initialized and appeared leaf cohort number in the main stem" width="80%" />
-<p class="caption">
-Figure 8.2: The initialized and appeared leaf cohort number in the main stem
-</p>
-</div>
-</div>
-</div>
-<div id="leaf-growth-and-senescing" class="section level3">
-<h3><span class="header-section-number">8.1.3</span> Leaf growth and senescing</h3>
-<p><strong>Growth (expansion) duration</strong></p>
-<p>Leaf expansion of cohort <span class="math inline">\(i\)</span> starts from appearance of leaf tip <span class="math inline">\(i\)</span>, i.e. the expansion of leaf cohort in the sheath is ignored which does not contribute to green leaf or leaf area index. The growth duration of spring wheat is close to one phylochron as the synchronization of leaf blade and sheath <span class="citation">(Skinner and Nelson <a href="cha-reference.html#ref-SkinnerElongationGrassLeaf1995">1995</a>)</span>. The growth duration is set as 1.3 phyllochron in default. The growth duration is adjusted for fraction of flag leaf (Fig. <a href="sec-main-stem.html#fig:str-leaf-fraction">4.8</a>) to simulate the variation of final leaf number in a population.</p>
-<p><strong>Lag duration</strong></p>
-<p>Lag duration (full functional duration) is defined as 4 phyllochrons for leaf appeared during vegetative period (from <code>Emergence</code> to <code>TerminalSpikelet</code>) and adjusted by leaf age. For leaf cohort appeared during stem elongation period (from <code>TerminalSpikelet</code> to <code>FlagLeaf</code>), the lag duration equals to total length from stage <code>FlagLeaf</code> to stage <code>EndGrainFill</code> minus 3 phyllochron (<code>senescence duration</code>), i.e. flag leaf is completely death at the stage <code>EndGrainFill</code>.</p>
-<p><strong>Senescene duration</strong></p>
-<p>Senescence duration is defined as 3 phyllochrons in default.</p>
-<p>As the variation of phyllochron (Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron">4.3</a>), the growth, lag and senescence durations also change by cohort rank (Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-duration">8.3</a>). The growth duration of flag leaf is shorter than secondary leaf as the fraction of flag leaf.</p>
-<div class="fig-input">
-<div class="figure" style="text-align: center"><span id="fig:leaf-duration"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-duration-1.png" alt="Senescene duration of leaf cohort which is determined at appearance of leaf cohort. The black dots indicate the appearances of leaf cohorts" width="80%" />
-<p class="caption">
-Figure 8.3: Senescene duration of leaf cohort which is determined at appearance of leaf cohort. The black dots indicate the appearances of leaf cohorts
-</p>
-</div>
-</div>
-<p>Figures <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-changing-no">8.4</a> and <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-status-no">8.5</a> shows the number of leaf cohorts changing status including expanding and senescing and at certain status including expanded, green, and dead, respectively.</p>
-<div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-cohort-changing-no"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-cohort-changing-no-1.png" alt="The number of leaf cohort with certain status including expanding and senescing" width="80%" />
-<p class="caption">
-Figure 8.4: The number of leaf cohort with certain status including expanding and senescing
+Figure 10.1: Growth duration of stem development
 </p>
 </div>
 </div>
 <div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-cohort-status-no"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-cohort-status-no-1.png" alt="The number of leaf cohort with certain status including expanded, green, dead" width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:stem-supply"></span>
+<img src="APSIM-Wheat_files/figure-html/stem-supply-1.png" alt="Biomass supply from stem" width="80%" />
 <p class="caption">
-Figure 8.5: The number of leaf cohort with certain status including expanded, green, dead
+Figure 10.2: Biomass supply from stem
 </p>
 </div>
-</div>
-</div>
-<div id="detachment-lag-and-detachment-durations" class="section level3">
-<h3><span class="header-section-number">8.1.4</span> Detachment lag and detachment durations</h3>
-<p>Detachment lag and detachment durations for leaf cohort are set as a big value <code>1000000</code> which assumes no detachment in wheat leaf. Actually all leaves are detached at <code>Harvesting</code> event.</p>
-<!--
-
-### Drought stress on leaf development
-
-After appearance, leaf development is accelerated by the drought stress through increasing the daily thermal time, i.e. leaf age is accelerated by drought. The factor of acceleration depends on the ratio of water supply and demand (Figure \@ref(fig:water-supply-demand-ratio)). Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7 (The values in Figure \@ref(fig:leaf-development-drought) plus one).
-
-
-<div class="fig-input">
-
-</div>
-
-
-```csharp
-//Acellerate thermal time accumulation if crop is water stressed.
-double _ThermalTime;
-if ((LeafCohortParameters.DroughtInducedSenAcceleration != null) && (IsFullyExpanded))
-    _ThermalTime = TT * LeafCohortParameters.DroughtInducedSenAcceleration.Value;
-else _ThermalTime = TT;
-
-```
-
-
--->
-
 </div>
 </div>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
@@ -293,8 +218,8 @@ else _ThermalTime = TT;
           </div>
         </div>
       </div>
-<a href="cha-leaf.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-leaf-area.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cha-stem.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sec-stem-demand.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -323,7 +248,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/leaf-life-cycle.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/stem.Rmd",
 "text": "Edit"
 },
 "download": null,

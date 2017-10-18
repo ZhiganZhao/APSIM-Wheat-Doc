@@ -216,20 +216,23 @@ plot_report_vector <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value'
 }
 
 
+# Restructure xpath if APSIM format is used (i.e. contain a dot in the path)
+apsim2xpath <- function(xpath) {
 
-
-
-plot_xypair <- function(pmf, xpath, x_lab, y_lab, label = xpath) {
-    # Restructure xpath if APSIM format is used (i.e. contain a dot in the path)
     if (sum(grepl('^Wheat', xpath)) != length(xpath)) {
         stop('xpath should start with Wheat')
     }
     xpath <- xpath %>%
-            map_chr( function(x) stringr::str_split(x, '\\.')[[1]] %>%
-            paste0('/Name[text()="', ., '"]') %>%
-            paste(collapse = '/following-sibling::*') %>%
-            paste0('//.', .))
+        map_chr( function(x) stringr::str_split(x, '\\.')[[1]] %>%
+                     paste0('/Name[text()="', ., '"]') %>%
+                     paste(collapse = '/following-sibling::*') %>%
+                     paste0('//.', .))
+    xpath
+}
 
+plot_xypair <- function(pmf, xpath, x_lab, y_lab, label = xpath) {
+
+    xpath <- apsim2xpath(xpath)
     df <- list()
     for (i in seq(along = xpath)) {
         xypair <- xml_find_all(pmf, xpath = paste0(xpath[i], '/following-sibling::XYPairs'))
@@ -263,8 +266,9 @@ plot_xypair <- function(pmf, xpath, x_lab, y_lab, label = xpath) {
     p
 }
 
-get_fixed_value <- function(pmf, xpath) {
 
+get_fixed_value <- function(pmf, xpath) {
+    xpath <- apsim2xpath(xpath)
     value <- xml_find_all(pmf, xpath)
     assert_is_of_length(value, 1)
     value <-  value %>%

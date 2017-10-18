@@ -8,7 +8,7 @@ During the growth (expanding) duration of each cohort (Fig. \@ref(fig:leaf-cohor
 The maximum leaf area of each leaf cohort is determined by potential maximum leaf area and reduced by cell division stress from `Initialization` to `Appearance`. 
 
 
-The potential maximum leaf areas by rank are specified by two parameters the maximum leaf area in all leaves (`AreaLargestLeaves` with default value `r get_fixed_value(pmf, '//LeafCohortParameters/MultiplyFunction/Constant/Name[text()="AreaLargestLeaves"]')` mm^2^) and an age factor (Fig. \@ref(fig:leaf-maximum-area-age)). The age factor is assumed leaf areas are linearly increasing from stage `Emergence` to `TerminalSpikelet`, and all leaves appeared after stage `TerminalSpikelet` have the same maximum leaf area (Fig. \@ref(fig:leaf-maximum-area)).
+The potential maximum leaf areas by rank are specified by two parameters the maximum leaf area in all leaves (`AreaLargestLeaves` with default value `r get_fixed_value(pmf, 'Wheat.Leaf.CohortParameters.MaxArea.AreaLargestLeaves')` mm^2^) and an age factor (Fig. \@ref(fig:leaf-maximum-area-age)). The age factor is assumed leaf areas are linearly increasing from stage `Emergence` to `TerminalSpikelet`, and all leaves appeared after stage `TerminalSpikelet` have the same maximum leaf area (Fig. \@ref(fig:leaf-maximum-area)).
 
 
 <div class="fig-input">
@@ -73,14 +73,14 @@ plot_report_vector(report, x_var, y_cols,
 
 ### Potential expansion of leaf cohort {#sec:leaf-potential-area}
 
-The potential leaf area is increased following a logistic equation as a function of thermal time after leaf appearance. The shape of logistic equation is determiend by parameter `LeafSizeShapeParameter` with default value `r get_fixed_value(pmf, '//LeafCohortParameters/Constant/Name[text()="LeafSizeShapeParameter"]')` (Fig. \@ref(fig:leaf-size-function)). The daily potential increase of leaf area is the difference of size function in today and previous (e.g. the height of red area in Fig. \@ref(fig:leaf-size-function)).
+The potential leaf area is increased following a logistic equation as a function of thermal time after leaf appearance. The shape of logistic equation is determiend by parameter `LeafSizeShapeParameter` with default value `r get_fixed_value(pmf, 'Wheat.Leaf.CohortParameters.LeafSizeShapeParameter')` (Fig. \@ref(fig:leaf-size-function)). The daily potential increase of leaf area is the difference of size function in today and previous (e.g. the height of red area in Fig. \@ref(fig:leaf-size-function)).
 
 
 ```{r leaf-size-function, fig.asp=0.5, fig.cap='The size function of leaf area development. The maximum leaf area sets as 2600 mm2'}
 
 TT <- seq(0, 100, by = 1)
 MaxArea <- 2600
-LeafSizeShape <- as.numeric(get_fixed_value(pmf, '//LeafCohortParameters/Constant/Name[text()="LeafSizeShapeParameter"]'))
+LeafSizeShape <- as.numeric(get_fixed_value(pmf, 'Wheat.Leaf.CohortParameters.LeafSizeShapeParameter'))
 GrowthDuration <- 100
 OneLessShape <- 1 - LeafSizeShape
 alpha <- -log((1 / OneLessShape - 1) / (MaxArea / (MaxArea * LeafSizeShape) - 1)) / GrowthDuration
@@ -205,7 +205,7 @@ $$
 $$
 
 
-The extinction coefficient for dead leaf ($k_{d}$) is defined as `r get_xml_value(pmf, '//Leaf/KDead')`. The extinction coefficient for green leaf ($k_{g}$) is calculated by parameter `ExtinctionCoeff` with default value `r get_fixed_value(pmf, '//Leaf/Constant/Name[text()="ExtinctionCoeff"]')`.  
+The extinction coefficient for dead leaf ($k_{d}$) is defined as `r get_xml_value(pmf, '//Leaf/KDead')`. The extinction coefficient for green leaf ($k_{g}$) is calculated by parameter `ExtinctionCoeff` with default value `r get_fixed_value(pmf, 'Wheat.Leaf.ExtinctionCoeff')`.  
 
 
 <div class="fig-output">

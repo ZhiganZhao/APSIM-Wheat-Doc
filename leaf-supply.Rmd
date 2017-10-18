@@ -24,7 +24,7 @@ I=I_{0}(1-\exp(-k\times LAI)
 $$
 
 
-where $I_{0}$ is the total radiation at the top of the canopy (MJ) which is directly imported from weather records. Extinction coefficient ($k$) set as a constant value  `r get_fixed_value(pmf, '//Leaf/Constant/Name[text()="ExtinctionCoeff"]')`.  
+where $I_{0}$ is the total radiation at the top of the canopy (MJ) which is directly imported from weather records. Extinction coefficient ($k$) set as a constant value  `r get_fixed_value(pmf, 'Wheat.Leaf.ExtinctionCoeff')`.  
 
 
 #### Actual radiation use efficiency {-}
@@ -35,7 +35,7 @@ $$
 RUE = RUE_{p} \times \min{(F_{t,\ photo}, F_{n,\ photo}, F_{VPD})} \times F_W \times F_{CO2}
 $$
 
-**The potential RUE ($RUE_p$)** has a default value `r get_fixed_value(pmf, '//RUEModel/Constant/Name[text()="RUE"]')`.
+**The potential RUE ($RUE_p$)** has a default value `r get_fixed_value(pmf, paste0(name_rue, '.RUE'))`.
 
 **The temperature factor ($F_t$)** is calculated as a function of average daily temperature weighted toward maximum temperature according to the specified `MaximumTemperatureWeighting` factor ($W_{maxt}$) with default value `r get_xml_value(pmf, '//RUEModel/WeightedTemperatureFunction/MaximumTemperatureWeighting')`.
 
