@@ -216,36 +216,36 @@ plot_report_vector <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value'
 }
 
 
-# Restructure xpath if APSIM format is used (i.e. contain a dot in the path)
-apsim2xpath <- function(xpath) {
+# Restructure path if APSIM format is used (i.e. contain a dot in the path)
+apsim2path <- function(path) {
 
-    if (sum(grepl('^Wheat', xpath)) != length(xpath)) {
-        stop('xpath should start with Wheat')
+    if (sum(grepl('^Wheat', path)) != length(path)) {
+        stop('path should start with Wheat')
     }
-    xpath <- xpath %>%
+    path <- path %>%
         map_chr( function(x) stringr::str_split(x, '\\.')[[1]] %>%
                      paste0('/Name[text()="', ., '"]') %>%
                      paste(collapse = '/following-sibling::*') %>%
                      paste0('//.', .))
-    xpath
+    path
 }
 
-plot_xypair <- function(pmf, xpath, x_lab, y_lab, label = xpath) {
+plot_xypair <- function(pmf, path, x_lab, y_lab, label = path) {
 
-    xpath <- apsim2xpath(xpath)
+    path <- apsim2path(path)
     df <- list()
-    for (i in seq(along = xpath)) {
-        xypair <- xml_find_all(pmf, xpath = paste0(xpath[i], '/following-sibling::XYPairs'))
+    for (i in seq(along = path)) {
+        xypair <- xml_find_all(pmf, path = paste0(path[i], '/following-sibling::XYPairs'))
         if (length(xypair) == 0) {
-            xypair <- xml_find_first(pmf, xpath = paste0(xpath[i], '/XYPairs'))
+            xypair <- xml_find_first(pmf, path = paste0(path[i], '/XYPairs'))
         }
         if (length(xypair) == 0) {
-            stop(paste0('Cannot find the xpath: ', xpath[i], '.'))
+            stop(paste0('Cannot find the path: ', path[i], '.'))
         }
 
 
         if (length(xypair) > 1) {
-            stop(paste0('Find multiple xpath: ', xpath[i], '.'))
+            stop(paste0('Find multiple path: ', path[i], '.'))
         }
 
         x <- as.numeric(xml_text(xml_children(xml_find_first(xypair, 'X'))))
@@ -260,16 +260,16 @@ plot_xypair <- function(pmf, xpath, x_lab, y_lab, label = xpath) {
         geom_line() +
         theme_bw() +
         xlab(x_lab) + ylab(y_lab)
-    if (length(xpath) > 1) {
+    if (length(path) > 1) {
         p <- p + facet_wrap(~label, ncol = 1, scales = 'free_x')
     }
     p
 }
 
 
-get_fixed_value <- function(pmf, xpath) {
-    xpath <- apsim2xpath(xpath)
-    value <- xml_find_all(pmf, xpath)
+get_fixed_value <- function(pmf, path) {
+    path <- apsim2path(path)
+    value <- xml_find_all(pmf, path)
     assert_is_of_length(value, 1)
     value <-  value %>%
         xml_parent() %>%
@@ -279,15 +279,15 @@ get_fixed_value <- function(pmf, xpath) {
     value
 }
 
-node_count <- function(pmf, xpath) {
-    n <- length(xml_find_all(pmf, xpath))
+node_count <- function(pmf, path) {
+    n <- length(xml_find_all(pmf, path))
     assert_is_identical_to_true(n > 0)
     n
 }
 
-get_xml_value <- function(pmf, xpath) {
+get_xml_value <- function(pmf, path) {
 
-    value <- xml_find_all(pmf, xpath)
+    value <- xml_find_all(pmf, path)
     assert_is_non_empty (value)
     value <- value %>%
         xml_double()

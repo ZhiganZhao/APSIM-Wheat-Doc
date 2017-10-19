@@ -13,8 +13,8 @@ The potential maximum leaf areas by rank are specified by two parameters the max
 
 <div class="fig-input">
 ```{r leaf-maximum-area-age, fig.asp = 0.5, fig.cap='Multiplier of maximum leaf area as a function of growthing stage'}
-xpath <- 'Wheat.Leaf.CohortParameters.MaxArea.AgeFactor'
-plot_xypair(pmf, xpath, x_lab = 'Growthing stage', y_lab = 'Multiplier of maximum leaf area')
+path <- 'Wheat.Leaf.CohortParameters.MaxArea.AgeFactor'
+plot_xypair(pmf, path, x_lab = 'Growthing stage', y_lab = 'Multiplier of maximum leaf area')
 ```
 </div>
 
@@ -41,8 +41,8 @@ plot_report(report, x_var2, y_cols,
 
 <div class="fig-input">
 ```{r leaf-cell-division-water, fig.asp = 0.5, fig.cap='Multiplier of water stress on cell division'}
-xpath <- 'Wheat.Leaf.CohortParameters.CellDivisionStress.WaterStressEffect'
-plot_xypair(pmf, xpath, x_lab = 'Ratio of water supply and demand', 
+path <- 'Wheat.Leaf.CohortParameters.CellDivisionStress.WaterStressEffect'
+plot_xypair(pmf, path, x_lab = 'Ratio of water supply and demand', 
             y_lab = 'Multiplier of water stress')
 ```
 </div>
@@ -50,8 +50,8 @@ plot_xypair(pmf, xpath, x_lab = 'Ratio of water supply and demand',
 
 <div class="fig-input">
 ```{r leaf-cell-division-nitrogen, fig.asp = 0.5, fig.cap='Multiplier of nitrogen stress on cell division'}
-xpath <- 'Wheat.Leaf.CohortParameters.CellDivisionStress.NitrogenStressEffect'
-plot_xypair(pmf, xpath, x_lab = 'Ratio of functional nitrogen', 
+path <- 'Wheat.Leaf.CohortParameters.CellDivisionStress.NitrogenStressEffect'
+plot_xypair(pmf, path, x_lab = 'Ratio of functional nitrogen', 
             y_lab = 'Multiplier of nitrogen stress')
 ```
 </div>
@@ -123,10 +123,10 @@ plot_report(report, x_var2, y_cols,
 
 <div class="fig-input">
 ```{r leaf-expansion-stress, fig.asp = 1, fig.cap='Multiplier of temperature stress on leaf expansion. Temperature stress is related with daily mean temperature. Water stress is related with water tension factor in root. Nitrogen stress is related with ratio of functional nitrogen.'}
-xpath <- paste0('Wheat.Leaf.CohortParameters.ExpansionStress.', 
+path <- paste0('Wheat.Leaf.CohortParameters.ExpansionStress.', 
                 c('TemperatureEffect', 'WaterStressEffect',
                   'NitrogenStressEffect'))
-plot_xypair(pmf, xpath, x_lab = 'Values for stress factors', 
+plot_xypair(pmf, path, x_lab = 'Values for stress factors', 
             y_lab = 'Multiplier of leaf expansion', label = c('Temperature', 'Water', 'Nitrogen'))
 ```
 </div>

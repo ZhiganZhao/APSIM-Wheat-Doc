@@ -20,8 +20,8 @@ Root depth is also constrained by a maximum root depth.
 
 <div class="fig-input">
 ```{r root-front-velocity-temp, fig.asp = 1, fig.cap='Root depth'}
-xpath <- 'Wheat.Root.RootFrontVelocity.TemperatureFactor'
-plot_xypair(pmf, xpath, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
+path <- 'Wheat.Root.RootFrontVelocity.TemperatureFactor'
+plot_xypair(pmf, path, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
            label = c('Nitrogen stress', 'Total coverage', 'Water stress'))
 
 ```

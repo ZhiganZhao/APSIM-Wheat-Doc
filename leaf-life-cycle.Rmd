@@ -132,8 +132,8 @@ After appearance, leaf development is accelerated by the drought stress through 
 ```{r leaf-development-drought, fig.asp = 0.75, fig.cap='Drought stress accelerates leaf development. Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7.'}
 
 
-#xpath <- '//AddFunction[Name="DroughtInducedSenAcceleration"]/MultiplyFunction[Name="Stress"]/LinearInterpolationFunction[Name="StressFactor"]'
-#plot_xypair(pmf, xpath, x_lab = 'Ratio of water supply and demand', y_lab = 'Ratio of acceleration of thermal time')
+#path <- '//AddFunction[Name="DroughtInducedSenAcceleration"]/MultiplyFunction[Name="Stress"]/LinearInterpolationFunction[Name="StressFactor"]'
+#plot_xypair(pmf, path, x_lab = 'Ratio of water supply and demand', y_lab = 'Ratio of acceleration of thermal time')
 ```
 </div>
 
