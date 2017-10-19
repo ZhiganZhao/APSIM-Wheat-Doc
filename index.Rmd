@@ -36,9 +36,10 @@ The main contents include
 
 ## Contributors {#sec:intro-contribution}
  * [Bangyou Zheng](https://www.bangyou.me) <bangyou.zheng@csiro.au>
- * Karine Chenu <karine.chenu@uq.edu.au>
- * Scott Chapman <scott.chapman@csiro.au>
- * Enli Wang <enli.wang@csiro.au>
+ * [Karine Chenu](https://qaafi.uq.edu.au/profile/18/karine-chenu) <karine.chenu@uq.edu.au>
+ * [Scott Chapman](http://people.csiro.au/C/S/Scott-Chapman) <scott.chapman@csiro.au>
+ * [Enli Wang](http://people.csiro.au/W/E/Enli-Wang) <enli.wang@csiro.au>
+ * Fernanda Dreccer <Fernanda.Dreccer@csiro.au>
 
 
 
