@@ -12,7 +12,7 @@
         <string>[Clock].Today</string>
         <string />
         <string>[Wheat].Root.RootFrontVelocity.Value() as Wheat.Root.RootFrontVelocity</string>
-        <string />
+        <string>[Wheat].Root.RootFrontVelocity.WaterFactor.Value() as Wheat.Root.RootFrontVelocity.WaterFactor</string>
         <string>[Wheat].Structure.ApexNum</string>
         <string>[Wheat].Structure.BranchingRate.StressFactors.NitrogenEffect.Value() as Wheat.Structure.BranchingRate.StressFactors.NitrogenEffect</string>
         <string>[Wheat].Structure.BranchingRate.StressFactors.WaterStressEffect.Value() as Wheat.Structure.BranchingRate.StressFactors.WaterStressEffect</string>

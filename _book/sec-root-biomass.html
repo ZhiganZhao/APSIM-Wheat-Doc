@@ -160,7 +160,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.4" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html"><i class="fa fa-check"></i><b>6.4</b> Biomass dynamic</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="cha-root.html"><a href="cha-root.html"><i class="fa fa-check"></i><b>7</b> Root</a><ul>
-<li class="chapter" data-level="7.1" data-path="sec-root-growth.html"><a href="sec-root-growth.html"><i class="fa fa-check"></i><b>7.1</b> Root Growth</a></li>
+<li class="chapter" data-level="7.1" data-path="sec-root-growth.html"><a href="sec-root-growth.html"><i class="fa fa-check"></i><b>7.1</b> Root Growth</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="sec-root-growth.html"><a href="sec-root-growth.html#root-depth"><i class="fa fa-check"></i><b>7.1.1</b> Root depth</a></li>
+<li class="chapter" data-level="7.1.2" data-path="sec-root-growth.html"><a href="sec-root-growth.html#root-length"><i class="fa fa-check"></i><b>7.1.2</b> Root length</a></li>
+</ul></li>
 <li class="chapter" data-level="7.2" data-path="sec-root-supply.html"><a href="sec-root-supply.html"><i class="fa fa-check"></i><b>7.2</b> Supply</a></li>
 <li class="chapter" data-level="7.3" data-path="sec-root-demand.html"><a href="sec-root-demand.html"><i class="fa fa-check"></i><b>7.3</b> Demand</a></li>
 <li class="chapter" data-level="7.4" data-path="sec-root-biomass.html"><a href="sec-root-biomass.html"><i class="fa fa-check"></i><b>7.4</b> Biomass dynamic</a></li>
@@ -226,30 +229,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="sec:root-biomass" class="section level2">
 <h2><span class="header-section-number">7.4</span> Biomass dynamic</h2>
-<p>The actual allocation (Fig. <a href="sec-root-biomass.html#fig:root-allocated">7.8</a>) is determined by the actual daily biomass supply (Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-total">5.2</a>) which may be smaller than than biomass demand (Fig. <a href="sec-root-demand.html#fig:root-demand">7.7</a>).</p>
+<p>The actual allocation (Fig. <a href="sec-root-biomass.html#fig:root-allocated">7.11</a>) is determined by the actual daily biomass supply (Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-total">5.2</a>) which may be smaller than than biomass demand (Fig. <a href="sec-root-demand.html#fig:root-demand">7.10</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:root-allocated"></span>
 <img src="APSIM-Wheat_files/figure-html/root-allocated-1.png" alt="Actual allocated biomass for root" width="80%" />
 <p class="caption">
-Figure 7.8: Actual allocated biomass for root
+Figure 7.11: Actual allocated biomass for root
 </p>
 </div>
 </div>
-<p>The daily loss of roots is calculated using a SenescenceRate function (0.005 in the default value). All senesced material is automatically detached and added to the soil fresh organic matter (FOM) pool.</p>
+<p>The daily loss of roots is calculated using a SenescenceRate function (0.005 in the default value). All senescence material is automatically detached and added to the soil fresh organic matter (FOM) pool.</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:root-detached"></span>
 <img src="APSIM-Wheat_files/figure-html/root-detached-1.png" alt="Detached biomass from root into soil organic." width="80%" />
 <p class="caption">
-Figure 7.9: Detached biomass from root into soil organic.
+Figure 7.12: Detached biomass from root into soil organic.
 </p>
 </div>
 </div>
-<p>Finally <code>Root</code> biomass increases until <code>flowering time</code>, then gradually decreases as the senescence is more than allocation (Fig. <a href="sec-root-biomass.html#fig:root-weight">7.10</a>). All biomass is allocated into <code>Live</code> component (Fig. <a href="sec-root-biomass.html#fig:root-live">7.11</a>), as the senescenced <code>Root</code> immediately is detached and contributed into soil FOM (Fig. <a href="sec-root-biomass.html#fig:root-dead">7.12</a>).</p>
+<p>Finally <code>Root</code> biomass increases until <code>flowering time</code>, then gradually decreases as the senescence is more than allocation (Fig. <a href="sec-root-biomass.html#fig:root-weight">7.13</a>). All biomass is allocated into <code>Live</code> component (Fig. <a href="sec-root-biomass.html#fig:root-live">7.14</a>), as the senescence <code>Root</code> immediately is detached and contributed into soil FOM (Fig. <a href="sec-root-biomass.html#fig:root-dead">7.15</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:root-weight"></span>
 <img src="APSIM-Wheat_files/figure-html/root-weight-1.png" alt="Dynamic of root biomass (Total)" width="80%" />
 <p class="caption">
-Figure 7.10: Dynamic of root biomass (Total)
+Figure 7.13: Dynamic of root biomass (Total)
 </p>
 </div>
 </div>
@@ -257,7 +260,7 @@ Figure 7.10: Dynamic of root biomass (Total)
 <div class="figure" style="text-align: center"><span id="fig:root-live"></span>
 <img src="APSIM-Wheat_files/figure-html/root-live-1.png" alt="Dynamic of root biomass (Live component)" width="80%" />
 <p class="caption">
-Figure 7.11: Dynamic of root biomass (Live component)
+Figure 7.14: Dynamic of root biomass (Live component)
 </p>
 </div>
 </div>
@@ -265,7 +268,7 @@ Figure 7.11: Dynamic of root biomass (Live component)
 <div class="figure" style="text-align: center"><span id="fig:root-dead"></span>
 <img src="APSIM-Wheat_files/figure-html/root-dead-1.png" alt="Dynamic of root biomass (Dead component)" width="80%" />
 <p class="caption">
-Figure 7.12: Dynamic of root biomass (Dead component)
+Figure 7.15: Dynamic of root biomass (Dead component)
 </p>
 </div>
 </div>

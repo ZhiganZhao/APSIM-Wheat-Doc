@@ -235,9 +235,9 @@ plot_xypair <- function(pmf, path, x_lab, y_lab, label = path) {
     path <- apsim2path(path)
     df <- list()
     for (i in seq(along = path)) {
-        xypair <- xml_find_all(pmf, path = paste0(path[i], '/following-sibling::XYPairs'))
+        xypair <- xml_find_all(pmf, xpath = paste0(path[i], '/following-sibling::XYPairs'))
         if (length(xypair) == 0) {
-            xypair <- xml_find_first(pmf, path = paste0(path[i], '/XYPairs'))
+            xypair <- xml_find_first(pmf, xpath = paste0(path[i], '/XYPairs'))
         }
         if (length(xypair) == 0) {
             stop(paste0('Cannot find the path: ', path[i], '.'))
@@ -278,6 +278,18 @@ get_fixed_value <- function(pmf, path) {
     assert_is_numeric(value)
     value
 }
+
+# Retrieve soil value from apsimx file
+get_soil_value <- function(pmf, var) {
+    value <- xml_find_all(pmf, paste0('//', var))
+    assert_is_of_length(value, 1)
+    value <-  value %>%
+        xml_children() %>%
+        xml_double()
+    assert_is_numeric(value)
+    value
+}
+
 
 node_count <- function(pmf, path) {
     n <- length(xml_find_all(pmf, path))

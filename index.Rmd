@@ -35,7 +35,7 @@ The main contents include
 
 
 ## Contributors {#sec:intro-contribution}
- * Bangyou Zheng <bangyou.zheng@csiro.au>
+ * [Bangyou Zheng](https://www.bangyou.me) <bangyou.zheng@csiro.au>
  * Karine Chenu <karine.chenu@uq.edu.au>
  * Scott Chapman <scott.chapman@csiro.au>
  * Enli Wang <enli.wang@csiro.au>

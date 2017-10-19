@@ -160,7 +160,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.4" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html"><i class="fa fa-check"></i><b>6.4</b> Biomass dynamic</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="cha-root.html"><a href="cha-root.html"><i class="fa fa-check"></i><b>7</b> Root</a><ul>
-<li class="chapter" data-level="7.1" data-path="sec-root-growth.html"><a href="sec-root-growth.html"><i class="fa fa-check"></i><b>7.1</b> Root Growth</a></li>
+<li class="chapter" data-level="7.1" data-path="sec-root-growth.html"><a href="sec-root-growth.html"><i class="fa fa-check"></i><b>7.1</b> Root Growth</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="sec-root-growth.html"><a href="sec-root-growth.html#root-depth"><i class="fa fa-check"></i><b>7.1.1</b> Root depth</a></li>
+<li class="chapter" data-level="7.1.2" data-path="sec-root-growth.html"><a href="sec-root-growth.html#root-length"><i class="fa fa-check"></i><b>7.1.2</b> Root length</a></li>
+</ul></li>
 <li class="chapter" data-level="7.2" data-path="sec-root-supply.html"><a href="sec-root-supply.html"><i class="fa fa-check"></i><b>7.2</b> Supply</a></li>
 <li class="chapter" data-level="7.3" data-path="sec-root-demand.html"><a href="sec-root-demand.html"><i class="fa fa-check"></i><b>7.3</b> Demand</a></li>
 <li class="chapter" data-level="7.4" data-path="sec-root-biomass.html"><a href="sec-root-biomass.html"><i class="fa fa-check"></i><b>7.4</b> Biomass dynamic</a></li>
@@ -226,21 +229,48 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="sec:root-growth" class="section level2">
 <h2><span class="header-section-number">7.1</span> Root Growth</h2>
-<p>Roots grow downwards through the soil profile, with initial depth determined by sowng depth and the growth rate determined by RootFrontVelocity.</p>
-<p>The RootFrontVelocity is modified by multiplying it by the soil’s XF value; which represents any resistance posed by the soil to root extension. Root depth is also constrained by a maximum root depth.</p>
+<div id="root-depth" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Root depth</h3>
+<p>Roots grow downwards through the soil profile, with initial depth determined by sowing depth and the growth rate determined by <code>RootFrontVelocity</code>, which is determined by potential root front velocity (5 mm/d for pre emergencee, and 20 mm/d for post-emergence, Fig. <a href="sec-root-growth.html#fig:root-front-velocity-potential">7.1</a>), and mofified (multification) by temperature (Fig. <a href="sec-root-growth.html#fig:root-front-velocity-temp">7.2</a>) and water stress (Fig. <a href="sec-root-growth.html#fig:root-front-velocity-water-stress">7.4</a>).</p>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:root-front-velocity-potential"></span>
+<img src="APSIM-Wheat_files/figure-html/root-front-velocity-potential-1.png" alt="The potential root front velocity." width="80%" />
+<p class="caption">
+Figure 7.1: The potential root front velocity.
+</p>
+</div>
+</div>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:root-front-velocity-temp"></span>
-<img src="APSIM-Wheat_files/figure-html/root-front-velocity-temp-1.png" alt="Root depth" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/root-front-velocity-temp-1.png" alt="The temperature stress on root front velocity." width="80%" />
 <p class="caption">
-Figure 7.1: Root depth
+Figure 7.2: The temperature stress on root front velocity.
+</p>
+</div>
+</div>
+<p>Soil water scale is A simple scale to convert soil water content into a value between 0 and 2 (i.e. from 0 to 1 when <span class="math inline">\(SW\)</span> is between <span class="math inline">\(LL15\)</span> and <span class="math inline">\(DUL\)</span> and from 1 to 2 when <span class="math inline">\(SW\)</span> is between <span class="math inline">\(DUL\)</span> and <span class="math inline">\(SAT\)</span>, (Fig. <a href="sec-root-growth.html#fig:root-front-velocity-waterscale">7.3</a>)).</p>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:root-front-velocity-waterscale"></span>
+<img src="APSIM-Wheat_files/figure-html/root-front-velocity-waterscale-1.png" alt="Response of soil water scale on soil water concentration in the top two layers of soil in the tested simulations." width="80%" />
+<p class="caption">
+Figure 7.3: Response of soil water scale on soil water concentration in the top two layers of soil in the tested simulations.
+</p>
+</div>
+</div>
+<p>The multiplier of water stress on root front velocity depends on soil water scale which suppresses root growth when water scale is less than 0.25 (Fig. <a href="sec-root-growth.html#fig:root-front-velocity-water-stress">7.4</a>).</p>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:root-front-velocity-water-stress"></span>
+<img src="APSIM-Wheat_files/figure-html/root-front-velocity-water-stress-1.png" alt="Soil water stress on root front velocity" width="80%" />
+<p class="caption">
+Figure 7.4: Soil water stress on root front velocity
 </p>
 </div>
 </div>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:root-front-velocity"></span>
-<img src="APSIM-Wheat_files/figure-html/root-front-velocity-1.png" alt="Root depth" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/root-front-velocity-1.png" alt="Root front velocity." width="80%" />
 <p class="caption">
-Figure 7.2: Root depth
+Figure 7.5: Root front velocity.
 </p>
 </div>
 </div>
@@ -248,17 +278,21 @@ Figure 7.2: Root depth
 <div class="figure" style="text-align: center"><span id="fig:root-depth"></span>
 <img src="APSIM-Wheat_files/figure-html/root-depth-1.png" alt="Root depth" width="80%" />
 <p class="caption">
-Figure 7.3: Root depth
+Figure 7.6: Root depth
 </p>
 </div>
 </div>
-<p>Root length growth is calculated using the daily DM partitioned to roots and a specific root length. Root proliferation in layers is calculated using an approach similar to the generalised equimarginal criterion used in economics. The uptake of water and N per unit root length is used to partition new root material into layers of higher ‘return on investment’.</p>
+</div>
+<div id="root-length" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Root length</h3>
+<p>Root length growth is calculated using the daily dry biomass partitioned to roots and a specific root length. Root proliferation in layers is calculated using an approach similar to the generalised equimarginal criterion used in economics. The uptake of water and N per unit root length is used to partition new root material into layers of higher ‘return on investment’.</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:root-length"></span>
 <img src="APSIM-Wheat_files/figure-html/root-length-1.png" alt="Root length" width="80%" />
 <p class="caption">
-Figure 7.4: Root length
+Figure 7.7: Root length
 </p>
+</div>
 </div>
 </div>
 </div>

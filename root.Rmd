@@ -9,34 +9,113 @@ source('_setup.R')
 Only `Structural` is considered in the three components of biomass for `Root`. The biomass allocation depending on the fraction of daily fixation (i.e. photosynthesis).
 
 
-
 ## Root Growth {#sec:root-growth}
 
-Roots grow downwards through the soil profile, with initial depth determined by sowng depth and the growth rate determined by RootFrontVelocity. 
 
-The RootFrontVelocity is modified by multiplying it by the soil's XF value; which represents any resistance posed by the soil to root extension. 
-Root depth is also constrained by a maximum root depth.
+### Root depth
+```{r root-get-value}
+s1 <- get_fixed_value(pmf,
+      'Wheat.Root.RootFrontVelocity.PotentialRootFrontVelocity.PreEmergence.Value')
 
+s2 <- get_fixed_value(pmf,
+      'Wheat.Root.RootFrontVelocity.PotentialRootFrontVelocity.PostEmergence.Value')
+```
+
+
+Roots grow downwards through the soil profile, with initial depth determined by sowing depth and the growth rate determined by `RootFrontVelocity`, which is determined by potential root front velocity (`r s1` mm/d for pre emergencee, and `r s2` mm/d for post-emergence, Fig. \@ref(fig:root-front-velocity-potential)), and mofified (multification) by temperature (Fig. \@ref(fig:root-front-velocity-temp)) and water stress (Fig. \@ref(fig:root-front-velocity-water-stress)).
 
 <div class="fig-input">
-```{r root-front-velocity-temp, fig.asp = 1, fig.cap='Root depth'}
-path <- 'Wheat.Root.RootFrontVelocity.TemperatureFactor'
-plot_xypair(pmf, path, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
-           label = c('Nitrogen stress', 'Total coverage', 'Water stress'))
+```{r root-front-velocity-potential, fig.asp = 0.5, fig.cap='The potential root front velocity.'}
+
+v <- data_frame(stage = c(1, 3, 3, 9), velocity = c(s1, s1, s2, s2))
+
+ggplot(v) +
+    geom_path(aes(stage, velocity)) +
+    theme_bw() +
+    xlab('Stage') +
+    ylab('POtential root front velocity (mm/d)') +
+    scale_x_continuous(breaks = seq(1, 9))
 
 ```
 </div>
 
 
 
+
 <div class="fig-input">
-```{r root-front-velocity, fig.asp = 1, fig.cap='Root depth'}
+```{r root-front-velocity-temp, fig.asp = 0.5, fig.cap='The temperature stress on root front velocity.'}
+path <- 'Wheat.Root.RootFrontVelocity.TemperatureFactor'
+plot_xypair(pmf, path, x_lab = 'Daily mean temperature', 
+               y_lab = 'Multiplier of root front velocity')
+
+```
+</div>
+
+
+
+Soil water scale is A simple scale to convert soil water content into a value between 0 and 2 (i.e. from 0 to 1 when $SW$ is between $LL15$ and $DUL$ and from 1 to 2 when $SW$ is between $DUL$ and $SAT$, (Fig. \@ref(fig:root-front-velocity-waterscale))). 
+
+<div class="fig-input">
+```{r root-front-velocity-waterscale, fig.asp = 0.5, fig.cap='Response of soil water scale on soil water concentration in the top two layers of soil in the tested simulations.'}
+dul <- get_soil_value(pmf, 'DUL')[1:2]
+sat <- get_soil_value(pmf, 'SAT')[1:2]
+ll15 <- get_soil_value(pmf, 'LL15')[1:2]
+
+sw <- round(seq(min(ll15), 1, by = 0.01), 2)
+wfd_all <- list()
+for (i in seq(along = dul)) {
+    wfd <- ifelse(sw > dul[i], 
+                  pmax(1, pmin(2, 1 + (sw - dul[i]) / (sat[i] - dul[i]))),
+                  pmax(0, pmin(1, (sw - ll15[i]) / (dul[i] - ll15[i])))
+                  )    
+    wfd_all[[i]] <- data_frame(layer = i, sw = sw, 
+                               DUL = dul[i], SAT = sat[i], 
+                               LL15 = ll15[i], wfd = wfd)
+}
+wfd_all <- bind_rows(wfd_all)
+soil <- wfd_all %>% 
+    select(-sw, -wfd) %>% 
+    distinct() %>% 
+    gather(trait, value, -layer) %>% 
+    left_join(wfd_all %>% select(value = sw, wfd, layer),
+              by = c('layer', "value"))
+ggplot(wfd_all) +
+    geom_line(aes(sw, wfd)) +
+    geom_point(aes(x = value, y = wfd, color = trait), data = soil) +
+    facet_wrap(~layer) +
+    theme_bw() +
+    xlab('Soil water concentration (%)') +
+    ylab('Soil water scale') +
+    theme(legend.position = 'bottom') +
+    guides(color = guide_legend(title = NULL))
+
+```
+</div>
+
+
+The multiplier of water stress on root front velocity depends on soil water scale which suppresses root growth when water scale is less than 0.25 (Fig. \@ref(fig:root-front-velocity-water-stress)). 
+
+
+<div class="fig-input">
+```{r root-front-velocity-water-stress, fig.asp = 0.5, fig.cap='Soil water stress on root front velocity'}
+path <- c('Wheat.Root.RootFrontVelocity.WaterFactor')
+plot_xypair(pmf, path, x_lab = 'Soil water scale', 
+               y_lab = 'Multiplier of root front velocity')
+
+
+```
+</div>
+
+
+<div class="fig-input">
+```{r root-front-velocity, fig.asp = 1, fig.cap='Root front velocity.'}
 y_cols <- c('Wheat.Root.RootFrontVelocity')
 plot_report(report, x_var, y_cols, x_lab = x_lab, 
-            y_lab = 'Root depth (mm)')
+            y_lab = 'Root front velocity (mm)')
 
 ```
 </div>
+
 
 
 
@@ -50,8 +129,9 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 </div>
 
 
+### Root length
 
-Root length growth is calculated using the daily DM partitioned to roots and a specific root length.  Root proliferation in layers is calculated using an approach similar to the generalised equimarginal criterion used in economics.  The uptake of water and N per unit root length is used to partition new root material into layers of higher 'return on investment'.
+Root length growth is calculated using the daily dry biomass partitioned to roots and a specific root length.  Root proliferation in layers is calculated using an approach similar to the generalised equimarginal criterion used in economics.  The uptake of water and N per unit root length is used to partition new root material into layers of higher 'return on investment'.
 
 
 <div class="fig-output">
@@ -138,7 +218,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 ```
 </div>
 
-The daily loss of roots is calculated using a SenescenceRate function (0.005 in the default value).  All senesced material is automatically detached and added to the soil fresh organic matter (FOM) pool.  
+The daily loss of roots is calculated using a SenescenceRate function (0.005 in the default value).  All senescence material is automatically detached and added to the soil fresh organic matter (FOM) pool.  
 
 <div class="fig-output">
 ```{r root-detached, fig.asp = 1, fig.cap='Detached biomass from root into soil organic.'}
@@ -152,7 +232,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 </div>
 
 
-Finally `Root` biomass increases until `flowering time`, then gradually decreases as the senescence is more than allocation (Fig. \@ref(fig:root-weight)). All biomass is allocated into `Live` component (Fig. \@ref(fig:root-live)), as the senescenced `Root` immediately is detached and contributed into soil FOM (Fig. \@ref(fig:root-dead)).
+Finally `Root` biomass increases until `flowering time`, then gradually decreases as the senescence is more than allocation (Fig. \@ref(fig:root-weight)). All biomass is allocated into `Live` component (Fig. \@ref(fig:root-live)), as the senescence `Root` immediately is detached and contributed into soil FOM (Fig. \@ref(fig:root-dead)).
 
 <div class="fig-output">
 ```{r root-weight, fig.asp = 1, fig.cap='Dynamic of root biomass (Total)'}
