@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Simulations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="18">
+<Simulations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="19">
   <Name>Simulations</Name>
   <Replacements>
     <Name>Replacements</Name>
@@ -10,6 +10,11 @@
       <ExperimentFactorValues />
       <VariableNames>
         <string>[Clock].Today</string>
+        <string>[Wheat].Root.MaintenanceRespirationFunction.Value() as Wheat.Root.MaintenanceRespirationFunction</string>
+        <string>[Wheat].Grain.MaintenanceRespirationFunction.Value() as Wheat.Grain.MaintenanceRespirationFunction</string>
+        <string>[Wheat].Leaf.MaintenanceRespirationFunction.Value() as Wheat.Leaf.MaintenanceRespirationFunction</string>
+        <string>[Wheat].Spike.MaintenanceRespirationFunction.Value() as Wheat.Spike.MaintenanceRespirationFunction</string>
+        <string>[Wheat].Stem.MaintenanceRespirationFunction.Value() as Wheat.Stem.MaintenanceRespirationFunction</string>
         <string />
         <string>[Wheat].Root.RootFrontVelocity.Value() as Wheat.Root.RootFrontVelocity</string>
         <string>[Wheat].Root.RootFrontVelocity.WaterFactor.Value() as Wheat.Root.RootFrontVelocity.WaterFactor</string>

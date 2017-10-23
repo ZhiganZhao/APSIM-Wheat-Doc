@@ -65,7 +65,7 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
             } else {
                 p <- p +
                     geom_line(aes(colour = Trait)) +
-                    geom_point(aes(colour = Trait))
+                    geom_point(aes(colour = Trait, shape = Trait))
             }
         } else {
             p <- p +
@@ -79,7 +79,8 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
     p <- p + theme_bw() +
         theme(legend.position = 'bottom') +
         xlab(x_lab) + ylab(y_lab) +
-        guides(colour = guide_legend(title = '', ncol = ncol))
+        guides(colour = guide_legend(title = NULL, ncol = ncol),
+               shape = guide_legend(title = NULL, ncol = ncol))
     if (length(grep('Stage', x_var)) > 0) {
 
         p <- p + scale_x_continuous(breaks = new_breaks)
@@ -268,16 +269,37 @@ plot_xypair <- function(pmf, path, x_lab, y_lab, label = path) {
 
 
 get_fixed_value <- function(pmf, path) {
-    path <- apsim2path(path)
-    value <- xml_find_all(pmf, path)
-    assert_is_of_length(value, 1)
-    value <-  value %>%
-        xml_parent() %>%
-        xml_find_first('FixedValue') %>%
-        xml_double()
-    assert_is_numeric(value)
+    path %>% apsim2path() %>%
+        map_dbl(function(x) {
+            xml_find_all(pmf, x) %>%
+                assert_is_of_length(1) %>%
+                xml_parent() %>%
+                xml_find_first('FixedValue') %>%
+                xml_double() %>%
+                assert_is_numeric()
+        })
+}
+
+# Get the all children from one node
+get_xml_children <- function(pmf, path, label = path) {
+
+    value <-  map2_df(path, label, function(x, y) {
+        x %>%
+            apsim2path() %>%
+            xml_find_all(pmf, .) %>%
+            assert_is_of_length(1) %>%
+            xml_siblings() %>%
+            map(function(x) {
+                l <- list()
+                l[[xml_name(x)]] <- xml_text(x)
+                l
+            }) %>%
+            flatten_df() %>%
+            mutate(trait = y)
+    })
     value
 }
+
 
 # Retrieve soil value from apsimx file
 get_soil_value <- function(pmf, var) {
@@ -308,4 +330,23 @@ get_xml_value <- function(pmf, path) {
 }
 
 
+
+we_beta <- function(mint, maxt, t_min, t_opt, t_max, t_ref = t_opt, maxt_weight = 0.5) {
+    tav <- maxt_weight * maxt + (1 - maxt_weight) * mint
+
+    if ((tav > t_min) && (tav < t_max))
+    {
+        p <- log(2.0) / log((t_max - t_min) / (t_opt - t_min))
+        refeff <- t_opt * (2 * ((tav - t_min)^a) * ((t_opt - t_min)^a) -
+                               ((tav - t_min) ^ (2 * a))) / ((t_opt - t_min) ^ (2 * a))
+    }
+    if ((t_ref > t_min) && (t_ref < t_max))
+    {
+        p <- log(2.0) / log((t_max - t_min) / (t_opt - t_min))
+        refefft <- t_opt * (2 * ((t_ref - t_min)^a) * ((t_opt - t_min)^a) -
+                                ((t_ref - t_min) ^ (2 * a))) / ((t_opt - t_min) ^ (2 * a))
+    }
+
+    return (refeff / refefft)
+}
 

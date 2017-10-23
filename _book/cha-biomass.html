@@ -150,7 +150,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Biomass pool</a></li>
 <li class="chapter" data-level="5.2" data-path="sec-biomass-supply.html"><a href="sec-biomass-supply.html"><i class="fa fa-check"></i><b>5.2</b> Supply</a></li>
 <li class="chapter" data-level="5.3" data-path="sec-biomass-demand.html"><a href="sec-biomass-demand.html"><i class="fa fa-check"></i><b>5.3</b> Demand</a></li>
-<li class="chapter" data-level="5.4" data-path="sec-conversion-efficiency.html"><a href="sec-conversion-efficiency.html"><i class="fa fa-check"></i><b>5.4</b> Conversion efficiency (Growth respiration)</a></li>
+<li class="chapter" data-level="5.4" data-path="sec-respiration.html"><a href="sec-respiration.html"><i class="fa fa-check"></i><b>5.4</b> Respiration</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="sec-respiration.html"><a href="sec-respiration.html#growth-respiration-conversion-efficiency"><i class="fa fa-check"></i><b>5.4.1</b> Growth respiration (Conversion efficiency))</a></li>
+<li class="chapter" data-level="5.4.2" data-path="sec-respiration.html"><a href="sec-respiration.html#maintenance-respiration"><i class="fa fa-check"></i><b>5.4.2</b> Maintenance respiration</a></li>
+</ul></li>
 <li class="chapter" data-level="5.5" data-path="biomass-partitioning.html"><a href="biomass-partitioning.html"><i class="fa fa-check"></i><b>5.5</b> Biomass partitioning</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="cha-grain.html"><a href="cha-grain.html"><i class="fa fa-check"></i><b>6</b> Grain</a><ul>
@@ -232,7 +235,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The wheat is mainly source limited in APSIM-Wheat model.</p>
 <p>The biomass and nitrogen of each organ is separated into two pools (i.e. <code>Live</code> and <code>Dead</code>). Each pool is separated into three components (i.e. <code>Structural</code>, <code>Metabolic</code>, <code>Storage</code>) <span class="citation">(Brown et al. <a href="cha-reference.html#ref-BrownPlantModellingFramework2014">2014</a>)</span>.</p>
 <ul>
-<li><strong>Structural biomass and N</strong> are essential for the growth of the organ. They remain within the organ once it has been allocated and are passed from Live to Dead pools as the organ senesces.</li>
+<li><strong>Structural biomass and N</strong> are essential for the growth of the organ. They remain within the organ once it has been allocated and are passed from Live to Dead pools as the organ senescence.</li>
 <li><strong>Metabolic biomass and N</strong> are essential for growth and their concentration can influence the function of organs (e.g. photosynthetic efficiency of the leaf depends on Metabolic nitrogen content). Metabolic biomass and nitrogen may be reallocated (moved to another organ upon senescence of this organ) or retranslocated (moved to another organ at any time when supplies do not meet the structural and metabolic biomass demands of growing organs).</li>
 <li><strong>Storage biomass and N</strong> are non-essential to the function of an organ. They will be allocated to an organ only when all other organs have received their Structural and Metabolic allocations and may be reallocated or retranslocated.</li>
 </ul> 

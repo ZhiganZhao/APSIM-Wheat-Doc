@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-root-biomass.html">
-<link rel="next" href="sec-leaf-growth-cycle.html">
+<link rel="prev" href="sec-biomass-demand.html">
+<link rel="next" href="biomass-partitioning.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -230,38 +230,92 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cha:leaf" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Leaf</h1>
-<p>The apex model is developed to simulate leaf dynamic based on leaf cohort model.</p>
-<!-- 
-
-## Cohort population
-
-Cohort population is initialized as the total stem population at appearance of leaf cohort, and proportionally reduced by plant and stem mortalities (\@ref(#sec-structure-mortality)) at each day after appearance.
-
-<div class='fig-output'>
-
+<div id="sec-respiration" class="section level2">
+<h2><span class="header-section-number">5.4</span> Respiration</h2>
+<div id="growth-respiration-conversion-efficiency" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Growth respiration (Conversion efficiency))</h3>
+<p>The allocated biomass of an organ is lost through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).</p>
+<div class="fig-input">
+<div class="figure" style="text-align: center"><span id="fig:biomass-conversion-efficiency"></span>
+<img src="APSIM-Wheat_files/figure-html/biomass-conversion-efficiency-1.png" alt="Biomass conversion efficiency from all organs" width="80%" />
+<p class="caption">
+Figure 5.10: Biomass conversion efficiency from all organs
+</p>
 </div>
-
-The total leaf number is multiplied by leaf cohort number and stem number (Figure \@ref(fig:leaf-number)).
-
+</div>
+</div>
+<div id="maintenance-respiration" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Maintenance respiration</h3>
+<table>
+<caption><span id="tab:biomass-wefuncton">Table 5.4: </span>The parameter values of maintenance fractions for all organs. <span class="math inline">\(T_{min}\)</span>, <span class="math inline">\(T_{opt}\)</span> and <span class="math inline">\(T_{max}\)</span> are the minimum, optimum and maximum temperatures in the Wang and Engle’s beta equation. The <span class="math inline">\(W\)</span> is the weighting of maximum temperature when calculats daily mean temperature. The <span class="math inline">\(T_{ref}\)</span> and <span class="math inline">\(M_{20}\)</span> are the reference temperature and fraction of maintenance fractions at reference temperature.</caption>
+<thead>
+<tr class="header">
+<th align="left">Organ</th>
+<th align="right"><span class="math inline">\(T_{min}\)</span></th>
+<th align="right"><span class="math inline">\(T_{opt}\)</span></th>
+<th align="right"><span class="math inline">\(T_{max}\)</span></th>
+<th align="right"><span class="math inline">\(T_{ref}\)</span></th>
+<th align="left"><span class="math inline">\(W\)</span></th>
+<th align="right"><span class="math inline">\(M_{20}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Grain</td>
+<td align="right">-50</td>
+<td align="right">48</td>
+<td align="right">60</td>
+<td align="right">20</td>
+<td align="left">0.5</td>
+<td align="right">0.01</td>
+</tr>
+<tr class="even">
+<td align="left">Root</td>
+<td align="right">-50</td>
+<td align="right">48</td>
+<td align="right">60</td>
+<td align="right">20</td>
+<td align="left">0.5</td>
+<td align="right">0.02</td>
+</tr>
+<tr class="odd">
+<td align="left">Leaf</td>
+<td align="right">-50</td>
+<td align="right">48</td>
+<td align="right">60</td>
+<td align="right">20</td>
+<td align="left">0.5</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="even">
+<td align="left">Spike</td>
+<td align="right">-50</td>
+<td align="right">48</td>
+<td align="right">60</td>
+<td align="right">20</td>
+<td align="left">0.5</td>
+<td align="right">0.01</td>
+</tr>
+<tr class="odd">
+<td align="left">Stem</td>
+<td align="right">-50</td>
+<td align="right">48</td>
+<td align="right">60</td>
+<td align="right">20</td>
+<td align="left">0.5</td>
+<td align="right">0.02</td>
+</tr>
+</tbody>
+</table>
 <div class="fig-output">
-<div class="figure" style="text-align: center">
-<img src="APSIM-Wheat_files/figure-html/leaf-number-1.png" alt="Appeared number of green, senesced and total leaves" width="80%" />
-<p class="caption">(\#fig:leaf-number)Appeared number of green, senesced and total leaves</p>
+<div class="figure" style="text-align: center"><span id="fig:biomass-maintenance-respiration"></span>
+<img src="APSIM-Wheat_files/figure-html/biomass-maintenance-respiration-1.png" alt="Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain)." width="80%" />
+<p class="caption">
+Figure 5.11: Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).
+</p>
 </div>
 </div>
-
-
-
-<div class="rmdimportant">
-<p>The tiller death is detached from plants, but leaf death isn't detached.</p>
 </div>
-
-
-
--->
-<!--chapter:end:leaf.Rmd--> 
 </div>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
@@ -277,8 +331,8 @@ The total leaf number is multiplied by leaf cohort number and stem number (Figur
           </div>
         </div>
       </div>
-<a href="sec-root-biomass.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-leaf-growth-cycle.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sec-biomass-demand.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="biomass-partitioning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -307,7 +361,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/leaf-life-cycle.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/biomass.Rmd",
 "text": "Edit"
 },
 "download": null,

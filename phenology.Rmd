@@ -28,6 +28,7 @@ t <- seq(1, 40)
 tmin <- 0
 topt <- 27.5
 tmax <- 40
+
 a <- log(2) / log((tmax - tmin) / (topt - tmin))
 y <- topt * (2 * ((t - tmin)^a) * ((topt - tmin)^a) - ((t - tmin) ^ (2 * a))) / ((topt - tmin) ^ (2 * a))
    
