@@ -278,7 +278,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 
-<div class="fig-input">
+<div class="fig-output">
 ```{r biomass-maintenance-respiration, fig.asp = 1, fig.cap='Daily maintenance respiration for all organs.'}
 y_cols <- sprintf('Wheat.%s.MaintenanceRespiration', g_organs)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
