@@ -43,9 +43,9 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 The daily biomass demand of `Stem` is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (`Emergence`) to Stage 6 (`Flowering time`) (Fig. \@ref(fig:stem-demand-fraction)) and increases at Stage 4 (`Terminal spikelet`) (Fig. \@ref(fig:stem-demand-fraction)). After `Flowering time`, no biomass allocated into stem (Fig. \@ref(fig:stem-demand)).  
 
 <div class="fig-input">
-```{r stem-demand-fraction, fig.asp = 1, fig.cap='Fraction of stem demand in the total fixation '}
+```{r stem-demand-fraction, fig.asp = 0.5, fig.cap='Fraction of stem demand in the total fixation '}
 y_cols <- c('Wheat.Stem.DMDemandFraction')
-plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
             y_lab = 'Fraction of total fixation')
 
 ```

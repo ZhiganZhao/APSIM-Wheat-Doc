@@ -12,6 +12,7 @@
         <string>[Clock].Today</string>
         <string />
         <string>[Wheat].Stem.PercentWSC</string>
+        <string>[Wheat].Grain.Total.Wt*10 as Wheat.Yield</string>
         <string />
         <string>[Wheat].Grain.MaintenanceRespiration</string>
         <string>[Wheat].Root.MaintenanceRespiration</string>
