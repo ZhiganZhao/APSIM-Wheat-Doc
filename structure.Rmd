@@ -330,7 +330,7 @@ plot_xypair(pmf, path, x_lab = 'Stage', y_lab = 'Potential canopy height (mm)')
 <div class="fig-input">
 ```{r str-height-water-stress, fig.asp=0.5, fig.cap='The impact of water stress on canopy height'}
 path <- 'Wheat.Structure.HeightModel.WaterStress'
-plot_xypair(pmf, path, x_lab = 'water-supply-demand-ratio', y_lab = 'Potential canopy height (mm)')
+plot_xypair(pmf, path, x_lab = 'water-supply-demand-ratio', y_lab = 'Multiplier of water stress on canopy height')
 ```
 </div>
 
