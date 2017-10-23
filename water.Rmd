@@ -10,7 +10,7 @@ source('_setup.R')
 ```{r water-supply-demand-ratio, fig.cap='Coverage'}
 y_cols <- c(
     'Wheat.WaterSupplyDemandRatio')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Ratio of water supply and demand')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Ratio of water supply and demand')
 
 ```
 </div>

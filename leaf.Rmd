@@ -21,7 +21,7 @@ Cohort population is initialized as the total stem population at appearance of l
 <div class='fig-output'>
 ```{r live-population}
 # y_cols <- c('Wheat.Leaf.CohortLivePopulation')
-# plot_report_vector(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Live (cohort) population')
+# plot_report_vector(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Live (cohort) population')
 
 ```
 </div>
@@ -35,7 +35,7 @@ y_cols <- c(
     #'Wheat.Leaf.PlantAppearedGreenLeafNo',
     'Wheat.Leaf.PlantsenescedLeafNo')
 
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Leaf number')
 ```
 </div>

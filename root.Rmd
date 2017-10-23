@@ -14,10 +14,10 @@ Only `Structural` is considered in the three components of biomass for `Root`. T
 
 ### Root depth
 ```{r root-get-value}
-s1 <- get_fixed_value(pmf,
+s1 <- get_fixed_value(g_pmf,
       'Wheat.Root.RootFrontVelocity.PotentialRootFrontVelocity.PreEmergence.Value')
 
-s2 <- get_fixed_value(pmf,
+s2 <- get_fixed_value(g_pmf,
       'Wheat.Root.RootFrontVelocity.PotentialRootFrontVelocity.PostEmergence.Value')
 ```
 
@@ -45,7 +45,7 @@ ggplot(v) +
 <div class="fig-input">
 ```{r root-front-velocity-temp, fig.asp = 0.5, fig.cap='The temperature stress on root front velocity.'}
 path <- 'Wheat.Root.RootFrontVelocity.TemperatureFactor'
-plot_xypair(pmf, path, x_lab = 'Daily mean temperature', 
+plot_xypair(g_pmf, path, x_lab = 'Daily mean temperature', 
                y_lab = 'Multiplier of root front velocity')
 
 ```
@@ -57,9 +57,9 @@ Soil water scale is A simple scale to convert soil water content into a value be
 
 <div class="fig-input">
 ```{r root-front-velocity-waterscale, fig.asp = 0.5, fig.cap='Response of soil water scale on soil water concentration in the top two layers of soil in the tested simulations.'}
-dul <- get_soil_value(pmf, 'DUL')[1:2]
-sat <- get_soil_value(pmf, 'SAT')[1:2]
-ll15 <- get_soil_value(pmf, 'LL15')[1:2]
+dul <- get_soil_value(g_pmf, 'DUL')[1:2]
+sat <- get_soil_value(g_pmf, 'SAT')[1:2]
+ll15 <- get_soil_value(g_pmf, 'LL15')[1:2]
 
 sw <- round(seq(min(ll15), 1, by = 0.01), 2)
 wfd_all <- list()
@@ -99,7 +99,7 @@ The multiplier of water stress on root front velocity depends on soil water scal
 <div class="fig-input">
 ```{r root-front-velocity-water-stress, fig.asp = 0.5, fig.cap='Soil water stress on root front velocity'}
 path <- c('Wheat.Root.RootFrontVelocity.WaterFactor')
-plot_xypair(pmf, path, x_lab = 'Soil water scale', 
+plot_xypair(g_pmf, path, x_lab = 'Soil water scale', 
                y_lab = 'Multiplier of root front velocity')
 
 
@@ -110,7 +110,7 @@ plot_xypair(pmf, path, x_lab = 'Soil water scale',
 <div class="fig-input">
 ```{r root-front-velocity, fig.asp = 1, fig.cap='Root front velocity.'}
 y_cols <- c('Wheat.Root.RootFrontVelocity')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Root front velocity (mm)')
 
 ```
@@ -122,7 +122,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 <div class="fig-output">
 ```{r root-depth, fig.asp = 1, fig.cap='Root depth'}
 y_cols <- c('Wheat.Root.Depth')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Root depth (mm)')
 
 ```
@@ -137,7 +137,7 @@ Root length growth is calculated using the daily dry biomass partitioned to root
 <div class="fig-output">
 ```{r root-length, fig.asp = 1, fig.cap='Root length'}
 y_cols <- c('Wheat.Root.Length')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Root length (m?)')
 
 ```
@@ -157,7 +157,7 @@ y_cols <- c('Wheat.Root.DMSupply.Fixation',
             'Wheat.Root.DMSupply.Retranslocation',
             'Wheat.Root.DMSupply.Reallocation')
 
-plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
             y_lab = 'Demand (g/d)', ncol = 3)
 
 ```
@@ -179,7 +179,7 @@ Photosynthate is not partitioned into root after heading [@Fangsituassessmentnew
 <div class="fig-input">
 ```{r root-demand-fraction, fig.asp = 0.5, fig.cap='Fraction of root demand in the total fixation '}
 y_cols <- c('Wheat.Root.DMDemandFraction')
-plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
             y_lab = 'Fraction of total fixation', ncol = 3)
 
 ```
@@ -195,7 +195,7 @@ y_cols <- c('Wheat.Root.DMDemand.Structural',
 'Wheat.Root.DMDemand.Metabolic')
 
 
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Demand (g/d)', ncol = 3)
 
 ```
@@ -212,7 +212,7 @@ y_cols <- c('Wheat.Root.Allocated.StructuralWt',
 'Wheat.Root.Allocated.MetabolicWt')
 
 
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```
@@ -225,7 +225,7 @@ The daily loss of roots is calculated using a SenescenceRate function (0.005 in 
 y_cols <- c('Wheat.Root.Detached.StructuralWt',
 'Wheat.Root.Detached.StorageWt',
 'Wheat.Root.Detached.MetabolicWt')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```
@@ -237,7 +237,7 @@ Finally `Root` biomass increases until `flowering time`, then gradually decrease
 <div class="fig-output">
 ```{r root-weight, fig.asp = 1, fig.cap='Dynamic of root biomass (Total)'}
 y_cols <- c('Wheat.RootWt')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```
@@ -250,7 +250,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 y_cols <- c('Wheat.Root.Live.StructuralWt',
 'Wheat.Root.Live.StorageWt',
 'Wheat.Root.Live.MetabolicWt')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```
@@ -262,7 +262,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 y_cols <- c('Wheat.Root.Dead.StructuralWt',
 'Wheat.Root.Dead.StorageWt',
 'Wheat.Root.Dead.MetabolicWt')
-plot_report(report, x_var2, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```

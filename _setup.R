@@ -13,30 +13,34 @@ library(RSQLite)
 source('_utility.R')
 
 # Read the raw data
-if (!exists('report', envir = .GlobalEnv)) {
+if (!exists('g_report', envir = .GlobalEnv)) {
     m <- dbDriver("SQLite")
     con <- dbConnect(m, dbname = '_simulation/simulation.db')
-    report <- dbReadTable(con, 'Report')
+    g_report <- dbReadTable(con, 'Report')
     dbDisconnect(con)
-    report <- report %>%
+    g_report <- g_report %>%
         filter(Wheat.Phenology.Stage <= 9)
-    report <- report[seq(which(report$Wheat.Phenology.CurrentStageName == 'Sowing'), nrow(report)),]
-    # assign('report', report, .GlobalEnv)
+    g_report <- g_report[seq(which(g_report$Wheat.Phenology.CurrentStageName == 'Sowing'), nrow(g_report)),]
+    # assign('g_report', g_report, .GlobalEnv)
 }
-if (!exists('pmf', envir = .GlobalEnv)) {
-    pmf <- read_xml('_simulation/simulation.apsimx')
-    # assign('pmf', pmf, .GlobalEnv)
+if (!exists('g_pmf', envir = .GlobalEnv)) {
+    g_pmf <- read_xml('_simulation/simulation.apsimx')
+    # assign('g_pmf', g_pmf, .GlobalEnv)
 }
 
+# Define the globa variables which apply for the whole documentation
 # Configuration of x axis
-x_var <- c(
+g_xvar <- c(
     'Wheat.Phenology.Stage',
     'Wheat.Phenology.AccumulateThermalTime')
 
-x_var2 <- c(
+g_xvar2 <- c(
     'Wheat.Phenology.Stage')
 
-x_lab <- 'Accumulated thermal time or stage'
+g_xlab <- 'Accumulated thermal time or stage'
+g_xlab <- 'Growth stage'
 
 
-
+# Names of organ as vector and data.frame
+g_organs <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+g_organs_df <- data_frame(Organ = g_organs)

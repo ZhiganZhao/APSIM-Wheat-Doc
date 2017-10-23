@@ -8,13 +8,13 @@ During the growth (expanding) duration of each cohort (Fig. \@ref(fig:leaf-cohor
 The maximum leaf area of each leaf cohort is determined by potential maximum leaf area and reduced by cell division stress from `Initialization` to `Appearance`. 
 
 
-The potential maximum leaf areas by rank are specified by two parameters the maximum leaf area in all leaves (`AreaLargestLeaves` with default value `r get_fixed_value(pmf, 'Wheat.Leaf.CohortParameters.MaxArea.AreaLargestLeaves')` mm^2^) and an age factor (Fig. \@ref(fig:leaf-maximum-area-age)). The age factor is assumed leaf areas are linearly increasing from stage `Emergence` to `TerminalSpikelet`, and all leaves appeared after stage `TerminalSpikelet` have the same maximum leaf area (Fig. \@ref(fig:leaf-maximum-area)).
+The potential maximum leaf areas by rank are specified by two parameters the maximum leaf area in all leaves (`AreaLargestLeaves` with default value `r get_fixed_value(g_pmf, 'Wheat.Leaf.CohortParameters.MaxArea.AreaLargestLeaves')` mm^2^) and an age factor (Fig. \@ref(fig:leaf-maximum-area-age)). The age factor is assumed leaf areas are linearly increasing from stage `Emergence` to `TerminalSpikelet`, and all leaves appeared after stage `TerminalSpikelet` have the same maximum leaf area (Fig. \@ref(fig:leaf-maximum-area)).
 
 
 <div class="fig-input">
 ```{r leaf-maximum-area-age, fig.asp = 0.5, fig.cap='Multiplier of maximum leaf area as a function of growthing stage'}
 path <- 'Wheat.Leaf.CohortParameters.MaxArea.AgeFactor'
-plot_xypair(pmf, path, x_lab = 'Growthing stage', y_lab = 'Multiplier of maximum leaf area')
+plot_xypair(g_pmf, path, x_lab = 'Growthing stage', y_lab = 'Multiplier of maximum leaf area')
 ```
 </div>
 
@@ -22,7 +22,7 @@ plot_xypair(pmf, path, x_lab = 'Growthing stage', y_lab = 'Multiplier of maximum
 <div class="fig-input">
 ```{r leaf-maximum-area, fig.asp = 0.5, fig.cap='Maximum leaf area by leaf rank'}
 y_cols <- c("Wheat.Leaf.CohortParameters.MaxArea")
-plot_report_rank(report, y_cols, y_lab = 'Maximum leaf area (mm2)')
+plot_report_rank(g_report, y_cols, y_lab = 'Maximum leaf area (mm2)')
 ```
 </div>
 
@@ -33,7 +33,7 @@ The stress factor of cell division is the minimum multipliers of water stress an
 <div class="fig-input">
 ```{r leaf-cell-division-daily, fig.asp = 0.5, fig.cap='Daily stress of cell division'}
 y_cols <- c("Wheat.Leaf.CohortParameters.CellDivisionStress")
-plot_report(report, x_var2, y_cols, 
+plot_report(g_report, g_xvar2, y_cols, 
             y_lab = 'Daily stress of cell division')
 ```
 </div>
@@ -42,7 +42,7 @@ plot_report(report, x_var2, y_cols,
 <div class="fig-input">
 ```{r leaf-cell-division-water, fig.asp = 0.5, fig.cap='Multiplier of water stress on cell division'}
 path <- 'Wheat.Leaf.CohortParameters.CellDivisionStress.WaterStressEffect'
-plot_xypair(pmf, path, x_lab = 'Ratio of water supply and demand', 
+plot_xypair(g_pmf, path, x_lab = 'Ratio of water supply and demand', 
             y_lab = 'Multiplier of water stress')
 ```
 </div>
@@ -51,7 +51,7 @@ plot_xypair(pmf, path, x_lab = 'Ratio of water supply and demand',
 <div class="fig-input">
 ```{r leaf-cell-division-nitrogen, fig.asp = 0.5, fig.cap='Multiplier of nitrogen stress on cell division'}
 path <- 'Wheat.Leaf.CohortParameters.CellDivisionStress.NitrogenStressEffect'
-plot_xypair(pmf, path, x_lab = 'Ratio of functional nitrogen', 
+plot_xypair(g_pmf, path, x_lab = 'Ratio of functional nitrogen', 
             y_lab = 'Multiplier of nitrogen stress')
 ```
 </div>
@@ -63,7 +63,7 @@ Stress of cell division is averaged by cell division stress factors from `Initia
 <div class="fig-output">
 ```{r leaf-cohort-max-area, fig.asp=0.5, fig.cap='Actual maximum area of leaf cohorts by leaf rank.'}
 y_cols <- c('Wheat.Leaf.CohortMaxArea')
-plot_report_vector(report, x_var, y_cols, 
+plot_report_vector(g_report, g_xvar, y_cols, 
     y_lab = 'Maximum leaf area (mm2)', rank = TRUE)
 
 ```
@@ -73,14 +73,14 @@ plot_report_vector(report, x_var, y_cols,
 
 ### Potential expansion of leaf cohort {#sec:leaf-potential-area}
 
-The potential leaf area is increased following a logistic equation as a function of thermal time after leaf appearance. The shape of logistic equation is determiend by parameter `LeafSizeShapeParameter` with default value `r get_fixed_value(pmf, 'Wheat.Leaf.CohortParameters.LeafSizeShapeParameter')` (Fig. \@ref(fig:leaf-size-function)). The daily potential increase of leaf area is the difference of size function in today and previous (e.g. the height of red area in Fig. \@ref(fig:leaf-size-function)).
+The potential leaf area is increased following a logistic equation as a function of thermal time after leaf appearance. The shape of logistic equation is determiend by parameter `LeafSizeShapeParameter` with default value `r get_fixed_value(g_pmf, 'Wheat.Leaf.CohortParameters.LeafSizeShapeParameter')` (Fig. \@ref(fig:leaf-size-function)). The daily potential increase of leaf area is the difference of size function in today and previous (e.g. the height of red area in Fig. \@ref(fig:leaf-size-function)).
 
 
 ```{r leaf-size-function, fig.asp=0.5, fig.cap='The size function of leaf area development. The maximum leaf area sets as 2600 mm2'}
 
 TT <- seq(0, 100, by = 1)
 MaxArea <- 2600
-LeafSizeShape <- as.numeric(get_fixed_value(pmf, 'Wheat.Leaf.CohortParameters.LeafSizeShapeParameter'))
+LeafSizeShape <- as.numeric(get_fixed_value(g_pmf, 'Wheat.Leaf.CohortParameters.LeafSizeShapeParameter'))
 GrowthDuration <- 100
 OneLessShape <- 1 - LeafSizeShape
 alpha <- -log((1 / OneLessShape - 1) / (MaxArea / (MaxArea * LeafSizeShape) - 1)) / GrowthDuration
@@ -113,7 +113,7 @@ The water constrained leaf area equals to the daily potential increase of leaf a
 <div class="fig-input">
 ```{r leaf-expansion-daily, fig.asp = 0.5, fig.cap='Daily stress of leaf expansion'}
 y_cols <- c("Wheat.Leaf.CohortParameters.ExpansionStress")
-plot_report(report, x_var2, y_cols, 
+plot_report(g_report, g_xvar2, y_cols, 
             y_lab = 'Daily stress of leaf expansion')
 ```
 </div>
@@ -126,7 +126,7 @@ plot_report(report, x_var2, y_cols,
 path <- paste0('Wheat.Leaf.CohortParameters.ExpansionStress.', 
                 c('TemperatureEffect', 'WaterStressEffect',
                   'NitrogenStressEffect'))
-plot_xypair(pmf, path, x_lab = 'Values for stress factors', 
+plot_xypair(g_pmf, path, x_lab = 'Values for stress factors', 
             y_lab = 'Multiplier of leaf expansion', label = c('Temperature', 'Water', 'Nitrogen'))
 ```
 </div>
@@ -156,7 +156,7 @@ Need more information
 y_cols <- c(
     'Wheat.Leaf.CohortSenescedFrac')
 plot_report_vector(
-    report, x_var, y_cols, x_lab = x_lab,
+    g_report, g_xvar, y_cols, x_lab = g_xlab,
     y_lab = 'Fraction of leaf senescence in the remaining live leaf area')
 
 ```
@@ -175,7 +175,7 @@ y_cols <- c(
     'Wheat.Leaf.LAI', 
 'Wheat.Leaf.LAIDead',
 'Wheat.Leaf.LAITotal')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Leaf area index')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Leaf area index')
 
 
 ```
@@ -205,7 +205,7 @@ $$
 $$
 
 
-The extinction coefficient for dead leaf ($k_{d}$) is defined as `r get_xml_value(pmf, '//Leaf/KDead')`. The extinction coefficient for green leaf ($k_{g}$) is calculated by parameter `ExtinctionCoeff` with default value `r get_fixed_value(pmf, 'Wheat.Leaf.ExtinctionCoeff')`.  
+The extinction coefficient for dead leaf ($k_{d}$) is defined as `r get_xml_value(g_pmf, '//Leaf/KDead')`. The extinction coefficient for green leaf ($k_{g}$) is calculated by parameter `ExtinctionCoeff` with default value `r get_fixed_value(g_pmf, 'Wheat.Leaf.ExtinctionCoeff')`.  
 
 
 <div class="fig-output">
@@ -214,7 +214,7 @@ y_cols <- c(
     'Wheat.Leaf.CoverGreen',
     'Wheat.Leaf.CoverDead',
     'Wheat.Leaf.CoverTotal')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Coverage',
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Coverage',
             ncol = 3, y_labels = c('Green', 'Dead', 'Total'))
 
 ```
@@ -229,7 +229,7 @@ The minimum and maximum specific leaf areas are defined in the `CohortParameters
 ```{r leaf-sla, fig.cap='Maximum and minimum specific leaf area.'}
 y_cols <- c("Wheat.Leaf.CohortParameters.SpecificLeafAreaMin",
             "Wheat.Leaf.CohortParameters.SpecificLeafAreaMax")
-plot_report(report, x_var2, y_cols, 
+plot_report(g_report, g_xvar2, y_cols, 
             y_lab = 'Specific leaf area (mm2/g)', ncol = 2, 
             y_labels = c('Min', 'Max'))
 ```
@@ -241,7 +241,7 @@ plot_report(report, x_var2, y_cols,
 <div class="fig-output">
 ```{r leaf-specific-leaf-area, fig.cap='Specific leaf area'}
 y_cols <- c('Wheat.Leaf.SpecificArea')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Specific leaf area (mm2/g)')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Specific leaf area (mm2/g)')
 
 ```
 </div>

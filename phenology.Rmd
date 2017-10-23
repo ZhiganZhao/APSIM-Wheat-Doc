@@ -49,7 +49,7 @@ data_frame(x = t, y = y) %>%
 <div class="fig-output">
 ```{r phenology-tt, fig.asp=0.6, fig.cap="The daily thermal time calculated from the daily mean temperature"}
 plot_report(
-    report, 
+    g_report, 
     x_var = 'Wheat.Phenology.DaysAfterSowing', 
     y_cols = 'Wheat.Phenology.ThermalTime', 
     x_lab = 'Days after sowing (d)', 
@@ -99,7 +99,7 @@ ReadyForHarvesting        | NA                 | NA            | NA          | N
 ```{r leaf-tt-stage, fig.asp=0.75, fig.cap='The growthing stage as a function of accumulated thermal  time '}
 
 plot_report(
-    report, 
+    g_report, 
     x_var = 'Wheat.Phenology.AccumulateThermalTime', 
     y_cols = 'Wheat.Phenology.Stage', 
     x_lab = 'Accumulated thermal time (oCd)', 

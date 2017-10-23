@@ -234,20 +234,43 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">5.4</span> Respiration</h2>
 <div id="growth-respiration-conversion-efficiency" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Growth respiration (Conversion efficiency))</h3>
-<p>The allocated biomass of an organ is lost through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).</p>
-<div class="fig-input">
-<div class="figure" style="text-align: center"><span id="fig:biomass-conversion-efficiency"></span>
-<img src="APSIM-Wheat_files/figure-html/biomass-conversion-efficiency-1.png" alt="Biomass conversion efficiency from all organs" width="80%" />
-<p class="caption">
-Figure 5.10: Biomass conversion efficiency from all organs
-</p>
-</div>
-</div>
+<p>The allocated biomass of an organ losses through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).</p>
+<table>
+<caption><span id="tab:biomass-conversion-efficiency">Table 5.4: </span>Biomass conversion efficiency for all organs.</caption>
+<thead>
+<tr class="header">
+<th align="left">Organ</th>
+<th align="right">Conversion efficiency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Grain</td>
+<td align="right">0.7067</td>
+</tr>
+<tr class="even">
+<td align="left">Root</td>
+<td align="right">0.6925</td>
+</tr>
+<tr class="odd">
+<td align="left">Leaf</td>
+<td align="right">0.6853</td>
+</tr>
+<tr class="even">
+<td align="left">Spike</td>
+<td align="right">0.7067</td>
+</tr>
+<tr class="odd">
+<td align="left">Stem</td>
+<td align="right">0.6600</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="maintenance-respiration" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Maintenance respiration</h3>
 <table>
-<caption><span id="tab:biomass-wefuncton">Table 5.4: </span>The parameter values of maintenance fractions for all organs. <span class="math inline">\(T_{min}\)</span>, <span class="math inline">\(T_{opt}\)</span> and <span class="math inline">\(T_{max}\)</span> are the minimum, optimum and maximum temperatures in the Wang and Engle’s beta equation. The <span class="math inline">\(W\)</span> is the weighting of maximum temperature when calculats daily mean temperature. The <span class="math inline">\(T_{ref}\)</span> and <span class="math inline">\(M_{20}\)</span> are the reference temperature and fraction of maintenance fractions at reference temperature.</caption>
+<caption><span id="tab:biomass-wefuncton">Table 5.5: </span>The parameter values of maintenance fractions for all organs. <span class="math inline">\(T_{min}\)</span>, <span class="math inline">\(T_{opt}\)</span> and <span class="math inline">\(T_{max}\)</span> are the minimum, optimum and maximum temperatures in the Wang and Engle’s beta equation. The <span class="math inline">\(W\)</span> is the weighting of maximum temperature when calculats daily mean temperature. The <span class="math inline">\(T_{ref}\)</span> and <span class="math inline">\(M_{20}\)</span> are the reference temperature and fraction of maintenance fractions at reference temperature.</caption>
 <thead>
 <tr class="header">
 <th align="left">Organ</th>
@@ -311,7 +334,7 @@ Figure 5.10: Biomass conversion efficiency from all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-maintenance-respiration"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-maintenance-respiration-1.png" alt="Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain)." width="80%" />
 <p class="caption">
-Figure 5.11: Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).
+Figure 5.10: Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).
 </p>
 </div>
 </div>

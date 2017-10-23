@@ -40,7 +40,7 @@ y_cols <- c('Wheat.Leaf.CohortParameters.MinimumNConc',
 'Wheat.Leaf.CohortParameters.CriticalNConc',
 'Wheat.Leaf.CohortParameters.MaximumNConc')
 y_labels <- c('Minimum', 'Critical', 'Maximum')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3,
             y_labels = y_labels)
 
@@ -51,7 +51,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 <div class="fig-output">
 ```{r leaf-nitrogen-functional-n, fig.cap='Ratio of functional nitrogen'}
 y_cols <- c('Wheat.Leaf.Fn')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Ratio of functional nitrogen')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Ratio of functional nitrogen')
 
 ```
 </div>

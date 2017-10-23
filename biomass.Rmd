@@ -50,7 +50,7 @@ y_cols <- c('Wheat.Grain.LiveWt',
             'Wheat.Spike.LiveWt',
             'Wheat.Stem.LiveWt')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Dry weight (g/m2)', y_labels = y_labels,
             ncol = 5, type = 'area')
 
@@ -88,7 +88,7 @@ report %>%
 <div class="fig-output">
 ```{r biomass-supply-total, fig.asp = 1, fig.cap='Biomass total supply from all organs'}
 y_cols <- c('Wheat.DMSupply')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Fixation (g/d)')
 
 ```
@@ -105,7 +105,7 @@ y_cols <- c('Wheat.Grain.DMSupply.Fixation',
             'Wheat.Spike.DMSupply.Fixation',
             'Wheat.Stem.DMSupply.Fixation')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Fixation (g/d)', y_labels = y_labels,
             ncol = 5)
 
@@ -121,7 +121,7 @@ y_cols <- c('Wheat.Grain.DMSupply.Retranslocation',
             'Wheat.Spike.DMSupply.Retranslocation',
             'Wheat.Stem.DMSupply.Retranslocation')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Retranslocation', y_labels = y_labels,
             ncol = 5)
 
@@ -139,7 +139,7 @@ y_cols <- c('Wheat.Grain.DMSupply.Reallocation',
             'Wheat.Spike.DMSupply.Reallocation',
             'Wheat.Stem.DMSupply.Reallocation')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Reallocation', y_labels = y_labels,
             ncol = 5)
 
@@ -180,7 +180,7 @@ y_cols <- c('Wheat.DMDemand.SM.Grain',
             'Wheat.DMDemand.SM.Spike',
             'Wheat.DMDemand.SM.Stem')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Structural and metabolic demand (g/g)', y_labels = y_labels,
             ncol = 5, type = 'area')
 ```
@@ -197,7 +197,7 @@ y_cols <- c('Wheat.Grain.DMDemand.Structural',
             'Wheat.Spike.DMDemand.Structural',
             'Wheat.Stem.DMDemand.Structural')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Structural demand (g/g)', y_labels = y_labels,
             ncol = 5)
 
@@ -214,7 +214,7 @@ y_cols <- c('Wheat.Grain.DMDemand.Metabolic',
             'Wheat.Spike.DMDemand.Metabolic',
             'Wheat.Stem.DMDemand.Metabolic')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Metabolic demand (g/d)', y_labels = y_labels,
             ncol = 5)
 
@@ -229,7 +229,7 @@ y_cols <- c('Wheat.Grain.DMDemand.Storage',
             'Wheat.Spike.DMDemand.Storage',
             'Wheat.Stem.DMDemand.Storage')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Storage demand (g/d)', y_labels = y_labels,
             ncol = 5)
 
@@ -239,33 +239,26 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 ## Respiration {#sec-respiration}
 
 ### Growth respiration (Conversion efficiency))
-The allocated biomass of an organ is lost through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).
+The allocated biomass of an organ losses through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).
 
-<div class="fig-input">
-```{r biomass-conversion-efficiency, fig.asp = 0.5, fig.cap='Biomass conversion efficiency from all organs'}
-y_cols <- c('Wheat.Grain.DMConversionEfficiency',
-            'Wheat.Root.DMConversionEfficiency',
-            'Wheat.Leaf.DMConversionEfficiency',
-            'Wheat.Spike.DMConversionEfficiency',
-            'Wheat.Stem.DMConversionEfficiency')
-y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var2, y_cols, x_lab = x_lab, 
-            y_lab = 'Conversion efficiency', y_labels = y_labels,
-            ncol = 5)
+```{r biomass-conversion-efficiency, results='asis'}
+g_organs_df %>% 
+    mutate(`Conversion efficiency` = get_fixed_value(g_pmf,
+           sprintf("Wheat.%s.DMConversionEfficiency", g_organs))) %>% 
+    kable(caption = "Biomass conversion efficiency for all organs.")
 
 ```
-</div>
+
 
 ### Maintenance respiration
 
 ```{r biomass-wefuncton, results='asis'}
-y_labels <- c("Grain", "Root", "Leaf", "Spike", "Stem")
 path <- sprintf('Wheat.%s.MaintenanceRespirationFunction.MaintenanceFractionAt20C', 
-                y_labels)
-ref20 <- get_fixed_value(pmf, path)
+                g_organs)
+ref20 <- get_fixed_value(g_pmf, path)
 path <- sprintf('Wheat.%s.MaintenanceRespirationFunction.WangEngelTempFunction', 
-                y_labels)
-get_xml_children(pmf, path, y_labels) %>% 
+                g_organs)
+get_xml_children(g_pmf, path, y_labels) %>% 
     mutate(MinTemp = as.numeric(MinTemp),
            OptTemp = as.numeric(OptTemp),
            MaxTemp = as.numeric(MaxTemp),
@@ -289,7 +282,7 @@ y_cols <- c('Wheat.Grain.MaintenanceRespirationFunction',
             'Wheat.Spike.MaintenanceRespirationFunction',
             'Wheat.Stem.MaintenanceRespirationFunction')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Maintenance respiration', y_labels = y_labels,
             ncol = 5)
 
@@ -308,7 +301,7 @@ The biomass partitions into structural and metabolic components firstly accordin
 ```{r biomass-supply-demand-str-met, fig.asp = 1, fig.cap='Daily biomass supply, and structural and metabolic demands for all organs'}
 y_cols <- c('Wheat.DMSupply', 'Wheat.DMDemand.StructuralMetabolic')
 y_labels <- c('Supply', 'Demand')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass supply and demand', y_labels = y_labels,
             ncol = 5)
 
@@ -322,7 +315,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 ```{r biomass-supply-demand-sto, fig.asp = 1, fig.cap='Daily biomass supply, and storage demand for all organs'}
 y_cols <- c('Wheat.DMSupply', 'Wheat.DMDemand')
 y_labels <- c('Supply', 'Demand')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass supply and demand', y_labels = y_labels,
             ncol = 5)
 
@@ -340,7 +333,7 @@ y_cols <- c('Wheat.Grain.Allocated.StructuralWt',
             'Wheat.Spike.Allocated.StructuralWt',
             'Wheat.Stem.Allocated.StructuralWt')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Structural allocation', y_labels = y_labels,
             ncol = 5)
 
@@ -356,7 +349,7 @@ y_cols <- c('Wheat.Grain.Allocated.MetabolicWt',
             'Wheat.Spike.Allocated.MetabolicWt',
             'Wheat.Stem.Allocated.MetabolicWt')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Metabolic allocation', y_labels = y_labels,
             ncol = 5)
 
@@ -376,7 +369,7 @@ y_cols <- c('Wheat.Grain.Allocated.StorageWt',
             'Wheat.Spike.Allocated.StorageWt',
             'Wheat.Stem.Allocated.StorageWt')
 y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Storage allocation', y_labels = y_labels,
             ncol = 5)
 

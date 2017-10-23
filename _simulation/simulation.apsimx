@@ -2889,6 +2889,11 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           </WangEngelTempFunction>
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </MultiplyFunction>
+        <Constant>
+          <Name>DMConversionEfficiency</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <FixedValue>0.6853</FixedValue>
+        </Constant>
         <IncludeInDocumentation>true</IncludeInDocumentation>
         <GrowthRespiration>0</GrowthRespiration>
         <MaintenanceRespiration>0</MaintenanceRespiration>

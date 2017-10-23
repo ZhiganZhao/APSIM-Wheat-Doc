@@ -24,7 +24,7 @@ I=I_{0}(1-\exp(-k\times LAI)
 $$
 
 
-where $I_{0}$ is the total radiation at the top of the canopy (MJ) which is directly imported from weather records. Extinction coefficient ($k$) set as a constant value  `r get_fixed_value(pmf, 'Wheat.Leaf.ExtinctionCoeff')`.  
+where $I_{0}$ is the total radiation at the top of the canopy (MJ) which is directly imported from weather records. Extinction coefficient ($k$) set as a constant value  `r get_fixed_value(g_pmf, 'Wheat.Leaf.ExtinctionCoeff')`.  
 
 
 #### Actual radiation use efficiency {-}
@@ -35,9 +35,9 @@ $$
 RUE = RUE_{p} \times \min{(F_{t,\ photo}, F_{n,\ photo}, F_{VPD})} \times F_W \times F_{CO2}
 $$
 
-**The potential RUE ($RUE_p$)** has a default value `r get_fixed_value(pmf, paste0(name_rue, '.RUE'))`.
+**The potential RUE ($RUE_p$)** has a default value `r get_fixed_value(g_pmf, paste0(name_rue, '.RUE'))`.
 
-**The temperature factor ($F_t$)** is calculated as a function of average daily temperature weighted toward maximum temperature according to the specified `MaximumTemperatureWeighting` factor ($W_{maxt}$) with default value `r get_xml_value(pmf, '//RUEModel/WeightedTemperatureFunction/MaximumTemperatureWeighting')`.
+**The temperature factor ($F_t$)** is calculated as a function of average daily temperature weighted toward maximum temperature according to the specified `MaximumTemperatureWeighting` factor ($W_{maxt}$) with default value `r get_xml_value(g_pmf, '//RUEModel/WeightedTemperatureFunction/MaximumTemperatureWeighting')`.
 
 
 $$
@@ -48,7 +48,7 @@ $$
 <div class="fig-input">
 ```{r biomass-ft, fig.asp = 0.5, fig.cap='The temperature factor which influences radiation use efficiency'}
 path <- paste0(name_rue, '.FT')
-plot_xypair(pmf, path, x_lab = 'Average daily temperature weighted toward maximum temperature', y_lab = 'Temperature factor to photosynthesis')
+plot_xypair(g_pmf, path, x_lab = 'Average daily temperature weighted toward maximum temperature', y_lab = 'Temperature factor to photosynthesis')
 ```
 </div>
 
@@ -58,7 +58,7 @@ plot_xypair(pmf, path, x_lab = 'Average daily temperature weighted toward maximu
 <div class="fig-input">
 ```{r leaf-rue-fn, fig.asp = 0.5, fig.cap='The nitrogen factor which influences radiation use efficiency'}
 path <- paste0(name_rue, '.FN')
-plot_xypair(pmf, path, x_lab = 'Ratio of functional nitrogen in leaf.',
+plot_xypair(g_pmf, path, x_lab = 'Ratio of functional nitrogen in leaf',
             y_lab = 'Nitrogen factor to photosynthesis')
 
 ```
@@ -75,7 +75,7 @@ Need to further check
 <div class="fig-input">
 ```{r leaf-rue-fw, fig.asp = 0.5, fig.cap='The water factor which influences radiation use efficiency'}
 path <- paste0(name_rue, '.FW')
-plot_xypair(pmf, path, x_lab = 'Water stress',
+plot_xypair(g_pmf, path, x_lab = 'Water stress',
             y_lab = 'Water factor to photosynthesis')
 
 ```
@@ -108,7 +108,7 @@ y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
             'Wheat.Leaf.DMSupply.Retranslocation',
             'Wheat.Leaf.DMSupply.Reallocation')
 
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Demand (g/d)', ncol = 3)
 
 ```

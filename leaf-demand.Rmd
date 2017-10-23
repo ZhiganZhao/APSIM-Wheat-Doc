@@ -1,6 +1,6 @@
 ## Demand {#sec:leaf-deman}
 
-The leaf demand is summarised for all leaf cohorts in the expanding period (Figs \@ref(fig:leaf-life-cycle) and \@ref(fig:leaf-cohort-changing-no)), so that there is no leaf demand after `FlagLeaf`. No `Storage` demand is considered in the leaf organ. As the structural fraction is defined as `r get_fixed_value(pmf, 'Wheat.Leaf.StructuralFraction')`, the structural and metabolic demands have the same values in the whole life cycle. 
+The leaf demand is summarised for all leaf cohorts in the expanding period (Figs \@ref(fig:leaf-life-cycle) and \@ref(fig:leaf-cohort-changing-no)), so that there is no leaf demand after `FlagLeaf`. No `Storage` demand is considered in the leaf organ. As the structural fraction is defined as `r get_fixed_value(g_pmf, 'Wheat.Leaf.StructuralFraction')`, the structural and metabolic demands have the same values in the whole life cycle. 
 
 The daily demand ($D_{leaf}$) is the minimum between potential leaf area ($\Delta A_{p}$, Section \@ref(sec:leaf-potential-area)) and water stressed ($\Delta A_{w}$, Section \@ref(sec:leaf-water-area)) leaf area.
 
@@ -16,7 +16,7 @@ where, $\text{SLA}_{min}$ and $\text{SLA}_{max}$ are the minimum and maximum spe
 y_cols <- c('Wheat.Leaf.DMDemand.Structural',
 'Wheat.Leaf.DMDemand.Storage',
 'Wheat.Leaf.DMDemand.Metabolic')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Demand (g/d)', ncol = 3)
 
 ```
@@ -30,7 +30,7 @@ y_cols <- c('Wheat.Leaf.Allocated.StructuralWt',
 'Wheat.Leaf.Allocated.StorageWt',
 'Wheat.Leaf.Allocated.MetabolicWt')
 
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```
@@ -45,7 +45,7 @@ y_cols <- c('Wheat.LeafWt',
              'Wheat.Leaf.LiveWeight', 
              'Wheat.Leaf.DeadWeight')
 y_labels <- c('Total', 'Live', 'Dead')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3, y_labels = y_labels)
 
 ```
@@ -58,7 +58,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 y_cols <- c('Wheat.Leaf.Live.StructuralWt',
 'Wheat.Leaf.Live.StorageWt',
 'Wheat.Leaf.Live.MetabolicWt')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```
@@ -70,7 +70,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab,
 y_cols <- c('Wheat.Leaf.Dead.StructuralWt',
 'Wheat.Leaf.Dead.StorageWt',
 'Wheat.Leaf.Dead.MetabolicWt')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 ```
 </div>

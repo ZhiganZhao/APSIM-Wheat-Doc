@@ -23,13 +23,13 @@ The phyllochron is the intervening period between the sequential emergence of le
 The non-linear reponse of temperature on phyllchron were observed by Friend et al. [-@friend_leaf_1962] and Cao and Moss [-@cao_temperature_1989]. The soil temperature provided more accurately prediction of leaf development than air temperature [@JamiesonPredictionleafappearance1995]. However, a simple linear reponse of phyllochron to air temperature works surprusingly well in predicting phyllochron for most field conditions [@mcmaster_re-examining_2003]. If improvements are desired, the use of non-linear reponses and soil temperature shows promise [@JamiesonPredictionleafappearance1995; @YanEquationModellingTemperature1999]. Consequently, we assume the linear reponse of air temperature on leaf appearance (phyllochorn).  
 
 
-The base phyllochron is a genotypic parameter with default value `r get_fixed_value(pmf, 'Wheat.Structure.Phyllochron.BasePhyllochron')`, but is chagned for most of cultivars. Based on [@JamiesonPredictionleafappearance1995], leaf appearance could be described by a base phyllochron determined between leaves 3 and 7 and a phyllochron that was 70% of base phyllochron for leaves < 3 and 140% of base phyllochroen for leaves > 7 (Fig. \@ref(fig:str-phyllochron-age)). The phyllochron also is adjusted by photoperiod [reference required] through increasing pholochron in the shorter day length (Fig. \@ref(fig:str-phyllochron-ppd)).
+The base phyllochron is a genotypic parameter with default value `r get_fixed_value(g_pmf, 'Wheat.Structure.Phyllochron.BasePhyllochron')`, but is chagned for most of cultivars. Based on [@JamiesonPredictionleafappearance1995], leaf appearance could be described by a base phyllochron determined between leaves 3 and 7 and a phyllochron that was 70% of base phyllochron for leaves < 3 and 140% of base phyllochroen for leaves > 7 (Fig. \@ref(fig:str-phyllochron-age)). The phyllochron also is adjusted by photoperiod [reference required] through increasing pholochron in the shorter day length (Fig. \@ref(fig:str-phyllochron-ppd)).
 
 
 <div class="fig-input">
 ```{r str-phyllochron-age, fig.asp = 0.5, fig.cap='Phyllochron of leaf cohort is depending on the rank on the main stem'}
 path <- 'Wheat.Structure.Phyllochron.LeafStageFactor'
-plot_xypair(pmf, path, x_lab = 'Appeared cohorted number', y_lab = 'Mulitiplier of base phyllochron') +
+plot_xypair(g_pmf, path, x_lab = 'Appeared cohorted number', y_lab = 'Mulitiplier of base phyllochron') +
     scale_x_continuous(breaks = seq(1, 14))
 
 ```
@@ -40,7 +40,7 @@ plot_xypair(pmf, path, x_lab = 'Appeared cohorted number', y_lab = 'Mulitiplier 
 <div class="fig-input">
 ```{r str-phyllochron-ppd, fig.asp = 0.5, fig.cap='The multiplier of phyllochron which is effected by daily photoperiod length.'}
 path <- 'Wheat.Structure.Phyllochron.PhotoPeriodEffect'
-plot_xypair(pmf, path, x_lab = 'Daily photoperiod (h)', y_lab = 'Mulitiplier of base phyllochron') +
+plot_xypair(g_pmf, path, x_lab = 'Daily photoperiod (h)', y_lab = 'Mulitiplier of base phyllochron') +
     scale_x_continuous(breaks = seq(6, 15))
 
 ```
@@ -52,7 +52,7 @@ Finally, the phyllochron is dynamically adjusted according to appeared cohort nu
 ```{r str-phyllochron, fig.asp=1, fig.cap='The actual phyllochron in the testing environment'}
 y_cols <- c(
     'Wheat.Structure.Phyllochron')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Phyllochron (oCd)')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Phyllochron (oCd)')
 
 ```
 </div>
@@ -67,14 +67,14 @@ Will be documented...
 ```{r str-final-leaf-number, fig.asp=0.5, fig.cap='Final leaf number in main stem'}
 y_cols <- c(
     'Wheat.Structure.FinalLeafNumber')
-plot_report(report, x_var2, y_cols, x_lab = x_lab, y_lab = 'Final node number in main stem')
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, y_lab = 'Final node number in main stem')
 
 ```
 </div>
 
 ## Initialization and appearance of leaf tips on main stem {#sec:main-stem}
 
-At `Germination` stage, `r node_count(pmf, '//LeafCohort')` new leaf cohorts or tips are initialized at the main stem. At `Emergence` stage, `r sum(get_xml_value(pmf, '//LeafCohort//Area') > 0)` leaf cohort or tip is appeared at the main stem, and `r sum(get_xml_value(pmf, '//LeafCohort//Area') > 0)` more leaf cohort is initialized. The potential appearance of leaf tip number ($N_{p, tip}$) is initialized as `r sum(get_xml_value(pmf, '//LeafCohort//Area') > 0)`. 
+At `Germination` stage, `r node_count(g_pmf, '//LeafCohort')` new leaf cohorts or tips are initialized at the main stem. At `Emergence` stage, `r sum(get_xml_value(g_pmf, '//LeafCohort//Area') > 0)` leaf cohort or tip is appeared at the main stem, and `r sum(get_xml_value(g_pmf, '//LeafCohort//Area') > 0)` more leaf cohort is initialized. The potential appearance of leaf tip number ($N_{p, tip}$) is initialized as `r sum(get_xml_value(g_pmf, '//LeafCohort//Area') > 0)`. 
 
 After `Emergence`, the potential appearance of tip number in the main stem ($N_{p, tip}$) is daily increased according to the daily phyllochron (Fig. \@ref(fig:str-phyllochron)) and thermal time (Section \@ref(sec:phe-thermal-time)) until `Maturity` (Fig. \@ref(fig:str-delta-tip) and \@ref(fig:str-tips). $N_{p, tip}$ should stop increasing when final leaf number is reached). 
 
@@ -90,15 +90,15 @@ where, $N_{p, tip}$ is the daily increase of leaf tip number (Fig. \@ref(fig:str
 <div class="fig-output">
 ```{r str-delta-tip, fig.asp=0.5, fig.cap='Daily increase of tip number in main stem. There is no point to consider increase of tip number after stage 4 (terminal spikelet), although model exports increase of tip number in the whole growth season'}
 y_cols <- c('Wheat.Structure.DeltaTipNumber')
-report %>% 
+g_report %>% 
     # filter(Wheat.Phenology.Stage <= 4) %>% 
-    plot_report(x_var2, y_cols, x_lab = x_lab, 
+    plot_report(g_xvar2, y_cols, x_lab = g_xlab, 
             y_lab = 'Daily increase of tip number')
 ```
 </div>
 
 
-Potential appearance of tip number in main stem ($N_{p, tip}$) are summarized daily increases since `Emergence`, plus the appeared leaf tip at `Emergence` (`r sum(get_xml_value(pmf, '//LeafCohort//Area') > 0)` for wheat model) (Fig. \@ref(fig:str-tips)).
+Potential appearance of tip number in main stem ($N_{p, tip}$) are summarized daily increases since `Emergence`, plus the appeared leaf tip at `Emergence` (`r sum(get_xml_value(g_pmf, '//LeafCohort//Area') > 0)` for wheat model) (Fig. \@ref(fig:str-tips)).
 
 
 $$
@@ -107,14 +107,14 @@ $$
 
 where, $T_{0}$ is day of `Emergence`.  $T$ is today. In the Structure model, the tip numbers are not calculated for branches or tillers, but only for main stem (Figure \@ref(fig:str-tips)). 
 
-Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of $N_{p, tip}$ are more than 1 (Figure \@ref(fig:str-delta-tip)). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than `r node_count(pmf, '//LeafCohort')`  of appeared tip number.
+Before plant reaches the final leaf number (i.e. all leaves are initialized and appeared), a new leaf cohort is initialized and appeared when increases of $N_{p, tip}$ are more than 1 (Figure \@ref(fig:str-delta-tip)). Consequently, the rates of leaf initialization and appearance are same, except initialized tip number is more than `r node_count(g_pmf, '//LeafCohort')`  of appeared tip number.
 
 <div class="fig-output">
 ```{r str-tips, fig.asp=1, fig.cap='Tips number in main stem. The potential appeared tip number keeps increasing after flag leaf, which is only a model output and need to be fixed.'}
 y_cols <- c('Wheat.Structure.CohortToInitialise',
     'Wheat.Structure.PotLeafTipsAppeared', 
     'Wheat.Structure.LeafTipsAppeared')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Number', ncol = 3)
 ```
 </div>
@@ -125,7 +125,7 @@ Huan stage is exported as the output variable `LeafTipsAppeared`.
 <div class="fig-output">
 ```{r str-haun-stage, fig.cap='Haun stage in main stem'}
 y_cols <- c('Wheat.Structure.HaunStage')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Haun stage', ncol = 3)
 
 ```
@@ -139,7 +139,7 @@ The fraction of final leaf is used to simulate the variation of final leaf numbe
 ```{r str-leaf-fraction, fig.asp=0.5, fig.cap='Fraction of leaf cohort'}
 y_cols <- c(
     'Wheat.Structure.NextLeafProportion')
-plot_report_rank(report, y_cols, y_lab = 'Fraction of leaf cohort')
+plot_report_rank(g_report, y_cols, y_lab = 'Fraction of leaf cohort')
 ```
 </div>
 
@@ -163,7 +163,7 @@ $$
 <div class="fig-output">
 ```{r str-apex-number, fig.asp=1, fig.cap='Apex number in the main stem'}
 y_cols <- c('Wheat.Structure.ApexNum')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Number', ncol = 3)
 ```
 </div>
@@ -178,7 +178,7 @@ The branching rate in a plant is specified by parameter BranchingRate ($\Delta A
 <div class="fig-input">
 ```{r str-branching-rate, fig.asp = 0.5, fig.cap='Potential branching rate of APSIM-Wheat as a function of appreared cohort number'}
 path <- 'Wheat.Structure.BranchingRate.PotentialBranchingRate.Vegetative.PotentialBranchingRate'
-plot_xypair(pmf, path, x_lab = 'Number of appeared cohorts', y_lab = 'Branching rate')
+plot_xypair(g_pmf, path, x_lab = 'Number of appeared cohorts', y_lab = 'Branching rate')
 
 ```
 </div>
@@ -194,7 +194,7 @@ The nitrogen stress is calculated as a function of fraction of nitrogen supply r
 ```{r str-branching-factor, fig.asp = 1.25, fig.cap='The factors to influence of branching rate (nitrogen stress, total coverage and water stress). The final multiplier of branching rate is the minimum values of the '}
 path <- paste0('Wheat.Structure.BranchingRate.StressFactors.',
                 c('NitrogenEffect', 'CoverEffect', 'WaterStressEffect'))
-plot_xypair(pmf, path, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
+plot_xypair(g_pmf, path, x_lab = 'Environmental stress', y_lab = 'Multiplier of branching rate',
            label = c('Nitrogen stress', 'Total coverage', 'Water stress'))
 
 ```
@@ -208,7 +208,7 @@ y_cols <- c('Wheat.Structure.BranchingRate.StressFactors.NitrogenEffect',
             'Wheat.Structure.BranchingRate.StressFactors.CoverEffect',
             'Wheat.Structure.BranchingRate.StressFactors.WaterStressEffect')
 y_labels <- c('Nitrogen', 'Cover', 'Water')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Stress factor', ncol = 3, y_labels = y_labels)
 
 ```
@@ -227,7 +227,7 @@ y_cols <- c('Wheat.Structure.BranchNumber',
             'Wheat.Structure.BranchingRate',
             'Wheat.Structure.BranchMortality')
 
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Branch number or branching rate') 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Branch number or branching rate') 
 
 ```
 </div>
@@ -240,7 +240,7 @@ plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Branch number or bran
 
 Two types of mortality are considered in the apex model, i.e. smaller tiller at terminal spikelet and low growth rate. For any types of tiller mortality, the plant does not reduce the population of existing leaf cohort, but number of apex, then reduce the population size of new leaf cohort. 
 
-At the terminal spikelet, all tillers with less than `r get_fixed_value(pmf, 'Wheat.Structure.StemSenescenceAge')` leaves are stopped to growth new leaves.
+At the terminal spikelet, all tillers with less than `r get_fixed_value(g_pmf, 'Wheat.Structure.StemSenescenceAge')` leaves are stopped to growth new leaves.
 
 
 
@@ -250,7 +250,7 @@ Branching mortality starts from the Flag leaf until Flowering which defines as a
 <div class="fig-input">
 ```{r str-mortality-growth-rate, fig.asp=0.75, fig.cap='Tiller mortality as a function of moving mean tiller growth rate'}
 path <- 'Wheat.Structure.BranchMortality.MortalityPhase.Mortality.MortalityPerDegDay'
-plot_xypair(pmf, path, x_lab = 'Moving mean tiller growth rate', y_lab = 'Branch motality')
+plot_xypair(g_pmf, path, x_lab = 'Moving mean tiller growth rate', y_lab = 'Branch motality')
 ```
 </div>
 
@@ -264,7 +264,7 @@ Figure \@ref(fig:str-tiller-growth-rate) shows the mean tiller growth rate and t
 ```{r str-tiller-growth-rate, fig.cap='The moving tiller growth rate'}
 y_cols <- c(
     'Wheat.Structure.MeanTillerGrowthRate')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Moving tiller growth rate')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Moving tiller growth rate')
 
 ```
 </div>
@@ -279,7 +279,7 @@ y_cols <- c(
     'Wheat.Structure.BranchMortality',
     'Wheat.Structure.ProportionBranchMortality',
             'Wheat.Structure.ProportionPlantMortality')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Mortality of branching', ncol = 3)
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Mortality of branching', ncol = 3)
 
 ```
 </div>
@@ -294,7 +294,7 @@ No plant mortality is considerred in the wheat model.
 <div class="fig-output">
 ```{r str-population, fig.asp = 0.5, fig.cap='Plant population.'}
 y_cols <- c('Wheat.Structure.MainStemPopn')
-plot_report(report, x_var2, y_cols, x_lab = 'Growth stage', y_lab = 'Plant population', ncol = 3)
+plot_report(g_report, g_xvar2, y_cols, x_lab = 'Growth stage', y_lab = 'Plant population', ncol = 3)
 
 ```
 </div>
@@ -306,7 +306,7 @@ plot_report(report, x_var2, y_cols, x_lab = 'Growth stage', y_lab = 'Plant popul
 ```{r str-live-stem-number, fig.cap='Total stem population and live stem number.'}
 y_cols <- c('Wheat.Structure.TotalStemPopn',
     'Wheat.Leaf.LiveStemNumber')
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Stem population', ncol = 3)
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Stem population', ncol = 3)
 
 ```
 </div>
@@ -322,7 +322,7 @@ The canopy height (Fig. \@ref(fig:str-height)) is calculated as the potential he
 <div class="fig-input">
 ```{r str-potential-height, fig.asp=0.5, fig.cap='Potential canopy height'}
 path <- 'Wheat.Structure.HeightModel.PotentialHeight'
-plot_xypair(pmf, path, x_lab = 'Stage', y_lab = 'Potential canopy height (mm)')
+plot_xypair(g_pmf, path, x_lab = 'Stage', y_lab = 'Potential canopy height (mm)')
 ```
 </div>
 
@@ -330,7 +330,7 @@ plot_xypair(pmf, path, x_lab = 'Stage', y_lab = 'Potential canopy height (mm)')
 <div class="fig-input">
 ```{r str-height-water-stress, fig.asp=0.5, fig.cap='The impact of water stress on canopy height'}
 path <- 'Wheat.Structure.HeightModel.WaterStress'
-plot_xypair(pmf, path, x_lab = 'water-supply-demand-ratio', y_lab = 'Multiplier of water stress on canopy height')
+plot_xypair(g_pmf, path, x_lab = 'water-supply-demand-ratio', y_lab = 'Multiplier of water stress on canopy height')
 ```
 </div>
 
@@ -340,7 +340,7 @@ plot_xypair(pmf, path, x_lab = 'water-supply-demand-ratio', y_lab = 'Multiplier 
 ```{r str-height, fig.cap='The simulated canopy height'}
 y_cols <- c('Wheat.Structure.Height')
 
-plot_report(report, x_var, y_cols, x_lab = x_lab, y_lab = 'Canopy height (mm)')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Canopy height (mm)')
 
 ```
 </div>

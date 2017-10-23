@@ -69,10 +69,10 @@ The new document can be easily generated for any other simulations using followi
 
 ### Retrieve fixed value
 
-`get_fixed_value` function is used to retrieve `FixedValue` in APSIM Next Gen. The `path` argument is used to specify the full path to the node with class `FixedValue` using APSIM format which connects the names of all predecessors started from `Wheat`. For example, the code below is used to obtain value for `GrainsPerGramOfStem` with value `r get_fixed_value(pmf, path = 'Wheat.Grain.NumberFunction.GrainNumber.GrainsPerGramOfStem')`.
+`get_fixed_value` function is used to retrieve `FixedValue` in APSIM Next Gen. The `path` argument is used to specify the full path to the node with class `FixedValue` using APSIM format which connects the names of all predecessors started from `Wheat`. For example, the code below is used to obtain value for `GrainsPerGramOfStem` with value `r get_fixed_value(g_pmf, path = 'Wheat.Grain.NumberFunction.GrainNumber.GrainsPerGramOfStem')`.
 
 ```{r intro-get-fixed-value, echo=TRUE, eval=FALSE}
-get_fixed_value(pmf, 
+get_fixed_value(g_pmf, 
     path = 'Wheat.Grain.NumberFunction.GrainNumber.GrainsPerGramOfStem')
 ```
 
@@ -96,26 +96,26 @@ Figures are classified into `Input` and `Output` categories (Section \@ref(sec:i
 </div>
 ````
 
-Two variables are exposed to global environment (`.GlobalEnv` in R), i.e. `pmf` for an `xml` object of the simulation file `_simulation/simulation.apsimx`, and `report` for a `data.frame` of the simulation output file. Variables `pmf` and `report` can be used in any places of the documentation. 
+Two variables are exposed to global environment (`.GlobalEnv` in R), i.e. `g_pmf` for an `xml` object of the simulation file `_simulation/simulation.apsimx`, and `g_report` for a `data.frame` of the simulation output file. Variables `g_pmf` and `g_report` can be used in any places of the documentation. 
 
 A few `helper` functions are designed to plot figures, i.e. `plot_xypair` and `plot_report`. 
 
-`plot_xypair` is used to plot the `XYPairs` function in APSIM Next Gen. The `path` argument is used to specify the full path of a node with child `XYPairs` using APSIM format which connects the names of all predecessors started from `Wheat` (e.g. `Wheat.Leaf.CohortParameters.MaxArea.AgeFactor`). `x_lab` and `y_lab` can be used to specify the X and Y labels. 
+`plot_xypair` is used to plot the `XYPairs` function in APSIM Next Gen. The `path` argument is used to specify the full path of a node with child `XYPairs` using APSIM format which connects the names of all predecessors started from `Wheat` (e.g. `Wheat.Leaf.CohortParameters.MaxArea.AgeFactor`). `g_xlab` and `y_lab` can be used to specify the X and Y labels. 
 
 ```{r intro-example-plot-xypair, echo=TRUE, eval=FALSE}
 path <- 'Wheat.Leaf.CohortParameters.MaxArea.AgeFactor'
-plot_xypair(pmf, path,
-            x_lab = 'Growthing stage', 
+plot_xypair(g_pmf, path,
+            x_lab'Growthing stage', 
             y_lab = 'Multiplier of maximum leaf area')
 ```
 
-`plot_report` is used to plot outputs of APSIM Next Gen for a single and multiple variables. Two types of X variables are predefined in the global environment (i.e. `x_var` for thermal time and stage; `x_var2` for stage only). `X` label is also defined in the global environment. These variables can be overwrote when the `plot_report` is called, but DO NOT add into global environment as other chunks use the default values. 
+`plot_report` is used to plot outputs of APSIM Next Gen for a single and multiple variables. Two types of X variables are predefined in the global environment (i.e. `g_xvar` for thermal time and stage; `g_xvar2` for stage only). `X` label is also defined in the global environment. These variables can be overwrote when the `plot_report` is called, but DO NOT add into global environment as other chunks use the default values. 
 
 ```{r intro-xvar, echo=TRUE, eval=FALSE}
-x_var <- c('Wheat.Phenology.Stage',
+g_xvar <- c('Wheat.Phenology.Stage',
            'Wheat.Phenology.AccumulateThermalTime')
-x_var2 <- c('Wheat.Phenology.Stage')
-x_lab <- 'Accumulated thermal time or stage'
+g_xvar2 <- c('Wheat.Phenology.Stage')
+g_xlab <- 'Accumulated thermal time or stage'
 ```
 
 The argument `y_cols` is used to specify one and multiple variables in the APSIM report using `plot_report` function. Y label `y_lab` should be specified for each figure.
@@ -124,7 +124,7 @@ The argument `y_cols` is used to specify one and multiple variables in the APSIM
 y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
             'Wheat.Leaf.DMSupply.Retranslocation',
             'Wheat.Leaf.DMSupply.Reallocation')
-plot_report(report, x_var, y_cols, x_lab = x_lab, 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Demand (g/d)', ncol = 3)
 ```
 
