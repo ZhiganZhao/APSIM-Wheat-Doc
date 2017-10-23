@@ -217,13 +217,14 @@ path <- sprintf('Wheat.%s.MaintenanceRespirationFunction.MaintenanceFractionAt20
 ref20 <- get_fixed_value(g_pmf, path)
 path <- sprintf('Wheat.%s.MaintenanceRespirationFunction.WangEngelTempFunction', 
                 g_organs)
-get_xml_children(g_pmf, path, y_labels) %>% 
+respiration <- get_xml_children(g_pmf, path, g_organs) %>% 
     mutate(MinTemp = as.numeric(MinTemp),
            OptTemp = as.numeric(OptTemp),
            MaxTemp = as.numeric(MaxTemp),
            RefTemp = as.numeric(RefTemp),
-           MaximumTemperatureWeighting = MaximumTemperatureWeighting) %>% 
-    mutate(MaintenanceFractionAt20C = ref20) %>% 
+           MaximumTemperatureWeighting = as.numeric(MaximumTemperatureWeighting)) %>% 
+    mutate(MaintenanceFractionAt20C = ref20) 
+respiration %>% 
     select(Organ = trait, `$T_{min}$` = MinTemp, `$T_{opt}$` = OptTemp, 
            `$T_{max}$` = MaxTemp, `$T_{ref}$` = RefTemp,
            `$W$` = MaximumTemperatureWeighting,
@@ -233,16 +234,39 @@ get_xml_children(g_pmf, path, y_labels) %>%
 ```
 
 
+<div class="fig-input">
+```{r biomass-maintenance-respiration-beta, fig.asp = 0.5, fig.cap='The response of maintenance respiration on daily average temperature, which is reproduced from parameter values in Table \\@ref(tab:biomass-wefuncton).'}
+avgt <- seq(0, 40)
+res_fun <- function(df) {
+    v <- we_beta(avgt - 1, avgt + 1, df$MinTemp, df$OptTemp, 
+            df$MaxTemp, df$RefTemp, 
+            df$MaximumTemperatureWeighting) *
+        df$MaintenanceFractionAt20C
+    data_frame(avgt = avgt, MaintenanceFraction = v, 
+               Organ = df$trait)
+}
+respiration %>% 
+    rowwise() %>% 
+    do(res_fun(.)) %>% 
+    ggplot() +
+    geom_line(aes(avgt, MaintenanceFraction, color = Organ)) +
+    xlab('Daily mean temperature (C)') +
+    ylab('Fraction of maintenance') +
+    theme_bw() +
+    guides(color = guide_legend(title = NULL)) +
+    theme(legend.position = 'bottom')
+
+
+```
+</div>
+
+
+
 <div class="fig-output">
 ```{r biomass-maintenance-respiration, fig.asp = 1, fig.cap='Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).'}
-y_cols <- c('Wheat.Grain.MaintenanceRespirationFunction',
-            'Wheat.Root.MaintenanceRespirationFunction',
-            'Wheat.Leaf.MaintenanceRespirationFunction',
-            'Wheat.Spike.MaintenanceRespirationFunction',
-            'Wheat.Stem.MaintenanceRespirationFunction')
-y_labels <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
+y_cols <- sprintf('Wheat.%s.MaintenanceRespirationFunction', g_organs)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Maintenance respiration', y_labels = y_labels,
+            y_lab = 'Maintenance respiration', y_labels = g_organs,
             ncol = 5)
 
 ```
