@@ -126,5 +126,20 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab,
 </div>
 
 
+## Water soluble carbohydrate
+
+Water soluble carbohydrates (WSC) are sugars such as fructans, sucrose, glucose and fructose which are accumulated in the stem as reserves.
 
 
+In APSIM Next Gen, the WSC of stem is defined as the ratio of storage and total weights in the `Live` pool of stem.  
+
+<div class="fig-output">
+```{r stem-wsc, fig.asp = 1, fig.cap='Water soluble carbohydrate in stem.'}
+y_cols <- c('Wheat.Stem.PercentWSC')
+g_report %>% 
+    filter(Wheat.Phenology.Stage > 3) %>% 
+    plot_report(g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = 'WSC', ncol = 3)
+
+```
+</div>

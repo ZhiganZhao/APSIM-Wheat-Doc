@@ -38,7 +38,7 @@ g_xvar2 <- c(
     'Wheat.Phenology.Stage')
 
 g_xlab <- 'Accumulated thermal time or stage'
-g_xlab <- 'Growth stage'
+g_xlab2 <- 'Growth stage'
 
 
 # Names of organ as vector and data.frame

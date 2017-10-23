@@ -11,6 +11,8 @@
       <VariableNames>
         <string>[Clock].Today</string>
         <string />
+        <string>[Wheat].Stem.PercentWSC</string>
+        <string />
         <string>[Wheat].Grain.MaintenanceRespiration</string>
         <string>[Wheat].Root.MaintenanceRespiration</string>
         <string>[Wheat].Leaf.MaintenanceRespiration</string>

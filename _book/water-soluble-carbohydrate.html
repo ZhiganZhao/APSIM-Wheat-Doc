@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="cha-grain.html">
-<link rel="next" href="sec-grain-supply.html">
+<link rel="prev" href="sec-stem-biomass.html">
+<link rel="next" href="cha-water.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -231,13 +231,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:grain-number" class="section level2">
-<h2><span class="header-section-number">6.1</span> Grain number</h2>
-<p>Grain number is correlated with stem [ref] and/or spike <span class="citation">(Slafer, Andrade, and Satorre <a href="cha-reference.html#ref-SlaferGeneticimprovementeffectspreanthesis1990">1990</a>; González, Slafer, and Miralles <a href="cha-reference.html#ref-GonzalezPhotoperiodstemelongation2005">2005</a>)</span> dry weight at anthesis.</p>
-<p>The number of grains per plant (<span class="math inline">\(N_{g}\)</span>) is determined by the <code>Stem</code> and <code>Spike</code> total biomass at <code>Flowering</code> (including <code>Live</code> and <code>Dead</code>). <span class="math display">\[
-N_{g}=R_{g}(W_{stem} + W_{spike})
-\]</span> where <span class="math inline">\(W_{stem}\)</span> and <span class="math inline">\(W_{spike}\)</span> are the stem and spkie total biomass at flowering, respectively. R_{g} is the grain number per gram stem and spike, with default value at 22 grain g<sup>-1</sup>.</p>
+<div id="water-soluble-carbohydrate" class="section level2">
+<h2><span class="header-section-number">10.4</span> Water soluble carbohydrate</h2>
+<p>Water soluble carbohydrates (WSC) are sugars such as fructans, sucrose, glucose and fructose which are accumulated in the stem as reserves.</p>
+<p>In APSIM Next Gen, the WSC of stem is defined as the ratio of storage and total weights in the <code>Live</code> pool of stem.</p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:stem-wsc"></span>
+<img src="APSIM-Wheat_files/figure-html/stem-wsc-1.png" alt="Water soluble carbohydrate in stem." width="80%" />
+<p class="caption">
+Figure 10.9: Water soluble carbohydrate in stem.
+</p>
 </div>
+</div>
+
+</div>
+<!-- </div> -->
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -252,8 +260,8 @@ N_{g}=R_{g}(W_{stem} + W_{spike})
           </div>
         </div>
       </div>
-<a href="cha-grain.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-grain-supply.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sec-stem-biomass.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cha-water.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -282,7 +290,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/grain.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/stem.Rmd",
 "text": "Edit"
 },
 "download": null,
