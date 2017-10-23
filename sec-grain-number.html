@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-intro-own-contribution.html">
-<link rel="next" href="cha-overview.html">
+<link rel="prev" href="cha-grain.html">
+<link rel="next" href="sec-grain-supply.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -230,74 +230,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:intro-software" class="section level2">
-<h2><span class="header-section-number">1.4</span> Software information</h2>
-<p>The R session information when compiling this book is shown below:</p>
-<pre><code>## R version 3.4.2 (2017-09-28)
-## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 7 x64 (build 7601) Service Pack 1
-## 
-## Matrix products: default
-## 
-## locale:
-## [1] LC_COLLATE=English_Australia.1252  LC_CTYPE=English_Australia.1252   
-## [3] LC_MONETARY=English_Australia.1252 LC_NUMERIC=C                      
-## [5] LC_TIME=English_Australia.1252    
-## 
-## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets  base     
-## 
-## other attached packages:
-##  [1] bindrcpp_0.2     RSQLite_2.0      DiagrammeR_0.9.2 xml2_1.1.1      
-##  [5] assertive_0.3-5  dplyr_0.7.4      purrr_0.2.3      readr_1.1.1     
-##  [9] tidyr_0.7.1      tibble_1.3.4     ggplot2_2.2.1    tidyverse_1.1.1 
-## [13] knitr_1.17      
-## 
-## loaded via a namespace (and not attached):
-##  [1] viridis_0.4.0              httr_1.3.1                
-##  [3] bit64_0.9-7                viridisLite_0.2.0         
-##  [5] jsonlite_1.5               assertive.sets_0.0-3      
-##  [7] modelr_0.1.1               assertthat_0.2.0          
-##  [9] assertive.data_0.0-1       blob_1.1.0                
-## [11] cellranger_1.1.0           yaml_2.1.14               
-## [13] backports_1.1.1            lattice_0.20-35           
-## [15] glue_1.1.1                 downloader_0.4            
-## [17] assertive.data.uk_0.0-1    assertive.matrices_0.0-1  
-## [19] digest_0.6.12              assertive.types_0.0-3     
-## [21] RColorBrewer_1.1-2         rvest_0.3.2               
-## [23] colorspace_1.3-2           htmltools_0.3.6           
-## [25] plyr_1.8.4                 psych_1.7.8               
-## [27] XML_3.98-1.9               pkgconfig_2.0.1           
-## [29] broom_0.4.2                assertive.data.us_0.0-1   
-## [31] assertive.properties_0.0-4 assertive.reflection_0.0-4
-## [33] haven_1.1.0                bookdown_0.5              
-## [35] scales_0.5.0               brew_1.0-6                
-## [37] influenceR_0.1.0           assertive.code_0.0-1      
-## [39] lazyeval_0.2.0             mnormt_1.5-5              
-## [41] rgexf_0.15.3               magrittr_1.5              
-## [43] readxl_1.0.0               assertive.strings_0.0-3   
-## [45] memoise_1.1.0              evaluate_0.10.1           
-## [47] methods_3.4.2              assertive.numbers_0.0-2   
-## [49] nlme_3.1-131               forcats_0.2.0             
-## [51] foreign_0.8-69             Rook_1.1-1                
-## [53] tools_3.4.2                hms_0.3                   
-## [55] assertive.files_0.0-2      stringr_1.2.0             
-## [57] munsell_0.4.3              compiler_3.4.2            
-## [59] rlang_0.1.2                grid_3.4.2                
-## [61] rstudioapi_0.7             visNetwork_2.0.1          
-## [63] htmlwidgets_0.9            assertive.models_0.0-1    
-## [65] assertive.base_0.0-7       igraph_1.1.2              
-## [67] rmarkdown_1.6              gtable_0.2.0              
-## [69] codetools_0.2-15           DBI_0.7                   
-## [71] assertive.datetimes_0.0-2  reshape2_1.4.2            
-## [73] R6_2.2.2                   gridExtra_2.3             
-## [75] lubridate_1.6.0            bit_1.1-12                
-## [77] bindr_0.1                  rprojroot_1.2             
-## [79] stringi_1.1.5              parallel_3.4.2            
-## [81] Rcpp_0.12.13</code></pre>
-
+<div id="sec:grain-number" class="section level2">
+<h2><span class="header-section-number">6.1</span> Grain number</h2>
+<p>Grain number is correlated with stem [ref] and/or spike <span class="citation">(Slafer, Andrade, and Satorre <a href="cha-reference.html#ref-SlaferGeneticimprovementeffectspreanthesis1990">1990</a>; González, Slafer, and Miralles <a href="cha-reference.html#ref-GonzalezPhotoperiodstemelongation2005">2005</a>)</span> dry weight at anthesis.</p>
+<p>The number of grains per plant (<span class="math inline">\(N_{g}\)</span>) is determined by the <code>Stem</code> and <code>Spike</code> total biomass at <code>Flowering</code> (including <code>Live</code> and <code>Dead</code>). <span class="math display">\[
+N_{g}=R_{g}(W_{stem} + W_{spike})
+\]</span> where <span class="math inline">\(W_{stem}\)</span> and <span class="math inline">\(W_{spike}\)</span> are the stem and spkie total biomass at flowering, respectively. R_{g} is the grain number per gram stem and spike, with default value at 22 grain g<sup>-1</sup>.</p>
 </div>
-<!-- </div> -->
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -312,8 +251,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="sec-intro-own-contribution.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cha-overview.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cha-grain.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sec-grain-supply.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -342,7 +281,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/index.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/grain.Rmd",
 "text": "Edit"
 },
 "download": null,

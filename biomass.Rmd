@@ -262,9 +262,21 @@ respiration %>%
 
 
 
-<div class="fig-output">
-```{r biomass-maintenance-respiration, fig.asp = 1, fig.cap='Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).'}
+<div class="fig-input">
+```{r biomass-maintenance-respiration-fraction, fig.asp = 1, fig.cap='Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).'}
 y_cols <- sprintf('Wheat.%s.MaintenanceRespirationFunction', g_organs)
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = 'Maintenance respiration', y_labels = g_organs,
+            ncol = 5)
+
+```
+</div>
+
+
+
+<div class="fig-input">
+```{r biomass-maintenance-respiration, fig.asp = 1, fig.cap='Daily maintenance respiration for all organs.'}
+y_cols <- sprintf('Wheat.%s.MaintenanceRespiration', g_organs)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Maintenance respiration', y_labels = g_organs,
             ncol = 5)

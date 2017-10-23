@@ -10,11 +10,19 @@
       <ExperimentFactorValues />
       <VariableNames>
         <string>[Clock].Today</string>
+        <string />
+        <string>[Wheat].Grain.MaintenanceRespiration</string>
+        <string>[Wheat].Root.MaintenanceRespiration</string>
+        <string>[Wheat].Leaf.MaintenanceRespiration</string>
+        <string>[Wheat].Spike.MaintenanceRespiration</string>
+        <string>[Wheat].Stem.MaintenanceRespiration</string>
+        <string />
         <string>[Wheat].Root.MaintenanceRespirationFunction.Value() as Wheat.Root.MaintenanceRespirationFunction</string>
         <string>[Wheat].Grain.MaintenanceRespirationFunction.Value() as Wheat.Grain.MaintenanceRespirationFunction</string>
         <string>[Wheat].Leaf.MaintenanceRespirationFunction.Value() as Wheat.Leaf.MaintenanceRespirationFunction</string>
         <string>[Wheat].Spike.MaintenanceRespirationFunction.Value() as Wheat.Spike.MaintenanceRespirationFunction</string>
         <string>[Wheat].Stem.MaintenanceRespirationFunction.Value() as Wheat.Stem.MaintenanceRespirationFunction</string>
+        <string />
         <string />
         <string>[Wheat].Root.RootFrontVelocity.Value() as Wheat.Root.RootFrontVelocity</string>
         <string>[Wheat].Root.RootFrontVelocity.WaterFactor.Value() as Wheat.Root.RootFrontVelocity.WaterFactor</string>
