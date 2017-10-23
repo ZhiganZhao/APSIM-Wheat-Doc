@@ -2043,11 +2043,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
             <FixedValue>1</FixedValue>
           </Constant>
           <Constant>
-            <Name>MaintenanceRespirationFunction</Name>
-            <IncludeInDocumentation>true</IncludeInDocumentation>
-            <FixedValue>0</FixedValue>
-          </Constant>
-          <Constant>
             <Name>NRetranslocationFactor</Name>
             <IncludeInDocumentation>true</IncludeInDocumentation>
             <FixedValue>0.03</FixedValue>
@@ -2647,6 +2642,29 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
             <IncludeInDocumentation>true</IncludeInDocumentation>
             <Values>0.5 0.75 1 1 1 1 1 1 1 1 1 1</Values>
           </ArrayFunction>
+          <MultiplyFunction>
+            <Name>MaintenanceRespirationFunction</Name>
+            <Memo>
+              <Name>Memo</Name>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <MemoText><![CDATA[Maintenance Respiration Function]]></MemoText>
+            </Memo>
+            <Constant>
+              <Name>MaintenanceFractionAt20C</Name>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <FixedValue>0.03</FixedValue>
+            </Constant>
+            <WangEngelTempFunction>
+              <Name>WangEngelTempFunction</Name>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <MinTemp>-50</MinTemp>
+              <OptTemp>48</OptTemp>
+              <MaxTemp>60</MaxTemp>
+              <RefTemp>20</RefTemp>
+              <MaximumTemperatureWeighting>0.5</MaximumTemperatureWeighting>
+            </WangEngelTempFunction>
+            <IncludeInDocumentation>true</IncludeInDocumentation>
+          </MultiplyFunction>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <ExpansionStressValue>0</ExpansionStressValue>
         </LeafCohortParameters>
@@ -2874,6 +2892,11 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <FixedValue>0.6853</FixedValue>
         </Constant>
+        <Constant>
+          <Name>DMConversionEfficiency</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <FixedValue>0.6853</FixedValue>
+        </Constant>
         <MultiplyFunction>
           <Name>MaintenanceRespirationFunction</Name>
           <Memo>
@@ -2897,11 +2920,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           </WangEngelTempFunction>
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </MultiplyFunction>
-        <Constant>
-          <Name>DMConversionEfficiency</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <FixedValue>0.6853</FixedValue>
-        </Constant>
         <IncludeInDocumentation>true</IncludeInDocumentation>
         <GrowthRespiration>0</GrowthRespiration>
         <MaintenanceRespiration>0</MaintenanceRespiration>

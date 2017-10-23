@@ -197,6 +197,8 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 ## Respiration {#sec-respiration}
 
+As the major roles of carbon balance of crop, respiration is separated into two components, i.e. growth and maintenance respiration [@vanIerselGrowthRespirationMaintenance2000; @ChiarielloGrowthcarbonallocation2000]. @ChiarielloGrowthcarbonallocation2000 described "growth respiration is referred as the amount of carbohydrates respired in a net gain in plant biomass. This includes the production of ATP and reductant for biosynthetic processes, transport processes, and nutrient uptake and reduction. Maintenance respiration is defined as the respiration needed to provide the energy for all plant processes that do not result in a net increase in plant dry matter, such as maintenance of ion gradients across membranes and the resynthesis of degraded organic compounds".
+
 ### Growth respiration (Conversion efficiency))
 The allocated biomass of an organ losses through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).
 
@@ -210,6 +212,8 @@ g_organs_df %>%
 
 
 ### Maintenance respiration
+
+The maintenance respiration is required for metabolic and storage components (Table \@ref(tab:biomass-component-type)). The metabolic and storage components of `Live` pool is daily reduced according to a fraction which is used for maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration-fraction)). The maintenance fraction is calculated as reference maintenance fraction at 20 C and a beta function with three cardinal temperatures (i.e. minimum, optimal and maximum temperatures). All organs have the same cardinal temperatures, but different maintenance fraction at 20C (Table \@ref(tab:biomass-wefuncton)). Finally, the actual maintenance fraction depends on the daily mean temperature (Fig. \@ref(fig:biomass-maintenance-respiration-fraction). `Leaf` and `Stem` have the major contributions to maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)). Root and Grain don't have maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)).
 
 ```{r biomass-wefuncton, results='asis'}
 path <- sprintf('Wheat.%s.MaintenanceRespirationFunction.MaintenanceFractionAt20C', 
@@ -278,9 +282,8 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 ```{r biomass-maintenance-respiration, fig.asp = 1, fig.cap='Daily maintenance respiration for all organs.'}
 y_cols <- sprintf('Wheat.%s.MaintenanceRespiration', g_organs)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Maintenance respiration', y_labels = g_organs,
+            y_lab = 'Daily maintenance respiration', y_labels = g_organs,
             ncol = 5)
-
 ```
 </div>
 

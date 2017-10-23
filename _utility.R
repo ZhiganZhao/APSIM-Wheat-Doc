@@ -337,10 +337,10 @@ we_beta <- function(mint, maxt, t_min, t_opt, t_max, t_ref = t_opt, maxt_weight 
 
     res <- ifelse ((tav > t_min) & (tav < t_max),
     {
-        p <- log(2.0) / log((t_max - t_min) / (t_opt - t_min))
+        a <- log(2.0) / log((t_max - t_min) / (t_opt - t_min))
         refeff <- t_opt * (2 * ((tav - t_min)^a) * ((t_opt - t_min)^a) -
                                ((tav - t_min) ^ (2 * a))) / ((t_opt - t_min) ^ (2 * a))
-        p <- log(2.0) / log((t_max - t_min) / (t_opt - t_min))
+        a <- log(2.0) / log((t_max - t_min) / (t_opt - t_min))
         refefft <- t_opt * (2 * ((t_ref - t_min)^a) * ((t_opt - t_min)^a) -
                                 ((t_ref - t_min) ^ (2 * a))) / ((t_opt - t_min) ^ (2 * a))
         refeff / refefft
