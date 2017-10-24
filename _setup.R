@@ -1,4 +1,4 @@
-
+options(output_chunk_file = '_output/output_chunk.Rds')
 library(knitr)
 library(magrittr)
 opts_chunk$set(

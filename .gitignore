@@ -7,3 +7,4 @@ _scripts
 *_cache
 APSIM-Wheat.Rmd
 /*.html
+_output

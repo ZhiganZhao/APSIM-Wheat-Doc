@@ -210,7 +210,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="11" data-path="cha-water.html"><a href="cha-water.html"><i class="fa fa-check"></i><b>11</b> Water</a></li>
 <li class="chapter" data-level="12" data-path="cha-nitrogen.html"><a href="cha-nitrogen.html"><i class="fa fa-check"></i><b>12</b> Nitrogen</a></li>
-<li class="chapter" data-level="13" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>13</b> Reference</a></li>
+<li class="chapter" data-level="13" data-path="cha-output.html"><a href="cha-output.html"><i class="fa fa-check"></i><b>13</b> Output</a></li>
+<li class="chapter" data-level="14" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>14</b> Reference</a></li>
 <li class="divider"></li>
 <li><a href="https://apsim-wheat-sens.bangyou.me" target="blank">Sensitivity analysis</a></li>
 <li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
@@ -239,8 +240,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Several status variables are defined for each leaf cohort, which can be used in other modules to describe the current status of leaf cohort, i.e. <code>IsNotAppeared</code>, <code>IsGrowing</code>, <code>IsAlive</code>, <code>IsGreen</code>, <code>IsNotSenescing</code>, <code>Senescing</code>, <code>isFullyExpanded</code>, <code>ShouldBeDead</code>, <code>IsAppeared</code> and <code>IsInitialised</code>.</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-life-cycle"></span>
-<div id="htmlwidget-1fd175aefcb5a5a833e4" style="width:95%;height:470.4px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1fd175aefcb5a5a833e4">{"x":{"diagram":"sequenceDiagram;\n\tInitialized->>Appeared: Appearance \n\tAppeared->>Expanded: GrowthDuration\n\tExpanded->>Senescing: LagDuration\n\tSenescing->>Senesced: SenescenceDuration\n\tSenesced->>Detaching: DetachmentLagDuration\n\tDetaching->>Detached: DetachmentDuration\n    Initialized->Appeared: IsNotAppeared\n    Initialized->Expanded: IsGrowing\n\tInitialized->>Senesced: IsAlive\n\tInitialized->>Senesced: IsGreen\n\tInitialized->>Senescing: IsNotSenescing\n\tSenescing->>Senesced: IsSenescing\n\tExpanded->>Detached: IsFullyExpanded\n\tSenesced->>Detached: ShouldBeDead\n\tSenesced->>Detached: Finished\n\tAppeared->>Detached: IsAppeared\n\tInitialized->>Detached: IsInitialised\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-36d3dfc0c5be6809335a" style="width:95%;height:470.4px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-36d3dfc0c5be6809335a">{"x":{"diagram":"sequenceDiagram;\n\tInitialized->>Appeared: Appearance \n\tAppeared->>Expanded: GrowthDuration\n\tExpanded->>Senescing: LagDuration\n\tSenescing->>Senesced: SenescenceDuration\n\tSenesced->>Detaching: DetachmentLagDuration\n\tDetaching->>Detached: DetachmentDuration\n    Initialized->Appeared: IsNotAppeared\n    Initialized->Expanded: IsGrowing\n\tInitialized->>Senesced: IsAlive\n\tInitialized->>Senesced: IsGreen\n\tInitialized->>Senescing: IsNotSenescing\n\tSenescing->>Senesced: IsSenescing\n\tExpanded->>Detached: IsFullyExpanded\n\tSenesced->>Detached: ShouldBeDead\n\tSenesced->>Detached: Finished\n\tAppeared->>Detached: IsAppeared\n\tInitialized->>Detached: IsInitialised\n"},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 8.1: The life cycle of a leaf cohort.
 </p>

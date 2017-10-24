@@ -15,9 +15,11 @@ new_breaks <- function(x) {
     breaks
 }
 
-
+# plot report
 plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
                         panel = FALSE, y_labels = NULL, ncol = 1, type = 'point') {
+
+
     library(ggplot2)
     # x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
     # x_var_n <- list()
@@ -44,6 +46,8 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
             mutate(Trait = gsub('.*\\.(.*)', '\\1', Trait)) %>%
             mutate(Trait = factor(Trait, levels = y_cols_name))
     }
+
+    register_output_chunk(y_cols, opts_current$get("label"))
 
     p <- ggplot(pd, aes(XValue, YValue))
 
@@ -349,3 +353,23 @@ we_beta <- function(mint, maxt, t_min, t_opt, t_max, t_ref = t_opt, maxt_weight 
     return (res)
 }
 
+
+
+# Register output variables with chunk name
+register_output_chunk <- function(vars, chunk) {
+    # Retrieve the g_output_chunk from global environment
+    rds_file <- options('output_chunk_file')[[1]]
+    if (!dir.exists(dirname(rds_file))) {
+        dir.create(dirname(rds_file), recursive = TRUE)
+    }
+    if (!file.exists(rds_file)) {
+        output_chunk <- list()
+    } else {
+        output_chunk <- readRDS(rds_file)
+    }
+
+    for (i in seq(along = vars)) {
+        output_chunk[[vars[i]]] <-  unique(c(output_chunk[[vars[i]]], chunk))
+    }
+    saveRDS(output_chunk, file = rds_file)
+}
