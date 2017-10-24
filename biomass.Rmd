@@ -17,44 +17,6 @@ The biomass and nitrogen of each organ is separated into two pools (i.e. `Live` 
 
 
 
-## Biomass pool {#sec:biomass-pool}
-
-All organs have the `Live` pool, but only `Leaf` has the `Dead` pool.
-
-```{r biomass-live-dead, results='asis'}
-
-g_report %>% 
-    select(matches('Wheat\\..+\\.(Live|Dead)\\..+')) %>% 
-    assertr::verify(ncol(.) == 30) %>% 
-    summarise_all(funs(sum(. > 0))) %>% 
-    gather(trait, value) %>% 
-    separate(trait, into = c('Crop', 'Organ', 'Biomass', 'Pool')) %>% 
-    group_by(Organ, Biomass) %>% 
-    summarise(value = sum(value)) %>% 
-    ungroup() %>% 
-    mutate(value = ifelse(value > 0, 'X', '-')) %>% 
-    mutate(Biomass = factor(Biomass, levels = c('Live', 'Dead')),
-           Organ = factor(Organ, levels = c('Grain', "Root", "Leaf", "Spike", "Stem"))) %>% 
-    spread(Biomass, value) %>% 
-    knitr::kable(align = "c",
-                 caption = 'The live and dead groups of biomass in all organs. X and - indicate the organ has and has not the group, respectively.')
-```
-
-
-
-<div class="fig-output">
-```{r biomass-live-weight, fig.asp = 1, fig.cap='Dry weight for all organs'}
-y_cols <- sprintf('Wheat.%s.LiveWt', g_organs)
-plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Dry weight (g/m2)', y_labels = g_organs,
-            ncol = 5, type = 'area')
-
-```
-</div>
-
-
-
-
 ## Supply {#sec:biomass-supply}
 
 Biomass supplies are divided into three sources, i.e fixation (i.e. photosynthesis), retanslocation, reallocation (Table \@ref(tab:biomass-supply-type)). The only source of fixation is organ `Leaf`. The sources of retanslocation include organs `Spike` and `Stem`. No reallocation is considered in the wheat model. See details in the organs about the dynamic of biomass supply. 
@@ -211,6 +173,17 @@ g_organs_df %>%
 ```
 
 
+
+<div class="fig-output">
+```{r biomass-growth-respiration, fig.asp = 1, fig.cap='Growth respiration for all organs'}
+y_cols <- sprintf('Wheat.%s.GrowthRespiration', g_organs)
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = 'Storage demand (g/d)', y_labels = g_organs,
+            ncol = 5)
+
+```
+</div>
+
 ### Maintenance respiration
 
 The maintenance respiration is required for metabolic and storage components (Table \@ref(tab:biomass-component-type)). The metabolic and storage components of `Live` pool is daily reduced according to a fraction which is used for maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration-fraction)). The maintenance fraction is calculated as reference maintenance fraction at 20 C and a beta function [@WangSimulationphenologicaldevelopment1998] with three cardinal temperatures (i.e. minimum, optimal and maximum temperatures). All organs have the same cardinal temperatures, but different maintenance fraction at 20C (Table \@ref(tab:biomass-wefuncton)). Finally, the actual maintenance fraction depends on the daily mean temperature (Fig. \@ref(fig:biomass-maintenance-respiration-fraction). `Leaf` and `Stem` have the major contributions to maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)). Root and Grain don't have maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)).
@@ -294,9 +267,10 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 The biomass partitions into structural and metabolic components firstly according to the relative demands. The remaining biomass allocates into storage according to the relative demands. The greatest storage demand of stem can store all remaining daily supply. 
 
 
+The daily supply is distributed into `Structural` and `Metabolic` components, then `Storage` component. The daily demand cannot be satisfied if the structural and metabolic demands are more than daily supply, then the allocated biomasses of all organs are proportionally reduced to match daily supply (Fig. \@ref(fig:biomass-supply-demand-str-met)). The extra daily supply is distributed into storage, i.e. `Stem` for wheat model, as the extreme higher storage demand for stem (Fig. \@ref(fig:biomass-supply-demand-sto)).
 
 <div class="fig-output">
-```{r biomass-supply-demand-str-met, fig.asp = 1, fig.cap='Daily biomass supply, and structural and metabolic demands for all organs'}
+```{r biomass-supply-demand-str-met, fig.asp = 1, fig.cap='Daily biomass supply, and structural and metabolic demands for all organs.'}
 y_cols <- c('Wheat.DMSupply', 'Wheat.DMDemand.StructuralMetabolic')
 y_labels <- c('Supply', 'Demand')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
@@ -306,12 +280,9 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 ```
 </div>
 
-
-
-
 <div class="fig-output">
-```{r biomass-supply-demand-sto, fig.asp = 1, fig.cap='Daily biomass supply, and storage demand for all organs'}
-y_cols <- c('Wheat.DMSupply', 'Wheat.DMDemand')
+```{r biomass-supply-demand-sto, fig.asp = 1, fig.cap='Daily biomass supply and storage demand for all organs'}
+y_cols <- c('Wheat.DMSupply', 'Wheat.DMDemand.Storage')
 y_labels <- c('Supply', 'Demand')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass supply and demand', y_labels = y_labels,
@@ -321,7 +292,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 </div>
 
 
-
+The actual allocated biomass for each organ depends on the daily supply, relative structural and metabolic demand, and storage demands among all organs (Fig. \@ref(fig:biomass-allocated-structural), \@ref(fig:biomass-allocated-metabolic) and \@ref(fig:biomass-allocated-storage)). 
 
 <div class="fig-output">
 ```{r biomass-allocated-structural, fig.asp = 1, fig.cap='Biomass structural allocation from all organs'}
@@ -346,10 +317,6 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 </div>
 
 
-
-
-
-
 <div class="fig-output">
 ```{r biomass-allocated-storage, fig.asp = 1, fig.cap='Biomass storage allocation from all organs'}
 y_cols <- sprintf('Wheat.%s.Allocated.StorageWt', g_organs)
@@ -359,3 +326,96 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 ```
 </div>
+
+
+The daily biomass supply (Fig. \@ref(fig:biomass-supply-total)) are consumed as growth respiration before partitioning into `Live` pool in each organ, and consumed as daily maintenance respiration from `Live` pool in each organ (Fig. \@ref(fig:biomass-denstiny)).
+
+<div class="fig-output">
+```{r biomass-denstiny, fig.asp = 1, fig.cap='Daily biomass supply and respiration.'}
+y_cols <- sprintf('Wheat.%s.GrowthRespiration', g_organs)
+
+growth_respiration <- g_report %>% 
+    select(y_cols) %>% 
+    rowSums() %>% 
+    as.numeric()
+
+y_cols <- sprintf('Wheat.%s.MaintenanceRespiration', g_organs)
+maintenance_respiration <- g_report %>% 
+    select(y_cols) %>% 
+    rowSums() %>% 
+    as.numeric()
+
+g_report %<>%  
+    mutate(Wheat.GrowthRespiration = growth_respiration,
+           Wheat.MaintenanceRespiration = maintenance_respiration)
+
+y_cols <- c('Wheat.DMSupply', 'Wheat.GrowthRespiration', 'Wheat.MaintenanceRespiration')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = 'Fixation (g/d)', ncol = 3)
+
+```
+</div>
+
+
+
+## Biomass pool {#sec:biomass-pool}
+
+All organs have the `Live` pool, but only `Leaf` has the `Dead` pool (Table \@ref(tab:biomass-live-dead-tbl)). 
+
+```{r biomass-live-dead-tbl, results='asis'}
+g_report %>% 
+    select(matches('Wheat\\..+\\.(Live|Dead)\\..+')) %>% 
+    assertr::verify(ncol(.) == 30) %>% 
+    summarise_all(funs(sum(. > 0))) %>% 
+    gather(trait, value) %>% 
+    separate(trait, into = c('Crop', 'Organ', 'Biomass', 'Pool')) %>% 
+    group_by(Organ, Biomass) %>% 
+    summarise(value = sum(value)) %>% 
+    ungroup() %>% 
+    mutate(value = ifelse(value > 0, 'X', '-')) %>% 
+    mutate(Biomass = factor(Biomass, levels = c('Live', 'Dead')),
+           Organ = factor(Organ, levels = c('Grain', "Root", "Leaf", "Spike", "Stem"))) %>% 
+    spread(Biomass, value) %>% 
+    knitr::kable(align = "c",
+                 caption = 'The live and dead groups of biomass in all organs. X and - indicate the organ has and has not the group, respectively.')
+```
+
+
+
+
+<div class="fig-output">
+```{r biomass-live-dead, fig.asp = 1, fig.cap='Dry weight of Live and Dead pools'}
+y_cols <- c('Wheat.TotalDeadWt', 'Wheat.TotalLiveWt')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = 'Dry weight (g/m2)', y_labels = c("Dead", "Live"),
+            ncol = 5, type = 'area')
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r biomass-live-weight, fig.asp = 1, fig.cap='Dry weight of Live pool for all organs'}
+y_cols <- sprintf('Wheat.%s.LiveWt', g_organs)
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = 'Dry weight (g/m2)', y_labels = g_organs,
+            ncol = 5, type = 'area')
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r biomass-dead-weight, fig.asp = 1, fig.cap='Dry weight of Dead pool for all organs'}
+y_cols <- sprintf('Wheat.%s.DeadWt', g_organs)
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = 'Dry weight (g/m2)', y_labels = g_organs,
+            ncol = 5, type = 'area')
+
+```
+</div>
+
+
+

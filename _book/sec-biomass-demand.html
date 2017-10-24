@@ -147,20 +147,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.6" data-path="sec-canopy-height.html"><a href="sec-canopy-height.html"><i class="fa fa-check"></i><b>4.6</b> Canopy height</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
-<li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Biomass pool</a></li>
-<li class="chapter" data-level="5.2" data-path="sec-biomass-supply.html"><a href="sec-biomass-supply.html"><i class="fa fa-check"></i><b>5.2</b> Supply</a></li>
-<li class="chapter" data-level="5.3" data-path="sec-biomass-demand.html"><a href="sec-biomass-demand.html"><i class="fa fa-check"></i><b>5.3</b> Demand</a></li>
-<li class="chapter" data-level="5.4" data-path="sec-respiration.html"><a href="sec-respiration.html"><i class="fa fa-check"></i><b>5.4</b> Respiration</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="sec-respiration.html"><a href="sec-respiration.html#growth-respiration-conversion-efficiency"><i class="fa fa-check"></i><b>5.4.1</b> Growth respiration (Conversion efficiency))</a></li>
-<li class="chapter" data-level="5.4.2" data-path="sec-respiration.html"><a href="sec-respiration.html#maintenance-respiration"><i class="fa fa-check"></i><b>5.4.2</b> Maintenance respiration</a></li>
+<li class="chapter" data-level="5.1" data-path="sec-biomass-supply.html"><a href="sec-biomass-supply.html"><i class="fa fa-check"></i><b>5.1</b> Supply</a></li>
+<li class="chapter" data-level="5.2" data-path="sec-biomass-demand.html"><a href="sec-biomass-demand.html"><i class="fa fa-check"></i><b>5.2</b> Demand</a></li>
+<li class="chapter" data-level="5.3" data-path="sec-respiration.html"><a href="sec-respiration.html"><i class="fa fa-check"></i><b>5.3</b> Respiration</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="sec-respiration.html"><a href="sec-respiration.html#growth-respiration-conversion-efficiency"><i class="fa fa-check"></i><b>5.3.1</b> Growth respiration (Conversion efficiency))</a></li>
+<li class="chapter" data-level="5.3.2" data-path="sec-respiration.html"><a href="sec-respiration.html#maintenance-respiration"><i class="fa fa-check"></i><b>5.3.2</b> Maintenance respiration</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="biomass-partitioning.html"><a href="biomass-partitioning.html"><i class="fa fa-check"></i><b>5.5</b> Biomass partitioning</a></li>
+<li class="chapter" data-level="5.4" data-path="biomass-partitioning.html"><a href="biomass-partitioning.html"><i class="fa fa-check"></i><b>5.4</b> Biomass partitioning</a></li>
+<li class="chapter" data-level="5.5" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.5</b> Biomass pool</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="cha-grain.html"><a href="cha-grain.html"><i class="fa fa-check"></i><b>6</b> Grain</a><ul>
 <li class="chapter" data-level="6.1" data-path="sec-grain-number.html"><a href="sec-grain-number.html"><i class="fa fa-check"></i><b>6.1</b> Grain number</a></li>
 <li class="chapter" data-level="6.2" data-path="sec-grain-supply.html"><a href="sec-grain-supply.html"><i class="fa fa-check"></i><b>6.2</b> Supply</a></li>
 <li class="chapter" data-level="6.3" data-path="sec-grain-demand.html"><a href="sec-grain-demand.html"><i class="fa fa-check"></i><b>6.3</b> Demand</a></li>
-<li class="chapter" data-level="6.4" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html"><i class="fa fa-check"></i><b>6.4</b> Biomass dynamic</a></li>
+<li class="chapter" data-level="6.4" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html"><i class="fa fa-check"></i><b>6.4</b> Biomass dynamic</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html#yield"><i class="fa fa-check"></i><b>6.4.1</b> Yield</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="cha-root.html"><a href="cha-root.html"><i class="fa fa-check"></i><b>7</b> Root</a><ul>
 <li class="chapter" data-level="7.1" data-path="sec-root-growth.html"><a href="sec-root-growth.html"><i class="fa fa-check"></i><b>7.1</b> Root Growth</a><ul>
@@ -232,10 +234,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="sec:biomass-demand" class="section level2">
-<h2><span class="header-section-number">5.3</span> Demand</h2>
-<p>Depending on the organ, not all components are considered (Table <a href="sec-biomass-demand.html#tab:biomass-component-type">5.3</a>). <code>Structural</code> component is considered in all organs. <code>Metabolic</code> component is only considered in <code>Leaf</code> (Chapter <a href="cha-leaf.html#cha:leaf">8</a>). <code>Storage</code> component is only considered in <code>Stem</code> (Chapter <a href="cha-stem.html#cha:stem">10</a>) and <code>Spike</code> (Chapter <a href="cha-spike.html#cha:spike">9</a>).</p>
+<h2><span class="header-section-number">5.2</span> Demand</h2>
+<p>Depending on the organ, not all components are considered (Table <a href="sec-biomass-demand.html#tab:biomass-component-type">5.2</a>). <code>Structural</code> component is considered in all organs. <code>Metabolic</code> component is only considered in <code>Leaf</code> (Chapter <a href="cha-leaf.html#cha:leaf">8</a>). <code>Storage</code> component is only considered in <code>Stem</code> (Chapter <a href="cha-stem.html#cha:stem">10</a>) and <code>Spike</code> (Chapter <a href="cha-spike.html#cha:spike">9</a>).</p>
 <table>
-<caption><span id="tab:biomass-component-type">Table 5.3: </span>The three components of biomass in all organs. X and - indicate the organ has and has not the component, respectively.</caption>
+<caption><span id="tab:biomass-component-type">Table 5.2: </span>The three components of biomass in all organs. X and - indicate the organ has and has not the component, respectively.</caption>
 <thead>
 <tr class="header">
 <th align="center">Organ</th>
@@ -282,7 +284,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="figure" style="text-align: center"><span id="fig:biomass-demand-organ"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-demand-organ-1.png" alt="Total biomass demand for structural and metabolic from each organ" width="80%" />
 <p class="caption">
-Figure 5.6: Total biomass demand for structural and metabolic from each organ
+Figure 5.5: Total biomass demand for structural and metabolic from each organ
 </p>
 </div>
 </div>
@@ -290,7 +292,7 @@ Figure 5.6: Total biomass demand for structural and metabolic from each organ
 <div class="figure" style="text-align: center"><span id="fig:biomass-demand-structural"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-demand-structural-1.png" alt="Biomass structural demand from all organs" width="80%" />
 <p class="caption">
-Figure 5.7: Biomass structural demand from all organs
+Figure 5.6: Biomass structural demand from all organs
 </p>
 </div>
 </div>
@@ -298,7 +300,7 @@ Figure 5.7: Biomass structural demand from all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-demand-metabolic"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-demand-metabolic-1.png" alt="Biomass metabolic demand from all organs" width="80%" />
 <p class="caption">
-Figure 5.8: Biomass metabolic demand from all organs
+Figure 5.7: Biomass metabolic demand from all organs
 </p>
 </div>
 </div>
@@ -306,7 +308,7 @@ Figure 5.8: Biomass metabolic demand from all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-demand-storage"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-demand-storage-1.png" alt="Biomass storage demand from all organs" width="80%" />
 <p class="caption">
-Figure 5.9: Biomass storage demand from all organs
+Figure 5.8: Biomass storage demand from all organs
 </p>
 </div>
 </div>

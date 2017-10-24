@@ -1,5 +1,6 @@
 
 library(knitr)
+library(magrittr)
 opts_chunk$set(
     cache = TRUE, echo = FALSE,
     out.width = '80%', fig.asp = 1,

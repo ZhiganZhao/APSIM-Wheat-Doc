@@ -80,7 +80,6 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 ```{r grain-weight, fig.asp = 1, fig.cap='Dynamic of grain biomass (Total)'}
 y_cols <- c('Wheat.GrainWt')
 
-
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)')
 
@@ -121,3 +120,22 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab,
 
 
 
+### Yield
+
+The total grain weight at harvest can be considered as the final yield without moisture content in the grain. The normal range of moisture content in the grain is 10-15% with 12% as standard
+
+<div class="fig-output">
+```{r grain-yield, fig.asp = 0.5, fig.cap='Final yield with different moisture content (t/ha).'}
+
+final_yield <- max(g_report$Wheat.GrainWt)
+mos <- seq(0, 15)
+data_frame(Moisture = mos,
+           yield = (1 + mos / 100) * final_yield / 100) %>% 
+    ggplot() +
+    geom_bar(aes(Moisture, yield), stat = 'identity', position = "dodge") +
+    xlab('Moisture content (%)') + 
+    ylab('Yield (t/ha)') +
+    theme_bw()
+ 
+```
+</div>

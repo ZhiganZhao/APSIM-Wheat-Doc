@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="sec-respiration.html">
-<link rel="next" href="cha-grain.html">
+<link rel="next" href="sec-biomass-pool.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -147,20 +147,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.6" data-path="sec-canopy-height.html"><a href="sec-canopy-height.html"><i class="fa fa-check"></i><b>4.6</b> Canopy height</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cha-biomass.html"><a href="cha-biomass.html"><i class="fa fa-check"></i><b>5</b> Biomass</a><ul>
-<li class="chapter" data-level="5.1" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.1</b> Biomass pool</a></li>
-<li class="chapter" data-level="5.2" data-path="sec-biomass-supply.html"><a href="sec-biomass-supply.html"><i class="fa fa-check"></i><b>5.2</b> Supply</a></li>
-<li class="chapter" data-level="5.3" data-path="sec-biomass-demand.html"><a href="sec-biomass-demand.html"><i class="fa fa-check"></i><b>5.3</b> Demand</a></li>
-<li class="chapter" data-level="5.4" data-path="sec-respiration.html"><a href="sec-respiration.html"><i class="fa fa-check"></i><b>5.4</b> Respiration</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="sec-respiration.html"><a href="sec-respiration.html#growth-respiration-conversion-efficiency"><i class="fa fa-check"></i><b>5.4.1</b> Growth respiration (Conversion efficiency))</a></li>
-<li class="chapter" data-level="5.4.2" data-path="sec-respiration.html"><a href="sec-respiration.html#maintenance-respiration"><i class="fa fa-check"></i><b>5.4.2</b> Maintenance respiration</a></li>
+<li class="chapter" data-level="5.1" data-path="sec-biomass-supply.html"><a href="sec-biomass-supply.html"><i class="fa fa-check"></i><b>5.1</b> Supply</a></li>
+<li class="chapter" data-level="5.2" data-path="sec-biomass-demand.html"><a href="sec-biomass-demand.html"><i class="fa fa-check"></i><b>5.2</b> Demand</a></li>
+<li class="chapter" data-level="5.3" data-path="sec-respiration.html"><a href="sec-respiration.html"><i class="fa fa-check"></i><b>5.3</b> Respiration</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="sec-respiration.html"><a href="sec-respiration.html#growth-respiration-conversion-efficiency"><i class="fa fa-check"></i><b>5.3.1</b> Growth respiration (Conversion efficiency))</a></li>
+<li class="chapter" data-level="5.3.2" data-path="sec-respiration.html"><a href="sec-respiration.html#maintenance-respiration"><i class="fa fa-check"></i><b>5.3.2</b> Maintenance respiration</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="biomass-partitioning.html"><a href="biomass-partitioning.html"><i class="fa fa-check"></i><b>5.5</b> Biomass partitioning</a></li>
+<li class="chapter" data-level="5.4" data-path="biomass-partitioning.html"><a href="biomass-partitioning.html"><i class="fa fa-check"></i><b>5.4</b> Biomass partitioning</a></li>
+<li class="chapter" data-level="5.5" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.5</b> Biomass pool</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="cha-grain.html"><a href="cha-grain.html"><i class="fa fa-check"></i><b>6</b> Grain</a><ul>
 <li class="chapter" data-level="6.1" data-path="sec-grain-number.html"><a href="sec-grain-number.html"><i class="fa fa-check"></i><b>6.1</b> Grain number</a></li>
 <li class="chapter" data-level="6.2" data-path="sec-grain-supply.html"><a href="sec-grain-supply.html"><i class="fa fa-check"></i><b>6.2</b> Supply</a></li>
 <li class="chapter" data-level="6.3" data-path="sec-grain-demand.html"><a href="sec-grain-demand.html"><i class="fa fa-check"></i><b>6.3</b> Demand</a></li>
-<li class="chapter" data-level="6.4" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html"><i class="fa fa-check"></i><b>6.4</b> Biomass dynamic</a></li>
+<li class="chapter" data-level="6.4" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html"><i class="fa fa-check"></i><b>6.4</b> Biomass dynamic</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="sec-grain-dynamic.html"><a href="sec-grain-dynamic.html#yield"><i class="fa fa-check"></i><b>6.4.1</b> Yield</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="cha-root.html"><a href="cha-root.html"><i class="fa fa-check"></i><b>7</b> Root</a><ul>
 <li class="chapter" data-level="7.1" data-path="sec-root-growth.html"><a href="sec-root-growth.html"><i class="fa fa-check"></i><b>7.1</b> Root Growth</a><ul>
@@ -232,24 +234,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="biomass-partitioning" class="section level2">
-<h2><span class="header-section-number">5.5</span> Biomass partitioning</h2>
+<h2><span class="header-section-number">5.4</span> Biomass partitioning</h2>
 <p>The biomass partitions into structural and metabolic components firstly according to the relative demands. The remaining biomass allocates into storage according to the relative demands. The greatest storage demand of stem can store all remaining daily supply.</p>
+<p>The daily supply is distributed into <code>Structural</code> and <code>Metabolic</code> components, then <code>Storage</code> component. The daily demand cannot be satisfied if the structural and metabolic demands are more than daily supply, then the allocated biomasses of all organs are proportionally reduced to match daily supply (Fig. <a href="biomass-partitioning.html#fig:biomass-supply-demand-str-met">5.13</a>). The extra daily supply is distributed into storage, i.e. <code>Stem</code> for wheat model, as the extreme higher storage demand for stem (Fig. <a href="biomass-partitioning.html#fig:biomass-supply-demand-sto">5.14</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:biomass-supply-demand-str-met"></span>
-<img src="APSIM-Wheat_files/figure-html/biomass-supply-demand-str-met-1.png" alt="Daily biomass supply, and structural and metabolic demands for all organs" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/biomass-supply-demand-str-met-1.png" alt="Daily biomass supply, and structural and metabolic demands for all organs." width="80%" />
 <p class="caption">
-Figure 5.13: Daily biomass supply, and structural and metabolic demands for all organs
+Figure 5.13: Daily biomass supply, and structural and metabolic demands for all organs.
 </p>
 </div>
 </div>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:biomass-supply-demand-sto"></span>
-<img src="APSIM-Wheat_files/figure-html/biomass-supply-demand-sto-1.png" alt="Daily biomass supply, and storage demand for all organs" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/biomass-supply-demand-sto-1.png" alt="Daily biomass supply and storage demand for all organs" width="80%" />
 <p class="caption">
-Figure 5.14: Daily biomass supply, and storage demand for all organs
+Figure 5.14: Daily biomass supply and storage demand for all organs
 </p>
 </div>
 </div>
+<p>The actual allocated biomass for each organ depends on the daily supply, relative structural and metabolic demand, and storage demands among all organs (Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-structural">5.15</a>, <a href="biomass-partitioning.html#fig:biomass-allocated-metabolic">5.16</a> and <a href="biomass-partitioning.html#fig:biomass-allocated-storage">5.17</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:biomass-allocated-structural"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-allocated-structural-1.png" alt="Biomass structural allocation from all organs" width="80%" />
@@ -274,9 +278,16 @@ Figure 5.17: Biomass storage allocation from all organs
 </p>
 </div>
 </div>
-
+<p>The daily biomass supply (Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-total">5.1</a>) are consumed as growth respiration before partitioning into <code>Live</code> pool in each organ, and consumed as daily maintenance respiration from <code>Live</code> pool in each organ (Fig. <a href="biomass-partitioning.html#fig:biomass-denstiny">5.18</a>).</p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:biomass-denstiny"></span>
+<img src="APSIM-Wheat_files/figure-html/biomass-denstiny-1.png" alt="Daily biomass supply and respiration." width="80%" />
+<p class="caption">
+Figure 5.18: Daily biomass supply and respiration.
+</p>
 </div>
-<!-- </div> -->
+</div>
+</div>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -292,7 +303,7 @@ Figure 5.17: Biomass storage allocation from all organs
         </div>
       </div>
 <a href="sec-respiration.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cha-grain.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sec-biomass-pool.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

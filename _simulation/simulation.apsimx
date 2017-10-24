@@ -11,8 +11,16 @@
       <VariableNames>
         <string>[Clock].Today</string>
         <string />
+        <string>[Wheat].TotalLive.Wt as Wheat.TotalLiveWt</string>
+        <string>[Wheat].TotalDead.Wt as Wheat.TotalDeadWt</string>
+        <string />
+        <string>[Wheat].Grain.GrowthRespiration</string>
+        <string>[Wheat].Root.GrowthRespiration</string>
+        <string>[Wheat].Leaf.GrowthRespiration</string>
+        <string>[Wheat].Stem.GrowthRespiration</string>
+        <string>[Wheat].Spike.GrowthRespiration</string>
+        <string />
         <string>[Wheat].Stem.PercentWSC</string>
-        <string>[Wheat].Grain.Total.Wt*10 as Wheat.Yield</string>
         <string />
         <string>[Wheat].Grain.MaintenanceRespiration</string>
         <string>[Wheat].Root.MaintenanceRespiration</string>
@@ -1642,12 +1650,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <FixedValue>0.7067</FixedValue>
           <Units>0-1</Units>
         </Constant>
-        <Constant>
-          <Name>DMConversionEfficiencyFunction</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <FixedValue>0.7067</FixedValue>
-          <Units>0-1</Units>
-        </Constant>
         <IncludeInDocumentation>true</IncludeInDocumentation>
         <GrowthRespiration>0</GrowthRespiration>
         <MaintenanceRespiration>0</MaintenanceRespiration>
@@ -1943,12 +1945,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
         </MultiplyFunction>
         <Constant>
           <Name>DMConversionEfficiency</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <FixedValue>0.6925</FixedValue>
-          <Units>0-1</Units>
-        </Constant>
-        <Constant>
-          <Name>DMConversionEfficiencyFunction</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <FixedValue>0.6925</FixedValue>
           <Units>0-1</Units>
@@ -2891,11 +2887,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </ApexTiller>
         <Constant>
-          <Name>DMConversionEfficiencyFunction</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <FixedValue>0.6853</FixedValue>
-        </Constant>
-        <Constant>
           <Name>DMConversionEfficiency</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <FixedValue>0.6853</FixedValue>
@@ -2923,6 +2914,11 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           </WangEngelTempFunction>
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </MultiplyFunction>
+        <Constant>
+          <Name>DMConversionEfficiency1</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <FixedValue>0.6853</FixedValue>
+        </Constant>
         <IncludeInDocumentation>true</IncludeInDocumentation>
         <GrowthRespiration>0</GrowthRespiration>
         <MaintenanceRespiration>0</MaintenanceRespiration>
@@ -2940,7 +2936,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
         <MicroClimatePresent>true</MicroClimatePresent>
         <KDead>0.3</KDead>
         <MaximumMainStemLeafNumber>30</MaximumMainStemLeafNumber>
-        <DMConversionEfficiency>0</DMConversionEfficiency>
         <TipsAtEmergence>0</TipsAtEmergence>
         <CohortsAtInitialisation>0</CohortsAtInitialisation>
         <FractionDied>0</FractionDied>
@@ -3149,12 +3144,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
         </MultiplyFunction>
         <Constant>
           <Name>DMConversionEfficiency</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <FixedValue>0.7067</FixedValue>
-          <Units>0-1</Units>
-        </Constant>
-        <Constant>
-          <Name>DMConversionEfficiencyFunction</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <FixedValue>0.7067</FixedValue>
           <Units>0-1</Units>
@@ -3447,12 +3436,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           </WangEngelTempFunction>
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </MultiplyFunction>
-        <Constant>
-          <Name>DMConversionEfficiencyFunction</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <FixedValue>0.66</FixedValue>
-          <Units>0-1</Units>
-        </Constant>
         <IncludeInDocumentation>true</IncludeInDocumentation>
         <Live>
           <Name>Biomass</Name>
