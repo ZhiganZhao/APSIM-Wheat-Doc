@@ -55,9 +55,9 @@ The key stages are displayed in all figures (Section \@ref(sec:phe-stage-period)
 
 
 
-## How to contribute {#sec:intro-own-contribution}
+## How to contribute? {#sec:intro-own-contribution}
 
-This documentation is wrote by [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org). I suggest you firstly to read the introduction about [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org), then fork this repository into your github account. Feel free to submit a pull request. 
+This documentation is wrote by [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org). I suggest you firstly to read the introduction about [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org), then fork this repository into your github account. Feel free to submit a pull request and/or an [issue](https://github.com/byzheng/APSIM-Wheat-Doc/issues) if you notice any errors or have any comments. 
 
 
 The new document can be easily generated for any other simulations using following steps.
