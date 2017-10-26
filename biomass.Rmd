@@ -190,6 +190,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 The maintenance respiration is required for metabolic and storage components (Table \@ref(tab:biomass-component-type)). The metabolic and storage components of `Live` pool is daily reduced according to a fraction which is used for maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration-fraction)). The maintenance fraction is calculated as reference maintenance fraction at 20 C and a beta function [@WangSimulationphenologicaldevelopment1998] with three cardinal temperatures (i.e. minimum, optimal and maximum temperatures). All organs have the same cardinal temperatures, but different maintenance fraction at 20C (Table \@ref(tab:biomass-wefuncton)). Finally, the actual maintenance fraction depends on the daily mean temperature (Fig. \@ref(fig:biomass-maintenance-respiration-fraction). `Leaf` and `Stem` have the major contributions to maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)). Root and Grain don't have maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)).
 
+
 ```{r biomass-wefuncton, results='asis'}
 path <- sprintf('Wheat.%s.MaintenanceRespirationFunction.MaintenanceFractionAt20C', 
                 g_organs)
@@ -218,7 +219,7 @@ respiration %>%
 
 
 <div class="fig-input">
-```{r biomass-maintenance-respiration-beta, fig.asp = 0.5, fig.cap='The response of maintenance respiration on daily average temperature with a beta function [@WangSimulationphenologicaldevelopment1998], which is reproduced from parameter values in Table \\@ref(tab:biomass-wefuncton).'}
+```{r biomass-maintenance-respiration-beta, fig.asp = 0.5, fig.cap='The response of maintenance respiration on daily average temperature with a beta function [@WangSimulationphenologicaldevelopment1998].'}
 avgt <- seq(0, 40)
 res_fun <- function(df) {
     v <- we_beta(avgt - 1, avgt + 1, df$MinTemp, df$OptTemp, 

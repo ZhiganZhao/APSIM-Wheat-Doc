@@ -21,7 +21,6 @@ bookdown::gitbook:
       - ["APSIM-Wheat.pdf", "PDF"]
       - ["APSIM-Wheat.docx", "WORD"]
       - ["APSIM-Wheat.epub", "EPUB"]
-      - ["APSIM-Wheat.mobi", "MOBI"]
     sharing:
       facebook: no
       twitter: no

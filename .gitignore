@@ -8,3 +8,4 @@ _scripts
 APSIM-Wheat.Rmd
 /*.html
 _chunks
+/APSIM-Wheat.*

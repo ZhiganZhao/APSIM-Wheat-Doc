@@ -206,9 +206,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.1" data-path="sec-stem-supply.html"><a href="sec-stem-supply.html"><i class="fa fa-check"></i><b>10.1</b> Supply</a></li>
 <li class="chapter" data-level="10.2" data-path="sec-stem-demand.html"><a href="sec-stem-demand.html"><i class="fa fa-check"></i><b>10.2</b> Demand</a></li>
 <li class="chapter" data-level="10.3" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html"><i class="fa fa-check"></i><b>10.3</b> Biomass dynamic</a></li>
-<li class="chapter" data-level="10.4" data-path="water-soluble-carbohydrate.html"><a href="water-soluble-carbohydrate.html"><i class="fa fa-check"></i><b>10.4</b> Water soluble carbohydrate</a></li>
-<li class="chapter" data-level="10.5" data-path="nitrogen-secstem-nitrogen.html"><a href="nitrogen-secstem-nitrogen.html"><i class="fa fa-check"></i><b>10.5</b> Nitrogen {sec:stem-nitrogen}</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="nitrogen-secstem-nitrogen.html"><a href="nitrogen-secstem-nitrogen.html#demand"><i class="fa fa-check"></i><b>10.5.1</b> Demand</a></li>
+<li class="chapter" data-level="10.4" data-path="ses-stem-wsc.html"><a href="ses-stem-wsc.html"><i class="fa fa-check"></i><b>10.4</b> Water soluble carbohydrate</a></li>
+<li class="chapter" data-level="10.5" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html"><i class="fa fa-check"></i><b>10.5</b> Nitrogen</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#demand"><i class="fa fa-check"></i><b>10.5.1</b> Demand</a></li>
+<li class="chapter" data-level="10.5.2" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#supply"><i class="fa fa-check"></i><b>10.5.2</b> Supply</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="cha-water.html"><a href="cha-water.html"><i class="fa fa-check"></i><b>11</b> Water</a></li>
@@ -246,11 +247,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="sec:root-demand" class="section level2">
 <h2><span class="header-section-number">7.3</span> Demand</h2>
 <p>The daily biomass demand of <code>Root</code> is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (<code>Emergence</code>) to Stage 8 (<code>End of grain filling</code>). The fraction of root demand is 0.2 until <code>Flowering time</code>, then reduces into 0.02 until <code>End of grain filling</code> (Fig. <a href="sec-root-demand.html#fig:root-demand-fraction">7.9</a>). Only structural demand is considered in the <code>Root</code> organ (Fig. <a href="sec-root-demand.html#fig:root-demand">7.10</a>).</p>
-<div class="rmdnote">
-<p>
-Photosynthate is not partitioned into root after heading <span class="citation"><span class="citation">(Fang et al. <a href="cha-reference.html#ref-Fangsituassessmentnew2016">2016</a>)</span></span>.
-</p>
-</div>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:root-demand-fraction"></span>
 <img src="APSIM-Wheat_files/figure-html/root-demand-fraction-1.png" alt="Fraction of root demand in the total fixation " width="80%" />
@@ -315,7 +311,7 @@ gitbook.start({
 "link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/root.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"], ["APSIM-Wheat.mobi", "MOBI"]],
 "toc": {
 "collapse": "section"
 }

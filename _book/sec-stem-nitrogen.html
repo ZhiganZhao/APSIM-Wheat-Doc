@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-leaf-supply.html">
-<link rel="next" href="sec-leaf-biomass.html">
+<link rel="prev" href="ses-stem-wsc.html">
+<link rel="next" href="cha-water.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -244,23 +244,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:leaf-deman" class="section level2">
-<h2><span class="header-section-number">8.4</span> Demand</h2>
-<p>The leaf demand is summarised for all leaf cohorts in the expanding period (Figs <a href="sec-leaf-growth-cycle.html#fig:leaf-life-cycle">8.1</a> and <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-changing-no">8.4</a>), so that there is no leaf demand after <code>FlagLeaf</code>. No <code>Storage</code> demand is considered in the leaf organ. As the structural fraction is defined as 0.5, the structural and metabolic demands have the same values in the whole life cycle.</p>
-<p>The daily demand (<span class="math inline">\(D_{leaf}\)</span>) is the minimum between potential leaf area (<span class="math inline">\(\Delta A_{p}\)</span>, Section <a href="sec-leaf-area.html#sec:leaf-potential-area">8.2.2</a>) and water stressed (<span class="math inline">\(\Delta A_{w}\)</span>, Section <a href="sec-leaf-area.html#sec:leaf-water-area">8.2.3</a>) leaf area.</p>
-<p><span class="math display">\[
-D_{leaf} = \text{min} (\frac{\Delta A_{p}}{(\text{SLA}_{max} + \text{SLA}_{min}) / 2},\, \frac{\Delta A_{w}}{\text{SLA}_{min}})
-\]</span></p>
-<p>where, <span class="math inline">\(\text{SLA}_{min}\)</span> and <span class="math inline">\(\text{SLA}_{max}\)</span> are the minimum and maximum specific leaf areas, respectively (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.18</a>).</p>
+<div id="sec:stem-nitrogen" class="section level2">
+<h2><span class="header-section-number">10.5</span> Nitrogen</h2>
+<div id="demand" class="section level3">
+<h3><span class="header-section-number">10.5.1</span> Demand</h3>
 <div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-demand"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-demand-1.png" alt="Biomass demand by leaf. The structural and metabolic demands overlap each other as the structural fraction is defined as 0.5." width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-demand"></span>
+<img src="APSIM-Wheat_files/figure-html/stem-nitrogen-demand-1.png" alt="The stem nitrogen demand for all components" width="80%" />
 <p class="caption">
-Figure 8.24: Biomass demand by leaf. The structural and metabolic demands overlap each other as the structural fraction is defined as 0.5.
+Figure 10.10: The stem nitrogen demand for all components
 </p>
 </div>
 </div>
 </div>
+<div id="supply" class="section level3">
+<h3><span class="header-section-number">10.5.2</span> Supply</h3>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-supply"></span>
+<img src="APSIM-Wheat_files/figure-html/stem-nitrogen-supply-1.png" alt="The stem nitrogen supply for all components" width="80%" />
+<p class="caption">
+Figure 10.11: The stem nitrogen supply for all components
+</p>
+</div>
+</div>
+
+</div>
+</div>
+<!-- </div> -->
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -275,8 +285,8 @@ Figure 8.24: Biomass demand by leaf. The structural and metabolic demands overla
           </div>
         </div>
       </div>
-<a href="sec-leaf-supply.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-leaf-biomass.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ses-stem-wsc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cha-water.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -305,7 +315,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/leaf-demand.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/stem.Rmd",
 "text": "Edit"
 },
 "download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"], ["APSIM-Wheat.mobi", "MOBI"]],

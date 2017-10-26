@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-leaf-supply.html">
-<link rel="next" href="sec-leaf-biomass.html">
+<link rel="prev" href="sec-stem-biomass.html">
+<link rel="next" href="sec-stem-nitrogen.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -244,19 +244,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:leaf-deman" class="section level2">
-<h2><span class="header-section-number">8.4</span> Demand</h2>
-<p>The leaf demand is summarised for all leaf cohorts in the expanding period (Figs <a href="sec-leaf-growth-cycle.html#fig:leaf-life-cycle">8.1</a> and <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-changing-no">8.4</a>), so that there is no leaf demand after <code>FlagLeaf</code>. No <code>Storage</code> demand is considered in the leaf organ. As the structural fraction is defined as 0.5, the structural and metabolic demands have the same values in the whole life cycle.</p>
-<p>The daily demand (<span class="math inline">\(D_{leaf}\)</span>) is the minimum between potential leaf area (<span class="math inline">\(\Delta A_{p}\)</span>, Section <a href="sec-leaf-area.html#sec:leaf-potential-area">8.2.2</a>) and water stressed (<span class="math inline">\(\Delta A_{w}\)</span>, Section <a href="sec-leaf-area.html#sec:leaf-water-area">8.2.3</a>) leaf area.</p>
-<p><span class="math display">\[
-D_{leaf} = \text{min} (\frac{\Delta A_{p}}{(\text{SLA}_{max} + \text{SLA}_{min}) / 2},\, \frac{\Delta A_{w}}{\text{SLA}_{min}})
-\]</span></p>
-<p>where, <span class="math inline">\(\text{SLA}_{min}\)</span> and <span class="math inline">\(\text{SLA}_{max}\)</span> are the minimum and maximum specific leaf areas, respectively (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.18</a>).</p>
+<div id="ses:stem-wsc" class="section level2">
+<h2><span class="header-section-number">10.4</span> Water soluble carbohydrate</h2>
+<p>Water soluble carbohydrates (WSC) are sugars such as fructans, sucrose, glucose and fructose which are accumulated in the stem as reserves.</p>
+<p>In APSIM Next Gen, the WSC of stem is defined as the ratio of storage and total weights in the <code>Live</code> pool of stem.</p>
 <div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-demand"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-demand-1.png" alt="Biomass demand by leaf. The structural and metabolic demands overlap each other as the structural fraction is defined as 0.5." width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:stem-wsc"></span>
+<img src="APSIM-Wheat_files/figure-html/stem-wsc-1.png" alt="Water soluble carbohydrate in stem." width="80%" />
 <p class="caption">
-Figure 8.24: Biomass demand by leaf. The structural and metabolic demands overlap each other as the structural fraction is defined as 0.5.
+Figure 10.9: Water soluble carbohydrate in stem.
 </p>
 </div>
 </div>
@@ -275,8 +271,8 @@ Figure 8.24: Biomass demand by leaf. The structural and metabolic demands overla
           </div>
         </div>
       </div>
-<a href="sec-leaf-supply.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-leaf-biomass.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sec-stem-biomass.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sec-stem-nitrogen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -305,7 +301,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/leaf-demand.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/stem.Rmd",
 "text": "Edit"
 },
 "download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"], ["APSIM-Wheat.mobi", "MOBI"]],
