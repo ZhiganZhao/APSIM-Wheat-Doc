@@ -11,6 +11,65 @@
       <VariableNames>
         <string>[Clock].Today</string>
         <string />
+        <string>[Wheat].Grain.NDemand.Metabolic</string>
+        <string>[Wheat].Grain.NDemand.Structural</string>
+        <string>[Wheat].Grain.NDemand.Storage</string>
+        <string>[Wheat].Leaf.NDemand.Metabolic</string>
+        <string>[Wheat].Leaf.NDemand.Structural</string>
+        <string>[Wheat].Leaf.NDemand.Storage</string>
+        <string>[Wheat].Root.NDemand.Metabolic</string>
+        <string>[Wheat].Root.NDemand.Structural</string>
+        <string>[Wheat].Root.NDemand.Storage</string>
+        <string>[Wheat].Spike.NDemand.Metabolic</string>
+        <string>[Wheat].Spike.NDemand.Structural</string>
+        <string>[Wheat].Spike.NDemand.Storage</string>
+        <string>[Wheat].Stem.NDemand.Metabolic</string>
+        <string>[Wheat].Stem.NDemand.Structural</string>
+        <string>[Wheat].Stem.NDemand.Storage</string>
+        <string>[Wheat].Grain.NDemand.Metabolic + [Wheat].Grain.NDemand.Structural + [Wheat].Grain.NDemand.Storage as Wheat.Grain.NDemand.Total</string>
+        <string>[Wheat].Leaf.NDemand.Metabolic + [Wheat].Leaf.NDemand.Structural + [Wheat].Leaf.NDemand.Storage as Wheat.Leaf.NDemand.Total</string>
+        <string>[Wheat].Root.NDemand.Metabolic + [Wheat].Root.NDemand.Structural + [Wheat].Root.NDemand.Storage as Wheat.Root.NDemand.Total</string>
+        <string>[Wheat].Spike.NDemand.Metabolic + [Wheat].Spike.NDemand.Structural + [Wheat].Spike.NDemand.Storage as Wheat.Spike.NDemand.Total</string>
+        <string>[Wheat].Stem.NDemand.Metabolic + [Wheat].Stem.NDemand.Structural + [Wheat].Stem.NDemand.Storage as Wheat.Stem.NDemand.Total</string>
+        <string>[Wheat].Grain.NDemand.Metabolic + [Wheat].Leaf.NDemand.Metabolic + [Wheat].Root.NDemand.Metabolic + [Wheat].Spike.NDemand.Metabolic + [Wheat].Stem.NDemand.Metabolic as Wheat.NDemand.Metabolic</string>
+        <string>[Wheat].Grain.NDemand.Storage + [Wheat].Leaf.NDemand.Storage + [Wheat].Root.NDemand.Storage + [Wheat].Spike.NDemand.Storage + [Wheat].Stem.NDemand.Storage as Wheat.NDemand.Storage</string>
+        <string>[Wheat].Grain.NDemand.Structural + [Wheat].Leaf.NDemand.Structural + [Wheat].Root.NDemand.Structural + [Wheat].Spike.NDemand.Structural + [Wheat].Stem.NDemand.Structural as Wheat.NDemand.Structural</string>
+        <string />
+        <string>[Wheat].Grain.NSupply.Fixation</string>
+        <string>[Wheat].Grain.NSupply.Retranslocation</string>
+        <string>[Wheat].Grain.NSupply.Reallocation</string>
+        <string>[Wheat].Leaf.NSupply.Fixation</string>
+        <string>[Wheat].Leaf.NSupply.Retranslocation</string>
+        <string>[Wheat].Leaf.NSupply.Reallocation</string>
+        <string>[Wheat].Root.NSupply.Fixation</string>
+        <string>[Wheat].Root.NSupply.Retranslocation</string>
+        <string>[Wheat].Root.NSupply.Reallocation</string>
+        <string>[Wheat].Spike.NSupply.Fixation</string>
+        <string>[Wheat].Spike.NSupply.Retranslocation</string>
+        <string>[Wheat].Spike.NSupply.Reallocation</string>
+        <string>[Wheat].Stem.NSupply.Fixation</string>
+        <string>[Wheat].Stem.NSupply.Retranslocation</string>
+        <string>[Wheat].Stem.NSupply.Reallocation</string>
+        <string>[Wheat].Grain.NSupply.Fixation + [Wheat].Grain.NSupply.Retranslocation + [Wheat].Grain.NSupply.Reallocation as Wheat.Grain.NSupply.Total</string>
+        <string>[Wheat].Leaf.NSupply.Fixation + [Wheat].Leaf.NSupply.Retranslocation + [Wheat].Leaf.NSupply.Reallocation as Wheat.Leaf.NSupply.Total</string>
+        <string>[Wheat].Root.NSupply.Fixation + [Wheat].Root.NSupply.Retranslocation + [Wheat].Root.NSupply.Reallocation as Wheat.Root.NSupply.Total</string>
+        <string>[Wheat].Spike.NSupply.Fixation + [Wheat].Spike.NSupply.Retranslocation + [Wheat].Spike.NSupply.Reallocation as Wheat.Spike.NSupply.Total</string>
+        <string>[Wheat].Stem.NSupply.Fixation + [Wheat].Stem.NSupply.Retranslocation + [Wheat].Stem.NSupply.Reallocation as Wheat.Stem.NSupply.Total</string>
+        <string>[Wheat].Grain.NSupply.Fixation + [Wheat].Leaf.NSupply.Fixation + [Wheat].Root.NSupply.Fixation + [Wheat].Spike.NSupply.Fixation + [Wheat].Stem.NSupply.Fixation as Wheat.NSupply.Fixation</string>
+        <string>[Wheat].Grain.NSupply.Reallocation + [Wheat].Leaf.NSupply.Reallocation + [Wheat].Root.NSupply.Reallocation + [Wheat].Spike.NSupply.Reallocation + [Wheat].Stem.NSupply.Reallocation as Wheat.NSupply.Reallocation</string>
+        <string>[Wheat].Grain.NSupply.Retranslocation + [Wheat].Leaf.NSupply.Retranslocation + [Wheat].Root.NSupply.Retranslocation + [Wheat].Spike.NSupply.Retranslocation + [Wheat].Stem.NSupply.Retranslocation as Wheat.NSupply.Retranslocation</string>
+        <string />
+        <string />
+        <string />
+        <string />
+        <string>[Wheat].Arbitrator.N.TotalPlantSupply</string>
+        <string>[Wheat].Arbitrator.N.TotalPlantDemand</string>
+        <string>[Wheat].Arbitrator.FN</string>
+        <string>[Wheat].Arbitrator.DMSupply</string>
+        <string />
+        <string />
+        <string />
+        <string />
         <string>[Wheat].TotalLive.Wt as Wheat.TotalLiveWt</string>
         <string>[Wheat].TotalDead.Wt as Wheat.TotalDeadWt</string>
         <string />
@@ -125,8 +184,7 @@
         <string>[Wheat].Structure.Phyllochron.Value() as Wheat.Structure.Phyllochron</string>
         <string />
         <string />
-        <string>[Wheat].Arbitrator.FN</string>
-        <string>[Wheat].Arbitrator.DMSupply</string>
+        <string />
         <string />
         <string />
         <string />
@@ -2915,7 +2973,7 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </MultiplyFunction>
         <Constant>
-          <Name>DMConversionEfficiency1</Name>
+          <Name>DMConversionEfficiencyFunction</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <FixedValue>0.6853</FixedValue>
         </Constant>
@@ -2936,6 +2994,7 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
         <MicroClimatePresent>true</MicroClimatePresent>
         <KDead>0.3</KDead>
         <MaximumMainStemLeafNumber>30</MaximumMainStemLeafNumber>
+        <DMConversionEfficiency>0</DMConversionEfficiency>
         <TipsAtEmergence>0</TipsAtEmergence>
         <CohortsAtInitialisation>0</CohortsAtInitialisation>
         <FractionDied>0</FractionDied>
@@ -3149,14 +3208,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <Units>0-1</Units>
         </Constant>
         <IncludeInDocumentation>true</IncludeInDocumentation>
-        <Live>
-          <Name>Biomass</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Live>
-        <Dead>
-          <Name>Biomass</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Dead>
       </GenericOrgan>
       <GenericOrgan>
         <Name>Stem</Name>
@@ -3437,14 +3488,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </MultiplyFunction>
         <IncludeInDocumentation>true</IncludeInDocumentation>
-        <Live>
-          <Name>Biomass</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Live>
-        <Dead>
-          <Name>Biomass</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-        </Dead>
       </GenericOrgan>
       <CompositeBiomass>
         <Name>AboveGround</Name>

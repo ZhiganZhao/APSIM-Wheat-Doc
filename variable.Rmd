@@ -1,0 +1,76 @@
+# Variable {#cha:variable}
+
+The input and output variables are listed in this chapter and linked to the figures and tables.
+```{r variable-funs}
+
+chunk2ref <- function(chunks, chunk_label) {
+    
+    refs <- chunks %>% 
+        map(function(x) {
+            x0 <- gsub('^(fig:|tab:)(.*)$', '\\2', x)
+            x <- unique(x[x0 %in% chunk_label])
+            if (length(x) == 0) {
+                return(NULL)
+            }
+            types <- gsub('^(fig|tab)(.*)$', '\\1', x)
+            res <- paste0('\\@ref(', x, ')')
+            groups <- unique(types)
+            r2 <- NULL
+            for (k in seq(along = groups)) {
+                res_i <- res[types %in% groups[k]]
+                prefix <- if (groups[k] == 'fig') {
+                    'Fig. '
+                } else if (groups[k] == 'tab') {
+                    'Table '
+                } else {
+                    stop('Not implemented')
+                }
+                r2[k] <- paste0(prefix, paste(res_i, collapse = ', '))
+            }
+            return(paste(r2, collapse = ', '))
+        }) 
+
+    refs <- refs[!as.logical(unlist(lapply(refs, is.null)))]
+    
+    
+    refs <- data_frame(Type = names(refs),
+               Reference = as.character(unlist(refs))) %>% 
+        mutate(Type = gsub('Wheat\\.', '', Type)) %>%
+        arrange(Type)
+    # print(refs)
+    refs
+}
+
+```
+
+## Input
+
+```{r variable-input, results='asis', cache=FALSE}
+# save(chunk_label, file = 'tmp.RData')
+# load('tmp.RData')
+chunk_folder <- options('chunk_folder')[[1]]
+rds_file <- file.path(chunk_folder, 'input.rds')
+if (file.exists(rds_file)) {
+    chunk_label <- knitr::all_labels()
+    input_chunk <- readRDS(rds_file)
+    chunk2ref(input_chunk, chunk_label) %>%
+        rename(Input = Type) %>% 
+        knitr::kable(caption = 'The input variables which are used in this documentation. The prefix of `Wheat.` is removed from all variables.')
+}
+```
+
+
+
+## Output
+
+```{r variable-output, results='asis', cache=FALSE}
+chunk_folder <- options('chunk_folder')[[1]]
+rds_file <- file.path(chunk_folder, 'output.rds')
+if (file.exists(rds_file)) {
+    output_chunk <- readRDS(rds_file)
+    chunk2ref(output_chunk, chunk_label) %>%
+        rename(Output = Type) %>% 
+        knitr::kable(caption = 'The output variables which are used in this documentation. The prefix of `Wheat.` is removed from all variables.')
+}
+```
+

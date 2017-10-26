@@ -143,3 +143,21 @@ g_report %>%
 
 ```
 </div>
+
+
+## Nitrogen {sec:stem-nitrogen}
+
+### Demand
+
+
+<div class="fig-output">
+```{r stem-nitrogen-demand, fig.cap='The stem nitrogen demand for all components'}
+y_cols <- c('Wheat.Stem.NDemand.Structural', 'Wheat.Stem.NDemand.Metabolic',
+            'Wheat.Stem.NDemand.Storage')
+
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 5,
+                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
+
+```
+</div>

@@ -227,7 +227,8 @@ y_cols <- c('Wheat.Structure.BranchNumber',
             'Wheat.Structure.BranchingRate',
             'Wheat.Structure.BranchMortality')
 
-plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Branch number or branching rate') 
+plot_report(g_report, g_xvar, y_cols, ncol = 3,
+            x_lab = g_xlab, y_lab = 'Branch number or branching rate') 
 
 ```
 </div>

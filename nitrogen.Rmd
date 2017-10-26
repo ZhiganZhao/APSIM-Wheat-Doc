@@ -6,16 +6,85 @@
 source('_setup.R')
 ```
 
+<div class="fig-output">
+```{r nitrogen-demand-supply, fig.cap='The plant total nitrogen demand and supply'}
+y_cols <- c('Wheat.Arbitrator.N.TotalPlantSupply',
+            'Wheat.Arbitrator.N.TotalPlantDemand')
+
+g_report %>% 
+    # filter(Wheat.Phenology.Stage <= 8) %>% 
+    plot_report(g_xvar, y_cols, ncol = 2,
+                x_lab = g_xlab, y_lab = 'Nitrogen supply and demand (g/m2/d)')
+
+```
+</div>
+
 
 
 <div class="fig-output">
-```{r nitrogen-fn, fig.cap='The fraction of nitrogen supply relative to nitrogen demand???'}
+```{r nitrogen-fn, fig.cap='The fraction of nitrogen supply relative to nitrogen demand'}
 y_cols <- c('Wheat.Arbitrator.FN')
 
-p <- g_report %>% filter(Wheat.Phenology.Stage < 10) %>% 
-    plot_report(g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Ratio of nitrogen supply and demand???')
-p + geom_hline(yintercept = 1.5)
+g_report %>% 
+    filter(Wheat.Phenology.Stage <= 8) %>% 
+    plot_report(g_xvar, y_cols,
+                x_lab = g_xlab, y_lab = 'Ratio of nitrogen supply and demand')
 
+```
+</div>
+
+
+
+## Demand {#sec:nitrogen-demand}
+
+
+<div class="fig-output">
+```{r nitrogen-demand-organ, fig.cap='The plant nitrogen demand for all organs'}
+y_cols <- sprintf('Wheat.%s.NDemand.Total', g_organs)
+
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 5,
+                y_labels = g_organs,
+                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r nitrogen-demand-component, fig.cap='The plant nitrogen demand for all components'}
+y_cols <- c('Wheat.NDemand.Structural', 'Wheat.NDemand.Metabolic',
+            'Wheat.NDemand.Storage')
+
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 5,
+                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
+
+```
+</div>
+
+
+## Supply {#sec:nitrogen-supply}
+
+
+<div class="fig-output">
+```{r nitrogen-supply-organ, fig.cap='The plant nitrogen supply for all organs'}
+y_cols <- sprintf('Wheat.%s.NSupply.Total', g_organs)
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 5,
+                y_labels = g_organs,
+                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
+```
+</div>
+
+
+<div class="fig-output">
+```{r nitrogen-supply-component, fig.cap='The plant nitrogen supply for all components'}
+y_cols <- c('Wheat.NSupply.Fixation', 'Wheat.NSupply.Reallocation',
+            'Wheat.NSupply.Retranslocation')
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 5,
+                x_lab = g_xlab, y_lab = 'Nitrogen supply (g/m2/d)')
 ```
 </div>
 

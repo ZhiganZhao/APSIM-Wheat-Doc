@@ -116,8 +116,8 @@ g_report %>%
 ```{r biomass-demand-organ, fig.asp = 1, fig.cap='Total biomass demand for structural and metabolic from each organ'}
 y_cols <- sprintf('Wheat.DMDemand.SM.%s', g_organs)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Structural and metabolic demand (g/g)', y_labels = g_organs,
-            ncol = 5, type = 'area')
+            y_lab = 'Structural and metabolic demand (g/m2)', y_labels = g_organs,
+            ncol = 5)
 ```
 </div>
 
@@ -165,10 +165,12 @@ As the major roles of carbon balance of crop, respiration is separated into two 
 The allocated biomass of an organ losses through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).
 
 ```{r biomass-conversion-efficiency, results='asis'}
+path <- sprintf("Wheat.%s.DMConversionEfficiency", g_organs)
 g_organs_df %>% 
-    mutate(`Conversion efficiency` = get_fixed_value(g_pmf,
-           sprintf("Wheat.%s.DMConversionEfficiency", g_organs))) %>% 
+    mutate(`Conversion efficiency` = get_fixed_value(g_pmf, path)) %>% 
     kable(caption = "Biomass conversion efficiency for all organs.")
+register_chunk(path, paste0('tab:', opts_current$get("label")),
+                   type = 'input')
 
 ```
 
@@ -191,9 +193,13 @@ The maintenance respiration is required for metabolic and storage components (Ta
 ```{r biomass-wefuncton, results='asis'}
 path <- sprintf('Wheat.%s.MaintenanceRespirationFunction.MaintenanceFractionAt20C', 
                 g_organs)
+register_chunk(path, paste0('tab:', opts_current$get("label")),
+                   type = 'input')
 ref20 <- get_fixed_value(g_pmf, path)
 path <- sprintf('Wheat.%s.MaintenanceRespirationFunction.WangEngelTempFunction', 
                 g_organs)
+register_chunk(path, paste0('tab:', opts_current$get("label")),
+                   type = 'input')
 respiration <- get_xml_children(g_pmf, path, g_organs) %>% 
     mutate(MinTemp = as.numeric(MinTemp),
            OptTemp = as.numeric(OptTemp),
@@ -388,7 +394,7 @@ g_report %>%
 y_cols <- c('Wheat.TotalDeadWt', 'Wheat.TotalLiveWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Dry weight (g/m2)', y_labels = c("Dead", "Live"),
-            ncol = 5, type = 'area')
+            ncol = 5)
 
 ```
 </div>
@@ -401,7 +407,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 y_cols <- sprintf('Wheat.%s.LiveWt', g_organs)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Dry weight (g/m2)', y_labels = g_organs,
-            ncol = 5, type = 'area')
+            ncol = 5)
 
 ```
 </div>
@@ -412,7 +418,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 y_cols <- sprintf('Wheat.%s.DeadWt', g_organs)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Dry weight (g/m2)', y_labels = g_organs,
-            ncol = 5, type = 'area')
+            ncol = 5)
 
 ```
 </div>

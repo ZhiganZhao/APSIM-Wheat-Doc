@@ -17,7 +17,8 @@ new_breaks <- function(x) {
 
 # plot report
 plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
-                        panel = FALSE, y_labels = NULL, ncol = 1, type = 'point') {
+                        panel = FALSE, y_labels = NULL, ncol = 1, type = 'point',
+                        chunk_type = 'output') {
 
 
     library(ggplot2)
@@ -47,7 +48,8 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
             mutate(Trait = factor(Trait, levels = y_cols_name))
     }
 
-    register_output_chunk(y_cols, opts_current$get("label"))
+    register_chunk(y_cols, paste0('fig:', opts_current$get("label")),
+                   type = chunk_type)
 
     p <- ggplot(pd, aes(XValue, YValue))
 
@@ -112,13 +114,16 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
 
 
 
-plot_report_rank <- function(df, y_cols, y_lab = 'Value', y_labels = NULL, ncol = 1) {
+plot_report_rank <- function(df, y_cols, y_lab = 'Value', y_labels = NULL, ncol = 1,
+                             chunk_type = 'output') {
     library(ggplot2)
     x_var <- 'Wheat.Leaf.AppearedCohortNo'
     cols <- c(x_var, y_cols)
     x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
     y_cols_name <- gsub('.*\\.(.*)', '\\1', y_cols)
 
+    register_chunk(y_cols, paste0('fig:', opts_current$get("label")),
+                   type = chunk_type)
     # Find the appearance date for each leaf cohort
     pd <- df %>%
         tbl_df() %>%
@@ -237,7 +242,10 @@ apsim2path <- function(path) {
 
 plot_xypair <- function(pmf, path, x_lab, y_lab, label = path) {
 
+    old_path <- path
     path <- apsim2path(path)
+    register_chunk(old_path, paste0('fig:', opts_current$get("label")), type = 'input')
+
     df <- list()
     for (i in seq(along = path)) {
         xypair <- xml_find_all(pmf, xpath = paste0(path[i], '/following-sibling::XYPairs'))
@@ -356,20 +364,21 @@ we_beta <- function(mint, maxt, t_min, t_opt, t_max, t_ref = t_opt, maxt_weight 
 
 
 # Register output variables with chunk name
-register_output_chunk <- function(vars, chunk) {
+register_chunk <- function(vars, chunk, type) {
     # Retrieve the g_output_chunk from global environment
-    rds_file <- options('output_chunk_file')[[1]]
-    if (!dir.exists(dirname(rds_file))) {
-        dir.create(dirname(rds_file), recursive = TRUE)
+    chunk_folder <- options('chunk_folder')[[1]]
+    if (!dir.exists(chunk_folder)) {
+        dir.create(chunk_folder, recursive = TRUE)
     }
-    if (!file.exists(rds_file)) {
-        output_chunk <- list()
+    file <- file.path(chunk_folder, paste0(type, '.rds'))
+    if (!file.exists(file)) {
+        chunks_list <- list()
     } else {
-        output_chunk <- readRDS(rds_file)
+        chunks_list <- readRDS(file)
     }
 
     for (i in seq(along = vars)) {
-        output_chunk[[vars[i]]] <-  unique(c(output_chunk[[vars[i]]], chunk))
+        chunks_list[[vars[i]]] <-  unique(c(chunks_list[[vars[i]]], chunk))
     }
-    saveRDS(output_chunk, file = rds_file)
+    saveRDS(chunks_list, file = file)
 }

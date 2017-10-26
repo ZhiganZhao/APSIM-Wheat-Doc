@@ -1,4 +1,4 @@
-options(output_chunk_file = '_output/output_chunk.Rds')
+options(chunk_folder = '_chunks')
 library(knitr)
 library(magrittr)
 opts_chunk$set(

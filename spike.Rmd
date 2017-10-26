@@ -49,7 +49,7 @@ $$
 where $\Delta TT$ is the daily thermal time in the phenology module (Fig. \@ref(fig:phenology-tt)); $N_{head}$ is the head number per unit area, i.e. stem population (Fig. \@ref(fig:str-population)); $W_{max, grain}$ is the potential weight per spike (g) with default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMDemandFunction.MaximumOrganWt')`; $T_{growth}$ is the growth duration of spike ($TT$, the thermal time target from `FlagLeaf` to `StartGrainFill`). As the target of `EarlyReproductive` is sensitive to photoperiod (Section \@ref(sec:phe-stage-period)), the growth duration can be changed during spike development depending on the photoperiod (Fig. \@ref(fig:spike-growth-duration)). The head number, growth duration and potential spike weight are defined as potential spike weight including the structural and storage conponents and the growth respiration. 
 
 
-$F_{spike, structure}$ is the structura fraction of `Spike` with default value 0.9 (Fig. \@ref(fig:spike-stucture-fraction)). $C_{spike,efficiency}$ is the conversion efficiency of `Spike`, i.e. the efficiency of alloction biomass converted into structural carbon (growth respiration). $C_{efficiency}$ has the default value 0.7067 (Fig. \@(fig:spike-stucture-fraction)). 
+$F_{spike, structure}$ is the structura fraction of `Spike` with default value 0.9 (Fig. \@ref(fig:spike-stucture-fraction)). $C_{spike,efficiency}$ is the conversion efficiency of `Spike`, i.e. the efficiency of alloction biomass converted into structural carbon (growth respiration). $C_{efficiency}$ has the default value 0.7067 (Fig. \@(fig:spike-stucture-fraction)) and is counted befor allocation. 
 
 
 
