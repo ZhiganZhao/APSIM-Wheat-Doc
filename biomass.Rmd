@@ -5,7 +5,9 @@
 source('_setup.R')
 ```
 
-The wheat is mainly source limited in APSIM-Wheat model. 
+Wheat plants are separated into `r length(g_organs)` organs, (i.e. `r paste(g_organs, collapse = ', ')`). Leaf includes only leaf blades. Stem is defined in a functional rather than a morphological manner and includes nodes, internodes and leaf sheaths. Spike is the head parts without grain including pedicel and glunes.
+
+
 
 The biomass and nitrogen of each organ is separated into two pools (i.e. `Live` and `Dead`). Each pool is separated into three components (i.e. `Structural`, `Metabolic`, `Storage`) [@BrownPlantModellingFramework2014].
 
@@ -335,7 +337,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 </div>
 
 
-The daily biomass supply (Fig. \@ref(fig:biomass-supply-total)) are consumed as growth respiration before partitioning into `Live` pool in each organ, and consumed as daily maintenance respiration from `Live` pool in each organ (Fig. \@ref(fig:biomass-denstiny)).
+The daily biomass supply (Fig. \@ref(fig:biomass-supply-total)) are consumed as growth respiration before partitioning into `Live` pool in each organ, and consumed as daily maintenance respiration from `Live` pool in each organ (Fig. \@ref(fig:biomass-destiny)).
 
 <div class="fig-output">
 ```{r biomass-denstiny, fig.asp = 1, fig.cap='Daily biomass supply and respiration.'}
