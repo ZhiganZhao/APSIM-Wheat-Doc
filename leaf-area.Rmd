@@ -147,9 +147,7 @@ The leaf area also constrained by the daily allocated cardon (biomass) including
 
 During the period of leaf senescene, the daily fraction of leaf senescence is linearly related with thermal time.
 
-```{block, type="rmdnote"}
-Need more information 
-```
+
 
 <div class="fig-output">
 ```{r leaf-fraction-senescence, fig.cap='Fraction of leaf senescence by leaf cohort in the remaining live leaf area.'}

@@ -17,6 +17,11 @@ bookdown::gitbook:
         <li><a href="http://github.com/APSIMInitiative/ApsimX" target="blank">Next generation of APSIM</a></li>
     edit:
       link: https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/%s
+    download:
+      - ["APSIM-Wheat.pdf", "PDF"]
+      - ["APSIM-Wheat.docx", "WORD"]
+      - ["APSIM-Wheat.epub", "EPUB"]
+      - ["APSIM-Wheat.mobi", "MOBI"]
     sharing:
       facebook: no
       twitter: no
@@ -25,3 +30,9 @@ bookdown::gitbook:
       instapper: no
       vk: no
       all: no
+bookdown::word_document2:
+    fig_caption: yes
+bookdown::pdf_book:
+    toc: yes
+bookdown::epub_book:
+    chapter_level: 2

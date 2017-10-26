@@ -110,8 +110,4 @@ plot_report(
 </div>
 
 
-```{block, type='rmdimportant', echo=TRUE}
-The changing growthing stage in during period 4 looks strange as there are big jump at the start and end of period.
-```
-
 

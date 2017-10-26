@@ -153,7 +153,8 @@ plot_report_rank(g_report, y_cols, y_lab = 'Fraction of leaf cohort')
 
 ## Tillering {#sec:str-tillering}
 
-At `Emergence`, the apex number equals to `1`. The apex number in a plant ($A$) is increased by branching ($\Delta A_{B} $) and decreased by mortality ($\Delta A_{M} $) in every day.
+At `Emergence`, the apex number equals to `1`. The apex number in a plant ($A$) is increased by branching ($\Delta A_{B}$) and decreased by mortality ($\Delta A_{M}$) in every day.
+
 $$
 A = \sum_{i=1}^{N_{node}}{(\Delta A_{B} - \Delta A_{M})}
 $$

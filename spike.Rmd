@@ -33,7 +33,7 @@ y_cols <- c('Wheat.Spike.DMSupply.Fixation',
             'Wheat.Spike.DMSupply.Reallocation')
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/d)')
+            y_lab = 'Demand (g/m2/d)', ncol = 3)
 
 ```
 </div>
@@ -58,7 +58,7 @@ $F_{spike, structure}$ is the structura fraction of `Spike` with default value 0
 y_cols <- c('Wheat.Spike.DMDemandFraction.GrowthDuration')
 g_report %>% 
     filter(Wheat.Phenology.Stage > 5) %>% 
-    plot_report(g_xvar2, y_cols, x_lab = g_xlab,
+    plot_report(g_xvar2, y_cols, x_lab = g_xlab2,
             y_lab = 'Growth duration (oCd)')
 ```
 </div>
@@ -69,19 +69,8 @@ g_report %>%
 y_cols <- c('Wheat.Spike.StructuralFraction')
 g_report %>% 
     filter(Wheat.Phenology.Stage > 5) %>% 
-    plot_report(g_xvar2, y_cols, x_lab = g_xlab,
+    plot_report(g_xvar2, y_cols, x_lab = g_xlab2,
             y_lab = 'Structure fraction')
-```
-</div>
-
-
-<div class="fig-input">
-```{r spike-conversion-efficiency, fig.asp = 0.5, fig.cap='Conversion efficiency of spike'}
-y_cols <- c('Wheat.Spike.DMConversionEfficiency')
-g_report %>% 
-    filter(Wheat.Phenology.Stage > 5) %>% 
-    plot_report(g_xvar2, y_cols, x_lab = g_xlab,
-            y_lab = 'Conversion efficiency of spike')
 ```
 </div>
 
@@ -104,7 +93,7 @@ y_cols <- c('Wheat.Spike.DMDemand.Structural',
 'Wheat.Spike.DMDemand.Storage',
 'Wheat.Spike.DMDemand.Metabolic')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/d)')
+            y_lab = 'Demand (g/m2/d)', ncol = 3)
 ```
 </div>
 
@@ -157,7 +146,7 @@ y_cols <- c('Wheat.Spike.Dead.StructuralWt',
 'Wheat.Spike.Dead.MetabolicWt')
 
 
-plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```

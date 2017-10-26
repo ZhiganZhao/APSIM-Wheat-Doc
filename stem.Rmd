@@ -18,7 +18,7 @@ In `Stem`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:
 y_cols <- c('Wheat.Stem.DMRetranslocationFactor')
 g_report %>% 
     # filter(Wheat.Phenology.Stage > 5) %>% 
-    plot_report(g_xvar2, y_cols, x_lab = g_xlab,
+    plot_report(g_xvar2, y_cols, x_lab = g_xlab2,
             y_lab = 'Growth duration (oCd)')
 ```
 </div>
@@ -32,7 +32,7 @@ y_cols <- c('Wheat.Stem.DMSupply.Fixation',
             'Wheat.Stem.DMSupply.Reallocation')
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/d)', ncol = 3)
+            y_lab = 'Demand (g/m2/d)', ncol = 3)
 
 ```
 </div>
@@ -59,11 +59,8 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab,
 y_cols <- c('Wheat.Stem.DMDemand.Structural',
 'Wheat.Stem.DMDemand.Storage',
 'Wheat.Stem.DMDemand.Metabolic')
-
-
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/d)', ncol = 3)
-
+            y_lab = 'Demand (g/m2/d)', ncol = 3)
 ```
 </div>
 
@@ -77,10 +74,8 @@ The actual allocation reflects the increase of structural component, and retrans
 y_cols <- c('Wheat.Stem.Allocated.StructuralWt',
 'Wheat.Stem.Allocated.StorageWt',
 'Wheat.Stem.Allocated.MetabolicWt')
-
-
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3)
+            y_lab = 'Biomass (g/m2/d)', ncol = 3)
 
 ```
 </div>
@@ -104,7 +99,6 @@ y_cols <- c('Wheat.Stem.Live.StructuralWt',
 'Wheat.Stem.Live.StorageWt',
 'Wheat.Stem.Live.MetabolicWt')
 
-
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
@@ -118,15 +112,14 @@ y_cols <- c('Wheat.Stem.Dead.StructuralWt',
 'Wheat.Stem.Dead.StorageWt',
 'Wheat.Stem.Dead.MetabolicWt')
 
-
-plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```
 </div>
 
 
-## Water soluble carbohydrate
+## Water soluble carbohydrate {#ses:stem-wsc}
 
 Water soluble carbohydrates (WSC) are sugars such as fructans, sucrose, glucose and fructose which are accumulated in the stem as reserves.
 
@@ -135,21 +128,19 @@ In APSIM Next Gen, the WSC of stem is defined as the ratio of storage and total 
 
 <div class="fig-output">
 ```{r stem-wsc, fig.asp = 1, fig.cap='Water soluble carbohydrate in stem.'}
-y_cols <- c('Wheat.Stem.PercentWSC')
+y_cols <- c('Wheat.Stem.Live.StorageWt')
 g_report %>% 
     filter(Wheat.Phenology.Stage > 3) %>% 
     plot_report(g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'WSC', ncol = 3)
+            y_lab = 'WSC (g/m2)', ncol = 3)
 
 ```
 </div>
 
 
-## Nitrogen {sec:stem-nitrogen}
+## Nitrogen {#sec:stem-nitrogen}
 
 ### Demand
-
-
 <div class="fig-output">
 ```{r stem-nitrogen-demand, fig.cap='The stem nitrogen demand for all components'}
 y_cols <- c('Wheat.Stem.NDemand.Structural', 'Wheat.Stem.NDemand.Metabolic',
@@ -161,3 +152,17 @@ g_report %>%
 
 ```
 </div>
+
+### Supply
+<div class="fig-output">
+```{r stem-nitrogen-supply, fig.cap='The stem nitrogen supply for all components'}
+y_cols <- c('Wheat.Stem.NSupply.Fixation', 'Wheat.Stem.NSupply.Retranslocation',
+            'Wheat.Stem.NSupply.Reallocation')
+
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 5,
+                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
+
+```
+</div>
+

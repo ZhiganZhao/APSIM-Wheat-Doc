@@ -13,9 +13,6 @@ $$
 where $C_{N}$ is the nitrogen concentration of `Leaf` parts; $R_{N,\,expan}$ is multiplier for nitrogen deficit effect on phenology which is specified by `N_fact_photo` in the wheat.xml and default value is 1.5.
 
 
-```{block, type='rmdnote'}
-The block below is the actural codes to calculate the ratio of functional nitrogen. Need to further digging to find out details.
-```
 
 ```
 if (CohortParameters == null)

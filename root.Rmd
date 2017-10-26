@@ -170,10 +170,6 @@ The daily biomass demand of `Root` is calculated as a fraction of daily fixation
 
 
 
-```{block, type='rmdnote', echo=TRUE}
-Photosynthate is not partitioned into root after heading [@Fangsituassessmentnew2016].
-```
-
 
 
 <div class="fig-input">
