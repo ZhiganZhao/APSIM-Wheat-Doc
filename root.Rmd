@@ -16,7 +16,6 @@ Only `Structural` is considered in the three components of biomass for `Root`. T
 ```{r root-get-value}
 s1 <- get_fixed_value(g_pmf,
       'Wheat.Root.RootFrontVelocity.PotentialRootFrontVelocity.PreEmergence.Value')
-
 s2 <- get_fixed_value(g_pmf,
       'Wheat.Root.RootFrontVelocity.PotentialRootFrontVelocity.PostEmergence.Value')
 ```
@@ -33,7 +32,7 @@ ggplot(v) +
     geom_path(aes(stage, velocity)) +
     theme_bw() +
     xlab('Stage') +
-    ylab('POtential root front velocity (mm/d)') +
+    ylab('Potential root front velocity (mm/d)') +
     scale_x_continuous(breaks = seq(1, 9))
 
 ```
@@ -111,7 +110,7 @@ plot_xypair(g_pmf, path, x_lab = 'Soil water scale',
 ```{r root-front-velocity, fig.asp = 1, fig.cap='Root front velocity.'}
 y_cols <- c('Wheat.Root.RootFrontVelocity')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Root front velocity (mm)')
+            y_lab = 'Root front velocity (mm/d)')
 
 ```
 </div>
@@ -157,8 +156,8 @@ y_cols <- c('Wheat.Root.DMSupply.Fixation',
             'Wheat.Root.DMSupply.Retranslocation',
             'Wheat.Root.DMSupply.Reallocation')
 
-plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/d)', ncol = 3)
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = 'Demand (g/m2/d)', ncol = 3)
 
 ```
 </div>
@@ -175,7 +174,7 @@ The daily biomass demand of `Root` is calculated as a fraction of daily fixation
 <div class="fig-input">
 ```{r root-demand-fraction, fig.asp = 0.5, fig.cap='Fraction of root demand in the total fixation '}
 y_cols <- c('Wheat.Root.DMDemandFraction')
-plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
             y_lab = 'Fraction of total fixation', ncol = 3)
 
 ```
@@ -189,10 +188,8 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab,
 y_cols <- c('Wheat.Root.DMDemand.Structural',
 'Wheat.Root.DMDemand.Storage',
 'Wheat.Root.DMDemand.Metabolic')
-
-
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/d)', ncol = 3)
+            y_lab = 'Demand (g/m2/d)', ncol = 3)
 
 ```
 </div>
@@ -206,8 +203,6 @@ The actual allocation (Fig. \@ref(fig:root-allocated)) is determined by the actu
 y_cols <- c('Wheat.Root.Allocated.StructuralWt',
 'Wheat.Root.Allocated.StorageWt',
 'Wheat.Root.Allocated.MetabolicWt')
-
-
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
@@ -258,7 +253,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 y_cols <- c('Wheat.Root.Dead.StructuralWt',
 'Wheat.Root.Dead.StorageWt',
 'Wheat.Root.Dead.MetabolicWt')
-plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
             y_lab = 'Biomass (g/m2)', ncol = 3)
 
 ```

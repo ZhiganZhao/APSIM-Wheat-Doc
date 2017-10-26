@@ -95,11 +95,9 @@ $$
 
 
 
-<!--
-### Enli's photosynthesis model
+### WE's photosynthesis model
 
 ### Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)
--->
 
 
 <div class="fig-output">
@@ -109,7 +107,7 @@ y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
             'Wheat.Leaf.DMSupply.Reallocation')
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/d)', ncol = 3)
+            y_lab = 'Demand (g/m2/d)', ncol = 3)
 
 ```
 </div>

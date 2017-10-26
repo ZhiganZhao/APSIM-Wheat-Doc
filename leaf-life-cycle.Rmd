@@ -94,7 +94,7 @@ y_cols <- c("Wheat.Leaf.ExpandingCohortNo",
             "Wheat.Leaf.SenescingCohortNo")
 y_labels <- gsub('Wheat\\.Leaf\\.(.+)CohortNo', "\\1", y_cols)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Fixation (g/d)',  y_labels = y_labels,
+            y_lab = 'Cohort number',  y_labels = y_labels,
             ncol = 2)
 
 ```
@@ -108,7 +108,7 @@ y_cols <- c("Wheat.Leaf.ExpandedCohortNo",
             "Wheat.Leaf.DeadCohortNo")
 y_labels <- gsub('Wheat\\.Leaf\\.(.+)CohortNo', "\\1", y_cols)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Fixation (g/d)',  y_labels = y_labels,
+            y_lab = 'Cohort number',  y_labels = y_labels,
             ncol = 3)
 
 ```
@@ -119,33 +119,3 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 ### Detachment lag and detachment durations
 Detachment lag and detachment durations for leaf cohort are set as a big value `1000000` which assumes no detachment in wheat leaf. Actually all leaves are detached at `Harvesting` event. 
-
-
-<!--
-
-### Drought stress on leaf development
-
-After appearance, leaf development is accelerated by the drought stress through increasing the daily thermal time, i.e. leaf age is accelerated by drought. The factor of acceleration depends on the ratio of water supply and demand (Figure \@ref(fig:water-supply-demand-ratio)). Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7 (The values in Figure \@ref(fig:leaf-development-drought) plus one).
-
-
-<div class="fig-input">
-```{r leaf-development-drought, fig.asp = 0.75, fig.cap='Drought stress accelerates leaf development. Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7.'}
-
-
-#path <- '//AddFunction[Name="DroughtInducedSenAcceleration"]/MultiplyFunction[Name="Stress"]/LinearInterpolationFunction[Name="StressFactor"]'
-#plot_xypair(g_pmf, path, x_lab'Ratio of water supply and demand', y_lab = 'Ratio of acceleration of thermal time')
-```
-</div>
-
-
-```csharp
-//Acellerate thermal time accumulation if crop is water stressed.
-double _ThermalTime;
-if ((LeafCohortParameters.DroughtInducedSenAcceleration != null) && (IsFullyExpanded))
-    _ThermalTime = TT * LeafCohortParameters.DroughtInducedSenAcceleration.Value;
-else _ThermalTime = TT;
-
-```
-
-
--->
