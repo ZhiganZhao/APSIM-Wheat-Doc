@@ -1,6 +1,7 @@
 # Variable {#cha:variable}
 
 The input and output variables are listed in this chapter and linked to the figures and tables.
+
 ```{r variable-funs}
 
 chunk2ref <- function(chunks, chunk_label) {

@@ -6,6 +6,7 @@
 source('_setup.R')
 ```
 
+
 <div class="fig-output">
 ```{r nitrogen-demand-supply, fig.cap='The plant total nitrogen demand and supply'}
 y_cols <- c('Wheat.Arbitrator.N.TotalPlantSupply',
