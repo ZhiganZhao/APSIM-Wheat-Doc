@@ -95,8 +95,21 @@ $$
 
 
 
+<div class="fig-output">
+```{r leaf-supply-rue, fig.asp = 1, fig.cap='Biomass supply from leaf'}
+y_cols <- c('Wheat.Leaf.Photosynthesis_RUE',
+            'Wheat.Leaf.Photosynthesis_EW',
+            'Wheat.Leaf.Photosynthesis_DCaPS')
 
-### Enli Wang's photosynthesis model
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = 'Demand (g/m2/d)', ncol = 3)
+
+```
+</div>
+
+
+
+### Enli's photosynthesis model
 
 ### Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)
 

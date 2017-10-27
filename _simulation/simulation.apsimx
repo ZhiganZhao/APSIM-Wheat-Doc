@@ -16,6 +16,7 @@
         <string>[Weather].Radn</string>
         <string>[Weather].Rain</string>
         <string />
+        <string>[Wheat].Leaf.SpecificLeafNitrogen</string>
         <string>[Wheat].Leaf.Photosynthesis_RUE.Value() as Wheat.Leaf.Photosynthesis_RUE</string>
         <string>[Wheat].Leaf.Photosynthesis_EW.Value() as Wheat.Leaf.Photosynthesis_EW</string>
         <string>[Wheat].Leaf.Photosynthesis_DCaPS.Value() as Wheat.Leaf.Photosynthesis_DCaPS</string>

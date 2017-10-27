@@ -190,7 +190,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.3</b> Supply</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#radiation-use-efficiency-model"><i class="fa fa-check"></i><b>8.3.1</b> Radiation use efficiency model</a></li>
-<li class="chapter" data-level="8.3.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#enli-wangs-photosynthesis-model"><i class="fa fa-check"></i><b>8.3.2</b> Enli Wang’s photosynthesis model</a></li>
+<li class="chapter" data-level="8.3.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#enlis-photosynthesis-model"><i class="fa fa-check"></i><b>8.3.2</b> Enli’s photosynthesis model</a></li>
 <li class="chapter" data-level="8.3.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#layered-canopy-photosynthesis-model-with-transpiration-or-dcaps"><i class="fa fa-check"></i><b>8.3.3</b> Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)</a></li>
 <li class="chapter" data-level="8.3.4" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#comporison-of-three-photosynthesis-models"><i class="fa fa-check"></i><b>8.3.4</b> Comporison of three photosynthesis models</a></li>
 <li class="chapter" data-level="8.3.5" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#actual-dialy-supply"><i class="fa fa-check"></i><b>8.3.5</b> Actual dialy supply</a></li>
@@ -250,7 +250,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="sec:leaf-supply" class="section level2">
 <h2><span class="header-section-number">8.3</span> Supply</h2>
-<p>In <code>Leaf</code> organ, the biomass supply only sources from <code>Fixation</code> (i.e. photosynthesis, Fig. <a href="sec-leaf-supply.html#fig:leaf-supply">8.25</a>). Three photosynthesis models are implemented in the APSIM next generation.</p>
+<p>In <code>Leaf</code> organ, the biomass supply only sources from <code>Fixation</code> (i.e. photosynthesis, Fig. <a href="sec-leaf-supply.html#fig:leaf-supply">8.26</a>). Three photosynthesis models are implemented in the APSIM next generation.</p>
 <div id="radiation-use-efficiency-model" class="section level3">
 <h3><span class="header-section-number">8.3.1</span> Radiation use efficiency model</h3>
 <p>The radiation-limited dry-biomass accumulation (<span class="math inline">\(\Delta Q_{r}\)</span>) is calculated by the intercepted radiation (<span class="math inline">\(I\)</span>), radiation use efficiency (<span class="math inline">\(RUE\)</span>).</p>
@@ -284,7 +284,7 @@ Figure 8.20: The temperature factor which influences radiation use efficiency
 </p>
 </div>
 </div>
-<p><strong>The plant nutrition factor</strong> is determined by the ratio of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.32</a>) and the multiplier of nitrogen stress (Fig. <a href="sec-leaf-supply.html#fig:leaf-rue-fn">8.21</a>).</p>
+<p><strong>The plant nutrition factor</strong> is determined by the ratio of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.33</a>) and the multiplier of nitrogen stress (Fig. <a href="sec-leaf-supply.html#fig:leaf-rue-fn">8.21</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-rue-fn"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-rue-fn-1.png" alt="The nitrogen factor which influences radiation use efficiency" width="80%" />
@@ -313,10 +313,18 @@ f_{c}=\frac{(C-C_{i})(350+2C_{i})}{(C+2C_{i})(350-C_{i})}
 <p>where <span class="math inline">\(C_{i}\)</span> is the temperature dependent CO<span class="math inline">\(_{\text{2}}\)</span> compensation point (ppm) and is derived from the following function. <span class="math display">\[
 C_{i}=\frac{163-T_{mean}}{5-0.1T_{mean}}
 \]</span></p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-supply-rue"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-supply-rue-1.png" alt="Biomass supply from leaf" width="80%" />
+<p class="caption">
+Figure 8.23: Biomass supply from leaf
+</p>
 </div>
 </div>
-<div id="enli-wangs-photosynthesis-model" class="section level3">
-<h3><span class="header-section-number">8.3.2</span> Enli Wang’s photosynthesis model</h3>
+</div>
+</div>
+<div id="enlis-photosynthesis-model" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> Enli’s photosynthesis model</h3>
 </div>
 <div id="layered-canopy-photosynthesis-model-with-transpiration-or-dcaps" class="section level3">
 <h3><span class="header-section-number">8.3.3</span> Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)</h3>
@@ -328,7 +336,7 @@ C_{i}=\frac{163-T_{mean}}{5-0.1T_{mean}}
 <div class="figure" style="text-align: center"><span id="fig:leaf-supply-all-models-radn"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-supply-all-models-radn-1.png" alt="Biomass supply of leaf using three photosynthesis models." width="80%" />
 <p class="caption">
-Figure 8.23: Biomass supply of leaf using three photosynthesis models.
+Figure 8.24: Biomass supply of leaf using three photosynthesis models.
 </p>
 </div>
 </div>
@@ -336,7 +344,7 @@ Figure 8.23: Biomass supply of leaf using three photosynthesis models.
 <div class="figure" style="text-align: center"><span id="fig:leaf-supply-all-model-lai"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-supply-all-model-lai-1.png" alt="Biomass supply of leaf using three photosynthesis models." width="80%" />
 <p class="caption">
-Figure 8.24: Biomass supply of leaf using three photosynthesis models.
+Figure 8.25: Biomass supply of leaf using three photosynthesis models.
 </p>
 </div>
 </div>
@@ -347,7 +355,7 @@ Figure 8.24: Biomass supply of leaf using three photosynthesis models.
 <div class="figure" style="text-align: center"><span id="fig:leaf-supply"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-supply-1.png" alt="Biomass supply from leaf" width="80%" />
 <p class="caption">
-Figure 8.25: Biomass supply from leaf
+Figure 8.26: Biomass supply from leaf
 </p>
 </div>
 </div>

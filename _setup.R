@@ -20,7 +20,8 @@ if (!exists('g_report', envir = .GlobalEnv)) {
     g_report <- dbReadTable(con, 'Report')
     dbDisconnect(con)
     g_report <- g_report %>%
-        filter(Wheat.Phenology.Stage <= 9)
+        filter(Wheat.Phenology.Stage <= 9) %>%
+        tbl_df()
     g_report <- g_report[seq(which(g_report$Wheat.Phenology.CurrentStageName == 'Sowing'), nrow(g_report)),]
     # assign('g_report', g_report, .GlobalEnv)
 }

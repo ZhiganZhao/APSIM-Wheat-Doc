@@ -14,23 +14,6 @@ where $C_{N}$ is the nitrogen concentration of `Leaf` parts; $R_{N,\,expan}$ is 
 
 
 
-```
-if (CohortParameters == null)
-	return 1;
-
-
-double f;
-double functionalNConc = (CohortParameters.CriticalNConc.Value() -
-						  CohortParameters.MinimumNConc.Value() * CohortParameters.StructuralFraction.Value()) *
-						 (1 / (1 - CohortParameters.StructuralFraction.Value()));
-if (functionalNConc <= 0)
-	f = 1;
-else
-	f = Math.Max(0.0, Math.Min(Live.MetabolicNConc / functionalNConc, 1.0));
-
-return f;
-```
-
 <div class="fig-input">
 ```{r leaf-nconc, fig.asp = 1, fig.cap='Actual allocated biomass for leaf'}
 y_cols <- c('Wheat.Leaf.CohortParameters.MinimumNConc',
@@ -38,7 +21,7 @@ y_cols <- c('Wheat.Leaf.CohortParameters.MinimumNConc',
 'Wheat.Leaf.CohortParameters.MaximumNConc')
 y_labels <- c('Minimum', 'Critical', 'Maximum')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3,
+            y_lab = 'Nitrogen concentration (g/m2)', ncol = 3,
             y_labels = y_labels)
 
 ```
@@ -53,3 +36,14 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Ratio of function
 ```
 </div>
 
+
+
+
+<div class="fig-output">
+```{r leaf-sln, fig.asp = 1, fig.cap='Specific leaf nitrogen'}
+y_cols <- c('Wheat.Leaf.SpecificLeafNitrogen')
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = 'Specific leaf nitrogen (g/m2)', ncol = 3)
+```
+</div>
