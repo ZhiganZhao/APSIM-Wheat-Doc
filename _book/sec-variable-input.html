@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="sec-intro-contribution.html">
+<link rel="prev" href="cha-variable.html">
+<link rel="next" href="sec-variable-output.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -248,20 +248,159 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Documentation of APSIM-Wheat</h1>
-</div>
-<div id="cha:intro" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>This documentation is based on the current version of <a href="https://github.com/APSIMInitiative/ApsimX/tree/d9717df5ef24f6d3f1eb4c301726c213960017bb">APSIM-Wheat module</a> with a few modifications in the next generation updated on 17-August-2017.</p>
-<p>A simulation is setup to demo the relationship among traits based on the cv. Hartog with high nitrogen and irrigation management under 15TraitMod experiment. The values in the figures below could be variable in other environments.</p>
-<p>This is only a documentation for Wheat model in <a href="https://github.com/APSIMInitiative/ApsimX">next generation of APSIM</a> with our own understanding.</p>
-<p>The main contents include</p>
-<ul>
-<li>Detail description of science parts of APSIM-Wheat model</li>
-<li>Figures of default parameters</li>
-<li>Figures of general outputs</li>
-</ul> 
+<div id="sec:variable-input" class="section level2">
+<h2><span class="header-section-number">13.1</span> Input</h2>
+<table>
+<caption><span id="tab:variable-input">Table 13.1: </span>The input variables which are used in this documentation. The prefix of <code>Wheat.</code> is removed from all variables.</caption>
+<thead>
+<tr class="header">
+<th align="left">Input</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Grain.DMConversionEfficiency</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-conversion-efficiency">5.3</a></td>
+</tr>
+<tr class="even">
+<td align="left">Grain.MaintenanceRespirationFunction.MaintenanceFractionAt20C</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Grain.MaintenanceRespirationFunction.WangEngelTempFunction</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="even">
+<td align="left">Leaf.CohortParameters.CellDivisionStress.NitrogenStressEffect</td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-nitrogen">8.10</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Leaf.CohortParameters.CellDivisionStress.WaterStressEffect</td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-water">8.9</a></td>
+</tr>
+<tr class="even">
+<td align="left">Leaf.CohortParameters.ExpansionStress.NitrogenStressEffect</td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-stress">8.14</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Leaf.CohortParameters.ExpansionStress.TemperatureEffect</td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-stress">8.14</a></td>
+</tr>
+<tr class="even">
+<td align="left">Leaf.CohortParameters.ExpansionStress.WaterStressEffect</td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-stress">8.14</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Leaf.CohortParameters.MaxArea.AgeFactor</td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-maximum-area-age">8.6</a></td>
+</tr>
+<tr class="even">
+<td align="left">Leaf.DMConversionEfficiency</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-conversion-efficiency">5.3</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Leaf.MaintenanceRespirationFunction.MaintenanceFractionAt20C</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="even">
+<td align="left">Leaf.MaintenanceRespirationFunction.WangEngelTempFunction</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Leaf.Photosynthesis_RUE.FN</td>
+<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-rue-fn">8.21</a></td>
+</tr>
+<tr class="even">
+<td align="left">Leaf.Photosynthesis_RUE.FT</td>
+<td align="left">Fig. <a href="sec-leaf-supply.html#fig:biomass-ft">8.20</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Leaf.Photosynthesis_RUE.FW</td>
+<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-rue-fw">8.22</a></td>
+</tr>
+<tr class="even">
+<td align="left">Root.DMConversionEfficiency</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-conversion-efficiency">5.3</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Root.MaintenanceRespirationFunction.MaintenanceFractionAt20C</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="even">
+<td align="left">Root.MaintenanceRespirationFunction.WangEngelTempFunction</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Root.RootFrontVelocity.TemperatureFactor</td>
+<td align="left">Fig. <a href="sec-root-growth.html#fig:root-front-velocity-temp">7.2</a></td>
+</tr>
+<tr class="even">
+<td align="left">Root.RootFrontVelocity.WaterFactor</td>
+<td align="left">Fig. <a href="sec-root-growth.html#fig:root-front-velocity-water-stress">7.4</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Spike.DMConversionEfficiency</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-conversion-efficiency">5.3</a></td>
+</tr>
+<tr class="even">
+<td align="left">Spike.MaintenanceRespirationFunction.MaintenanceFractionAt20C</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Spike.MaintenanceRespirationFunction.WangEngelTempFunction</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="even">
+<td align="left">Stem.DMConversionEfficiency</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-conversion-efficiency">5.3</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Stem.MaintenanceRespirationFunction.MaintenanceFractionAt20C</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="even">
+<td align="left">Stem.MaintenanceRespirationFunction.WangEngelTempFunction</td>
+<td align="left">Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Structure.BranchingRate.PotentialBranchingRate.Vegetative.PotentialBranchingRate</td>
+<td align="left">Fig. <a href="sec-str-tillering.html#fig:str-branching-rate">4.10</a></td>
+</tr>
+<tr class="even">
+<td align="left">Structure.BranchingRate.StressFactors.CoverEffect</td>
+<td align="left">Fig. <a href="sec-str-tillering.html#fig:str-branching-factor">4.11</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Structure.BranchingRate.StressFactors.NitrogenEffect</td>
+<td align="left">Fig. <a href="sec-str-tillering.html#fig:str-branching-factor">4.11</a></td>
+</tr>
+<tr class="even">
+<td align="left">Structure.BranchingRate.StressFactors.WaterStressEffect</td>
+<td align="left">Fig. <a href="sec-str-tillering.html#fig:str-branching-factor">4.11</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Structure.BranchMortality.MortalityPhase.Mortality.MortalityPerDegDay</td>
+<td align="left">Fig. <a href="sec-str-tillering.html#fig:str-mortality-growth-rate">4.14</a></td>
+</tr>
+<tr class="even">
+<td align="left">Structure.HeightModel.PotentialHeight</td>
+<td align="left">Fig. <a href="sec-canopy-height.html#fig:str-potential-height">4.19</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Structure.HeightModel.WaterStress</td>
+<td align="left">Fig. <a href="sec-canopy-height.html#fig:str-height-water-stress">4.20</a></td>
+</tr>
+<tr class="even">
+<td align="left">Structure.Phyllochron.LeafStageFactor</td>
+<td align="left">Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron-age">4.1</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Structure.Phyllochron.PhotoPeriodEffect</td>
+<td align="left">Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron-ppd">4.2</a></td>
+</tr>
+</tbody>
+</table>
 </div>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
@@ -277,8 +416,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="sec-intro-contribution.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cha-variable.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sec-variable-output.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -307,7 +446,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/index.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/variable.Rmd",
 "text": "Edit"
 },
 "download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"]],

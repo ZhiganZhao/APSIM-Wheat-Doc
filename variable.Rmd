@@ -47,7 +47,7 @@ chunk2ref <- function(chunks, chunk_label) {
 
 ```
 
-## Input
+## Input {#sec:variable-input}
 
 ```{r variable-input, results='asis', cache=FALSE}
 # save(chunk_label, file = 'tmp.RData')
@@ -65,7 +65,7 @@ if (file.exists(rds_file)) {
 
 
 
-## Output
+## Output {#sec:variable-output}
 
 ```{r variable-output, results='asis', cache=FALSE}
 chunk_folder <- options('chunk_folder')[[1]]

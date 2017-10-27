@@ -2872,7 +2872,7 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <Constant>
             <Name>Constant</Name>
             <IncludeInDocumentation>true</IncludeInDocumentation>
-            <FixedValue>0.5</FixedValue>
+            <FixedValue>0.1</FixedValue>
           </Constant>
           <RUEModel>
             <Name>PhotosynthesisRUE</Name>
