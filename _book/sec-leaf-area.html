@@ -190,6 +190,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.3</b> Supply</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#radiation-use-efficiency-model"><i class="fa fa-check"></i><b>8.3.1</b> Radiation use efficiency model</a></li>
+<li class="chapter" data-level="8.3.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#enli-wangs-photosynthesis-model"><i class="fa fa-check"></i><b>8.3.2</b> Enli Wang’s photosynthesis model</a></li>
+<li class="chapter" data-level="8.3.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#layered-canopy-photosynthesis-model-with-transpiration-or-dcaps"><i class="fa fa-check"></i><b>8.3.3</b> Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)</a></li>
+<li class="chapter" data-level="8.3.4" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#comporison-of-three-photosynthesis-models"><i class="fa fa-check"></i><b>8.3.4</b> Comporison of three photosynthesis models</a></li>
+<li class="chapter" data-level="8.3.5" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#actual-dialy-supply"><i class="fa fa-check"></i><b>8.3.5</b> Actual dialy supply</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
@@ -267,7 +271,7 @@ Figure 8.7: Maximum leaf area by leaf rank
 </p>
 </div>
 </div>
-<p>The stress factor of cell division is the minimum multipliers of water stress and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-daily">8.8</a>). Multipliers of water stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-water">8.9</a>) is a function of water supply and demand ratio (Fig. <a href="cha-water.html#fig:water-supply-demand-ratio">11.1</a>). Multipliers of nitrogen stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-nitrogen">8.10</a>) is a function of ratio of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.30</a>).</p>
+<p>The stress factor of cell division is the minimum multipliers of water stress and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-daily">8.8</a>). Multipliers of water stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-water">8.9</a>) is a function of water supply and demand ratio (Fig. <a href="cha-water.html#fig:water-supply-demand-ratio">11.1</a>). Multipliers of nitrogen stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-nitrogen">8.10</a>) is a function of ratio of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.32</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-cell-division-daily"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-cell-division-daily-1.png" alt="Daily stress of cell division" width="80%" />
@@ -314,7 +318,7 @@ Figure 8.12: The size function of leaf area development. The maximum leaf area s
 </div>
 <div id="sec:leaf-water-area" class="section level3">
 <h3><span class="header-section-number">8.2.3</span> Water constrained leaf area</h3>
-<p>The water constrained leaf area equals to the daily potential increase of leaf area which reduced by <code>ExpansionStress</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-daily">8.13</a>) which is a minimum value among temperature, water and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-stress">8.14</a>). Temperature stress is related with daily mean temperature; water stress is related with water tension factor in root; nitrogen stress related with fraction of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.30</a>).</p>
+<p>The water constrained leaf area equals to the daily potential increase of leaf area which reduced by <code>ExpansionStress</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-daily">8.13</a>) which is a minimum value among temperature, water and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-stress">8.14</a>). Temperature stress is related with daily mean temperature; water stress is related with water tension factor in root; nitrogen stress related with fraction of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.32</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-expansion-daily"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-expansion-daily-1.png" alt="Daily stress of leaf expansion" width="80%" />
@@ -383,7 +387,7 @@ Figure 8.17: Coverage
 </p>
 </div>
 </div>
-<p><strong>Specific leaf area</strong> The minimum and maximum specific leaf areas are defined in the <code>CohortParameters</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.18</a>), which related with fraction of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.30</a>) and stage, respectively.</p>
+<p><strong>Specific leaf area</strong> The minimum and maximum specific leaf areas are defined in the <code>CohortParameters</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.18</a>), which related with fraction of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.32</a>) and stage, respectively.</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-sla"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-sla-1.png" alt="Maximum and minimum specific leaf area." width="80%" />
@@ -450,7 +454,7 @@ gitbook.start({
 "link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/leaf-area.Rmd",
 "text": "Edit"
 },
-"download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"], ["APSIM-Wheat.mobi", "MOBI"]],
+"download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"]],
 "toc": {
 "collapse": "section"
 }

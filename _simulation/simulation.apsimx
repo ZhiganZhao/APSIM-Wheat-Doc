@@ -10,6 +10,15 @@
       <ExperimentFactorValues />
       <VariableNames>
         <string>[Clock].Today</string>
+        <string>[Weather].MaxT</string>
+        <string>[Weather].MinT</string>
+        <string>[Weather].MeanT</string>
+        <string>[Weather].Radn</string>
+        <string>[Weather].Rain</string>
+        <string />
+        <string>[Wheat].Leaf.Photosynthesis_RUE.Value() as Wheat.Leaf.Photosynthesis_RUE</string>
+        <string>[Wheat].Leaf.Photosynthesis_EW.Value() as Wheat.Leaf.Photosynthesis_EW</string>
+        <string>[Wheat].Leaf.Photosynthesis_DCaPS.Value() as Wheat.Leaf.Photosynthesis_DCaPS</string>
         <string />
         <string>[Wheat].Grain.NDemand.Metabolic</string>
         <string>[Wheat].Grain.NDemand.Structural</string>
@@ -2730,7 +2739,7 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <Constant>
             <Name>RUE</Name>
             <IncludeInDocumentation>true</IncludeInDocumentation>
-            <FixedValue>1.5</FixedValue>
+            <FixedValue>1.8</FixedValue>
           </Constant>
           <WeightedTemperatureFunction>
             <Name>FT</Name>
@@ -2808,7 +2817,7 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
               </Y>
             </XYPairs>
             <IncludeInDocumentation>true</IncludeInDocumentation>
-            <XProperty>[Photosynthesis].VPD</XProperty>
+            <XProperty>[Photosynthesis_RUE].VPD</XProperty>
           </LinearInterpolationFunction>
           <RUECO2Function>
             <Name>FCO2</Name>
@@ -2822,6 +2831,152 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           </VariableReference>
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </RUEModel>
+        <CanopyPhotosynthesis>
+          <Name>Photosynthesis_EW</Name>
+          <Model xsi:type="CanopyGrossPhotosynthesisHourly">
+            <Name>CanopyGrossPhotosynthesisHourly</Name>
+            <IncludeInDocumentation>true</IncludeInDocumentation>
+            <KDIF>0.7</KDIF>
+          </Model>
+          <Model xsi:type="LeafLightUseEfficiency">
+            <Name>LeafLightUseEfficiency</Name>
+            <IncludeInDocumentation>true</IncludeInDocumentation>
+            <LUEref>0.6</LUEref>
+            <pathway>C3</pathway>
+          </Model>
+          <Model xsi:type="LeafMaxGrossPhotosynthesis">
+            <Name>LeafMaxGrossPhotosynthesis</Name>
+            <WangEngelTempFunction>
+              <Name>TemperatureResponse</Name>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <MinTemp>0</MinTemp>
+              <OptTemp>27.5</OptTemp>
+              <MaxTemp>40</MaxTemp>
+              <RefTemp>27.5</RefTemp>
+              <MaximumTemperatureWeighting>0.71</MaximumTemperatureWeighting>
+            </WangEngelTempFunction>
+            <IncludeInDocumentation>true</IncludeInDocumentation>
+            <Pgmmax>40</Pgmmax>
+            <pathway>C3</pathway>
+          </Model>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <GrossPhotosynthesis>0</GrossPhotosynthesis>
+        </CanopyPhotosynthesis>
+        <LessThanFunction>
+          <Name>Photosynthesis_DCaPS</Name>
+          <VariableReference>
+            <Name>LAI</Name>
+            <IncludeInDocumentation>true</IncludeInDocumentation>
+            <VariableName>[Leaf].LAI</VariableName>
+          </VariableReference>
+          <Constant>
+            <Name>Constant</Name>
+            <IncludeInDocumentation>true</IncludeInDocumentation>
+            <FixedValue>0.5</FixedValue>
+          </Constant>
+          <RUEModel>
+            <Name>PhotosynthesisRUE</Name>
+            <Constant>
+              <Name>RUE</Name>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <FixedValue>1.8</FixedValue>
+            </Constant>
+            <WeightedTemperatureFunction>
+              <Name>FT</Name>
+              <XYPairs>
+                <Name>XYPairs</Name>
+                <IncludeInDocumentation>true</IncludeInDocumentation>
+                <X>
+                  <double>0</double>
+                  <double>15</double>
+                  <double>25</double>
+                  <double>35</double>
+                </X>
+                <Y>
+                  <double>0</double>
+                  <double>1</double>
+                  <double>1</double>
+                  <double>0</double>
+                </Y>
+              </XYPairs>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <MaximumTemperatureWeighting>0.75</MaximumTemperatureWeighting>
+            </WeightedTemperatureFunction>
+            <LinearInterpolationFunction>
+              <Name>FN</Name>
+              <XYPairs>
+                <Name>XYPairs</Name>
+                <IncludeInDocumentation>true</IncludeInDocumentation>
+                <X>
+                  <double>0</double>
+                  <double>1</double>
+                  <double>1.5</double>
+                </X>
+                <Y>
+                  <double>0</double>
+                  <double>1</double>
+                  <double>1</double>
+                </Y>
+              </XYPairs>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <XProperty>[Leaf].Fn</XProperty>
+            </LinearInterpolationFunction>
+            <LinearInterpolationFunction>
+              <Name>FW</Name>
+              <XYPairs>
+                <Name>XYPairs</Name>
+                <IncludeInDocumentation>true</IncludeInDocumentation>
+                <X>
+                  <double>0</double>
+                  <double>1</double>
+                  <double>1</double>
+                </X>
+                <Y>
+                  <double>0</double>
+                  <double>1</double>
+                  <double>1</double>
+                </Y>
+              </XYPairs>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <XProperty>[Leaf].Fw</XProperty>
+            </LinearInterpolationFunction>
+            <LinearInterpolationFunction>
+              <Name>FVPD</Name>
+              <XYPairs>
+                <Name>XYPairs</Name>
+                <IncludeInDocumentation>true</IncludeInDocumentation>
+                <X>
+                  <double>0</double>
+                  <double>10</double>
+                  <double>40</double>
+                </X>
+                <Y>
+                  <double>1</double>
+                  <double>1</double>
+                  <double>0</double>
+                </Y>
+              </XYPairs>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <XProperty>[Leaf].Photosynthesis_DCaPS.PhotosynthesisRUE.VPD</XProperty>
+            </LinearInterpolationFunction>
+            <RUECO2Function>
+              <Name>FCO2</Name>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <PhotosyntheticPathway>C3</PhotosyntheticPathway>
+            </RUECO2Function>
+            <VariableReference>
+              <Name>RadnInt</Name>
+              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <VariableName>[Leaf].RadIntTot</VariableName>
+            </VariableReference>
+            <IncludeInDocumentation>true</IncludeInDocumentation>
+          </RUEModel>
+          <Photosynthesis>
+            <Name>PhotosynthesisDCaps</Name>
+            <IncludeInDocumentation>true</IncludeInDocumentation>
+          </Photosynthesis>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+        </LessThanFunction>
         <CanopyPhotosynthesis>
           <Name>Photosynthesis</Name>
           <Model xsi:type="CanopyGrossPhotosynthesisHourly">

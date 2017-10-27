@@ -9,7 +9,10 @@ chunk2ref <- function(chunks, chunk_label) {
     refs <- chunks %>% 
         map(function(x) {
             x0 <- gsub('^(fig:|tab:)(.*)$', '\\2', x)
-            x <- unique(x[x0 %in% chunk_label])
+            if (!is.null(chunk_label)) {
+                x <- x[x0 %in% chunk_label]
+            }
+            x <- unique(x)
             if (length(x) == 0) {
                 return(NULL)
             }

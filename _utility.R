@@ -17,7 +17,7 @@ new_breaks <- function(x) {
 
 # plot report
 plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
-                        panel = FALSE, y_labels = NULL, ncol = 1, type = 'point',
+                        panel = FALSE, y_labels = NULL, ncol = 1, type = 'both',
                         chunk_type = 'output') {
 
 
@@ -68,10 +68,12 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
             if (type == 'area') {
                 p <- p +
                     geom_area(aes(fill = Trait))
-            } else {
-                p <- p +
-                    geom_line(aes(colour = Trait)) +
-                    geom_point(aes(colour = Trait, shape = Trait))
+            }
+            if (type %in% c('both', 'point')) {
+                p <- p + geom_point(aes(colour = Trait, shape = Trait))
+            }
+            if (type %in% c('both', 'line')) {
+                p <- p + geom_line(aes(colour = Trait))
             }
         } else {
             p <- p +
@@ -95,19 +97,20 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
     key_stage <- data_frame(x = c(2, 4, 6, 8),
                             name = c('G', 'T', 'F', 'E'),
                             XVar = 'Stage')
-
-    if (length(grep('AccumulateThermalTime', x_var)) > 0) {
+    if (sum(grepl('AccumulateThermalTime|Stage', x_var)) > 0) {
+        if (length(grep('AccumulateThermalTime', x_var)) > 0) {
             ks2 <- data_frame(x = approx(df$Wheat.Phenology.Stage, df$Wheat.Phenology.AccumulateThermalTime,
                                      xout = key_stage$x)$y,
                               name = key_stage$name,
                               XVar = 'AccumulateThermalTime')
             key_stage <- bind_rows(key_stage, ks2)
 
-    }
-    y_rng <- ggplot_build(p)$layout$panel_ranges[[1]]$y.range
+        }
+        y_rng <- ggplot_build(p)$layout$panel_ranges[[1]]$y.range
 
-    p <- p + geom_text(aes(x, y = y_rng[1], label = name), data = key_stage, vjust = 0) +
-        ylim(y_rng)
+        p <- p + geom_text(aes(x, y = y_rng[1], label = name), data = key_stage, vjust = 0) +
+            ylim(y_rng)
+    }
     p
 }
 

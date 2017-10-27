@@ -190,6 +190,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.3</b> Supply</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#radiation-use-efficiency-model"><i class="fa fa-check"></i><b>8.3.1</b> Radiation use efficiency model</a></li>
+<li class="chapter" data-level="8.3.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#enli-wangs-photosynthesis-model"><i class="fa fa-check"></i><b>8.3.2</b> Enli Wang’s photosynthesis model</a></li>
+<li class="chapter" data-level="8.3.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#layered-canopy-photosynthesis-model-with-transpiration-or-dcaps"><i class="fa fa-check"></i><b>8.3.3</b> Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)</a></li>
+<li class="chapter" data-level="8.3.4" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#comporison-of-three-photosynthesis-models"><i class="fa fa-check"></i><b>8.3.4</b> Comporison of three photosynthesis models</a></li>
+<li class="chapter" data-level="8.3.5" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#actual-dialy-supply"><i class="fa fa-check"></i><b>8.3.5</b> Actual dialy supply</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
@@ -313,29 +317,6 @@ Figure 8.5: The number of leaf cohort with certain status including expanded, gr
 <div id="detachment-lag-and-detachment-durations" class="section level3">
 <h3><span class="header-section-number">8.1.4</span> Detachment lag and detachment durations</h3>
 <p>Detachment lag and detachment durations for leaf cohort are set as a big value <code>1000000</code> which assumes no detachment in wheat leaf. Actually all leaves are detached at <code>Harvesting</code> event.</p>
-<!--
-
-### Drought stress on leaf development
-
-After appearance, leaf development is accelerated by the drought stress through increasing the daily thermal time, i.e. leaf age is accelerated by drought. The factor of acceleration depends on the ratio of water supply and demand (Figure \@ref(fig:water-supply-demand-ratio)). Daily thermal time is doubled when there is no water supply (i.e. Ratio of water supply and demand equals to zero), and no acceleration when ratio above 0.7 (The values in Figure \@ref(fig:leaf-development-drought) plus one).
-
-
-<div class="fig-input">
-
-</div>
-
-
-```csharp
-//Acellerate thermal time accumulation if crop is water stressed.
-double _ThermalTime;
-if ((LeafCohortParameters.DroughtInducedSenAcceleration != null) && (IsFullyExpanded))
-    _ThermalTime = TT * LeafCohortParameters.DroughtInducedSenAcceleration.Value;
-else _ThermalTime = TT;
-
-```
-
-
--->
 
 </div>
 </div>
@@ -386,7 +367,7 @@ gitbook.start({
 "link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/leaf-life-cycle.Rmd",
 "text": "Edit"
 },
-"download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"], ["APSIM-Wheat.mobi", "MOBI"]],
+"download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"]],
 "toc": {
 "collapse": "section"
 }

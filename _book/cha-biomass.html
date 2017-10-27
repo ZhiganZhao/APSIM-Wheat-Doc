@@ -190,6 +190,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.3</b> Supply</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#radiation-use-efficiency-model"><i class="fa fa-check"></i><b>8.3.1</b> Radiation use efficiency model</a></li>
+<li class="chapter" data-level="8.3.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#enli-wangs-photosynthesis-model"><i class="fa fa-check"></i><b>8.3.2</b> Enli Wang’s photosynthesis model</a></li>
+<li class="chapter" data-level="8.3.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#layered-canopy-photosynthesis-model-with-transpiration-or-dcaps"><i class="fa fa-check"></i><b>8.3.3</b> Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)</a></li>
+<li class="chapter" data-level="8.3.4" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#comporison-of-three-photosynthesis-models"><i class="fa fa-check"></i><b>8.3.4</b> Comporison of three photosynthesis models</a></li>
+<li class="chapter" data-level="8.3.5" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#actual-dialy-supply"><i class="fa fa-check"></i><b>8.3.5</b> Actual dialy supply</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
@@ -246,7 +250,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="cha:biomass" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Biomass</h1>
-<p>The wheat is mainly source limited in APSIM-Wheat model.</p>
+<p>Wheat plants are separated into 5 organs, (i.e. Grain, Root, Leaf, Spike, Stem). Leaf includes only leaf blades. Stem is defined in a functional rather than a morphological manner and includes nodes, internodes and leaf sheaths. Spike is the head parts without grain including pedicel and glunes.</p>
 <p>The biomass and nitrogen of each organ is separated into two pools (i.e. <code>Live</code> and <code>Dead</code>). Each pool is separated into three components (i.e. <code>Structural</code>, <code>Metabolic</code>, <code>Storage</code>) <span class="citation">(Brown et al. <a href="cha-reference.html#ref-BrownPlantModellingFramework2014">2014</a>)</span>.</p>
 <ul>
 <li><strong>Structural biomass and N</strong> are essential for the growth of the organ. They remain within the organ once it has been allocated and are passed from Live to Dead pools as the organ senescence.</li>
@@ -301,7 +305,7 @@ gitbook.start({
 "link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/biomass.Rmd",
 "text": "Edit"
 },
-"download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"], ["APSIM-Wheat.mobi", "MOBI"]],
+"download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"]],
 "toc": {
 "collapse": "section"
 }

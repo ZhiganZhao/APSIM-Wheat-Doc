@@ -1,6 +1,6 @@
 ## Supply {#sec:leaf-supply}
 
-In `Leaf` organ, the biomass supply only sources from `Fixation` (i.e. photosynthesis, Fig. \@ref(fig:leaf-supply)). Three photosynthesis models are implemented in the APSIM next generation,
+In `Leaf` organ, the biomass supply only sources from `Fixation` (i.e. photosynthesis, Fig. \@ref(fig:leaf-supply)). Three photosynthesis models are implemented in the APSIM next generation. 
 
 ```{r leaf-supply-config}
 name_rue <- 'Wheat.Leaf.Photosynthesis_RUE'
@@ -95,10 +95,65 @@ $$
 
 
 
-### WE's photosynthesis model
+
+### Enli Wang's photosynthesis model
 
 ### Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)
 
+
+### Comporison of three photosynthesis models
+
+The daily photosynthesis is calculated by Enli Wang's model, but is exported for all three models to compare model performance. So the input parameters are the same for three models, e.g. leaf area index and radiation. 
+
+
+
+<div class="fig-output">
+```{r leaf-supply-all-models-radn, fig.asp = 1.2, fig.cap='Biomass supply of leaf using three photosynthesis models.'}
+y_cols <- c('Wheat.Leaf.Photosynthesis_RUE',
+            'Wheat.Leaf.Photosynthesis_EW',
+            'Wheat.Leaf.Photosynthesis_DCaPS')
+
+p1 <- plot_report(g_report, 'Wheat.Phenology.DaysAfterSowing', y_cols, 
+            x_lab = 'Days after sowing', 
+             y_labels = c('RUE', 'EW', 'DCaPS'),
+            y_lab = 'Photosynthesis rate (g/m2/d)', ncol = 3) +
+    geom_bar(aes(Wheat.Phenology.DaysAfterSowing, Weather.Radn),
+             stat = 'identity', alpha = 0.7, width = 0.5,data = g_report) +
+    scale_y_continuous(sec.axis = sec_axis(~., name = 'Radiation (mj/m2)'))
+
+p2 <- ggplot(g_report) +
+    geom_bar(aes(Wheat.Phenology.DaysAfterSowing, Weather.MeanT),
+             stat = 'identity', alpha = 0.7, width = 0.5, fill = 'black') +
+    ylab(expression(paste( "Daily mean temperature ", ~"("*degree*"C)"))) +
+    # scale_x_continuous(minor_breaks = 
+    #     seq(1, max(g_report$Wheat.Phenology.DaysAfterSowing))) +
+    geom_line(aes(Wheat.Phenology.DaysAfterSowing, Wheat.Leaf.LAI * 5), color = 'blue') +
+    scale_y_continuous(sec.axis = sec_axis(~./5, name = 'Leaf area index')) +
+    theme_bw()
+print(p1, vp = grid::viewport(0.5, 0.73, 1, 0.54))    
+print(p2, vp = grid::viewport(0.5, 0.23, 1, 0.46))
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r leaf-supply-all-model-lai, fig.asp = 0.5, fig.cap='Biomass supply of leaf using three photosynthesis models.'}
+y_cols <- c('Wheat.Leaf.Photosynthesis_RUE',
+            'Wheat.Leaf.Photosynthesis_EW',
+            'Wheat.Leaf.Photosynthesis_DCaPS')
+
+
+plot_report(g_report, 'Wheat.Leaf.LAI', y_cols, 
+            y_labels = c('RUE', 'EW', 'DCaPS'),
+            x_lab = 'Leaf area index (m2/m2)', 
+            y_lab = 'Photosynthesis rate (g/m2/d)', ncol = 3)
+
+```
+</div>
+
+
+### Actual dialy supply 
 
 <div class="fig-output">
 ```{r leaf-supply, fig.asp = 1, fig.cap='Biomass supply from leaf'}
@@ -106,10 +161,10 @@ y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
             'Wheat.Leaf.DMSupply.Retranslocation',
             'Wheat.Leaf.DMSupply.Reallocation')
 
+
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/m2/d)', ncol = 3)
+            y_lab = 'Biomass supply from leaf (g/m2/d)', ncol = 3)
 
 ```
 </div>
-
 
