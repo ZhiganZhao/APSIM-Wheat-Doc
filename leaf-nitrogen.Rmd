@@ -15,7 +15,7 @@ where $C_{N}$ is the nitrogen concentration of `Leaf` parts; $R_{N,\,expan}$ is 
 
 
 <div class="fig-input">
-```{r leaf-nconc, fig.asp = 1, fig.cap='Actual allocated biomass for leaf'}
+```{r leaf-nconc, fig.asp = 1, fig.cap='Minimum, critical and maximum nitrogen concentration in leaf.'}
 y_cols <- c('Wheat.Leaf.CohortParameters.MinimumNConc',
 'Wheat.Leaf.CohortParameters.CriticalNConc',
 'Wheat.Leaf.CohortParameters.MaximumNConc')
