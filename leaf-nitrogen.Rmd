@@ -29,9 +29,9 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r leaf-nitrogen-functional-n, fig.cap='Ratio of functional nitrogen'}
+```{r leaf-nitrogen-functional-n, fig.asp=0.5, fig.cap='Ratio of functional nitrogen'}
 y_cols <- c('Wheat.Leaf.Fn')
-plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Ratio of functional nitrogen')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab2, y_lab = 'Ratio of functional nitrogen')
 
 ```
 </div>
