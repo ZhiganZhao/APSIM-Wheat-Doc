@@ -141,10 +141,14 @@ p2 <- ggplot(g_report) +
     # scale_x_continuous(minor_breaks = 
     #     seq(1, max(g_report$Wheat.Phenology.DaysAfterSowing))) +
     geom_line(aes(Wheat.Phenology.DaysAfterSowing, Wheat.Leaf.LAI * 5), color = 'blue') +
-    scale_y_continuous(sec.axis = sec_axis(~./5, name = 'Leaf area index')) +
+    scale_y_continuous(sec.axis = sec_axis(~./5, name = 'Leaf area index',
+                                           breaks = seq(1, 5),
+                                           labels = paste0(' ', seq(1, 5)))) +
     theme_bw()
+
 print(p1, vp = grid::viewport(0.5, 0.73, 1, 0.54))    
 print(p2, vp = grid::viewport(0.5, 0.23, 1, 0.46))
+
 ```
 </div>
 
