@@ -186,7 +186,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.3" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#sec:leaf-water-area"><i class="fa fa-check"></i><b>8.2.3</b> Water constrained leaf area</a></li>
 <li class="chapter" data-level="8.2.4" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#carbon-constrained-leaf-area"><i class="fa fa-check"></i><b>8.2.4</b> Carbon constrained leaf area</a></li>
 <li class="chapter" data-level="8.2.5" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#leaf-senescence"><i class="fa fa-check"></i><b>8.2.5</b> Leaf senescence</a></li>
-<li class="chapter" data-level="8.2.6" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#leaf-area-index-and-ground-coverage"><i class="fa fa-check"></i><b>8.2.6</b> Leaf area index and ground coverage</a></li>
+<li class="chapter" data-level="8.2.6" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#leaf-area-index"><i class="fa fa-check"></i><b>8.2.6</b> Leaf area index</a></li>
+<li class="chapter" data-level="8.2.7" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#ground-coverage"><i class="fa fa-check"></i><b>8.2.7</b> Ground coverage</a></li>
+<li class="chapter" data-level="8.2.8" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#specific-leaf-area"><i class="fa fa-check"></i><b>8.2.8</b> Specific leaf area</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.3</b> Supply</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#radiation-use-efficiency-model"><i class="fa fa-check"></i><b>8.3.1</b> Radiation use efficiency model</a></li>
@@ -251,7 +253,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="sec:leaf-supply" class="section level2">
 <h2><span class="header-section-number">8.3</span> Supply</h2>
-<p>In <code>Leaf</code> organ, the biomass supply only sources from <code>Fixation</code> (i.e. photosynthesis, Fig. <a href="sec-leaf-supply.html#fig:leaf-supply">8.26</a>). Three photosynthesis models are implemented in the APSIM next generation.</p>
+<p>In <code>Leaf</code> organ, the biomass supply only sources from <code>Fixation</code> (i.e. photosynthesis, Fig. <a href="sec-leaf-supply.html#fig:leaf-supply">8.27</a>). Three photosynthesis models are implemented in the APSIM next generation.</p>
 <div id="radiation-use-efficiency-model" class="section level3">
 <h3><span class="header-section-number">8.3.1</span> Radiation use efficiency model</h3>
 <p>The radiation-limited dry-biomass accumulation (<span class="math inline">\(\Delta Q_{r}\)</span>) is calculated by the intercepted radiation (<span class="math inline">\(I\)</span>), radiation use efficiency (<span class="math inline">\(RUE\)</span>).</p>
@@ -281,16 +283,16 @@ F_{t,\ photo}=h_{t,\ photo}[W_{maxt}T_{max}+(1-W_{maxt})T_{min}]
 <div class="figure" style="text-align: center"><span id="fig:biomass-ft"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-ft-1.png" alt="The temperature factor which influences radiation use efficiency" width="80%" />
 <p class="caption">
-Figure 8.20: The temperature factor which influences radiation use efficiency
+Figure 8.21: The temperature factor which influences radiation use efficiency
 </p>
 </div>
 </div>
-<p><strong>The plant nutrition factor</strong> is determined by the ratio of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.39</a>) and the multiplier of nitrogen stress (Fig. <a href="sec-leaf-supply.html#fig:leaf-rue-fn">8.21</a>).</p>
+<p><strong>The plant nutrition factor</strong> is determined by the ratio of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.40</a>) and the multiplier of nitrogen stress (Fig. <a href="sec-leaf-supply.html#fig:leaf-rue-fn">8.22</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-rue-fn"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-rue-fn-1.png" alt="The nitrogen factor which influences radiation use efficiency" width="80%" />
 <p class="caption">
-Figure 8.21: The nitrogen factor which influences radiation use efficiency
+Figure 8.22: The nitrogen factor which influences radiation use efficiency
 </p>
 </div>
 </div>
@@ -303,7 +305,7 @@ Need to further check
 <div class="figure" style="text-align: center"><span id="fig:leaf-rue-fw"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-rue-fw-1.png" alt="The water factor which influences radiation use efficiency" width="80%" />
 <p class="caption">
-Figure 8.22: The water factor which influences radiation use efficiency
+Figure 8.23: The water factor which influences radiation use efficiency
 </p>
 </div>
 </div>
@@ -318,7 +320,7 @@ C_{i}=\frac{163-T_{mean}}{5-0.1T_{mean}}
 <div class="figure" style="text-align: center"><span id="fig:leaf-supply-rue-co2"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-supply-rue-co2-1.png" alt="CO$_{2}$ factor in response to the CO$_{2}$ level for different mean air temperatures." width="80%" />
 <p class="caption">
-Figure 8.23: CO<span class="math inline">\(_{2}\)</span> factor in response to the CO<span class="math inline">\(_{2}\)</span> level for different mean air temperatures.
+Figure 8.24: CO<span class="math inline">\(_{2}\)</span> factor in response to the CO<span class="math inline">\(_{2}\)</span> level for different mean air temperatures.
 </p>
 </div>
 </div>
@@ -337,7 +339,7 @@ Figure 8.23: CO<span class="math inline">\(_{2}\)</span> factor in response to t
 <div class="figure" style="text-align: center"><span id="fig:leaf-supply-all-models-radn"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-supply-all-models-radn-1.png" alt="Comparision of biomass supply from leaf using three photosynthesis models. The biomass supplies are directly exported from three models using the same inputs (e.g. leaf area index, radiation, temperature). The actual biomass supply is simuated by SPASS in the model." width="80%" />
 <p class="caption">
-Figure 8.24: Comparision of biomass supply from leaf using three photosynthesis models. The biomass supplies are directly exported from three models using the same inputs (e.g. leaf area index, radiation, temperature). The actual biomass supply is simuated by SPASS in the model.
+Figure 8.25: Comparision of biomass supply from leaf using three photosynthesis models. The biomass supplies are directly exported from three models using the same inputs (e.g. leaf area index, radiation, temperature). The actual biomass supply is simuated by SPASS in the model.
 </p>
 </div>
 </div>
@@ -345,7 +347,7 @@ Figure 8.24: Comparision of biomass supply from leaf using three photosynthesis 
 <div class="figure" style="text-align: center"><span id="fig:leaf-supply-all-model-lai"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-supply-all-model-lai-1.png" alt="Biomass supply of leaf using three photosynthesis models." width="80%" />
 <p class="caption">
-Figure 8.25: Biomass supply of leaf using three photosynthesis models.
+Figure 8.26: Biomass supply of leaf using three photosynthesis models.
 </p>
 </div>
 </div>
@@ -357,7 +359,7 @@ Figure 8.25: Biomass supply of leaf using three photosynthesis models.
 <div class="figure" style="text-align: center"><span id="fig:leaf-supply"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-supply-1.png" alt="Biomass supply from leaf" width="80%" />
 <p class="caption">
-Figure 8.26: Biomass supply from leaf
+Figure 8.27: Biomass supply from leaf
 </p>
 </div>
 </div>

@@ -186,7 +186,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.3" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#sec:leaf-water-area"><i class="fa fa-check"></i><b>8.2.3</b> Water constrained leaf area</a></li>
 <li class="chapter" data-level="8.2.4" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#carbon-constrained-leaf-area"><i class="fa fa-check"></i><b>8.2.4</b> Carbon constrained leaf area</a></li>
 <li class="chapter" data-level="8.2.5" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#leaf-senescence"><i class="fa fa-check"></i><b>8.2.5</b> Leaf senescence</a></li>
-<li class="chapter" data-level="8.2.6" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#leaf-area-index-and-ground-coverage"><i class="fa fa-check"></i><b>8.2.6</b> Leaf area index and ground coverage</a></li>
+<li class="chapter" data-level="8.2.6" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#leaf-area-index"><i class="fa fa-check"></i><b>8.2.6</b> Leaf area index</a></li>
+<li class="chapter" data-level="8.2.7" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#ground-coverage"><i class="fa fa-check"></i><b>8.2.7</b> Ground coverage</a></li>
+<li class="chapter" data-level="8.2.8" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#specific-leaf-area"><i class="fa fa-check"></i><b>8.2.8</b> Specific leaf area</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.3</b> Supply</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#radiation-use-efficiency-model"><i class="fa fa-check"></i><b>8.3.1</b> Radiation use efficiency model</a></li>
@@ -272,7 +274,7 @@ Figure 8.7: Maximum leaf area by leaf rank
 </p>
 </div>
 </div>
-<p>The stress factor of cell division is the minimum multipliers of water stress and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-daily">8.8</a>). Multipliers of water stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-water">8.9</a>) is a function of water supply and demand ratio (Fig. <a href="cha-water.html#fig:water-supply-demand-ratio">11.1</a>). Multipliers of nitrogen stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-nitrogen">8.10</a>) is a function of ratio of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.39</a>).</p>
+<p>The stress factor of cell division is the minimum multipliers of water stress and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-daily">8.8</a>). Multipliers of water stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-water">8.9</a>) is a function of water supply and demand ratio (Fig. <a href="cha-water.html#fig:water-supply-demand-ratio">11.1</a>). Multipliers of nitrogen stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-nitrogen">8.10</a>) is a function of ratio of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.40</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-cell-division-daily"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-cell-division-daily-1.png" alt="Daily stress of cell division" width="80%" />
@@ -319,7 +321,7 @@ Figure 8.12: The size function of leaf area development. The maximum leaf area s
 </div>
 <div id="sec:leaf-water-area" class="section level3">
 <h3><span class="header-section-number">8.2.3</span> Water constrained leaf area</h3>
-<p>The water constrained leaf area equals to the daily potential increase of leaf area which reduced by <code>ExpansionStress</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-daily">8.13</a>) which is a minimum value among temperature, water and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-stress">8.14</a>). Temperature stress is related with daily mean temperature; water stress is related with water tension factor in root; nitrogen stress related with fraction of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.39</a>).</p>
+<p>The water constrained leaf area equals to the daily potential increase of leaf area which reduced by <code>ExpansionStress</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-daily">8.13</a>) which is a minimum value among temperature, water and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-stress">8.14</a>). Temperature stress is related with daily mean temperature; water stress is related with water tension factor in root; nitrogen stress related with fraction of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.40</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-expansion-daily"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-expansion-daily-1.png" alt="Daily stress of leaf expansion" width="80%" />
@@ -339,8 +341,16 @@ Figure 8.14: Multiplier of temperature stress on leaf expansion. Temperature str
 </div>
 <div id="carbon-constrained-leaf-area" class="section level3">
 <h3><span class="header-section-number">8.2.4</span> Carbon constrained leaf area</h3>
-<p>The leaf area also constrained by the daily allocated cardon (biomass) including structural and metabolic in the leaf cohort [ref], then multiplies maximum specific leaf area for the biggest expansion (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.18</a>).</p>
+<p>The leaf area also constrained by the daily allocated cardon (biomass) including structural and metabolic in the leaf cohort [ref], then multiplies maximum specific leaf area for the biggest expansion (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.19</a>).</p>
 <p><strong>The actual daily increase of leaf area is the minimum of water and carbon constrained leaf area.</strong></p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-delta-area"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-delta-area-1.png" alt="Daily increase of leaf area" width="80%" />
+<p class="caption">
+Figure 8.15: Daily increase of leaf area
+</p>
+</div>
+</div>
 </div>
 <div id="leaf-senescence" class="section level3">
 <h3><span class="header-section-number">8.2.5</span> Leaf senescence</h3>
@@ -349,22 +359,25 @@ Figure 8.14: Multiplier of temperature stress on leaf expansion. Temperature str
 <div class="figure" style="text-align: center"><span id="fig:leaf-fraction-senescence"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-fraction-senescence-1.png" alt="Fraction of leaf senescence by leaf cohort in the remaining live leaf area." width="80%" />
 <p class="caption">
-Figure 8.15: Fraction of leaf senescence by leaf cohort in the remaining live leaf area.
+Figure 8.16: Fraction of leaf senescence by leaf cohort in the remaining live leaf area.
 </p>
 </div>
 </div>
 </div>
-<div id="leaf-area-index-and-ground-coverage" class="section level3">
-<h3><span class="header-section-number">8.2.6</span> Leaf area index and ground coverage</h3>
-<p>Leaf area index (LAI) are calculated for green leaf (<span class="math inline">\(\text{LAI}_{g}\)</span>), dead leaf (<span class="math inline">\(\text{LAI}_{d}\)</span>), and total leaf (<span class="math inline">\(\text{LAI}_{t}\)</span>) (Fig. <a href="sec-leaf-area.html#fig:leaf-lai">8.16</a>).</p>
+<div id="leaf-area-index" class="section level3">
+<h3><span class="header-section-number">8.2.6</span> Leaf area index</h3>
+<p>Leaf area index (LAI) are calculated for green leaf (<span class="math inline">\(\text{LAI}_{g}\)</span>), dead leaf (<span class="math inline">\(\text{LAI}_{d}\)</span>), and total leaf (<span class="math inline">\(\text{LAI}_{t}\)</span>) (Fig. <a href="sec-leaf-area.html#fig:leaf-lai">8.17</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:leaf-lai"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-lai-1.png" alt="Leaf area index" width="80%" />
 <p class="caption">
-Figure 8.16: Leaf area index
+Figure 8.17: Leaf area index
 </p>
 </div>
 </div>
+</div>
+<div id="ground-coverage" class="section level3">
+<h3><span class="header-section-number">8.2.7</span> Ground coverage</h3>
 <p>Ground coverage also are calculated for green leaf (<span class="math inline">\(C_g\)</span>), dead leaf (<span class="math inline">\(C_d\)</span>), and total leaf (<span class="math inline">\(C_t\)</span>) from LAI and extinction coefficient for green leaf (<span class="math inline">\(k_{g}\)</span>) and dead leaf (<span class="math inline">\(k_{d}\)</span>).</p>
 <p><span class="math display">\[
 C_{g}=C_{max}(1-\exp(-k_{g}\frac{\text{LAI}_{g}}{C_{max}}))
@@ -384,16 +397,19 @@ C_{d}=1-\exp(-k_{d}\text{LAI}_{d})
 <div class="figure" style="text-align: center"><span id="fig:leaf-cover"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-cover-1.png" alt="Coverage" width="80%" />
 <p class="caption">
-Figure 8.17: Coverage
+Figure 8.18: Coverage
 </p>
 </div>
 </div>
-<p><strong>Specific leaf area</strong> The minimum and maximum specific leaf areas are defined in the <code>CohortParameters</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.18</a>), which related with fraction of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.39</a>) and stage, respectively.</p>
+</div>
+<div id="specific-leaf-area" class="section level3">
+<h3><span class="header-section-number">8.2.8</span> Specific leaf area</h3>
+<p>The minimum and maximum specific leaf areas are defined in the <code>CohortParameters</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.19</a>), which related with fraction of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.40</a>) and stage, respectively.</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-sla"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-sla-1.png" alt="Maximum and minimum specific leaf area." width="80%" />
 <p class="caption">
-Figure 8.18: Maximum and minimum specific leaf area.
+Figure 8.19: Maximum and minimum specific leaf area.
 </p>
 </div>
 </div>
@@ -401,7 +417,7 @@ Figure 8.18: Maximum and minimum specific leaf area.
 <div class="figure" style="text-align: center"><span id="fig:leaf-specific-leaf-area"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-specific-leaf-area-1.png" alt="Specific leaf area" width="80%" />
 <p class="caption">
-Figure 8.19: Specific leaf area
+Figure 8.20: Specific leaf area
 </p>
 </div>
 </div>

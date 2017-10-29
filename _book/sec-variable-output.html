@@ -186,7 +186,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.3" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#sec:leaf-water-area"><i class="fa fa-check"></i><b>8.2.3</b> Water constrained leaf area</a></li>
 <li class="chapter" data-level="8.2.4" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#carbon-constrained-leaf-area"><i class="fa fa-check"></i><b>8.2.4</b> Carbon constrained leaf area</a></li>
 <li class="chapter" data-level="8.2.5" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#leaf-senescence"><i class="fa fa-check"></i><b>8.2.5</b> Leaf senescence</a></li>
-<li class="chapter" data-level="8.2.6" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#leaf-area-index-and-ground-coverage"><i class="fa fa-check"></i><b>8.2.6</b> Leaf area index and ground coverage</a></li>
+<li class="chapter" data-level="8.2.6" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#leaf-area-index"><i class="fa fa-check"></i><b>8.2.6</b> Leaf area index</a></li>
+<li class="chapter" data-level="8.2.7" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#ground-coverage"><i class="fa fa-check"></i><b>8.2.7</b> Ground coverage</a></li>
+<li class="chapter" data-level="8.2.8" data-path="sec-leaf-area.html"><a href="sec-leaf-area.html#specific-leaf-area"><i class="fa fa-check"></i><b>8.2.8</b> Specific leaf area</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.3</b> Supply</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#radiation-use-efficiency-model"><i class="fa fa-check"></i><b>8.3.1</b> Radiation use efficiency model</a></li>
@@ -402,15 +404,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 <tr class="even">
 <td align="left">Leaf.Allocated.MetabolicWt</td>
-<td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-metabolic">5.16</a>, <a href="sec-leaf-biomass.html#fig:leaf-allocated">8.28</a></td>
+<td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-metabolic">5.16</a>, <a href="sec-leaf-biomass.html#fig:leaf-allocated">8.29</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Allocated.StorageWt</td>
-<td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-storage">5.17</a>, <a href="sec-leaf-biomass.html#fig:leaf-allocated">8.28</a></td>
+<td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-storage">5.17</a>, <a href="sec-leaf-biomass.html#fig:leaf-allocated">8.29</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.Allocated.StructuralWt</td>
-<td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-structural">5.15</a>, <a href="sec-leaf-biomass.html#fig:leaf-allocated">8.28</a></td>
+<td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-structural">5.15</a>, <a href="sec-leaf-biomass.html#fig:leaf-allocated">8.29</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.AppearedCohortNo</td>
@@ -422,7 +424,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 <tr class="odd">
 <td align="left">Leaf.CohortParameters.CriticalNConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nconc">8.38</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nconc">8.39</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.CohortParameters.ExpansionStress</td>
@@ -442,11 +444,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 <tr class="even">
 <td align="left">Leaf.CohortParameters.MaximumNConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nconc">8.38</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nconc">8.39</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.CohortParameters.MinimumNConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nconc">8.38</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nconc">8.39</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.CohortParameters.SenescenceDuration</td>
@@ -454,67 +456,67 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 <tr class="odd">
 <td align="left">Leaf.CohortParameters.SpecificLeafAreaMax</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.18</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.19</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.CohortParameters.SpecificLeafAreaMin</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.18</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.19</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.CoverDead</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-cover">8.17</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-cover">8.18</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.CoverGreen</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-cover">8.17</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-cover">8.18</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.CoverTotal</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-cover">8.17</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-cover">8.18</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.Dead.MetabolicN</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-dead">8.34</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-dead">8.35</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Dead.MetabolicNConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-dead">8.37</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-dead">8.38</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.Dead.MetabolicWt</td>
-<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-dead">8.31</a></td>
+<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-dead">8.32</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Dead.N</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content">8.32</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-dead">8.34</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content">8.33</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-dead">8.35</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.Dead.NConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">8.35</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-dead">8.37</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">8.36</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-dead">8.38</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Dead.StorageN</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-dead">8.34</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-dead">8.35</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.Dead.StorageNConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-dead">8.37</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-dead">8.38</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Dead.StorageWt</td>
-<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-dead">8.31</a></td>
+<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-dead">8.32</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.Dead.StructuralN</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-dead">8.34</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-dead">8.35</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Dead.StructuralNConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-dead">8.37</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-dead">8.38</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.Dead.StructuralWt</td>
-<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-dead">8.31</a></td>
+<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-dead">8.32</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.DeadCohortNo</td>
@@ -522,661 +524,673 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 <tr class="even">
 <td align="left">Leaf.DeadWeight</td>
-<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-weight">8.29</a></td>
+<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-weight">8.30</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.DeadWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-dead-weight">5.21</a></td>
 </tr>
 <tr class="even">
+<td align="left">Leaf.DeltaCarbonConstrainedArea</td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-delta-area">8.15</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Leaf.DeltaPotentialArea</td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-delta-area">8.15</a></td>
+</tr>
+<tr class="even">
+<td align="left">Leaf.DeltaStressConstrainedArea</td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-delta-area">8.15</a></td>
+</tr>
+<tr class="odd">
 <td align="left">Leaf.DMDemand.Metabolic</td>
-<td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-metabolic">5.7</a>, <a href="sec-leaf-deman.html#fig:leaf-demand">8.27</a></td>
+<td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-metabolic">5.7</a>, <a href="sec-leaf-deman.html#fig:leaf-demand">8.28</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.DMDemand.Storage</td>
-<td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-storage">5.8</a>, <a href="sec-leaf-deman.html#fig:leaf-demand">8.27</a></td>
+<td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-storage">5.8</a>, <a href="sec-leaf-deman.html#fig:leaf-demand">8.28</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.DMDemand.Structural</td>
-<td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-structural">5.6</a>, <a href="sec-leaf-deman.html#fig:leaf-demand">8.27</a></td>
+<td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-structural">5.6</a>, <a href="sec-leaf-deman.html#fig:leaf-demand">8.28</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.DMSupply.Fixation</td>
-<td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-fixation">5.2</a>, <a href="sec-leaf-supply.html#fig:leaf-supply">8.26</a></td>
-</tr>
-<tr class="even">
-<td align="left">Leaf.DMSupply.Reallocation</td>
-<td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-reallocation">5.4</a>, <a href="sec-leaf-supply.html#fig:leaf-supply">8.26</a></td>
+<td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-fixation">5.2</a>, <a href="sec-leaf-supply.html#fig:leaf-supply">8.27</a></td>
 </tr>
 <tr class="odd">
-<td align="left">Leaf.DMSupply.Retranslocation</td>
-<td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-retranslocation">5.3</a>, <a href="sec-leaf-supply.html#fig:leaf-supply">8.26</a></td>
+<td align="left">Leaf.DMSupply.Reallocation</td>
+<td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-reallocation">5.4</a>, <a href="sec-leaf-supply.html#fig:leaf-supply">8.27</a></td>
 </tr>
 <tr class="even">
+<td align="left">Leaf.DMSupply.Retranslocation</td>
+<td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-retranslocation">5.3</a>, <a href="sec-leaf-supply.html#fig:leaf-supply">8.27</a></td>
+</tr>
+<tr class="odd">
 <td align="left">Leaf.ExpandedCohortNo</td>
 <td align="left">Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-status-no">8.5</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.ExpandingCohortNo</td>
 <td align="left">Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-changing-no">8.4</a></td>
 </tr>
-<tr class="even">
-<td align="left">Leaf.Fn</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.39</a></td>
-</tr>
 <tr class="odd">
+<td align="left">Leaf.Fn</td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.40</a></td>
+</tr>
+<tr class="even">
 <td align="left">Leaf.GreenCohortNo</td>
 <td align="left">Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-status-no">8.5</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.GrowthRespiration</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-growth-respiration">5.9</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.InitialisedCohortNo</td>
 <td align="left">Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-number">8.2</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.LAI</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-lai">8.16</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-lai">8.17</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.LAIDead</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-lai">8.16</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-lai">8.17</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.LAITotal</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-lai">8.16</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-lai">8.17</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.Live.MetabolicN</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-live">8.33</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-live">8.34</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.Live.MetabolicNConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-live">8.36</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-live">8.37</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.Live.MetabolicWt</td>
-<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-live">8.30</a></td>
+<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-live">8.31</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.Live.N</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content">8.32</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-live">8.33</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content">8.33</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-live">8.34</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.Live.NConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">8.35</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-live">8.36</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">8.36</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-live">8.37</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.Live.StorageN</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-live">8.33</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-live">8.34</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.Live.StorageNConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-live">8.36</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-live">8.37</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.Live.StorageWt</td>
-<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-live">8.30</a></td>
+<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-live">8.31</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.Live.StructuralN</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-live">8.33</a></td>
-</tr>
-<tr class="even">
-<td align="left">Leaf.Live.StructuralNConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-live">8.36</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-content-component-live">8.34</a></td>
 </tr>
 <tr class="odd">
-<td align="left">Leaf.Live.StructuralWt</td>
-<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-live">8.30</a></td>
+<td align="left">Leaf.Live.StructuralNConc</td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration-component-live">8.37</a></td>
 </tr>
 <tr class="even">
+<td align="left">Leaf.Live.StructuralWt</td>
+<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-live">8.31</a></td>
+</tr>
+<tr class="odd">
 <td align="left">Leaf.LiveStemNumber</td>
 <td align="left">Fig. <a href="plant-and-main-stem-population.html#fig:str-live-stem-number">4.18</a></td>
 </tr>
-<tr class="odd">
-<td align="left">Leaf.LiveWeight</td>
-<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-weight">8.29</a></td>
-</tr>
 <tr class="even">
+<td align="left">Leaf.LiveWeight</td>
+<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-weight">8.30</a></td>
+</tr>
+<tr class="odd">
 <td align="left">Leaf.LiveWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-live-weight">5.20</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.MaintenanceRespiration</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.12</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.MaintenanceRespirationFunction</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.11</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.NDemand.Total</td>
 <td align="left">Fig. <a href="sec-nitrogen-demand.html#fig:nitrogen-demand-organ">12.3</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.NSupply.Total</td>
 <td align="left">Fig. <a href="sec-nitrogen-supply.html#fig:nitrogen-supply-organ">12.5</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.Photosynthesis_DCaPS</td>
-<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-supply-all-model-lai">8.25</a>, <a href="sec-leaf-supply.html#fig:leaf-supply-all-models-radn">8.24</a></td>
+<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-supply-all-model-lai">8.26</a>, <a href="sec-leaf-supply.html#fig:leaf-supply-all-models-radn">8.25</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.Photosynthesis_EW</td>
-<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-supply-all-model-lai">8.25</a>, <a href="sec-leaf-supply.html#fig:leaf-supply-all-models-radn">8.24</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Leaf.Photosynthesis_RUE</td>
-<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-supply-all-model-lai">8.25</a>, <a href="sec-leaf-supply.html#fig:leaf-supply-all-models-radn">8.24</a></td>
+<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-supply-all-model-lai">8.26</a>, <a href="sec-leaf-supply.html#fig:leaf-supply-all-models-radn">8.25</a></td>
 </tr>
 <tr class="even">
-<td align="left">Leaf.Photosynthesis_SPASS</td>
-<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-supply-all-models-radn">8.24</a>, <a href="sec-leaf-supply.html#fig:leaf-supply-all-model-lai">8.25</a></td>
+<td align="left">Leaf.Photosynthesis_RUE</td>
+<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-supply-all-model-lai">8.26</a>, <a href="sec-leaf-supply.html#fig:leaf-supply-all-models-radn">8.25</a></td>
 </tr>
 <tr class="odd">
+<td align="left">Leaf.Photosynthesis_SPASS</td>
+<td align="left">Fig. <a href="sec-leaf-supply.html#fig:leaf-supply-all-models-radn">8.25</a>, <a href="sec-leaf-supply.html#fig:leaf-supply-all-model-lai">8.26</a></td>
+</tr>
+<tr class="even">
 <td align="left">Leaf.SenescingCohortNo</td>
 <td align="left">Fig. <a href="sec-leaf-growth-cycle.html#fig:leaf-cohort-changing-no">8.4</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.SpecificArea</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-specific-leaf-area">8.19</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-specific-leaf-area">8.20</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Leaf.SpecificAreaMetabolic</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-specific-leaf-area">8.19</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-specific-leaf-area">8.20</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Leaf.SpecificAreaStructural</td>
-<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-specific-leaf-area">8.19</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Leaf.SpecificLeafNitrogen</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-sln">8.40</a></td>
+<td align="left">Fig. <a href="sec-leaf-area.html#fig:leaf-specific-leaf-area">8.20</a></td>
 </tr>
 <tr class="even">
-<td align="left">LeafWt</td>
-<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-weight">8.29</a></td>
+<td align="left">Leaf.SpecificLeafNitrogen</td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-sln">8.41</a></td>
 </tr>
 <tr class="odd">
+<td align="left">LeafWt</td>
+<td align="left">Fig. <a href="sec-leaf-biomass.html#fig:leaf-weight">8.30</a></td>
+</tr>
+<tr class="even">
 <td align="left">MaintenanceRespiration</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-denstiny">5.18</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">NDemand.Metabolic</td>
 <td align="left">Fig. <a href="sec-nitrogen-demand.html#fig:nitrogen-demand-component">12.4</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">NDemand.Storage</td>
 <td align="left">Fig. <a href="sec-nitrogen-demand.html#fig:nitrogen-demand-component">12.4</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">NDemand.Structural</td>
 <td align="left">Fig. <a href="sec-nitrogen-demand.html#fig:nitrogen-demand-component">12.4</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">NSupply.Fixation</td>
 <td align="left">Fig. <a href="sec-nitrogen-supply.html#fig:nitrogen-supply-component">12.6</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">NSupply.Reallocation</td>
 <td align="left">Fig. <a href="sec-nitrogen-supply.html#fig:nitrogen-supply-component">12.6</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">NSupply.Retranslocation</td>
 <td align="left">Fig. <a href="sec-nitrogen-supply.html#fig:nitrogen-supply-component">12.6</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Phenology.Stage</td>
 <td align="left">Fig. <a href="sec-phe-stage-period.html#fig:leaf-tt-stage">2.3</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Phenology.ThermalTime</td>
 <td align="left">Fig. <a href="sec-phe-thermal-time.html#fig:phenology-tt">2.2</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.Allocated.MetabolicWt</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-metabolic">5.16</a>, <a href="sec-root-biomass.html#fig:root-allocated">7.11</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.Allocated.StorageWt</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-storage">5.17</a>, <a href="sec-root-biomass.html#fig:root-allocated">7.11</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.Allocated.StructuralWt</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-structural">5.15</a>, <a href="sec-root-biomass.html#fig:root-allocated">7.11</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.Dead.MetabolicWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-dead">7.15</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.Dead.StorageWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-dead">7.15</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.Dead.StructuralWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-dead">7.15</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.DeadWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-dead-weight">5.21</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.Depth</td>
 <td align="left">Fig. <a href="sec-root-growth.html#fig:root-depth">7.6</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.Detached.MetabolicWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-detached">7.12</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.Detached.StorageWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-detached">7.12</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.Detached.StructuralWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-detached">7.12</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.DMDemand.Metabolic</td>
 <td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-metabolic">5.7</a>, <a href="sec-root-demand.html#fig:root-demand">7.10</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.DMDemand.Storage</td>
 <td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-storage">5.8</a>, <a href="sec-root-demand.html#fig:root-demand">7.10</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.DMDemand.Structural</td>
 <td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-structural">5.6</a>, <a href="sec-root-demand.html#fig:root-demand">7.10</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.DMDemandFraction</td>
 <td align="left">Fig. <a href="sec-root-demand.html#fig:root-demand-fraction">7.9</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.DMSupply.Fixation</td>
 <td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-fixation">5.2</a>, <a href="sec-root-supply.html#fig:root-supply">7.8</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.DMSupply.Reallocation</td>
 <td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-reallocation">5.4</a>, <a href="sec-root-supply.html#fig:root-supply">7.8</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.DMSupply.Retranslocation</td>
 <td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-retranslocation">5.3</a>, <a href="sec-root-supply.html#fig:root-supply">7.8</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.GrowthRespiration</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-growth-respiration">5.9</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.Length</td>
 <td align="left">Fig. <a href="sec-root-growth.html#fig:root-length">7.7</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.Live.MetabolicWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-live">7.14</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.Live.StorageWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-live">7.14</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.Live.StructuralWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-live">7.14</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.LiveWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-live-weight">5.20</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.MaintenanceRespiration</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.12</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.MaintenanceRespirationFunction</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.11</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.NDemand.Total</td>
 <td align="left">Fig. <a href="sec-nitrogen-demand.html#fig:nitrogen-demand-organ">12.3</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Root.NSupply.Total</td>
 <td align="left">Fig. <a href="sec-nitrogen-supply.html#fig:nitrogen-supply-organ">12.5</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Root.RootFrontVelocity</td>
 <td align="left">Fig. <a href="sec-root-growth.html#fig:root-front-velocity">7.5</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">RootWt</td>
 <td align="left">Fig. <a href="sec-root-biomass.html#fig:root-weight">7.13</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.Allocated.MetabolicWt</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-metabolic">5.16</a>, <a href="spike-biomass.html#fig:spike-allocated">9.5</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.Allocated.StorageWt</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-storage">5.17</a>, <a href="spike-biomass.html#fig:spike-allocated">9.5</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.Allocated.StructuralWt</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-structural">5.15</a>, <a href="spike-biomass.html#fig:spike-allocated">9.5</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.Dead.MetabolicWt</td>
 <td align="left">Fig. <a href="spike-biomass.html#fig:spike-dead">9.8</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.Dead.StorageWt</td>
 <td align="left">Fig. <a href="spike-biomass.html#fig:spike-dead">9.8</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.Dead.StructuralWt</td>
 <td align="left">Fig. <a href="spike-biomass.html#fig:spike-dead">9.8</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.DeadWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-dead-weight">5.21</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.DMDemand.Metabolic</td>
 <td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-metabolic">5.7</a>, <a href="spike-demand.html#fig:spike-demand">9.4</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.DMDemand.Storage</td>
 <td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-storage">5.8</a>, <a href="spike-demand.html#fig:spike-demand">9.4</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.DMDemand.Structural</td>
 <td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-structural">5.6</a>, <a href="spike-demand.html#fig:spike-demand">9.4</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.DMDemandFraction.GrowthDuration</td>
 <td align="left">Fig. <a href="spike-demand.html#fig:spike-growth-duration">9.3</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.DMRetranslocationFactor</td>
 <td align="left">Fig. <a href="sec-spike-supply.html#fig:spike-retran-factor">9.1</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.DMSupply.Fixation</td>
 <td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-fixation">5.2</a>, <a href="sec-spike-supply.html#fig:spike-supply">9.2</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.DMSupply.Reallocation</td>
 <td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-reallocation">5.4</a>, <a href="sec-spike-supply.html#fig:spike-supply">9.2</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.DMSupply.Retranslocation</td>
 <td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-retranslocation">5.3</a>, <a href="sec-spike-supply.html#fig:spike-supply">9.2</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.GrowthRespiration</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-growth-respiration">5.9</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.Live.MetabolicWt</td>
 <td align="left">Fig. <a href="spike-biomass.html#fig:spike-live">9.7</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.Live.StorageWt</td>
 <td align="left">Fig. <a href="spike-biomass.html#fig:spike-live">9.7</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.Live.StructuralWt</td>
 <td align="left">Fig. <a href="spike-biomass.html#fig:spike-live">9.7</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.LiveWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-live-weight">5.20</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.MaintenanceRespiration</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.12</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.MaintenanceRespirationFunction</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.11</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Spike.NDemand.Total</td>
 <td align="left">Fig. <a href="sec-nitrogen-demand.html#fig:nitrogen-demand-organ">12.3</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Spike.NSupply.Total</td>
 <td align="left">Fig. <a href="sec-nitrogen-supply.html#fig:nitrogen-supply-organ">12.5</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">SpikeWt</td>
 <td align="left">Fig. <a href="spike-biomass.html#fig:spike-weight">9.6</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.Allocated.MetabolicWt</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-metabolic">5.16</a>, <a href="sec-stem-biomass.html#fig:stem-allocated">10.5</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.Allocated.StorageWt</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-storage">5.17</a>, <a href="sec-stem-biomass.html#fig:stem-allocated">10.5</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.Allocated.StructuralWt</td>
 <td align="left">Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-structural">5.15</a>, <a href="sec-stem-biomass.html#fig:stem-allocated">10.5</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.Dead.MetabolicWt</td>
 <td align="left">Fig. <a href="sec-stem-biomass.html#fig:stem-dead">10.8</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.Dead.StorageWt</td>
 <td align="left">Fig. <a href="sec-stem-biomass.html#fig:stem-dead">10.8</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.Dead.StructuralWt</td>
 <td align="left">Fig. <a href="sec-stem-biomass.html#fig:stem-dead">10.8</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.DeadWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-dead-weight">5.21</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.DMDemand.Metabolic</td>
 <td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-metabolic">5.7</a>, <a href="sec-stem-demand.html#fig:stem-demand">10.4</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.DMDemand.Storage</td>
 <td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-storage">5.8</a>, <a href="sec-stem-demand.html#fig:stem-demand">10.4</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.DMDemand.Structural</td>
 <td align="left">Fig. <a href="sec-biomass-demand.html#fig:biomass-demand-structural">5.6</a>, <a href="sec-stem-demand.html#fig:stem-demand">10.4</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.DMDemandFraction</td>
 <td align="left">Fig. <a href="sec-stem-demand.html#fig:stem-demand-fraction">10.3</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.DMRetranslocationFactor</td>
 <td align="left">Fig. <a href="sec-stem-supply.html#fig:stem-retran-factor">10.1</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.DMSupply.Fixation</td>
 <td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-fixation">5.2</a>, <a href="sec-stem-supply.html#fig:stem-supply">10.2</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.DMSupply.Reallocation</td>
 <td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-reallocation">5.4</a>, <a href="sec-stem-supply.html#fig:stem-supply">10.2</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.DMSupply.Retranslocation</td>
 <td align="left">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-retranslocation">5.3</a>, <a href="sec-stem-supply.html#fig:stem-supply">10.2</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.GrowthRespiration</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-growth-respiration">5.9</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.Live.MetabolicWt</td>
 <td align="left">Fig. <a href="sec-stem-biomass.html#fig:stem-live">10.7</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.Live.StorageWt</td>
 <td align="left">Fig. <a href="sec-stem-biomass.html#fig:stem-live">10.7</a>, <a href="ses-stem-wsc.html#fig:stem-wsc">10.9</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.Live.StructuralWt</td>
 <td align="left">Fig. <a href="sec-stem-biomass.html#fig:stem-live">10.7</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.LiveWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-live-weight">5.20</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.MaintenanceRespiration</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.12</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.MaintenanceRespirationFunction</td>
 <td align="left">Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.11</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.NDemand.Metabolic</td>
 <td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-demand">10.10</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.NDemand.Storage</td>
 <td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-demand">10.10</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.NDemand.Structural</td>
 <td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-demand">10.10</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.NDemand.Total</td>
 <td align="left">Fig. <a href="sec-nitrogen-demand.html#fig:nitrogen-demand-organ">12.3</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.NSupply.Fixation</td>
 <td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-supply">10.11</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.NSupply.Reallocation</td>
 <td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-supply">10.11</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.NSupply.Retranslocation</td>
 <td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-supply">10.11</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stem.NSupply.Total</td>
 <td align="left">Fig. <a href="sec-nitrogen-supply.html#fig:nitrogen-supply-organ">12.5</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stem.PercentWSC</td>
 <td align="left">Fig. <a href="ses-stem-wsc.html#fig:stem-wsc">10.9</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">StemWt</td>
 <td align="left">Fig. <a href="sec-stem-biomass.html#fig:stem-weight">10.6</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.ApexNum</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-apex-number">4.9</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.BranchingRate</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-tiller-number">4.13</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.BranchingRate.StressFactors.CoverEffect</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-branching-stress">4.12</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.BranchingRate.StressFactors.NitrogenEffect</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-branching-stress">4.12</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.BranchingRate.StressFactors.WaterStressEffect</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-branching-stress">4.12</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.BranchMortality</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-tiller-number">4.13</a>, <a href="sec-str-tillering.html#fig:str-tiller-number-mo">4.16</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.BranchNumber</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-tiller-number">4.13</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.CohortToInitialise</td>
 <td align="left">Fig. <a href="sec-main-stem.html#fig:str-tips">4.6</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.DeltaTipNumber</td>
 <td align="left">Fig. <a href="sec-main-stem.html#fig:str-delta-tip">4.5</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.FinalLeafNumber</td>
 <td align="left">Fig. <a href="sec-final-leaf-number.html#fig:str-final-leaf-number">4.4</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.HaunStage</td>
 <td align="left">Fig. <a href="sec-main-stem.html#fig:str-haun-stage">4.7</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.Height</td>
 <td align="left">Fig. <a href="sec-canopy-height.html#fig:str-height">4.21</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.LeafTipsAppeared</td>
 <td align="left">Fig. <a href="sec-main-stem.html#fig:str-tips">4.6</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.MainStemPopn</td>
 <td align="left">Fig. <a href="plant-and-main-stem-population.html#fig:str-population">4.17</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.MeanTillerGrowthRate</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-tiller-growth-rate">4.15</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.NextLeafProportion</td>
 <td align="left">Fig. <a href="sec-main-stem.html#fig:str-leaf-fraction">4.8</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.Phyllochron</td>
 <td align="left">Fig. <a href="sec-str-phyllochron.html#fig:str-phyllochron">4.3</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.PotLeafTipsAppeared</td>
 <td align="left">Fig. <a href="sec-main-stem.html#fig:str-tips">4.6</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.ProportionBranchMortality</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-tiller-number-mo">4.16</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Structure.ProportionPlantMortality</td>
 <td align="left">Fig. <a href="sec-str-tillering.html#fig:str-tiller-number-mo">4.16</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Structure.TotalStemPopn</td>
 <td align="left">Fig. <a href="plant-and-main-stem-population.html#fig:str-live-stem-number">4.18</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">TotalDeadWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-live-dead">5.19</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">TotalLiveWt</td>
 <td align="left">Fig. <a href="sec-biomass-pool.html#fig:biomass-live-dead">5.19</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">WaterSupplyDemandRatio</td>
 <td align="left">Fig. <a href="cha-water.html#fig:water-supply-demand-ratio">11.1</a></td>
 </tr>

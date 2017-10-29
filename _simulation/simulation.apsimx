@@ -15,6 +15,9 @@
         <string>[Weather].MeanT</string>
         <string>[Weather].Radn</string>
         <string>[Weather].Rain</string>
+        <string>[Wheat].Leaf.DeltaPotentialArea</string>
+        <string>[Wheat].Leaf.DeltaStressConstrainedArea</string>
+        <string>[Wheat].Leaf.DeltaCarbonConstrainedArea</string>
         <string />
         <string>[Wheat].Leaf.Live.N</string>
         <string>[Wheat].Leaf.Dead.N</string>
@@ -2991,10 +2994,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
             </VariableReference>
             <IncludeInDocumentation>true</IncludeInDocumentation>
           </RUEModel>
-          <Photosynthesis>
-            <Name>PhotosynthesisDCaps</Name>
-            <IncludeInDocumentation>true</IncludeInDocumentation>
-          </Photosynthesis>
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </LessThanFunction>
         <CanopyPhotosynthesis>

@@ -1,6 +1,7 @@
 .Rproj.user
 .Rhistory
 .RData
+/libs
 /*_files
 APSIM-Wheat.rds
 _scripts

@@ -149,6 +149,22 @@ The leaf area also constrained by the daily allocated cardon (biomass) including
 **The actual daily increase of leaf area is the minimum of water and carbon constrained leaf area.**
 
 
+<div class="fig-output">
+```{r leaf-delta-area, fig.cap='Daily increase of leaf area'}
+y_cols <- c(
+    'Wheat.Leaf.DeltaPotentialArea', 
+    'Wheat.Leaf.DeltaStressConstrainedArea',
+    'Wheat.Leaf.DeltaCarbonConstrainedArea')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            ncol = 3,
+            y_labels = c('Potential', "Water", "Carbon"),
+            y_lab = expression('Delta of leaf area ('~mm^2~' leaf '~ m^-2~' ground )'))
+
+```
+</div>
+
+
+
 ### Leaf senescence
 
 During the period of leaf senescene, the daily fraction of leaf senescence is linearly related with thermal time.
@@ -169,7 +185,7 @@ plot_report_vector(
 
 
 
-### Leaf area index and ground coverage
+### Leaf area index
 
 Leaf area index (LAI) are calculated for green leaf ($\text{LAI}_{g}$), dead leaf ($\text{LAI}_{d}$), and total leaf ($\text{LAI}_{t}$) (Fig. \@ref(fig:leaf-lai)). 
 
@@ -189,6 +205,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 </div>
 
 
+### Ground coverage
 Ground coverage also are calculated for green leaf ($C_g$), dead leaf ($C_d$), and total leaf ($C_t$) from LAI and extinction coefficient for green leaf ($k_{g}$) and dead leaf ($k_{d}$). 
 
 $$
@@ -230,7 +247,8 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 
-**Specific leaf area**
+### Specific leaf area
+
 The minimum and maximum specific leaf areas are defined in the `CohortParameters` (Fig. \@ref(fig:leaf-sla)), which related with fraction of functional nitrogen (Fig. \@ref(fig:leaf-nitrogen-functional-n)) and stage, respectively.
 
 <div class="fig-input">
