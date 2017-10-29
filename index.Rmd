@@ -100,12 +100,12 @@ Two variables are exposed to global environment (`.GlobalEnv` in R), i.e. `g_pmf
 
 A few `helper` functions are designed to plot figures, i.e. `plot_xypair` and `plot_report`. 
 
-`plot_xypair` is used to plot the `XYPairs` function in APSIM Next Gen. The `path` argument is used to specify the full path of a node with child `XYPairs` using APSIM format which connects the names of all predecessors started from `Wheat` (e.g. `Wheat.Leaf.CohortParameters.MaxArea.AgeFactor`). `g_xlab` and `y_lab` can be used to specify the X and Y labels. 
+`plot_xypair` is used to plot the `XYPairs` function in APSIM Next Gen. The `path` argument is used to specify the full path of a node with child `XYPairs` using APSIM format which connects the names of all predecessors started from `Wheat` (e.g. `Wheat.Leaf.CohortParameters.MaxArea.AgeFactor`). `x_lab` and `y_lab` can be used to specify the X and Y labels. 
 
 ```{r intro-example-plot-xypair, echo=TRUE, eval=FALSE}
 path <- 'Wheat.Leaf.CohortParameters.MaxArea.AgeFactor'
 plot_xypair(g_pmf, path,
-            x_lab'Growthing stage', 
+            x_lab = 'Growthing stage', 
             y_lab = 'Multiplier of maximum leaf area')
 ```
 
