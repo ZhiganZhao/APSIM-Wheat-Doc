@@ -32,7 +32,8 @@ y_cols <- c('Wheat.Grain.DMSupply.Fixation',
             'Wheat.Grain.DMSupply.Reallocation')
 
 plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/m2/d)', ncol = 3)
+            y_lab = expression(atop('Biomass supply', '(g biomass '~m^-2~' ground '~d^-1~')')), 
+            ncol = 3)
 
 ```
 </div>
@@ -44,11 +45,12 @@ The grain demand is seperated into two periods (i.e. from `Flowering` to `StartG
 
 <div class="fig-output">
 ```{r grain-demand, fig.asp = 1, fig.cap='Biomass demand by grain'}
-y_cols <- c('Wheat.Grain.DMDemand.Structural',
-'Wheat.Grain.DMDemand.Storage',
-'Wheat.Grain.DMDemand.Metabolic')
+y_cols <- c('Wheat.Grain.DMDemand.Structural', 
+            'Wheat.Grain.DMDemand.Metabolic', 
+            'Wheat.Grain.DMDemand.Storage')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/m2/d)', ncol = 3)
+            y_lab = expression('Biomass demand (g biomass '~m^-2~' ground '~d^-1~')'), 
+            ncol = 3)
 
 ```
 </div>
@@ -62,12 +64,11 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 <div class="fig-output">
 ```{r grain-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for grain'}
 y_cols <- c('Wheat.Grain.Allocated.StructuralWt',
-'Wheat.Grain.Allocated.StorageWt',
-'Wheat.Grain.Allocated.MetabolicWt')
-
+            'Wheat.Grain.Allocated.MetabolicWt',
+            'Wheat.Grain.Allocated.StorageWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3)
-
+            y_lab = expression('Allocated biomass (g biomass '~m^-2~' ground '~d^-1~')'),
+            ncol = 3)
 ```
 </div>
 
@@ -79,7 +80,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 y_cols <- c('Wheat.GrainWt')
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)')
+            y_lab = expression('Biomass (g biomass '~m^-2~' ground '~d^-1~')'))
 
 ```
 </div>
@@ -91,12 +92,12 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 <div class="fig-output">
 ```{r grain-live, fig.asp = 1, fig.cap='Dynamic of grain biomass (Live component)'}
 y_cols <- c('Wheat.Grain.Live.StructuralWt',
-'Wheat.Grain.Live.StorageWt',
-'Wheat.Grain.Live.MetabolicWt')
-
+            'Wheat.Grain.Live.MetabolicWt',
+            'Wheat.Grain.Live.StorageWt')
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3)
+            y_lab = expression('Biomass (g biomass '~m^-2~' ground '~d^-1~')'),
+            ncol = 3)
 
 ```
 </div>
@@ -105,12 +106,13 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 <div class="fig-output">
 ```{r grain-dead, fig.asp = 0.5, fig.cap='Dynamic of grain biomass (Dead component)'}
 y_cols <- c('Wheat.Grain.Dead.StructuralWt',
-'Wheat.Grain.Dead.StorageWt',
-'Wheat.Grain.Dead.MetabolicWt')
+            'Wheat.Grain.Dead.MetabolicWt',
+            'Wheat.Grain.Dead.StorageWt')
 
 
 plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3)
+            y_lab = expression(atop('Biomass','(g biomass '~m^-2~' ground '~d^-1~')')),
+            ncol = 3)
 
 ```
 </div>
@@ -123,7 +125,7 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab,
 The total grain weight at harvest can be considered as the final yield without moisture content in the grain. The normal range of moisture content in the grain is 10-15% with 12% as standard
 
 <div class="fig-output">
-```{r grain-yield, fig.asp = 0.5, fig.cap='Final yield with different moisture content (t/ha).'}
+```{r grain-yield, fig.asp = 0.5, fig.cap='Final yield with different moisture content (t ha^-1^).'}
 
 final_yield <- max(g_report$Wheat.GrainWt)
 mos <- seq(0, 15)
@@ -132,7 +134,7 @@ data_frame(Moisture = mos,
     ggplot() +
     geom_bar(aes(Moisture, yield), stat = 'identity', position = "dodge") +
     xlab('Moisture content (%)') + 
-    ylab('Yield (t/ha)') +
+    ylab(expression('Yield (t'~ha^-1~')')) +
     theme_bw()
  
 ```

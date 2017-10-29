@@ -19,7 +19,7 @@ y_cols <- c('Wheat.Spike.DMRetranslocationFactor')
 g_report %>% 
     # filter(Wheat.Phenology.Stage > 5) %>% 
     plot_report(g_xvar2, y_cols, x_lab = g_xlab,
-            y_lab = 'Growth duration (oCd)')
+            y_lab = 'Factor of retranslocation ([-])')
 ```
 </div>
 
@@ -33,7 +33,8 @@ y_cols <- c('Wheat.Spike.DMSupply.Fixation',
             'Wheat.Spike.DMSupply.Reallocation')
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/m2/d)', ncol = 3)
+            y_lab = expression('Biomass supply (g biomamss '~m^-2~" ground "~d^-1~')'),
+            ncol = 3)
 
 ```
 </div>
@@ -49,28 +50,17 @@ $$
 where $\Delta TT$ is the daily thermal time in the phenology module (Fig. \@ref(fig:phenology-tt)); $N_{head}$ is the head number per unit area, i.e. stem population (Fig. \@ref(fig:str-population)); $W_{max, grain}$ is the potential weight per spike (g) with default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMDemandFunction.MaximumOrganWt')`; $T_{growth}$ is the growth duration of spike ($TT$, the thermal time target from `FlagLeaf` to `StartGrainFill`). As the target of `EarlyReproductive` is sensitive to photoperiod (Section \@ref(sec:phe-stage-period)), the growth duration can be changed during spike development depending on the photoperiod (Fig. \@ref(fig:spike-growth-duration)). The head number, growth duration and potential spike weight are defined as potential spike weight including the structural and storage conponents and the growth respiration. 
 
 
-$F_{spike, structure}$ is the structura fraction of `Spike` with default value 0.9 (Fig. \@ref(fig:spike-stucture-fraction)). $C_{spike,efficiency}$ is the conversion efficiency of `Spike`, i.e. the efficiency of alloction biomass converted into structural carbon (growth respiration). $C_{efficiency}$ has the default value 0.7067 (Fig. \@(fig:spike-stucture-fraction)) and is counted befor allocation. 
-
+$F_{spike, structure}$ is the structura fraction of `Spike` with default value `e get_fixed_value(g_pmf, 'Wheat.Spike.StructuralFraction')` (Fig. \@ref(fig:spike-stucture-fraction)). $C_{spike,efficiency}$ is the conversion efficiency of `Spike`, i.e. the efficiency of alloction biomass converted into carbon (growth respiration). $C_{efficiency}$ has the default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMConversionEfficiency')` and is counted befor allocation. 
 
 
 <div class="fig-input">
 ```{r spike-growth-duration, fig.asp = 0.5, fig.cap='Growth duration of spike development'}
+
 y_cols <- c('Wheat.Spike.DMDemandFraction.GrowthDuration')
 g_report %>% 
     filter(Wheat.Phenology.Stage > 5) %>% 
     plot_report(g_xvar2, y_cols, x_lab = g_xlab2,
-            y_lab = 'Growth duration (oCd)')
-```
-</div>
-
-
-<div class="fig-input">
-```{r spike-stucture-fraction, fig.asp = 0.5, fig.cap='Growth duration of spike development'}
-y_cols <- c('Wheat.Spike.StructuralFraction')
-g_report %>% 
-    filter(Wheat.Phenology.Stage > 5) %>% 
-    plot_report(g_xvar2, y_cols, x_lab = g_xlab2,
-            y_lab = 'Structure fraction')
+            y_lab = expression('Growth duration ('*degree*'Cd)'))
 ```
 </div>
 
@@ -90,10 +80,11 @@ The figure below shows the demands of `Spike` in the test simulation (Fig. \@(fi
 <div class="fig-output">
 ```{r spike-demand, fig.asp = 1, fig.cap='Biomass demand by spike'}
 y_cols <- c('Wheat.Spike.DMDemand.Structural',
-'Wheat.Spike.DMDemand.Storage',
-'Wheat.Spike.DMDemand.Metabolic')
+            'Wheat.Spike.DMDemand.Metabolic',
+            'Wheat.Spike.DMDemand.Storage')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/m2/d)', ncol = 3)
+            y_lab = expression('Demand (g biomass'~m^-2~' ground ' ~d^-1~')'),
+            ncol = 3)
 ```
 </div>
 
@@ -106,10 +97,11 @@ The actual allocation reflects the increase of structural component, and retrans
 <div class="fig-output">
 ```{r spike-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for spike'}
 y_cols <- c('Wheat.Spike.Allocated.StructuralWt',
-'Wheat.Spike.Allocated.StorageWt',
-'Wheat.Spike.Allocated.MetabolicWt')
+            'Wheat.Spike.Allocated.MetabolicWt',
+            'Wheat.Spike.Allocated.StorageWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3)
+            y_lab = expression('Allocated biomass (g biomass '~m^-2~" ground "~d^-1~')'), 
+            ncol = 3)
 
 ```
 </div>
@@ -120,7 +112,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 ```{r spike-weight, fig.asp = 1, fig.cap='Dynamic of spike biomass (Total)'}
 y_cols <- c('Wheat.SpikeWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)')
+            y_lab = expression('Biomass (g biomass '~m^-2~' ground)'))
 
 ```
 </div>
@@ -130,10 +122,11 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 <div class="fig-output">
 ```{r spike-live, fig.asp = 1, fig.cap='Dynamic of spike biomass (Live component)'}
 y_cols <- c('Wheat.Spike.Live.StructuralWt',
-'Wheat.Spike.Live.StorageWt',
-'Wheat.Spike.Live.MetabolicWt')
+            'Wheat.Spike.Live.MetabolicWt',
+            'Wheat.Spike.Live.StorageWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3)
+            y_lab = expression('Biomass (g biomass '~m^-2~' ground)'),
+            ncol = 3)
 
 ```
 </div>
@@ -142,17 +135,13 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 <div class="fig-output">
 ```{r spike-dead, fig.asp = 0.5, fig.cap='Dynamic of spike biomass (Dead component)'}
 y_cols <- c('Wheat.Spike.Dead.StructuralWt',
-'Wheat.Spike.Dead.StorageWt',
-'Wheat.Spike.Dead.MetabolicWt')
+            'Wheat.Spike.Dead.MetabolicWt',
+            'Wheat.Spike.Dead.StorageWt')
 
 
 plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
-            y_lab = 'Biomass (g/m2)', ncol = 3)
+            y_lab = expression('Biomass (g biomass '~m^-2~' ground)'), 
+            ncol = 3)
 
 ```
 </div>
-
-
-
-
-
