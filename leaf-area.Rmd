@@ -14,7 +14,8 @@ The potential maximum leaf areas by rank are specified by two parameters the max
 <div class="fig-input">
 ```{r leaf-maximum-area-age, fig.asp = 0.5, fig.cap='Multiplier of maximum leaf area as a function of growthing stage'}
 path <- 'Wheat.Leaf.CohortParameters.MaxArea.AgeFactor'
-plot_xypair(g_pmf, path, x_lab = 'Growthing stage', y_lab = 'Multiplier of maximum leaf area')
+plot_xypair(g_pmf, path, x_lab = 'Growthing stage',
+            y_lab = 'Multiplier of maximum leaf area ([-])')
 ```
 </div>
 
