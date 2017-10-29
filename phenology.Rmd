@@ -16,7 +16,7 @@ $$
 0 \quad \quad if \quad T < T_{min} \quad or \quad T>T_{max}
 \end{matrix}\right.
 $$
-where, $T_{min}$, $T_{opt}$ and $T_{max}$ are the three cardinal temperatures for wheat development, which are 0, 27.5 and 40 ^o^C, respectively. The parameter $\alpha$ is calculated by the following equation. THe daily mean temperature $T$ is calculated as the average of daily minimum and maximum temperature.
+where, $T_{min}$, $T_{opt}$ and $T_{max}$ are the three cardinal temperatures for wheat development, which are 0, 27.5 and 40 ^o^C, respectively. The parameter $\alpha$ is calculated by the following equation. The daily mean temperature $T$ is calculated as the average of daily minimum and maximum temperature.
 
 $$
 \alpha = \frac{\ln(2)}{\ln{\frac{(T_{max} - T_{min})}{T_{opt} - T_{min}}}}
