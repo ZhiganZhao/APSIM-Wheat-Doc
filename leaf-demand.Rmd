@@ -14,10 +14,11 @@ where, $\text{SLA}_{min}$ and $\text{SLA}_{max}$ are the minimum and maximum spe
 <div class="fig-output">
 ```{r leaf-demand, fig.asp = 1, fig.cap='Biomass demand by leaf. The structural and metabolic demands overlap each other as the structural fraction is defined as 0.5.'}
 y_cols <- c('Wheat.Leaf.DMDemand.Structural',
-'Wheat.Leaf.DMDemand.Storage',
-'Wheat.Leaf.DMDemand.Metabolic')
+            'Wheat.Leaf.DMDemand.Metabolic',
+            'Wheat.Leaf.DMDemand.Storage')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/m2/d)', ncol = 3)
+        y_lab = expression('Demand (g biomass '~m^-2~' ground '~d^-1~')'),
+            ncol = 3)
 
 ```
 </div>
@@ -27,12 +28,11 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 <div class="fig-output">
 ```{r leaf-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for leaf'}
 y_cols <- c('Wheat.Leaf.Allocated.StructuralWt',
-'Wheat.Leaf.Allocated.StorageWt',
-'Wheat.Leaf.Allocated.MetabolicWt')
-
+            'Wheat.Leaf.Allocated.MetabolicWt',
+            'Wheat.Leaf.Allocated.StorageWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2/d)', ncol = 3)
-
+            y_lab = expression('Biomass (g biomass'~m^-2~' ground '~d^-1~')'),
+            ncol = 3)
 ```
 </div>
 
@@ -46,7 +46,8 @@ y_cols <- c('Wheat.LeafWt',
              'Wheat.Leaf.DeadWeight')
 y_labels <- c('Total', 'Live', 'Dead')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3, y_labels = y_labels)
+            y_lab = expression('Dry weight (g biomass'~m^-2~' ground)'),
+            ncol = 3, y_labels = y_labels)
 
 ```
 </div>
@@ -56,10 +57,12 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 <div class="fig-output">
 ```{r leaf-live, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Live component). The structural and metabolic weights overlap each other as the structural fraction is defined as 0.5.'}
 y_cols <- c('Wheat.Leaf.Live.StructuralWt',
-'Wheat.Leaf.Live.StorageWt',
-'Wheat.Leaf.Live.MetabolicWt')
+            'Wheat.Leaf.Live.MetabolicWt',
+            'Wheat.Leaf.Live.StorageWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3)
+            y_lab = expression('Dry weight (g biomass'~m^-2~' ground)'),
+            ncol = 3,
+            y_labels = c('Structural', "Metabolic", "Storage"))
 
 ```
 </div>
@@ -68,9 +71,11 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 <div class="fig-output">
 ```{r leaf-dead, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Dead component). The structural and metabolic weights overlap each other as the structural fraction is defined as 0.5.'}
 y_cols <- c('Wheat.Leaf.Dead.StructuralWt',
-'Wheat.Leaf.Dead.StorageWt',
-'Wheat.Leaf.Dead.MetabolicWt')
+            'Wheat.Leaf.Dead.MetabolicWt',
+            'Wheat.Leaf.Dead.StorageWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass (g/m2)', ncol = 3)
+            y_lab = expression('Biomass (g biomass' ~m^-2~' ground'), 
+            ncol = 3,
+            y_labels = c('Structural', "Metabolic", "Storage"))
 ```
 </div>

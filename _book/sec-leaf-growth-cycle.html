@@ -190,15 +190,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.3</b> Supply</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#radiation-use-efficiency-model"><i class="fa fa-check"></i><b>8.3.1</b> Radiation use efficiency model</a></li>
-<li class="chapter" data-level="8.3.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#enlis-photosynthesis-model"><i class="fa fa-check"></i><b>8.3.2</b> Enli’s photosynthesis model</a></li>
+<li class="chapter" data-level="8.3.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#spass"><i class="fa fa-check"></i><b>8.3.2</b> SPASS</a></li>
 <li class="chapter" data-level="8.3.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#layered-canopy-photosynthesis-model-with-transpiration-or-dcaps"><i class="fa fa-check"></i><b>8.3.3</b> Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)</a></li>
 <li class="chapter" data-level="8.3.4" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#comporison-of-three-photosynthesis-models"><i class="fa fa-check"></i><b>8.3.4</b> Comporison of three photosynthesis models</a></li>
-<li class="chapter" data-level="8.3.5" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#actual-dialy-supply"><i class="fa fa-check"></i><b>8.3.5</b> Actual dialy supply</a></li>
+<li class="chapter" data-level="8.3.5" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#actual-photosynthesis-supply"><i class="fa fa-check"></i><b>8.3.5</b> Actual photosynthesis supply</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
 <li class="chapter" data-level="8.6" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html"><i class="fa fa-check"></i><b>8.6</b> Nitrogen</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.1</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-in-leaf"><i class="fa fa-check"></i><b>8.6.1</b> Nitrogen in leaf</a></li>
+<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.2</b> Functional nitrogen</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
@@ -254,8 +255,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Several status variables are defined for each leaf cohort, which can be used in other modules to describe the current status of leaf cohort, i.e. <code>IsNotAppeared</code>, <code>IsGrowing</code>, <code>IsAlive</code>, <code>IsGreen</code>, <code>IsNotSenescing</code>, <code>Senescing</code>, <code>isFullyExpanded</code>, <code>ShouldBeDead</code>, <code>IsAppeared</code> and <code>IsInitialised</code>.</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-life-cycle"></span>
-<div id="htmlwidget-7817694fa796430dbcb8" style="width:95%;height:470.4px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7817694fa796430dbcb8">{"x":{"diagram":"sequenceDiagram;\n\tInitialized->>Appeared: Appearance \n\tAppeared->>Expanded: GrowthDuration\n\tExpanded->>Senescing: LagDuration\n\tSenescing->>Senesced: SenescenceDuration\n\tSenesced->>Detaching: DetachmentLagDuration\n\tDetaching->>Detached: DetachmentDuration\n    Initialized->Appeared: IsNotAppeared\n    Initialized->Expanded: IsGrowing\n\tInitialized->>Senesced: IsAlive\n\tInitialized->>Senesced: IsGreen\n\tInitialized->>Senescing: IsNotSenescing\n\tSenescing->>Senesced: IsSenescing\n\tExpanded->>Detached: IsFullyExpanded\n\tSenesced->>Detached: ShouldBeDead\n\tSenesced->>Detached: Finished\n\tAppeared->>Detached: IsAppeared\n\tInitialized->>Detached: IsInitialised\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fd37f35a4c6cc8f4c795" style="width:95%;height:470.4px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fd37f35a4c6cc8f4c795">{"x":{"diagram":"sequenceDiagram;\n\tInitialized->>Appeared: Appearance \n\tAppeared->>Expanded: GrowthDuration\n\tExpanded->>Senescing: LagDuration\n\tSenescing->>Senesced: SenescenceDuration\n\tSenesced->>Detaching: DetachmentLagDuration\n\tDetaching->>Detached: DetachmentDuration\n    Initialized->Appeared: IsNotAppeared\n    Initialized->Expanded: IsGrowing\n\tInitialized->>Senesced: IsAlive\n\tInitialized->>Senesced: IsGreen\n\tInitialized->>Senescing: IsNotSenescing\n\tSenescing->>Senesced: IsSenescing\n\tExpanded->>Detached: IsFullyExpanded\n\tSenesced->>Detached: ShouldBeDead\n\tSenesced->>Detached: Finished\n\tAppeared->>Detached: IsAppeared\n\tInitialized->>Detached: IsInitialised\n"},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 8.1: The life cycle of a leaf cohort.
 </p>

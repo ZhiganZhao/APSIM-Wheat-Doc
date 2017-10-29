@@ -190,15 +190,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html"><i class="fa fa-check"></i><b>8.3</b> Supply</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#radiation-use-efficiency-model"><i class="fa fa-check"></i><b>8.3.1</b> Radiation use efficiency model</a></li>
-<li class="chapter" data-level="8.3.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#enlis-photosynthesis-model"><i class="fa fa-check"></i><b>8.3.2</b> Enli’s photosynthesis model</a></li>
+<li class="chapter" data-level="8.3.2" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#spass"><i class="fa fa-check"></i><b>8.3.2</b> SPASS</a></li>
 <li class="chapter" data-level="8.3.3" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#layered-canopy-photosynthesis-model-with-transpiration-or-dcaps"><i class="fa fa-check"></i><b>8.3.3</b> Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)</a></li>
 <li class="chapter" data-level="8.3.4" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#comporison-of-three-photosynthesis-models"><i class="fa fa-check"></i><b>8.3.4</b> Comporison of three photosynthesis models</a></li>
-<li class="chapter" data-level="8.3.5" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#actual-dialy-supply"><i class="fa fa-check"></i><b>8.3.5</b> Actual dialy supply</a></li>
+<li class="chapter" data-level="8.3.5" data-path="sec-leaf-supply.html"><a href="sec-leaf-supply.html#actual-photosynthesis-supply"><i class="fa fa-check"></i><b>8.3.5</b> Actual photosynthesis supply</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
 <li class="chapter" data-level="8.6" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html"><i class="fa fa-check"></i><b>8.6</b> Nitrogen</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.1</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-in-leaf"><i class="fa fa-check"></i><b>8.6.1</b> Nitrogen in leaf</a></li>
+<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.2</b> Functional nitrogen</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
@@ -280,10 +281,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 &lt;/div&gt;</code></pre></div>
 <p>Two variables are exposed to global environment (<code>.GlobalEnv</code> in R), i.e. <code>g_pmf</code> for an <code>xml</code> object of the simulation file <code>_simulation/simulation.apsimx</code>, and <code>g_report</code> for a <code>data.frame</code> of the simulation output file. Variables <code>g_pmf</code> and <code>g_report</code> can be used in any places of the documentation.</p>
 <p>A few <code>helper</code> functions are designed to plot figures, i.e. <code>plot_xypair</code> and <code>plot_report</code>.</p>
-<p><code>plot_xypair</code> is used to plot the <code>XYPairs</code> function in APSIM Next Gen. The <code>path</code> argument is used to specify the full path of a node with child <code>XYPairs</code> using APSIM format which connects the names of all predecessors started from <code>Wheat</code> (e.g. <code>Wheat.Leaf.CohortParameters.MaxArea.AgeFactor</code>). <code>g_xlab</code> and <code>y_lab</code> can be used to specify the X and Y labels.</p>
+<p><code>plot_xypair</code> is used to plot the <code>XYPairs</code> function in APSIM Next Gen. The <code>path</code> argument is used to specify the full path of a node with child <code>XYPairs</code> using APSIM format which connects the names of all predecessors started from <code>Wheat</code> (e.g. <code>Wheat.Leaf.CohortParameters.MaxArea.AgeFactor</code>). <code>x_lab</code> and <code>y_lab</code> can be used to specify the X and Y labels.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path &lt;-<span class="st"> &#39;Wheat.Leaf.CohortParameters.MaxArea.AgeFactor&#39;</span>
 <span class="kw">plot_xypair</span>(g_pmf, path,
-            x_lab<span class="st">&#39;Growthing stage&#39;</span>, 
+            <span class="dt">x_lab =</span> <span class="st">&#39;Growthing stage&#39;</span>, 
             <span class="dt">y_lab =</span> <span class="st">&#39;Multiplier of maximum leaf area&#39;</span>)</code></pre></div>
 <p><code>plot_report</code> is used to plot outputs of APSIM Next Gen for a single and multiple variables. Two types of X variables are predefined in the global environment (i.e. <code>g_xvar</code> for thermal time and stage; <code>g_xvar2</code> for stage only). <code>X</code> label is also defined in the global environment. These variables can be overwrote when the <code>plot_report</code> is called, but DO NOT add into global environment as other chunks use the default values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_xvar &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Wheat.Phenology.Stage&#39;</span>,

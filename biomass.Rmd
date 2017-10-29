@@ -337,7 +337,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 </div>
 
 
-The daily biomass supply (Fig. \@ref(fig:biomass-supply-total)) are consumed as growth respiration before partitioning into `Live` pool in each organ, and consumed as daily maintenance respiration from `Live` pool in each organ (Fig. \@ref(fig:biomass-destiny)).
+The daily biomass supply (Fig. \@ref(fig:biomass-supply-total)) are consumed as growth respiration before partitioning into `Live` pool in each organ, and consumed as daily maintenance respiration from `Live` pool in each organ (Fig. \@ref(fig:biomass-denstiny)).
 
 <div class="fig-output">
 ```{r biomass-denstiny, fig.asp = 1, fig.cap='Daily biomass supply and respiration.'}

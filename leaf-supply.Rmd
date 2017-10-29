@@ -48,7 +48,9 @@ $$
 <div class="fig-input">
 ```{r biomass-ft, fig.asp = 0.5, fig.cap='The temperature factor which influences radiation use efficiency'}
 path <- paste0(name_rue, '.FT')
-plot_xypair(g_pmf, path, x_lab = 'Average daily temperature weighted toward maximum temperature', y_lab = 'Temperature factor to photosynthesis')
+plot_xypair(g_pmf, path,
+            x_lab = 'Average daily temperature weighted toward maximum temperature', 
+            y_lab = 'Temperature factor to photosynthesis [-]')
 ```
 </div>
 
@@ -58,8 +60,9 @@ plot_xypair(g_pmf, path, x_lab = 'Average daily temperature weighted toward maxi
 <div class="fig-input">
 ```{r leaf-rue-fn, fig.asp = 0.5, fig.cap='The nitrogen factor which influences radiation use efficiency'}
 path <- paste0(name_rue, '.FN')
-plot_xypair(g_pmf, path, x_lab = 'Ratio of functional nitrogen in leaf',
-            y_lab = 'Nitrogen factor to photosynthesis')
+plot_xypair(g_pmf, path, 
+            x_lab = 'Ratio of functional nitrogen in leaf',
+            y_lab = 'Nitrogen factor to photosynthesis [-]')
 
 ```
 </div>
@@ -76,7 +79,7 @@ Need to further check
 ```{r leaf-rue-fw, fig.asp = 0.5, fig.cap='The water factor which influences radiation use efficiency'}
 path <- paste0(name_rue, '.FW')
 plot_xypair(g_pmf, path, x_lab = 'Water stress',
-            y_lab = 'Water factor to photosynthesis')
+            y_lab = 'Water factor to photosynthesis [-]')
 
 ```
 </div>
@@ -95,53 +98,73 @@ $$
 
 
 
-<div class="fig-output">
-```{r leaf-supply-rue, fig.asp = 1, fig.cap='Biomass supply from leaf'}
-y_cols <- c('Wheat.Leaf.Photosynthesis_RUE',
-            'Wheat.Leaf.Photosynthesis_EW',
-            'Wheat.Leaf.Photosynthesis_DCaPS')
+<div class="fig-input">
+```{r leaf-supply-rue-co2, fig.asp=0.5, fig.cap="CO$_{2}$ factor in response to the CO$_{2}$ level for different mean air temperatures."}
 
-plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Demand (g/m2/d)', ncol = 3)
+    tmean <- seq(from = 0, to = 30, by = 10)
+    co2 <- seq(350, 700, 10)
+    tmean.len <- length(tmean)
+    tmean <- rep(tmean, each = length(co2))
+    co2 <- rep(co2, times = tmean.len)
+    c1 <- (163 - tmean) / (5 - 0.1 * tmean)
+    fc <- (co2 - c1) * (350 + 2 * c1) / ((co2 + 2 * c1) * (350 - c1))
 
+    pd <- cbind(tmean = tmean, co2 = co2, fc = fc)
+    pd <- as.data.frame(pd)
+
+    key <- list(lines = list(col = 1:tmean.len,lty = 1:tmean.len),
+                text = list(lab = as.character(seq(from = 0, to = 30, by = 10 ))),
+                corner = c(0,1))
+
+    ggplot(pd) +
+        geom_line(aes(co2, fc, color = factor(tmean),
+                      linetype = factor(tmean))) +
+        theme_bw() +
+        theme(legend.position = c(0.02, 0.98),
+              legend.justification = c(0, 1)) +
+        xlab('Carbon dioxide concentration (ppm)') +
+        ylab(expression(~CO[2]~' factor for photosynthesis [-]')) +
+        guides(color = guide_legend(title = NULL),
+               linetype = guide_legend(title = NULL))
 ```
+
 </div>
-
-
-
-### Enli's photosynthesis model
+### SPASS
 
 ### Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)
 
 
 ### Comporison of three photosynthesis models
 
-The daily photosynthesis is calculated by Enli Wang's model, but is exported for all three models to compare model performance. So the input parameters are the same for three models, e.g. leaf area index and radiation. 
+The daily photosynthesis is calculated by SPASS's model, but is exported for all three models to compare model performance. So the input parameters are the same for three models, e.g. leaf area index, temperature and radiation. 
 
 
 
 <div class="fig-output">
-```{r leaf-supply-all-models-radn, fig.asp = 1.2, fig.cap='Biomass supply of leaf using three photosynthesis models.'}
+```{r leaf-supply-all-models-radn, fig.asp = 1.2, fig.cap='Comparision of biomass supply from leaf using three photosynthesis models. The biomass supplies are directly exported from three models using the same inputs (e.g. leaf area index, radiation, temperature). The actual biomass supply is simuated by SPASS in the model.'}
 y_cols <- c('Wheat.Leaf.Photosynthesis_RUE',
-            'Wheat.Leaf.Photosynthesis_EW',
+            'Wheat.Leaf.Photosynthesis_SPASS',
             'Wheat.Leaf.Photosynthesis_DCaPS')
 
 p1 <- plot_report(g_report, 'Wheat.Phenology.DaysAfterSowing', y_cols, 
             x_lab = 'Days after sowing', 
-             y_labels = c('RUE', 'EW', 'DCaPS'),
-            y_lab = 'Photosynthesis rate (g/m2/d)', ncol = 3) +
+             y_labels = c('RUE', 'SPASS', 'DCaPS'),
+            y_lab = expression(atop('Gross photosynthesis rate', '(g biomass '~m^-2~' ground '~d^-1~')')), 
+            ncol = 3) +
     geom_bar(aes(Wheat.Phenology.DaysAfterSowing, Weather.Radn),
              stat = 'identity', alpha = 0.7, width = 0.5,data = g_report) +
-    scale_y_continuous(sec.axis = sec_axis(~., name = 'Radiation (mj/m2)'))
+    scale_y_continuous(sec.axis = 
+                           sec_axis(~., 
+                                    name = expression('Radiation (MJ '~m^-2~')')))
 
 p2 <- ggplot(g_report) +
     geom_bar(aes(Wheat.Phenology.DaysAfterSowing, Weather.MeanT),
              stat = 'identity', alpha = 0.7, width = 0.5, fill = 'black') +
-    ylab(expression(paste( "Daily mean temperature ", ~"("*degree*"C)"))) +
-    # scale_x_continuous(minor_breaks = 
-    #     seq(1, max(g_report$Wheat.Phenology.DaysAfterSowing))) +
+    # ylab(expression(paste( "Daily mean temperature \n", ~"("*degree*"C)"))) +
+    ylab(expression(atop("Daily mean temperature", "("*degree*"C)"))) +
     geom_line(aes(Wheat.Phenology.DaysAfterSowing, Wheat.Leaf.LAI * 5), color = 'blue') +
-    scale_y_continuous(sec.axis = sec_axis(~./5, name = 'Leaf area index',
+    scale_y_continuous(sec.axis = sec_axis(~./5, 
+                                           name = expression('Leaf area index ('~m^2~' leaf '~m^-2~' ground)'),
                                            breaks = seq(1, 5),
                                            labels = paste0(' ', seq(1, 5)))) +
     theme_bw()
@@ -157,20 +180,23 @@ print(p2, vp = grid::viewport(0.5, 0.23, 1, 0.46))
 <div class="fig-output">
 ```{r leaf-supply-all-model-lai, fig.asp = 0.5, fig.cap='Biomass supply of leaf using three photosynthesis models.'}
 y_cols <- c('Wheat.Leaf.Photosynthesis_RUE',
-            'Wheat.Leaf.Photosynthesis_EW',
+            'Wheat.Leaf.Photosynthesis_SPASS',
             'Wheat.Leaf.Photosynthesis_DCaPS')
 
 
 plot_report(g_report, 'Wheat.Leaf.LAI', y_cols, 
             y_labels = c('RUE', 'EW', 'DCaPS'),
-            x_lab = 'Leaf area index (m2/m2)', 
-            y_lab = 'Photosynthesis rate (g/m2/d)', ncol = 3)
+            x_lab = expression('Leaf area index ('~m^2~" leaf "~m^-2~" ground)"), 
+            y_lab = expression(atop('Gross photosynthesis rate', '(g biomass '~m^-2~' ground '~d^-1~')')),
+            ncol = 3)
 
 ```
 </div>
 
 
-### Actual dialy supply 
+### Actual photosynthesis supply 
+
+The actual gross photosynthesis supply is simulated by SPASS model.
 
 <div class="fig-output">
 ```{r leaf-supply, fig.asp = 1, fig.cap='Biomass supply from leaf'}
@@ -180,7 +206,8 @@ y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
 
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass supply from leaf (g/m2/d)', ncol = 3)
+            y_lab = expression(atop('Gross photosynthesis rate', '(g biomass '~m^-2~' ground '~d^-1~')')),
+            ncol = 3)
 
 ```
 </div>

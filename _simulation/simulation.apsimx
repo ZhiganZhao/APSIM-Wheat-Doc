@@ -16,9 +16,28 @@
         <string>[Weather].Radn</string>
         <string>[Weather].Rain</string>
         <string />
+        <string>[Wheat].Leaf.Live.N</string>
+        <string>[Wheat].Leaf.Dead.N</string>
+        <string>[Wheat].Leaf.Live.NConc</string>
+        <string>[Wheat].Leaf.Dead.NConc</string>
+        <string>[Wheat].Leaf.Live.MetabolicN</string>
+        <string>[Wheat].Leaf.Live.MetabolicNConc</string>
+        <string>[Wheat].Leaf.Live.StorageN</string>
+        <string>[Wheat].Leaf.Live.StorageNConc</string>
+        <string>[Wheat].Leaf.Live.StructuralN</string>
+        <string>[Wheat].Leaf.Live.StructuralNConc</string>
+        <string>[Wheat].Leaf.Dead.MetabolicN</string>
+        <string>[Wheat].Leaf.Dead.MetabolicNConc</string>
+        <string>[Wheat].Leaf.Dead.StorageN</string>
+        <string>[Wheat].Leaf.Dead.StorageNConc</string>
+        <string>[Wheat].Leaf.Dead.StructuralN</string>
+        <string>[Wheat].Leaf.Dead.StructuralNConc</string>
+        <string />
+        <string />
+        <string />
         <string>[Wheat].Leaf.SpecificLeafNitrogen</string>
         <string>[Wheat].Leaf.Photosynthesis_RUE.Value() as Wheat.Leaf.Photosynthesis_RUE</string>
-        <string>[Wheat].Leaf.Photosynthesis_EW.Value() as Wheat.Leaf.Photosynthesis_EW</string>
+        <string>[Wheat].Leaf.Photosynthesis_SPASS.Value() as Wheat.Leaf.Photosynthesis_SPASS</string>
         <string>[Wheat].Leaf.Photosynthesis_DCaPS.Value() as Wheat.Leaf.Photosynthesis_DCaPS</string>
         <string />
         <string>[Wheat].Grain.NDemand.Metabolic</string>
@@ -2833,7 +2852,7 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </RUEModel>
         <CanopyPhotosynthesis>
-          <Name>Photosynthesis_EW</Name>
+          <Name>Photosynthesis_SPASS</Name>
           <Model xsi:type="CanopyGrossPhotosynthesisHourly">
             <Name>CanopyGrossPhotosynthesisHourly</Name>
             <IncludeInDocumentation>true</IncludeInDocumentation>
