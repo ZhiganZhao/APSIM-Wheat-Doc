@@ -26,7 +26,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 ## Biomass dynamic {#sec:leaf-biomass}
 
 <div class="fig-output">
-```{r leaf-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for leaf'}
+```{r leaf-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for leaf. The structural and metabolic weights overlap each other as the structural fraction is defined as 0.5.'}
 y_cols <- c('Wheat.Leaf.Allocated.StructuralWt',
             'Wheat.Leaf.Allocated.MetabolicWt',
             'Wheat.Leaf.Allocated.StorageWt')
@@ -55,7 +55,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r leaf-live, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Live component). The structural and metabolic weights overlap each other as the structural fraction is defined as 0.5.'}
+```{r leaf-live, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Live component).'}
 y_cols <- c('Wheat.Leaf.Live.StructuralWt',
             'Wheat.Leaf.Live.MetabolicWt',
             'Wheat.Leaf.Live.StorageWt')
@@ -69,7 +69,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r leaf-dead, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Dead component). The structural and metabolic weights overlap each other as the structural fraction is defined as 0.5.'}
+```{r leaf-dead, fig.asp = 1, fig.cap='Dynamic of leaf biomass (Dead component).'}
 y_cols <- c('Wheat.Leaf.Dead.StructuralWt',
             'Wheat.Leaf.Dead.MetabolicWt',
             'Wheat.Leaf.Dead.StorageWt')
