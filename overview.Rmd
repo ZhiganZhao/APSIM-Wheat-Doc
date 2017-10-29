@@ -12,7 +12,6 @@ In the wheat module, wheat is divided into five components or parts: Grain, Root
 
 
 ### Phenology 
-- **Plastochron** The plastochron is commonly used as the thermal time between the appearance of  successive leaf primordia on a shoot.
 - **Phyllochron** The phyllochron is the thermal time it takes for successive leaves on a shoot to reach the same developmental stage.
 
 ### Structure 
