@@ -96,7 +96,8 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
 
     key_stage <- data_frame(x = c(2, 4, 6, 8),
                             name = c('G', 'T', 'F', 'E'),
-                            XVar = 'Stage')
+                            XVar = 'Stage') %>%
+        filter(x <= ceiling(max(df$Wheat.Phenology.Stage, na.rm = TRUE)))
     if (sum(grepl('AccumulateThermalTime|Stage', x_var)) > 0) {
         if (length(grep('AccumulateThermalTime', x_var)) > 0) {
             ks2 <- data_frame(x = approx(df$Wheat.Phenology.Stage, df$Wheat.Phenology.AccumulateThermalTime,
@@ -368,6 +369,9 @@ we_beta <- function(mint, maxt, t_min, t_opt, t_max, t_ref = t_opt, maxt_weight 
 
 # Register output variables with chunk name
 register_chunk <- function(vars, chunk, type) {
+    if (is.null(chunk)) {
+        return(invisible(NULL))
+    }
     # Retrieve the g_output_chunk from global environment
     chunk_folder <- options('chunk_folder')[[1]]
     if (!dir.exists(chunk_folder)) {
