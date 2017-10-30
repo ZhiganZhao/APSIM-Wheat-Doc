@@ -373,7 +373,7 @@ All organs have the `Live` pool, but only `Leaf` has the `Dead` pool (Table \@re
 
 ```{r biomass-live-dead-tbl, results='asis'}
 g_report %>% 
-    select(matches('Wheat\\..+\\.(Live|Dead)\\..+')) %>% 
+    select(matches('Wheat\\..+\\.(Live|Dead)\\..+Wt$')) %>% 
     assertr::verify(ncol(.) == 30) %>% 
     summarise_all(funs(sum(. > 0))) %>% 
     gather(trait, value) %>% 

@@ -47,10 +47,22 @@ The Structural demand of `Spike` ($D_{spike, structural}$) is determined by the 
 $$
 D_{spike, structural} = \Delta TT \times N_{head} \frac {W_{max, grain}}{T_{growth}} \times F_{spike, structure} / C_{spike, efficiency}
 $$
-where $\Delta TT$ is the daily thermal time in the phenology module (Fig. \@ref(fig:phenology-tt)); $N_{head}$ is the head number per unit area, i.e. stem population (Fig. \@ref(fig:str-population)); $W_{max, grain}$ is the potential weight per spike (g) with default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMDemandFunction.MaximumOrganWt')`; $T_{growth}$ is the growth duration of spike ($TT$, the thermal time target from `FlagLeaf` to `StartGrainFill`). As the target of `EarlyReproductive` is sensitive to photoperiod (Section \@ref(sec:phe-stage-period)), the growth duration can be changed during spike development depending on the photoperiod (Fig. \@ref(fig:spike-growth-duration)). The head number, growth duration and potential spike weight are defined as potential spike weight including the structural and storage conponents and the growth respiration. 
+where $\Delta TT$ is the daily thermal time in the phenology module (Fig. \@ref(fig:phenology-tt)); $N_{head}$ is the head number per unit area, i.e. total stem population at flowering time (Fig. \@ref(fig:str-live-stem-number)); $W_{max, grain}$ is the potential weight per spike (g) with default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMDemandFunction.MaximumOrganWt')`; $T_{growth}$ is the growth duration of spike ($TT$, the thermal time target from `FlagLeaf` to `StartGrainFill`). As the target of `EarlyReproductive` is sensitive to photoperiod (Section \@ref(sec:phe-stage-period)), the growth duration can be changed during spike development depending on the photoperiod (Fig. \@ref(fig:spike-growth-duration)). The head number, growth duration and potential spike weight are defined as potential spike weight including the structural and storage conponents and the growth respiration. 
 
 
 $F_{spike, structure}$ is the structura fraction of `Spike` with default value `e get_fixed_value(g_pmf, 'Wheat.Spike.StructuralFraction')`. $C_{spike,efficiency}$ is the conversion efficiency of `Spike`, i.e. the efficiency of alloction biomass converted into carbon (growth respiration). $C_{efficiency}$ has the default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMConversionEfficiency')` and is counted befor allocation. 
+
+
+<div class="fig-output">
+```{r spike-number, fig.asp = 1, fig.cap='Head number'}
+y_cols <- c('Wheat.Spike.HeadNumber',
+            'Wheat.Leaf.LiveStemNumber',
+            'Wheat.Structure.TotalStemPopn')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Demand (g biomass'~m^-2~' ground ' ~d^-1~')'),
+            ncol = 3)
+```
+</div>
 
 
 <div class="fig-input">

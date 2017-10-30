@@ -276,10 +276,8 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Moving tiller gro
 
 <div class="fig-output">
 ```{r str-tiller-number-mo, fig.cap='The mortality of tillers'}
-y_cols <- c(
-
-    'Wheat.Structure.BranchMortality',
-    'Wheat.Structure.ProportionBranchMortality',
+y_cols <- c('Wheat.Structure.BranchMortality',   
+            'Wheat.Structure.ProportionBranchMortality',
             'Wheat.Structure.ProportionPlantMortality')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Mortality of branching', ncol = 3)
 
@@ -308,7 +306,10 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = 'Growth stage', y_lab = 'Plant po
 ```{r str-live-stem-number, fig.cap='Total stem population and live stem number.'}
 y_cols <- c('Wheat.Structure.TotalStemPopn',
     'Wheat.Leaf.LiveStemNumber')
-plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Stem population', ncol = 3)
+plot_report(g_report, g_xvar, y_cols, 
+            x_lab = g_xlab, 
+            y_lab = 'Stem population (#)', ncol = 3, 
+            y_labels = c('Total stem population', 'Live stem number'))
 
 ```
 </div>
@@ -332,7 +333,9 @@ plot_xypair(g_pmf, path, x_lab = 'Stage', y_lab = 'Potential canopy height (mm)'
 <div class="fig-input">
 ```{r str-height-water-stress, fig.asp=0.5, fig.cap='The impact of water stress on canopy height'}
 path <- 'Wheat.Structure.HeightModel.WaterStress'
-plot_xypair(g_pmf, path, x_lab = 'water-supply-demand-ratio', y_lab = 'Multiplier of water stress on canopy height')
+plot_xypair(g_pmf, path, 
+            x_lab = 'water-supply-demand-ratio ([-])',
+            y_lab = 'Multiplier of water stress on canopy height ([-])')
 ```
 </div>
 

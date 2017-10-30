@@ -272,13 +272,14 @@ g_report %>%
 y_cols <- c('Wheat.Leaf.SpecificArea')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = expression('Specific leaf area ('~mm^2~' leaf'~g^-1~' biomass)'))
-
-# y_cols <- c('Wheat.Leaf.SpecificArea', 
-#             'Wheat.Leaf.SpecificAreaStructural')
-# plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
-#             y_lab = expression('Specific leaf area ('~mm^2~' leaf'~g^-1~' biomass)'), 
-#             ncol = 2,
-#             y_labels = c('Total', 'Structural'))
+reprot2 <- g_report %>% 
+    mutate(Wheat.Leaf.SpecificAreaStructural = Wheat.Leaf.LAI / Wheat.Leaf.Live.StructuralWt)
+y_cols <- c('Wheat.Leaf.SpecificArea',
+            'Wheat.Leaf.SpecificAreaStructural')
+plot_report(reprot2, g_xvar2, y_cols, x_lab = g_xlab2,
+            y_lab = expression('Specific leaf area ('~mm^2~' leaf'~g^-1~' biomass)'),
+            ncol = 2,
+            y_labels = c('Total', 'Structural'))
 
 ```
 </div>

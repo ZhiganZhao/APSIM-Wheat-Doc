@@ -256,13 +256,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The Structural demand of <code>Spike</code> (<span class="math inline">\(D_{spike, structural}\)</span>) is determined by the population based demand function since Stage 5 (<code>FlagLeaf</code>) to Stage 7 (<code>StartGrainFill</code>). The structural demand includes the growth respiration.</p>
 <p><span class="math display">\[
 D_{spike, structural} = \Delta TT \times N_{head} \frac {W_{max, grain}}{T_{growth}} \times F_{spike, structure} / C_{spike, efficiency}
-\]</span> where <span class="math inline">\(\Delta TT\)</span> is the daily thermal time in the phenology module (Fig. <a href="sec-phe-thermal-time.html#fig:phenology-tt">2.2</a>); <span class="math inline">\(N_{head}\)</span> is the head number per unit area, i.e. stem population (Fig. <a href="plant-and-main-stem-population.html#fig:str-population">4.17</a>); <span class="math inline">\(W_{max, grain}\)</span> is the potential weight per spike (g) with default value 0.5; <span class="math inline">\(T_{growth}\)</span> is the growth duration of spike (<span class="math inline">\(TT\)</span>, the thermal time target from <code>FlagLeaf</code> to <code>StartGrainFill</code>). As the target of <code>EarlyReproductive</code> is sensitive to photoperiod (Section <a href="sec-phe-stage-period.html#sec:phe-stage-period">3.2</a>), the growth duration can be changed during spike development depending on the photoperiod (Fig. <a href="spike-demand.html#fig:spike-growth-duration">9.3</a>). The head number, growth duration and potential spike weight are defined as potential spike weight including the structural and storage conponents and the growth respiration.</p>
+\]</span> where <span class="math inline">\(\Delta TT\)</span> is the daily thermal time in the phenology module (Fig. <a href="sec-phe-thermal-time.html#fig:phenology-tt">2.2</a>); <span class="math inline">\(N_{head}\)</span> is the head number per unit area, i.e. total stem population at flowering time (Fig. <a href="plant-and-main-stem-population.html#fig:str-live-stem-number">4.18</a>); <span class="math inline">\(W_{max, grain}\)</span> is the potential weight per spike (g) with default value 0.5; <span class="math inline">\(T_{growth}\)</span> is the growth duration of spike (<span class="math inline">\(TT\)</span>, the thermal time target from <code>FlagLeaf</code> to <code>StartGrainFill</code>). As the target of <code>EarlyReproductive</code> is sensitive to photoperiod (Section <a href="sec-phe-stage-period.html#sec:phe-stage-period">3.2</a>), the growth duration can be changed during spike development depending on the photoperiod (Fig. <a href="spike-demand.html#fig:spike-growth-duration">9.4</a>). The head number, growth duration and potential spike weight are defined as potential spike weight including the structural and storage conponents and the growth respiration.</p>
 <p><span class="math inline">\(F_{spike, structure}\)</span> is the structura fraction of <code>Spike</code> with default value <code>e get_fixed_value(g_pmf, 'Wheat.Spike.StructuralFraction')</code>. <span class="math inline">\(C_{spike,efficiency}\)</span> is the conversion efficiency of <code>Spike</code>, i.e. the efficiency of alloction biomass converted into carbon (growth respiration). <span class="math inline">\(C_{efficiency}\)</span> has the default value 0.7067 and is counted befor allocation.</p>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:spike-number"></span>
+<img src="APSIM-Wheat_files/figure-html/spike-number-1.png" alt="Head number" width="80%" />
+<p class="caption">
+Figure 9.3: Head number
+</p>
+</div>
+</div>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:spike-growth-duration"></span>
 <img src="APSIM-Wheat_files/figure-html/spike-growth-duration-1.png" alt="Growth duration of spike development" width="80%" />
 <p class="caption">
-Figure 9.3: Growth duration of spike development
+Figure 9.4: Growth duration of spike development
 </p>
 </div>
 </div>
@@ -276,7 +284,7 @@ D_{spike, storage} = \frac {(W_{spike, structural} + D_{spike, structural}) / F_
 <div class="figure" style="text-align: center"><span id="fig:spike-demand"></span>
 <img src="APSIM-Wheat_files/figure-html/spike-demand-1.png" alt="Biomass demand by spike" width="80%" />
 <p class="caption">
-Figure 9.4: Biomass demand by spike
+Figure 9.5: Biomass demand by spike
 </p>
 </div>
 </div>
