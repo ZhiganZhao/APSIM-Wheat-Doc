@@ -146,6 +146,7 @@ y_cols <- c('Wheat.Leaf.Photosynthesis_RUE',
             'Wheat.Leaf.Photosynthesis_SPASS',
             'Wheat.Leaf.Photosynthesis_DCaPS')
 
+
 p1 <- plot_report(g_report, 'Wheat.Phenology.DaysAfterSowing', y_cols, 
             x_lab = 'Days after sowing', 
              y_labels = c('RUE', 'SPASS', 'DCaPS'),

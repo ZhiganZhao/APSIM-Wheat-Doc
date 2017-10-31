@@ -3020,7 +3020,7 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
             <Constant>
               <Name>LeafAngle</Name>
               <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0</FixedValue>
+              <FixedValue>60</FixedValue>
             </Constant>
             <Constant>
               <Name>B</Name>
@@ -3030,24 +3030,24 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
             <Constant>
               <Name>SLNRatioTop</Name>
               <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>1.32</FixedValue>
+              <FixedValue>1.4</FixedValue>
             </Constant>
             <Constant>
               <Name>psiVc</Name>
               <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>1.16</FixedValue>
+              <FixedValue>0.9</FixedValue>
               <Units>μmol CO2 mmol-1 N s-1</Units>
             </Constant>
             <Constant>
               <Name>psiJ</Name>
               <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>2.4</FixedValue>
+              <FixedValue>1.3</FixedValue>
               <Units>μmol CO2 mmol-1 N s-1</Units>
             </Constant>
             <Constant>
               <Name>psiRd</Name>
               <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0.0116</FixedValue>
+              <FixedValue>0</FixedValue>
               <Units>μmol CO2 mmol-1 N s-1</Units>
             </Constant>
             <Constant>
@@ -3075,7 +3075,7 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
             <Constant>
               <Name>StructuralN</Name>
               <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>25</FixedValue>
+              <FixedValue>14</FixedValue>
             </Constant>
             <Constant>
               <Name>psiVp</Name>
