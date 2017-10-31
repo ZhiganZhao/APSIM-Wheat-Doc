@@ -2,7 +2,9 @@
 
 
 
-### Nitrogen in leaf
+
+
+### Nitrogen amount
 
 <div class="fig-output">
 ```{r leaf-nitrogen-content, fig.asp=1, fig.cap='Nitrogen contents in live and dead pools of leaf.'}
@@ -125,7 +127,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r leaf-nitrogen-functional-n, fig.asp=1, fig.cap='Ratio of functional nitrogen'}
+```{r leaf-nitrogen-functional-n, fig.asp=0.5, fig.cap='Ratio of functional nitrogen'}
 y_cols <- c('Wheat.Leaf.Fn')
 plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
             y_lab = 'Ratio of functional nitrogen[-]')

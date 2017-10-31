@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-phe-stage-period.html">
-<link rel="next" href="sec-str-phyllochron.html">
+<link rel="prev" href="ses-nitrogen-uptake.html">
+<link rel="next" href="cha-variable.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -256,18 +256,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cha-structure" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Structure</h1>
-<p>The development of wheat leaves and tillers are simulated with an apex model which is further developed from leaf cohort model <span class="citation">(Brown et al. <a href="cha-reference.html#ref-BrownPlantModellingFramework2014">2014</a>)</span>. The basic assumptions include</p>
-<ol style="list-style-type: decimal">
-<li>The growth and development of a plant is controlled by apex. Only one apex is existed in a plant at emergence. Branching increases the total apex number of a plant. Apex death decreases the apex number, which are caused by several reasons including the carbon allocation, light intensity, natural death. The apex number is not necessary as an integer to simulate plant development in the population level.</li>
-<li>The number of apex in a plant determines the number of the new leaves when initialization of a new cohort. The cohort size is fixed after initialization although attributes can be changed in the later stage.</li>
-<li>The apexes are grouped by age and have the same age if they initialize at the same day. During development of new cohort, new apexes caused by branching develops into new tillers which have the same behaviours during the whole lift span (e.g. size, area, nitrogen, photosynthesis). The apex age equals to 1 when it initialize and increases by 1 when a new leaf cohort initializes. Each apex group has several attributes including size and age.<br />
-</li>
-<li>The leaves in a cohort also are distinguished and grouped by apex ages, which determines at the initialization of leaf cohort.</li>
-<li>Death of branches or tillers only reduces the total number of apexes, not the size of existing cohorts. The apexes with youngest age are going to death first.</li>
-</ol> 
+<div id="sec:nitrogen-dynamic" class="section level2">
+<h2><span class="header-section-number">12.4</span> Nitrogen dynamic</h2>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:root-nitrogen-dynamic"></span>
+<img src="APSIM-Wheat_files/figure-html/root-nitrogen-dynamic-1.png" alt="The plant nitrogen uptake" width="80%" />
+<p class="caption">
+Figure 12.8: The plant nitrogen uptake
+</p>
 </div>
+</div>
+
+</div>
+<!-- </div> -->
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -282,8 +283,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="sec-phe-stage-period.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-str-phyllochron.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ses-nitrogen-uptake.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cha-variable.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -312,7 +313,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/structure.Rmd",
+"link": "https://github.com/byzheng/APSIM-Wheat-Doc/edit/master/nitrogen.Rmd",
 "text": "Edit"
 },
 "download": [["APSIM-Wheat.pdf", "PDF"], ["APSIM-Wheat.docx", "WORD"], ["APSIM-Wheat.epub", "EPUB"]],

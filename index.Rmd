@@ -1,5 +1,6 @@
 ---
 title: "Documentation of APSIM-Wheat"
+author: "Bangyou Zheng, Karine Chenu, Scott Chapman, Enli Wang, Fernanda Dreccer"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

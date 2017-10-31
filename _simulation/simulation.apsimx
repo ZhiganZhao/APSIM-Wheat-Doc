@@ -10,12 +10,30 @@
       <ExperimentFactorValues />
       <VariableNames>
         <string>[Clock].Today</string>
+        <string />
+        <string>[Wheat].Arbitrator.N.TotalUptakeSupply</string>
+        <string />
         <string>[Weather].MaxT</string>
         <string>[Weather].MinT</string>
         <string>[Weather].MeanT</string>
         <string>[Weather].Radn</string>
         <string>[Weather].Rain</string>
         <string />
+        <string>[Wheat].Root.WaterUptake</string>
+        <string />
+        <string>[Wheat].Root.NUptake</string>
+        <string />
+        <string>[Wheat].Root.NSupplyUptake</string>
+        <string>[Wheat].Root.NSupply.Uptake</string>
+        <string>[Wheat].Leaf.NSupply.Uptake</string>
+        <string>[Wheat].Stem.NSupply.Uptake</string>
+        <string>[Wheat].Grain.NSupply.Uptake</string>
+        <string>[Wheat].Spike.NSupply.Uptake</string>
+        <string>[Wheat].Root.NSupply.Uptake + [Wheat].Leaf.NSupply.Uptake + [Wheat].Stem.NSupply.Uptake + [Wheat].Grain.NSupply.Uptake + [Wheat].Spike.NSupply.Uptake as Wheat.NSupply.Uptake</string>
+        <string>[Wheat].Total.N</string>
+        <string>[Wheat].Total.StorageN</string>
+        <string>[Wheat].Total.StructuralN</string>
+        <string>[Wheat].Total.MetabolicN</string>
         <string />
         <string>[Wheat].Spike.HeadNumber</string>
         <string />
@@ -23,6 +41,7 @@
         <string>[Wheat].Leaf.DeltaStressConstrainedArea</string>
         <string>[Wheat].Leaf.DeltaCarbonConstrainedArea</string>
         <string />
+        <string>[Wheat].Leaf.N</string>
         <string>[Wheat].Leaf.Live.N</string>
         <string>[Wheat].Leaf.Dead.N</string>
         <string>[Wheat].Leaf.Live.NConc</string>
@@ -39,6 +58,86 @@
         <string>[Wheat].Leaf.Dead.StorageNConc</string>
         <string>[Wheat].Leaf.Dead.StructuralN</string>
         <string>[Wheat].Leaf.Dead.StructuralNConc</string>
+        <string />
+        <string />
+        <string>[Wheat].Spike.N</string>
+        <string>[Wheat].Spike.Live.N</string>
+        <string>[Wheat].Spike.Dead.N</string>
+        <string>[Wheat].Spike.Live.NConc</string>
+        <string>[Wheat].Spike.Dead.NConc</string>
+        <string>[Wheat].Spike.Live.MetabolicN</string>
+        <string>[Wheat].Spike.Live.MetabolicNConc</string>
+        <string>[Wheat].Spike.Live.StorageN</string>
+        <string>[Wheat].Spike.Live.StorageNConc</string>
+        <string>[Wheat].Spike.Live.StructuralN</string>
+        <string>[Wheat].Spike.Live.StructuralNConc</string>
+        <string>[Wheat].Spike.Dead.MetabolicN</string>
+        <string>[Wheat].Spike.Dead.MetabolicNConc</string>
+        <string>[Wheat].Spike.Dead.StorageN</string>
+        <string>[Wheat].Spike.Dead.StorageNConc</string>
+        <string>[Wheat].Spike.Dead.StructuralN</string>
+        <string>[Wheat].Spike.Dead.StructuralNConc</string>
+        <string />
+        <string />
+        <string>[Wheat].Stem.N</string>
+        <string>[Wheat].Stem.Live.N</string>
+        <string>[Wheat].Stem.Dead.N</string>
+        <string>[Wheat].Stem.Live.NConc</string>
+        <string>[Wheat].Stem.Dead.NConc</string>
+        <string>[Wheat].Stem.Live.MetabolicN</string>
+        <string>[Wheat].Stem.Live.MetabolicNConc</string>
+        <string>[Wheat].Stem.Live.StorageN</string>
+        <string>[Wheat].Stem.Live.StorageNConc</string>
+        <string>[Wheat].Stem.Live.StructuralN</string>
+        <string>[Wheat].Stem.Live.StructuralNConc</string>
+        <string>[Wheat].Stem.Dead.MetabolicN</string>
+        <string>[Wheat].Stem.Dead.MetabolicNConc</string>
+        <string>[Wheat].Stem.Dead.StorageN</string>
+        <string>[Wheat].Stem.Dead.StorageNConc</string>
+        <string>[Wheat].Stem.Dead.StructuralN</string>
+        <string>[Wheat].Stem.Dead.StructuralNConc</string>
+        <string />
+        <string />
+        <string />
+        <string>[Wheat].Root.N</string>
+        <string>[Wheat].Root.Live.N</string>
+        <string>[Wheat].Root.Dead.N</string>
+        <string>[Wheat].Root.Live.NConc</string>
+        <string>[Wheat].Root.Dead.NConc</string>
+        <string>[Wheat].Root.Live.MetabolicN</string>
+        <string>[Wheat].Root.Live.MetabolicNConc</string>
+        <string>[Wheat].Root.Live.StorageN</string>
+        <string>[Wheat].Root.Live.StorageNConc</string>
+        <string>[Wheat].Root.Live.StructuralN</string>
+        <string>[Wheat].Root.Live.StructuralNConc</string>
+        <string>[Wheat].Root.Dead.MetabolicN</string>
+        <string>[Wheat].Root.Dead.MetabolicNConc</string>
+        <string>[Wheat].Root.Dead.StorageN</string>
+        <string>[Wheat].Root.Dead.StorageNConc</string>
+        <string>[Wheat].Root.Dead.StructuralN</string>
+        <string>[Wheat].Root.Dead.StructuralNConc</string>
+        <string />
+        <string />
+        <string />
+        <string>[Wheat].Grain.N</string>
+        <string>[Wheat].Grain.Live.N</string>
+        <string>[Wheat].Grain.Dead.N</string>
+        <string>[Wheat].Grain.Live.NConc</string>
+        <string>[Wheat].Grain.Dead.NConc</string>
+        <string>[Wheat].Grain.Live.MetabolicN</string>
+        <string>[Wheat].Grain.Live.MetabolicNConc</string>
+        <string>[Wheat].Grain.Live.StorageN</string>
+        <string>[Wheat].Grain.Live.StorageNConc</string>
+        <string>[Wheat].Grain.Live.StructuralN</string>
+        <string>[Wheat].Grain.Live.StructuralNConc</string>
+        <string>[Wheat].Grain.Dead.MetabolicN</string>
+        <string>[Wheat].Grain.Dead.MetabolicNConc</string>
+        <string>[Wheat].Grain.Dead.StorageN</string>
+        <string>[Wheat].Grain.Dead.StorageNConc</string>
+        <string>[Wheat].Grain.Dead.StructuralN</string>
+        <string>[Wheat].Grain.Dead.StructuralNConc</string>
+        <string />
+        <string />
         <string />
         <string />
         <string />
@@ -86,11 +185,11 @@
         <string>[Wheat].Stem.NSupply.Fixation</string>
         <string>[Wheat].Stem.NSupply.Retranslocation</string>
         <string>[Wheat].Stem.NSupply.Reallocation</string>
-        <string>[Wheat].Grain.NSupply.Fixation + [Wheat].Grain.NSupply.Retranslocation + [Wheat].Grain.NSupply.Reallocation as Wheat.Grain.NSupply.Total</string>
-        <string>[Wheat].Leaf.NSupply.Fixation + [Wheat].Leaf.NSupply.Retranslocation + [Wheat].Leaf.NSupply.Reallocation as Wheat.Leaf.NSupply.Total</string>
-        <string>[Wheat].Root.NSupply.Fixation + [Wheat].Root.NSupply.Retranslocation + [Wheat].Root.NSupply.Reallocation as Wheat.Root.NSupply.Total</string>
-        <string>[Wheat].Spike.NSupply.Fixation + [Wheat].Spike.NSupply.Retranslocation + [Wheat].Spike.NSupply.Reallocation as Wheat.Spike.NSupply.Total</string>
-        <string>[Wheat].Stem.NSupply.Fixation + [Wheat].Stem.NSupply.Retranslocation + [Wheat].Stem.NSupply.Reallocation as Wheat.Stem.NSupply.Total</string>
+        <string>[Wheat].Grain.NSupply.Fixation + [Wheat].Grain.NSupply.Retranslocation + [Wheat].Grain.NSupply.Reallocation + [Wheat].Grain.NSupply.Uptake as Wheat.Grain.NSupply.Total</string>
+        <string>[Wheat].Leaf.NSupply.Fixation + [Wheat].Leaf.NSupply.Retranslocation + [Wheat].Leaf.NSupply.Reallocation + [Wheat].Leaf.NSupply.Uptake as Wheat.Leaf.NSupply.Total</string>
+        <string>[Wheat].Root.NSupply.Fixation + [Wheat].Root.NSupply.Retranslocation + [Wheat].Root.NSupply.Reallocation - [Wheat].Root.NUptake * 0.1 as Wheat.Root.NSupply.Total</string>
+        <string>[Wheat].Spike.NSupply.Fixation + [Wheat].Spike.NSupply.Retranslocation + [Wheat].Spike.NSupply.Reallocation + [Wheat].Spike.NSupply.Uptake as Wheat.Spike.NSupply.Total</string>
+        <string>[Wheat].Stem.NSupply.Fixation + [Wheat].Stem.NSupply.Retranslocation + [Wheat].Stem.NSupply.Reallocation  + [Wheat].Stem.NSupply.Uptake as Wheat.Stem.NSupply.Total</string>
         <string>[Wheat].Grain.NSupply.Fixation + [Wheat].Leaf.NSupply.Fixation + [Wheat].Root.NSupply.Fixation + [Wheat].Spike.NSupply.Fixation + [Wheat].Stem.NSupply.Fixation as Wheat.NSupply.Fixation</string>
         <string>[Wheat].Grain.NSupply.Reallocation + [Wheat].Leaf.NSupply.Reallocation + [Wheat].Root.NSupply.Reallocation + [Wheat].Spike.NSupply.Reallocation + [Wheat].Stem.NSupply.Reallocation as Wheat.NSupply.Reallocation</string>
         <string>[Wheat].Grain.NSupply.Retranslocation + [Wheat].Leaf.NSupply.Retranslocation + [Wheat].Root.NSupply.Retranslocation + [Wheat].Spike.NSupply.Retranslocation + [Wheat].Stem.NSupply.Retranslocation as Wheat.NSupply.Retranslocation</string>
@@ -5471,35 +5570,35 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
           <Name>Management</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <Operation>
-            <Date>2015-05-21T00:00:00</Date>
+            <Date>2015-05-21</Date>
             <Action> [Fertiliser].Apply(Amount: 205, Type: Fertiliser.Types.Urea);</Action>
           </Operation>
           <Operation>
-            <Date>2015-05-22T00:00:00</Date>
+            <Date>2015-05-22</Date>
             <Action> [Irrigation].Apply(amount:24);</Action>
           </Operation>
           <Operation>
-            <Date>2015-06-26T00:00:00</Date>
+            <Date>2015-06-26</Date>
             <Action> [Irrigation].Apply(amount:25);</Action>
           </Operation>
           <Operation>
-            <Date>2015-07-14T00:00:00</Date>
+            <Date>2015-07-14</Date>
             <Action> [Irrigation].Apply(amount:26);</Action>
           </Operation>
           <Operation>
-            <Date>2015-07-31T00:00:00</Date>
+            <Date>2015-07-31</Date>
             <Action> [Irrigation].Apply(amount:26);</Action>
           </Operation>
           <Operation>
-            <Date>2015-08-14T00:00:00</Date>
+            <Date>2015-08-14</Date>
             <Action> [Irrigation].Apply(amount:25);</Action>
           </Operation>
           <Operation>
-            <Date>2015-08-26T00:00:00</Date>
+            <Date>2015-08-26</Date>
             <Action> [Irrigation].Apply(amount:25);</Action>
           </Operation>
           <Operation>
-            <Date>2015-09-09T00:00:00</Date>
+            <Date>2015-09-09</Date>
             <Action> [Irrigation].Apply(amount:25);</Action>
           </Operation>
         </Operations>

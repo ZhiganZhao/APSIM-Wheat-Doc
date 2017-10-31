@@ -17,3 +17,16 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, y_lab = 'Ratio of water su
 
 
 
+## Uptake {#sec:water-uptake}
+
+
+<div class="fig-output">
+```{r water-uptake, fig.cap='water uptake'}
+y_cols <- c(
+    'Wheat.Root.WaterUptake')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Water uptake (mm '~d^-1~')'))
+
+```
+</div>
+

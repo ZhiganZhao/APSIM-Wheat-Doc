@@ -15,7 +15,10 @@ y_cols <- c('Wheat.Arbitrator.N.TotalPlantSupply',
 g_report %>% 
     # filter(Wheat.Phenology.Stage <= 8) %>% 
     plot_report(g_xvar, y_cols, ncol = 2,
-                x_lab = g_xlab, y_lab = 'Nitrogen supply and demand (g/m2/d)')
+                x_lab = g_xlab, 
+                y_labels = c('Supply', 'Demand'),
+                y_lab = expression(atop('Nitrogen supply and demand', 
+                                        '(g N'~m^-2~' ground'~d^-1~')')))
 
 ```
 </div>
@@ -29,7 +32,8 @@ y_cols <- c('Wheat.Arbitrator.FN')
 g_report %>% 
     filter(Wheat.Phenology.Stage <= 8) %>% 
     plot_report(g_xvar, y_cols,
-                x_lab = g_xlab, y_lab = 'Ratio of nitrogen supply and demand')
+                x_lab = g_xlab, 
+                y_lab = 'Ratio of nitrogen supply and demand ([-])')
 
 ```
 </div>
@@ -46,8 +50,9 @@ y_cols <- sprintf('Wheat.%s.NDemand.Total', g_organs)
 g_report %>% 
     plot_report(g_xvar, y_cols, ncol = 5,
                 y_labels = g_organs,
-                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
-
+                x_lab = g_xlab, 
+                y_lab = expression(atop('Nitrogen demand', 
+                                        '(g N'~m^-2~' ground'~d^-1~')')))
 ```
 </div>
 
@@ -59,7 +64,9 @@ y_cols <- c('Wheat.NDemand.Structural', 'Wheat.NDemand.Metabolic',
 
 g_report %>% 
     plot_report(g_xvar, y_cols, ncol = 5,
-                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
+                x_lab = g_xlab, 
+                y_lab = expression(atop('Nitrogen demand', 
+                                        '(g N'~m^-2~' ground'~d^-1~')')))
 
 ```
 </div>
@@ -70,11 +77,14 @@ g_report %>%
 
 <div class="fig-output">
 ```{r nitrogen-supply-organ, fig.cap='The plant nitrogen supply for all organs'}
+
 y_cols <- sprintf('Wheat.%s.NSupply.Total', g_organs)
 g_report %>% 
     plot_report(g_xvar, y_cols, ncol = 5,
                 y_labels = g_organs,
-                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
+                x_lab = g_xlab, 
+                y_lab = expression(atop('Nitrogen supply', 
+                                        '(g N'~m^-2~' ground'~d^-1~')')))
 ```
 </div>
 
@@ -82,10 +92,55 @@ g_report %>%
 <div class="fig-output">
 ```{r nitrogen-supply-component, fig.cap='The plant nitrogen supply for all components'}
 y_cols <- c('Wheat.NSupply.Fixation', 'Wheat.NSupply.Reallocation',
-            'Wheat.NSupply.Retranslocation')
+            'Wheat.NSupply.Retranslocation', 'Wheat.NSupply.Uptake')
 g_report %>% 
     plot_report(g_xvar, y_cols, ncol = 5,
-                x_lab = g_xlab, y_lab = 'Nitrogen supply (g/m2/d)')
+                x_lab = g_xlab,
+                y_lab = expression(atop('Nitrogen supply', 
+                                        '(g N'~m^-2~' ground'~d^-1~')')))
+
+```
+</div>
+
+## Nitrogen uptake {#ses:nitrogen-uptake}
+<!--
+Potential N uptake by the root system is calculated for each soil layer that the roots have extended into. In each layer potential uptake is calculated as the product of the mineral nitrogen in the layer, a factor controlling the rate of extraction (kNO3 or kNH4), the concentration of N form (ppm), and a soil moisture factor (NUptakeSWFactor) which typically decreases as the soil dries.  
+_NO3 uptake = NO3<sub>i</sub> x KNO3 x NO3<sub>ppm, i</sub> x NUptakeSWFactor_
+_NH4 uptake = NH4<sub>i</sub> x KNH4 x NH4<sub>ppm, i</sub> x NUptakeSWFactor_
+
+Nitrogen uptake demand is limited to the maximum daily potential uptake (MaxDailyNUptake) and the plants N demand. 
+    /// The demand for soil N is then passed to the soil arbitrator which determines how much of the N uptake demand
+    /// each plant instance will be allowed to take up.
+    ///
+-->
+<div class="fig-output">
+```{r root-nitrogen-uptake, fig.cap='The plant nitrogen uptake'}
+
+y_cols <- c('Wheat.Root.NUptake', 'Wheat.Root.NSupply.Uptake',
+            'Wheat.Root.NSupplyUptake', 'Wheat.Arbitrator.N.TotalUptakeSupply')
+g_report %>% 
+    plot_report(g_xvar2, y_cols, ncol = 5,
+                x_lab = g_xlab2,
+                y_lab = expression(atop('Nitrogen uptake', 
+                                        '(g N'~m^-2~' ground'~d^-1~')')))
+
+```
+</div>
+
+## Nitrogen dynamic {#sec:nitrogen-dynamic}
+
+
+<div class="fig-output">
+```{r root-nitrogen-dynamic, fig.cap='The plant nitrogen uptake'}
+
+y_cols <- c('Wheat.Total.N', paste0('Wheat.', g_organs, '.N'))
+g_report %>% 
+    plot_report(g_xvar2, y_cols, ncol = 5,
+                x_lab = g_xlab2,
+                y_labels = c('Total', g_organs),
+                y_lab = expression(atop('Nitrogen contents', 
+                                        '(g N'~m^-2~' ground'~d^-1~')')))
+
 ```
 </div>
 
