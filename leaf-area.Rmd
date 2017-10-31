@@ -79,7 +79,7 @@ plot_report_vector(g_report, g_xvar, y_cols,
 
 The potential leaf area is increased following a logistic equation as a function of thermal time after leaf appearance. The shape of logistic equation is determiend by parameter `LeafSizeShapeParameter` with default value `r get_fixed_value(g_pmf, 'Wheat.Leaf.CohortParameters.LeafSizeShapeParameter')` (Fig. \@ref(fig:leaf-size-function)). The daily potential increase of leaf area is the difference of size function in today and previous (e.g. the height of red area in Fig. \@ref(fig:leaf-size-function)).
 
-
+<div class="fig-input">
 ```{r leaf-size-function, fig.asp=0.5, fig.cap='The size function of leaf area development. The maximum leaf area sets as 2600 mm2'}
 
 TT <- seq(0, 100, by = 1)
@@ -107,7 +107,7 @@ ggplot(leaf_size) +
 
 ```
 
-
+</div>
 
 ### Water constrained leaf area {#sec:leaf-water-area}
 
@@ -272,14 +272,6 @@ g_report %>%
 y_cols <- c('Wheat.Leaf.SpecificArea')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = expression('Specific leaf area ('~mm^2~' leaf'~g^-1~' biomass)'))
-reprot2 <- g_report %>% 
-    mutate(Wheat.Leaf.SpecificAreaStructural = Wheat.Leaf.LAI / Wheat.Leaf.Live.StructuralWt)
-y_cols <- c('Wheat.Leaf.SpecificArea',
-            'Wheat.Leaf.SpecificAreaStructural')
-plot_report(reprot2, g_xvar2, y_cols, x_lab = g_xlab2,
-            y_lab = expression('Specific leaf area ('~mm^2~' leaf'~g^-1~' biomass)'),
-            ncol = 2,
-            y_labels = c('Total', 'Structural'))
 
 ```
 </div>

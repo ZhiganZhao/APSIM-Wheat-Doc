@@ -9,10 +9,10 @@ tryCatch({
     }
 
     bookdown::render_book('.', output_format = 'bookdown::gitbook')
-    # bookdown::render_book('.', output_format = 'bookdown::word_document2')
-    # bookdown::render_book('.', output_format = 'bookdown::pdf_book')
-    # bookdown::render_book('.', output_format = 'bookdown::epub_book')
-    # bookdown::calibre('_book/APSIM-Wheat.epub', '_book/APSIM-Wheat.mobi')
+    bookdown::render_book('.', output_format = 'bookdown::word_document2')
+    bookdown::render_book('.', output_format = 'bookdown::pdf_book')
+    bookdown::render_book('.', output_format = 'bookdown::epub_book')
+    bookdown::calibre('_book/APSIM-Wheat.epub', '_book/APSIM-Wheat.mobi')
 
 
     links <- list.files('_book', '*.html', full.names = TRUE)

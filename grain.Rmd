@@ -125,7 +125,7 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab,
 The total grain weight at harvest can be considered as the final yield without moisture content in the grain. The normal range of moisture content in the grain is 10-15% with 12% as standard
 
 <div class="fig-output">
-```{r grain-yield, fig.asp = 0.5, fig.cap='Final yield with different moisture content (t ha^-1^).'}
+```{r grain-yield, fig.asp = 0.5, fig.cap='Final yield with different moisture content.'}
 
 final_yield <- max(g_report$Wheat.GrainWt)
 mos <- seq(0, 15)
