@@ -20,6 +20,7 @@ rmd_files:
   - "water.Rmd"
   - "nitrogen.Rmd"
   - "variable.Rmd"
+  - "list.Rmd"
   - "reference.Rmd"
 
 

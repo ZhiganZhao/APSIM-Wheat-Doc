@@ -201,8 +201,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
 <li class="chapter" data-level="8.6" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html"><i class="fa fa-check"></i><b>8.6</b> Nitrogen</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.1</b> Nitrogen amount</a></li>
-<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.2</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.1</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-demand"><i class="fa fa-check"></i><b>8.6.2</b> Nitrogen demand</a></li>
+<li class="chapter" data-level="8.6.3" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.3</b> Nitrogen amount</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
@@ -229,11 +230,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="ses-nitrogen-uptake.html"><a href="ses-nitrogen-uptake.html"><i class="fa fa-check"></i><b>12.3</b> Nitrogen uptake</a></li>
 <li class="chapter" data-level="12.4" data-path="sec-nitrogen-dynamic.html"><a href="sec-nitrogen-dynamic.html"><i class="fa fa-check"></i><b>12.4</b> Nitrogen dynamic</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>13</b> Variable</a><ul>
-<li class="chapter" data-level="13.1" data-path="sec-variable-input.html"><a href="sec-variable-input.html"><i class="fa fa-check"></i><b>13.1</b> Input</a></li>
-<li class="chapter" data-level="13.2" data-path="sec-variable-output.html"><a href="sec-variable-output.html"><i class="fa fa-check"></i><b>13.2</b> Output</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>14</b> Reference</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>A</b> Variable</a></li>
+<li class="chapter" data-level="B" data-path="cha-list.html"><a href="cha-list.html"><i class="fa fa-check"></i><b>B</b> Figures and Tables</a></li>
+<li class="chapter" data-level="C" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>C</b> Reference</a></li>
 <li class="divider"></li>
 <li><a href="https://apsim-wheat-sens.bangyou.me" target="blank">Sensitivity analysis</a></li>
 <li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
@@ -263,7 +263,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">5.3.1</span> Growth respiration (Conversion efficiency))</h3>
 <p>The allocated biomass of an organ losses through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).</p>
 <table>
-<caption><span id="tab:biomass-conversion-efficiency">Table 5.3: </span>Biomass conversion efficiency for all organs.</caption>
+<caption><span id="tab:biomass-conversion-efficiency">Table 5.4: </span>Biomass conversion efficiency for all organs.</caption>
 <thead>
 <tr class="header">
 <th align="left">Organ</th>
@@ -297,16 +297,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="figure" style="text-align: center"><span id="fig:biomass-growth-respiration"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-growth-respiration-1.png" alt="Growth respiration for all organs" width="80%" />
 <p class="caption">
-Figure 5.9: Growth respiration for all organs
+Figure 5.10: Growth respiration for all organs
 </p>
 </div>
 </div>
 </div>
 <div id="maintenance-respiration" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Maintenance respiration</h3>
-<p>The maintenance respiration is required for metabolic and storage components (Table <a href="sec-biomass-demand.html#tab:biomass-component-type">5.2</a>). The metabolic and storage components of <code>Live</code> pool is daily reduced according to a fraction which is used for maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.11</a>). The maintenance fraction is calculated as reference maintenance fraction at 20 C and a beta function <span class="citation">(Wang and Engel <a href="cha-reference.html#ref-WangSimulationphenologicaldevelopment1998">1998</a>)</span> with three cardinal temperatures (i.e. minimum, optimal and maximum temperatures). All organs have the same cardinal temperatures, but different maintenance fraction at 20C (Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.4</a>). Finally, the actual maintenance fraction depends on the daily mean temperature (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.11</a>. <code>Leaf</code> and <code>Stem</code> have the major contributions to maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.12</a>). Root and Grain don’t have maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.12</a>).</p>
+<p>The maintenance respiration is required for metabolic and storage components (Table <a href="sec-biomass-demand.html#tab:biomass-component-type">5.3</a>). The metabolic and storage components of <code>Live</code> pool is daily reduced according to a fraction which is used for maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.12</a>). The maintenance fraction is calculated as reference maintenance fraction at 20 C and a beta function <span class="citation">(Wang and Engel <a href="cha-reference.html#ref-WangSimulationphenologicaldevelopment1998">1998</a>)</span> with three cardinal temperatures (i.e. minimum, optimal and maximum temperatures). All organs have the same cardinal temperatures, but different maintenance fraction at 20C (Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.5</a>). Finally, the actual maintenance fraction depends on the daily mean temperature (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.12</a>. <code>Leaf</code> and <code>Stem</code> have the major contributions to maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.13</a>). Root and Grain don’t have maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.13</a>).</p>
 <table>
-<caption><span id="tab:biomass-wefuncton">Table 5.4: </span>The parameter values of maintenance fractions for all organs. <span class="math inline">\(T_{min}\)</span>, <span class="math inline">\(T_{opt}\)</span> and <span class="math inline">\(T_{max}\)</span> are the minimum, optimum and maximum temperatures in the Wang and Engle’s beta equation. The <span class="math inline">\(W\)</span> is the weighting of maximum temperature when calculats daily mean temperature. The <span class="math inline">\(T_{ref}\)</span> and <span class="math inline">\(M_{20}\)</span> are the reference temperature and fraction of maintenance fractions at reference temperature.</caption>
+<caption><span id="tab:biomass-wefuncton">Table 5.5: </span>The parameter values of maintenance fractions for all organs. <span class="math inline">\(T_{min}\)</span>, <span class="math inline">\(T_{opt}\)</span> and <span class="math inline">\(T_{max}\)</span> are the minimum, optimum and maximum temperatures in the Wang and Engle’s beta equation. The <span class="math inline">\(W\)</span> is the weighting of maximum temperature when calculats daily mean temperature. The <span class="math inline">\(T_{ref}\)</span> and <span class="math inline">\(M_{20}\)</span> are the reference temperature and fraction of maintenance fractions at reference temperature.</caption>
 <thead>
 <tr class="header">
 <th align="left">Organ</th>
@@ -370,7 +370,7 @@ Figure 5.9: Growth respiration for all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-maintenance-respiration-beta"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-maintenance-respiration-beta-1.png" alt="The response of maintenance respiration on daily average temperature with a beta function [@WangSimulationphenologicaldevelopment1998]." width="80%" />
 <p class="caption">
-Figure 5.10: The response of maintenance respiration on daily average temperature with a beta function <span class="citation">(Wang and Engel <a href="cha-reference.html#ref-WangSimulationphenologicaldevelopment1998">1998</a>)</span>.
+Figure 5.11: The response of maintenance respiration on daily average temperature with a beta function <span class="citation">(Wang and Engel <a href="cha-reference.html#ref-WangSimulationphenologicaldevelopment1998">1998</a>)</span>.
 </p>
 </div>
 </div>
@@ -378,7 +378,7 @@ Figure 5.10: The response of maintenance respiration on daily average temperatur
 <div class="figure" style="text-align: center"><span id="fig:biomass-maintenance-respiration-fraction"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-maintenance-respiration-fraction-1.png" alt="Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain)." width="80%" />
 <p class="caption">
-Figure 5.11: Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).
+Figure 5.12: Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).
 </p>
 </div>
 </div>
@@ -386,7 +386,7 @@ Figure 5.11: Daily fraction of maintenance respiration for all organs. The maint
 <div class="figure" style="text-align: center"><span id="fig:biomass-maintenance-respiration"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-maintenance-respiration-1.png" alt="Daily maintenance respiration for all organs." width="80%" />
 <p class="caption">
-Figure 5.12: Daily maintenance respiration for all organs.
+Figure 5.13: Daily maintenance respiration for all organs.
 </p>
 </div>
 </div>

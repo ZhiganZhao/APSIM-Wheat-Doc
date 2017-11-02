@@ -1,5 +1,65 @@
 ## Nitrogen {#sec:leaf-nigrogen}
 
+### Functional nitrogen
+
+Ratio of leaf functional nitrogen ($f_{N,\,leaf}$) quantifys the nitrogen stress status of the plant and represents the concentration of metabolic N relative the maximum potentil metabolic N content of the leaf.
+
+
+$$
+f_{N,\,leaf}=C_{leaf} / (\frac{C_{critical,\,leaf}-C_{min,\,leaf} \times S_{leaf}}{1-S_{leaf}})
+$$
+
+where $C_{N}$ is the nitrogen concentration of `Leaf` parts; $R_{N,\,expan}$ is multiplier for nitrogen deficit effect on phenology which is specified by `N_fact_photo` in the wheat.xml and default value is 1.5.
+
+double functionalNConc = (CohortParameters.CriticalNConc.Value() -
+                                          CohortParameters.MinimumNConc.Value() * CohortParameters.StructuralFraction.Value()) *
+                                         (1 / (1 - CohortParameters.StructuralFraction.Value()));
+                
+
+
+<div class="fig-input">
+```{r leaf-nconc, fig.asp = 1, fig.cap='Minimum, critical and maximum nitrogen concentration in leaf.'}
+y_cols <- c('Wheat.Leaf.CohortParameters.MinimumNConc',
+'Wheat.Leaf.CohortParameters.CriticalNConc',
+'Wheat.Leaf.CohortParameters.MaximumNConc')
+y_labels <- c('Minimum', 'Critical', 'Maximum')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+        y_lab = expression('Nitrogen concentration (g N'~g^-1~' leaf)'), 
+        ncol = 3,
+        y_labels = y_labels)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r leaf-nitrogen-functional-n, fig.asp=0.5, fig.cap='Ratio of functional nitrogen'}
+y_cols <- c('Wheat.Leaf.Fn')
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = 'Ratio of functional nitrogen[-]')
+
+```
+</div>
+
+
+
+
+
+### Nitrogen demand
+
+
+<div class="fig-output">
+```{r leaf-nitrogen-demand, fig.asp=1, fig.cap='Nitrogen demand of leaf.'}
+y_cols <- c('Wheat.Leaf.NDemand.Total',
+            'Wheat.Leaf.NDemand.Structural', 
+            'Wheat.Leaf.NDemand.Metabolic', 
+            'Wheat.Leaf.NDemand.Storage')
+plot_report(g_report, g_xvar, 
+            y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen demand (g N ' ~m^-2~'ground)'),
+            ncol = 4)
+```
+</div>
 
 
 
@@ -92,48 +152,6 @@ plot_report(g_report, g_xvar,
 ```
 </div>
 
-
-
-### Functional nitrogen
-
-Ratio of leaf functional nitrogen ($f_{N,\,leaf}$) quantifys the nitrogen stress status of the plant and represents the concentration of metabolic N relative the maximum potentil metabolic N content of the leaf.
-
-
-$$
-f_{N,\,leaf}=C_{leaf} / (\frac{C_{critical,\,leaf}-C_{min,\,leaf} \times S_{leaf}}{1-S_{leaf}})
-$$
-
-where $C_{N}$ is the nitrogen concentration of `Leaf` parts; $R_{N,\,expan}$ is multiplier for nitrogen deficit effect on phenology which is specified by `N_fact_photo` in the wheat.xml and default value is 1.5.
-
-double functionalNConc = (CohortParameters.CriticalNConc.Value() -
-                                          CohortParameters.MinimumNConc.Value() * CohortParameters.StructuralFraction.Value()) *
-                                         (1 / (1 - CohortParameters.StructuralFraction.Value()));
-                
-
-
-<div class="fig-input">
-```{r leaf-nconc, fig.asp = 1, fig.cap='Minimum, critical and maximum nitrogen concentration in leaf.'}
-y_cols <- c('Wheat.Leaf.CohortParameters.MinimumNConc',
-'Wheat.Leaf.CohortParameters.CriticalNConc',
-'Wheat.Leaf.CohortParameters.MaximumNConc')
-y_labels <- c('Minimum', 'Critical', 'Maximum')
-plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-        y_lab = expression('Nitrogen concentration (g N'~g^-1~' leaf)'), 
-        ncol = 3,
-        y_labels = y_labels)
-
-```
-</div>
-
-
-<div class="fig-output">
-```{r leaf-nitrogen-functional-n, fig.asp=0.5, fig.cap='Ratio of functional nitrogen'}
-y_cols <- c('Wheat.Leaf.Fn')
-plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
-            y_lab = 'Ratio of functional nitrogen[-]')
-
-```
-</div>
 
 
 

@@ -431,6 +431,12 @@
         <string>[Wheat].Stem.DMSupply.Reallocation</string>
         <string>[Wheat].Stem.Wt as Wheat.StemWt</string>
         <string />
+        <string>[Wheat].Stem.DMSupply.Fixation + [Wheat].Stem.DMSupply.Retranslocation + [Wheat].Stem.DMSupply.Reallocation as Wheat.DMSupply.Stem</string>
+        <string>[Wheat].Grain.DMSupply.Fixation + [Wheat].Grain.DMSupply.Retranslocation + [Wheat].Grain.DMSupply.Reallocation as Wheat.DMSupply.Grain</string>
+        <string>[Wheat].Leaf.DMSupply.Fixation + [Wheat].Leaf.DMSupply.Retranslocation + [Wheat].Leaf.DMSupply.Reallocation as Wheat.DMSupply.Leaf</string>
+        <string>[Wheat].Root.DMSupply.Fixation + [Wheat].Root.DMSupply.Retranslocation + [Wheat].Root.DMSupply.Reallocation as Wheat.DMSupply.Root</string>
+        <string>[Wheat].Spike.DMSupply.Fixation + [Wheat].Spike.DMSupply.Retranslocation + [Wheat].Spike.DMSupply.Reallocation as Wheat.DMSupply.Spike</string>
+        <string />
         <string />
         <string />
         <string />
@@ -490,6 +496,9 @@
         <string />
         <string />
         <string>[Wheat].Grain.DMSupply.Fixation + [Wheat].Root.DMSupply.Fixation + [Wheat].Leaf.DMSupply.Fixation + [Wheat].Spike.DMSupply.Fixation + [Wheat].Stem.DMSupply.Fixation +  [Wheat].Grain.DMSupply.Retranslocation + [Wheat].Root.DMSupply.Retranslocation + [Wheat].Leaf.DMSupply.Retranslocation + [Wheat].Spike.DMSupply.Retranslocation + [Wheat].Stem.DMSupply.Retranslocation + [Wheat].Grain.DMSupply.Reallocation + [Wheat].Root.DMSupply.Reallocation + [Wheat].Leaf.DMSupply.Reallocation + [Wheat].Spike.DMSupply.Reallocation + [Wheat].Stem.DMSupply.Reallocation as Wheat.DMSupply</string>
+        <string>[Wheat].Grain.DMSupply.Fixation + [Wheat].Root.DMSupply.Fixation + [Wheat].Leaf.DMSupply.Fixation + [Wheat].Spike.DMSupply.Fixation + [Wheat].Stem.DMSupply.Fixation as Wheat.DMSupply.Fixation</string>
+        <string>[Wheat].Grain.DMSupply.Reallocation + [Wheat].Root.DMSupply.Reallocation + [Wheat].Leaf.DMSupply.Reallocation + [Wheat].Spike.DMSupply.Reallocation + [Wheat].Stem.DMSupply.Reallocation as Wheat.DMSupply.Reallocation</string>
+        <string>[Wheat].Grain.DMSupply.Retranslocation + [Wheat].Root.DMSupply.Retranslocation + [Wheat].Leaf.DMSupply.Retranslocation + [Wheat].Spike.DMSupply.Retranslocation + [Wheat].Stem.DMSupply.Retranslocation as Wheat.DMSupply.Retranslocation</string>
         <string>[Wheat].Root.DMDemand.Structural + [Wheat].Root.DMDemand.Storage + [Wheat].Root.DMDemand.Metabolic + [Wheat].Grain.DMDemand.Structural + [Wheat].Grain.DMDemand.Storage + [Wheat].Grain.DMDemand.Metabolic + [Wheat].Spike.DMDemand.Structural + [Wheat].Spike.DMDemand.Storage + [Wheat].Spike.DMDemand.Metabolic + [Wheat].Stem.DMDemand.Structural + [Wheat].Stem.DMDemand.Storage + [Wheat].Stem.DMDemand.Metabolic + [Wheat].Leaf.DMDemand.Structural + [Wheat].Leaf.DMDemand.Storage + [Wheat].Leaf.DMDemand.Metabolic as Wheat.DMDemand</string>
         <string>[Wheat].Root.DMDemand.Structural + [Wheat].Grain.DMDemand.Structural + [Wheat].Spike.DMDemand.Structural + [Wheat].Stem.DMDemand.Structural + [Wheat].Leaf.DMDemand.Structural as Wheat.DMDemand.Structural</string>
         <string>[Wheat].Root.DMDemand.Metabolic + [Wheat].Grain.DMDemand.Metabolic + [Wheat].Spike.DMDemand.Metabolic + [Wheat].Stem.DMDemand.Metabolic + [Wheat].Leaf.DMDemand.Metabolic as Wheat.DMDemand.Metabolic</string>

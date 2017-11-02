@@ -201,8 +201,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
 <li class="chapter" data-level="8.6" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html"><i class="fa fa-check"></i><b>8.6</b> Nitrogen</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.1</b> Nitrogen amount</a></li>
-<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.2</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.1</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-demand"><i class="fa fa-check"></i><b>8.6.2</b> Nitrogen demand</a></li>
+<li class="chapter" data-level="8.6.3" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.3</b> Nitrogen amount</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
@@ -229,11 +230,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="ses-nitrogen-uptake.html"><a href="ses-nitrogen-uptake.html"><i class="fa fa-check"></i><b>12.3</b> Nitrogen uptake</a></li>
 <li class="chapter" data-level="12.4" data-path="sec-nitrogen-dynamic.html"><a href="sec-nitrogen-dynamic.html"><i class="fa fa-check"></i><b>12.4</b> Nitrogen dynamic</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>13</b> Variable</a><ul>
-<li class="chapter" data-level="13.1" data-path="sec-variable-input.html"><a href="sec-variable-input.html"><i class="fa fa-check"></i><b>13.1</b> Input</a></li>
-<li class="chapter" data-level="13.2" data-path="sec-variable-output.html"><a href="sec-variable-output.html"><i class="fa fa-check"></i><b>13.2</b> Output</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>14</b> Reference</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>A</b> Variable</a></li>
+<li class="chapter" data-level="B" data-path="cha-list.html"><a href="cha-list.html"><i class="fa fa-check"></i><b>B</b> Figures and Tables</a></li>
+<li class="chapter" data-level="C" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>C</b> Reference</a></li>
 <li class="divider"></li>
 <li><a href="https://apsim-wheat-sens.bangyou.me" target="blank">Sensitivity analysis</a></li>
 <li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
@@ -302,11 +302,50 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 </tbody>
 </table>
+<table>
+<caption><span id="tab:biomass-supply-fig-infor">Table 5.2: </span>Figures about biomass supply.</caption>
+<thead>
+<tr class="header">
+<th align="left">Figure</th>
+<th align="center">Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Total supply by components</td>
+<td align="center">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-total">5.1</a></td>
+</tr>
+<tr class="even">
+<td align="left">Total supply by organs</td>
+<td align="center">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-organ">5.2</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Fixation by organs</td>
+<td align="center">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-fixation">5.3</a></td>
+</tr>
+<tr class="even">
+<td align="left">Retranslocation by organs</td>
+<td align="center">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-retranslocation">5.4</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Reallocation by organs</td>
+<td align="center">Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-reallocation">5.5</a></td>
+</tr>
+</tbody>
+</table>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:biomass-supply-total"></span>
-<img src="APSIM-Wheat_files/figure-html/biomass-supply-total-1.png" alt="Biomass total supply from all organs" width="80%" />
+<img src="APSIM-Wheat_files/figure-html/biomass-supply-total-1.png" alt="Biomass total supply by components" width="80%" />
 <p class="caption">
-Figure 5.1: Biomass total supply from all organs
+Figure 5.1: Biomass total supply by components
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:biomass-supply-organ"></span>
+<img src="APSIM-Wheat_files/figure-html/biomass-supply-organ-1.png" alt="Biomass total supply by organs" width="80%" />
+<p class="caption">
+Figure 5.2: Biomass total supply by organs
 </p>
 </div>
 </div>
@@ -314,7 +353,7 @@ Figure 5.1: Biomass total supply from all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-supply-fixation"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-supply-fixation-1.png" alt="Biomass fixation from all organs" width="80%" />
 <p class="caption">
-Figure 5.2: Biomass fixation from all organs
+Figure 5.3: Biomass fixation from all organs
 </p>
 </div>
 </div>
@@ -322,7 +361,7 @@ Figure 5.2: Biomass fixation from all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-supply-retranslocation"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-supply-retranslocation-1.png" alt="Biomass retranslocation from all organs" width="80%" />
 <p class="caption">
-Figure 5.3: Biomass retranslocation from all organs
+Figure 5.4: Biomass retranslocation from all organs
 </p>
 </div>
 </div>
@@ -330,7 +369,7 @@ Figure 5.3: Biomass retranslocation from all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-supply-reallocation"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-supply-reallocation-1.png" alt="Biomass reallocation from all organs" width="80%" />
 <p class="caption">
-Figure 5.4: Biomass reallocation from all organs
+Figure 5.5: Biomass reallocation from all organs
 </p>
 </div>
 </div>

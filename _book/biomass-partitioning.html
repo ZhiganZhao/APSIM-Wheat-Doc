@@ -201,8 +201,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
 <li class="chapter" data-level="8.6" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html"><i class="fa fa-check"></i><b>8.6</b> Nitrogen</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.1</b> Nitrogen amount</a></li>
-<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.2</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.1</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-demand"><i class="fa fa-check"></i><b>8.6.2</b> Nitrogen demand</a></li>
+<li class="chapter" data-level="8.6.3" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.3</b> Nitrogen amount</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
@@ -229,11 +230,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="ses-nitrogen-uptake.html"><a href="ses-nitrogen-uptake.html"><i class="fa fa-check"></i><b>12.3</b> Nitrogen uptake</a></li>
 <li class="chapter" data-level="12.4" data-path="sec-nitrogen-dynamic.html"><a href="sec-nitrogen-dynamic.html"><i class="fa fa-check"></i><b>12.4</b> Nitrogen dynamic</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>13</b> Variable</a><ul>
-<li class="chapter" data-level="13.1" data-path="sec-variable-input.html"><a href="sec-variable-input.html"><i class="fa fa-check"></i><b>13.1</b> Input</a></li>
-<li class="chapter" data-level="13.2" data-path="sec-variable-output.html"><a href="sec-variable-output.html"><i class="fa fa-check"></i><b>13.2</b> Output</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>14</b> Reference</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>A</b> Variable</a></li>
+<li class="chapter" data-level="B" data-path="cha-list.html"><a href="cha-list.html"><i class="fa fa-check"></i><b>B</b> Figures and Tables</a></li>
+<li class="chapter" data-level="C" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>C</b> Reference</a></li>
 <li class="divider"></li>
 <li><a href="https://apsim-wheat-sens.bangyou.me" target="blank">Sensitivity analysis</a></li>
 <li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
@@ -259,12 +259,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="biomass-partitioning" class="section level2">
 <h2><span class="header-section-number">5.4</span> Biomass partitioning</h2>
 <p>The biomass partitions into structural and metabolic components firstly according to the relative demands. The remaining biomass allocates into storage according to the relative demands. The greatest storage demand of stem can store all remaining daily supply.</p>
-<p>The daily supply is distributed into <code>Structural</code> and <code>Metabolic</code> components, then <code>Storage</code> component. The daily demand cannot be satisfied if the structural and metabolic demands are more than daily supply, then the allocated biomasses of all organs are proportionally reduced to match daily supply (Fig. <a href="biomass-partitioning.html#fig:biomass-supply-demand-str-met">5.13</a>). The extra daily supply is distributed into storage, i.e. <code>Stem</code> for wheat model, as the extreme higher storage demand for stem (Fig. <a href="biomass-partitioning.html#fig:biomass-supply-demand-sto">5.14</a>).</p>
+<p>The daily supply is distributed into <code>Structural</code> and <code>Metabolic</code> components, then <code>Storage</code> component. The daily demand cannot be satisfied if the structural and metabolic demands are more than daily supply, then the allocated biomasses of all organs are proportionally reduced to match daily supply (Fig. <a href="biomass-partitioning.html#fig:biomass-supply-demand-str-met">5.14</a>). The extra daily supply is distributed into storage, i.e. <code>Stem</code> for wheat model, as the extreme higher storage demand for stem (Fig. <a href="biomass-partitioning.html#fig:biomass-supply-demand-sto">5.15</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:biomass-supply-demand-str-met"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-supply-demand-str-met-1.png" alt="Daily biomass supply, and structural and metabolic demands for all organs." width="80%" />
 <p class="caption">
-Figure 5.13: Daily biomass supply, and structural and metabolic demands for all organs.
+Figure 5.14: Daily biomass supply, and structural and metabolic demands for all organs.
 </p>
 </div>
 </div>
@@ -272,16 +272,16 @@ Figure 5.13: Daily biomass supply, and structural and metabolic demands for all 
 <div class="figure" style="text-align: center"><span id="fig:biomass-supply-demand-sto"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-supply-demand-sto-1.png" alt="Daily biomass supply and storage demand for all organs" width="80%" />
 <p class="caption">
-Figure 5.14: Daily biomass supply and storage demand for all organs
+Figure 5.15: Daily biomass supply and storage demand for all organs
 </p>
 </div>
 </div>
-<p>The actual allocated biomass for each organ depends on the daily supply, relative structural and metabolic demand, and storage demands among all organs (Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-structural">5.15</a>, <a href="biomass-partitioning.html#fig:biomass-allocated-metabolic">5.16</a> and <a href="biomass-partitioning.html#fig:biomass-allocated-storage">5.17</a>).</p>
+<p>The actual allocated biomass for each organ depends on the daily supply, relative structural and metabolic demand, and storage demands among all organs (Fig. <a href="biomass-partitioning.html#fig:biomass-allocated-structural">5.16</a>, <a href="biomass-partitioning.html#fig:biomass-allocated-metabolic">5.17</a> and <a href="biomass-partitioning.html#fig:biomass-allocated-storage">5.18</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:biomass-allocated-structural"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-allocated-structural-1.png" alt="Biomass structural allocation from all organs" width="80%" />
 <p class="caption">
-Figure 5.15: Biomass structural allocation from all organs
+Figure 5.16: Biomass structural allocation from all organs
 </p>
 </div>
 </div>
@@ -289,7 +289,7 @@ Figure 5.15: Biomass structural allocation from all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-allocated-metabolic"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-allocated-metabolic-1.png" alt="Biomass metabolic allocation from all organs" width="80%" />
 <p class="caption">
-Figure 5.16: Biomass metabolic allocation from all organs
+Figure 5.17: Biomass metabolic allocation from all organs
 </p>
 </div>
 </div>
@@ -297,16 +297,16 @@ Figure 5.16: Biomass metabolic allocation from all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-allocated-storage"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-allocated-storage-1.png" alt="Biomass storage allocation from all organs" width="80%" />
 <p class="caption">
-Figure 5.17: Biomass storage allocation from all organs
+Figure 5.18: Biomass storage allocation from all organs
 </p>
 </div>
 </div>
-<p>The daily biomass supply (Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-total">5.1</a>) are consumed as growth respiration before partitioning into <code>Live</code> pool in each organ, and consumed as daily maintenance respiration from <code>Live</code> pool in each organ (Fig. <a href="biomass-partitioning.html#fig:biomass-denstiny">5.18</a>).</p>
+<p>The daily biomass supply (Fig. <a href="sec-biomass-supply.html#fig:biomass-supply-total">5.1</a>) are consumed as growth respiration before partitioning into <code>Live</code> pool in each organ, and consumed as daily maintenance respiration from <code>Live</code> pool in each organ (Fig. <a href="biomass-partitioning.html#fig:biomass-denstiny">5.19</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:biomass-denstiny"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-denstiny-1.png" alt="Daily biomass supply and respiration." width="80%" />
 <p class="caption">
-Figure 5.18: Daily biomass supply and respiration.
+Figure 5.19: Daily biomass supply and respiration.
 </p>
 </div>
 </div>

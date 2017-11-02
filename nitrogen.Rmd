@@ -116,14 +116,15 @@ Nitrogen uptake demand is limited to the maximum daily potential uptake (MaxDail
 <div class="fig-output">
 ```{r root-nitrogen-uptake, fig.cap='The plant nitrogen uptake'}
 
+
 y_cols <- c('Wheat.Root.NUptake', 'Wheat.Root.NSupply.Uptake',
             'Wheat.Root.NSupplyUptake', 'Wheat.Arbitrator.N.TotalUptakeSupply')
 g_report %>% 
+    mutate(Wheat.Root.NUptake = Wheat.Root.NUptake * -0.1) %>% 
     plot_report(g_xvar2, y_cols, ncol = 5,
                 x_lab = g_xlab2,
                 y_lab = expression(atop('Nitrogen uptake', 
                                         '(g N'~m^-2~' ground'~d^-1~')')))
-
 ```
 </div>
 
@@ -133,13 +134,13 @@ g_report %>%
 <div class="fig-output">
 ```{r root-nitrogen-dynamic, fig.cap='The plant nitrogen uptake'}
 
-y_cols <- c('Wheat.Total.N', paste0('Wheat.', g_organs, '.N'))
+y_cols <- c(paste0('Wheat.', g_organs, '.N'), 'Wheat.Total.N')
 g_report %>% 
-    plot_report(g_xvar2, y_cols, ncol = 5,
-                x_lab = g_xlab2,
-                y_labels = c('Total', g_organs),
+    plot_report(g_xvar, y_cols, ncol = 6,
+                x_lab = g_xlab,
+                y_labels = c(g_organs, 'Total'),
                 y_lab = expression(atop('Nitrogen contents', 
-                                        '(g N'~m^-2~' ground'~d^-1~')')))
+                                        '(g N'~m^-2~' ground)')))
 
 ```
 </div>

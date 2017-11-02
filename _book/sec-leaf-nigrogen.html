@@ -201,8 +201,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
 <li class="chapter" data-level="8.6" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html"><i class="fa fa-check"></i><b>8.6</b> Nitrogen</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.1</b> Nitrogen amount</a></li>
-<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.2</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.1</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-demand"><i class="fa fa-check"></i><b>8.6.2</b> Nitrogen demand</a></li>
+<li class="chapter" data-level="8.6.3" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.3</b> Nitrogen amount</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
@@ -229,11 +230,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="ses-nitrogen-uptake.html"><a href="ses-nitrogen-uptake.html"><i class="fa fa-check"></i><b>12.3</b> Nitrogen uptake</a></li>
 <li class="chapter" data-level="12.4" data-path="sec-nitrogen-dynamic.html"><a href="sec-nitrogen-dynamic.html"><i class="fa fa-check"></i><b>12.4</b> Nitrogen dynamic</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>13</b> Variable</a><ul>
-<li class="chapter" data-level="13.1" data-path="sec-variable-input.html"><a href="sec-variable-input.html"><i class="fa fa-check"></i><b>13.1</b> Input</a></li>
-<li class="chapter" data-level="13.2" data-path="sec-variable-output.html"><a href="sec-variable-output.html"><i class="fa fa-check"></i><b>13.2</b> Output</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>14</b> Reference</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>A</b> Variable</a></li>
+<li class="chapter" data-level="B" data-path="cha-list.html"><a href="cha-list.html"><i class="fa fa-check"></i><b>B</b> Figures and Tables</a></li>
+<li class="chapter" data-level="C" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>C</b> Reference</a></li>
 <li class="divider"></li>
 <li><a href="https://apsim-wheat-sens.bangyou.me" target="blank">Sensitivity analysis</a></li>
 <li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
@@ -258,59 +258,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="sec:leaf-nigrogen" class="section level2">
 <h2><span class="header-section-number">8.6</span> Nitrogen</h2>
-<div id="nitrogen-amount" class="section level3">
-<h3><span class="header-section-number">8.6.1</span> Nitrogen amount</h3>
-<div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-content"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-content-1.png" alt="Nitrogen contents in live and dead pools of leaf." width="80%" />
-<p class="caption">
-Figure 8.33: Nitrogen contents in live and dead pools of leaf.
-</p>
-</div>
-</div>
-<div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-content-component-live"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-content-component-live-1.png" alt="Nitrogen contents of three components in live pool of leaf." width="80%" />
-<p class="caption">
-Figure 8.34: Nitrogen contents of three components in live pool of leaf.
-</p>
-</div>
-</div>
-<div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-content-component-dead"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-content-component-dead-1.png" alt="Nitrogen contents of three components in dead pool of leaf." width="80%" />
-<p class="caption">
-Figure 8.35: Nitrogen contents of three components in dead pool of leaf.
-</p>
-</div>
-</div>
-<div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-concentration"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-concentration-1.png" alt="Nitrogen concentration in live and dead pools of leaf." width="80%" />
-<p class="caption">
-Figure 8.36: Nitrogen concentration in live and dead pools of leaf.
-</p>
-</div>
-</div>
-<div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-concentration-component-live"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-concentration-component-live-1.png" alt="Nitrogen concentration of three components in live pool of leaf." width="80%" />
-<p class="caption">
-Figure 8.37: Nitrogen concentration of three components in live pool of leaf.
-</p>
-</div>
-</div>
-<div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-concentration-component-dead"></span>
-<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-concentration-component-dead-1.png" alt="Nitrogen concentration of three components in dead pool of leaf." width="80%" />
-<p class="caption">
-Figure 8.38: Nitrogen concentration of three components in dead pool of leaf.
-</p>
-</div>
-</div>
-</div>
 <div id="functional-nitrogen" class="section level3">
-<h3><span class="header-section-number">8.6.2</span> Functional nitrogen</h3>
+<h3><span class="header-section-number">8.6.1</span> Functional nitrogen</h3>
 <p>Ratio of leaf functional nitrogen (<span class="math inline">\(f_{N,\,leaf}\)</span>) quantifys the nitrogen stress status of the plant and represents the concentration of metabolic N relative the maximum potentil metabolic N content of the leaf.</p>
 <p><span class="math display">\[
 f_{N,\,leaf}=C_{leaf} / (\frac{C_{critical,\,leaf}-C_{min,\,leaf} \times S_{leaf}}{1-S_{leaf}})
@@ -321,7 +270,7 @@ f_{N,\,leaf}=C_{leaf} / (\frac{C_{critical,\,leaf}-C_{min,\,leaf} \times S_{leaf
 <div class="figure" style="text-align: center"><span id="fig:leaf-nconc"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-nconc-1.png" alt="Minimum, critical and maximum nitrogen concentration in leaf." width="80%" />
 <p class="caption">
-Figure 8.39: Minimum, critical and maximum nitrogen concentration in leaf.
+Figure 8.33: Minimum, critical and maximum nitrogen concentration in leaf.
 </p>
 </div>
 </div>
@@ -329,7 +278,69 @@ Figure 8.39: Minimum, critical and maximum nitrogen concentration in leaf.
 <div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-functional-n"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-functional-n-1.png" alt="Ratio of functional nitrogen" width="80%" />
 <p class="caption">
-Figure 8.40: Ratio of functional nitrogen
+Figure 8.34: Ratio of functional nitrogen
+</p>
+</div>
+</div>
+</div>
+<div id="nitrogen-demand" class="section level3">
+<h3><span class="header-section-number">8.6.2</span> Nitrogen demand</h3>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-demand"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-demand-1.png" alt="Nitrogen demand of leaf." width="80%" />
+<p class="caption">
+Figure 8.35: Nitrogen demand of leaf.
+</p>
+</div>
+</div>
+</div>
+<div id="nitrogen-amount" class="section level3">
+<h3><span class="header-section-number">8.6.3</span> Nitrogen amount</h3>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-content"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-content-1.png" alt="Nitrogen contents in live and dead pools of leaf." width="80%" />
+<p class="caption">
+Figure 8.36: Nitrogen contents in live and dead pools of leaf.
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-content-component-live"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-content-component-live-1.png" alt="Nitrogen contents of three components in live pool of leaf." width="80%" />
+<p class="caption">
+Figure 8.37: Nitrogen contents of three components in live pool of leaf.
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-content-component-dead"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-content-component-dead-1.png" alt="Nitrogen contents of three components in dead pool of leaf." width="80%" />
+<p class="caption">
+Figure 8.38: Nitrogen contents of three components in dead pool of leaf.
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-concentration"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-concentration-1.png" alt="Nitrogen concentration in live and dead pools of leaf." width="80%" />
+<p class="caption">
+Figure 8.39: Nitrogen concentration in live and dead pools of leaf.
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-concentration-component-live"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-concentration-component-live-1.png" alt="Nitrogen concentration of three components in live pool of leaf." width="80%" />
+<p class="caption">
+Figure 8.40: Nitrogen concentration of three components in live pool of leaf.
+</p>
+</div>
+</div>
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:leaf-nitrogen-concentration-component-dead"></span>
+<img src="APSIM-Wheat_files/figure-html/leaf-nitrogen-concentration-component-dead-1.png" alt="Nitrogen concentration of three components in dead pool of leaf." width="80%" />
+<p class="caption">
+Figure 8.41: Nitrogen concentration of three components in dead pool of leaf.
 </p>
 </div>
 </div>
@@ -337,7 +348,7 @@ Figure 8.40: Ratio of functional nitrogen
 <div class="figure" style="text-align: center"><span id="fig:leaf-sln"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-sln-1.png" alt="Specific leaf nitrogen" width="80%" />
 <p class="caption">
-Figure 8.41: Specific leaf nitrogen
+Figure 8.42: Specific leaf nitrogen
 </p>
 </div>
 </div>

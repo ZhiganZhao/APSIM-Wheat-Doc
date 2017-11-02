@@ -1,3 +1,5 @@
+# (APPENDIX) Appendix {-}
+
 # Variable {#cha:variable}
 
 The input and output variables are listed in this chapter and linked to the figures and tables.
@@ -47,7 +49,9 @@ chunk2ref <- function(chunks, chunk_label) {
 
 ```
 
-## Input {#sec:variable-input}
+<h2>Input  </h2>
+
+The input variables which are used in this documentation. The prefix of `Wheat.` is removed from all variables.
 
 ```{r variable-input, results='asis', cache=FALSE}
 # save(chunk_label, file = 'tmp.RData')
@@ -59,13 +63,15 @@ if (file.exists(rds_file)) {
     input_chunk <- readRDS(rds_file)
     chunk2ref(input_chunk, chunk_label) %>%
         rename(Input = Type) %>% 
-        knitr::kable(caption = 'The input variables which are used in this documentation. The prefix of `Wheat.` is removed from all variables.')
+        knitr::kable()
 }
 ```
 
 
 
-## Output {#sec:variable-output}
+<h2>Output </h2>
+
+The output variables which are used in this documentation. The prefix of `Wheat.` is removed from all variables.
 
 ```{r variable-output, results='asis', cache=FALSE}
 chunk_folder <- options('chunk_folder')[[1]]
@@ -74,7 +80,7 @@ if (file.exists(rds_file)) {
     output_chunk <- readRDS(rds_file)
     chunk2ref(output_chunk, chunk_label) %>%
         rename(Output = Type) %>% 
-        knitr::kable(caption = 'The output variables which are used in this documentation. The prefix of `Wheat.` is removed from all variables.')
+        knitr::kable()
 }
 ```
 

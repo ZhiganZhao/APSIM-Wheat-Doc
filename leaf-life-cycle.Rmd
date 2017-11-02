@@ -15,7 +15,7 @@ DiagrammeR("sequenceDiagram;
 	Senesced->>Detaching: DetachmentLagDuration
 	Detaching->>Detached: DetachmentDuration
     Initialized->Appeared: IsNotAppeared
-    Initialized->Expanded: IsGrowing
+    Appeared->Expanded: IsGrowing
 	Initialized->>Senesced: IsAlive
 	Initialized->>Senesced: IsGreen
 	Initialized->>Senescing: IsNotSenescing

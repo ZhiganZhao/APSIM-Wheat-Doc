@@ -201,8 +201,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
 <li class="chapter" data-level="8.6" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html"><i class="fa fa-check"></i><b>8.6</b> Nitrogen</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.1</b> Nitrogen amount</a></li>
-<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.2</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.1</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-demand"><i class="fa fa-check"></i><b>8.6.2</b> Nitrogen demand</a></li>
+<li class="chapter" data-level="8.6.3" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.3</b> Nitrogen amount</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
@@ -229,11 +230,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="ses-nitrogen-uptake.html"><a href="ses-nitrogen-uptake.html"><i class="fa fa-check"></i><b>12.3</b> Nitrogen uptake</a></li>
 <li class="chapter" data-level="12.4" data-path="sec-nitrogen-dynamic.html"><a href="sec-nitrogen-dynamic.html"><i class="fa fa-check"></i><b>12.4</b> Nitrogen dynamic</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>13</b> Variable</a><ul>
-<li class="chapter" data-level="13.1" data-path="sec-variable-input.html"><a href="sec-variable-input.html"><i class="fa fa-check"></i><b>13.1</b> Input</a></li>
-<li class="chapter" data-level="13.2" data-path="sec-variable-output.html"><a href="sec-variable-output.html"><i class="fa fa-check"></i><b>13.2</b> Output</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>14</b> Reference</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>A</b> Variable</a></li>
+<li class="chapter" data-level="B" data-path="cha-list.html"><a href="cha-list.html"><i class="fa fa-check"></i><b>B</b> Figures and Tables</a></li>
+<li class="chapter" data-level="C" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>C</b> Reference</a></li>
 <li class="divider"></li>
 <li><a href="https://apsim-wheat-sens.bangyou.me" target="blank">Sensitivity analysis</a></li>
 <li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
@@ -258,9 +258,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="sec:biomass-pool" class="section level2">
 <h2><span class="header-section-number">5.5</span> Biomass pool</h2>
-<p>All organs have the <code>Live</code> pool, but only <code>Leaf</code> has the <code>Dead</code> pool (Table <a href="sec-biomass-pool.html#tab:biomass-live-dead-tbl">5.5</a>).</p>
+<p>All organs have the <code>Live</code> pool, but only <code>Leaf</code> has the <code>Dead</code> pool (Table <a href="sec-biomass-pool.html#tab:biomass-live-dead-tbl">5.6</a>).</p>
 <table>
-<caption><span id="tab:biomass-live-dead-tbl">Table 5.5: </span>The live and dead groups of biomass in all organs. X and - indicate the organ has and has not the group, respectively.</caption>
+<caption><span id="tab:biomass-live-dead-tbl">Table 5.6: </span>The live and dead groups of biomass in all organs. X and - indicate the organ has and has not the group, respectively.</caption>
 <thead>
 <tr class="header">
 <th align="center">Organ</th>
@@ -300,7 +300,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="figure" style="text-align: center"><span id="fig:biomass-live-dead"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-live-dead-1.png" alt="Dry weight of Live and Dead pools" width="80%" />
 <p class="caption">
-Figure 5.19: Dry weight of Live and Dead pools
+Figure 5.20: Dry weight of Live and Dead pools
 </p>
 </div>
 </div>
@@ -308,7 +308,7 @@ Figure 5.19: Dry weight of Live and Dead pools
 <div class="figure" style="text-align: center"><span id="fig:biomass-live-weight"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-live-weight-1.png" alt="Dry weight of Live pool for all organs" width="80%" />
 <p class="caption">
-Figure 5.20: Dry weight of Live pool for all organs
+Figure 5.21: Dry weight of Live pool for all organs
 </p>
 </div>
 </div>
@@ -316,7 +316,7 @@ Figure 5.20: Dry weight of Live pool for all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-dead-weight"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-dead-weight-1.png" alt="Dry weight of Dead pool for all organs" width="80%" />
 <p class="caption">
-Figure 5.21: Dry weight of Dead pool for all organs
+Figure 5.22: Dry weight of Dead pool for all organs
 </p>
 </div>
 </div>

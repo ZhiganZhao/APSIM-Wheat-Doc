@@ -201,8 +201,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="sec-leaf-deman.html"><a href="sec-leaf-deman.html"><i class="fa fa-check"></i><b>8.4</b> Demand</a></li>
 <li class="chapter" data-level="8.5" data-path="sec-leaf-biomass.html"><a href="sec-leaf-biomass.html"><i class="fa fa-check"></i><b>8.5</b> Biomass dynamic</a></li>
 <li class="chapter" data-level="8.6" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html"><i class="fa fa-check"></i><b>8.6</b> Nitrogen</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.1</b> Nitrogen amount</a></li>
-<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.2</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.1" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#functional-nitrogen"><i class="fa fa-check"></i><b>8.6.1</b> Functional nitrogen</a></li>
+<li class="chapter" data-level="8.6.2" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-demand"><i class="fa fa-check"></i><b>8.6.2</b> Nitrogen demand</a></li>
+<li class="chapter" data-level="8.6.3" data-path="sec-leaf-nigrogen.html"><a href="sec-leaf-nigrogen.html#nitrogen-amount"><i class="fa fa-check"></i><b>8.6.3</b> Nitrogen amount</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cha-spike.html"><a href="cha-spike.html"><i class="fa fa-check"></i><b>9</b> Spike</a><ul>
@@ -229,11 +230,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="ses-nitrogen-uptake.html"><a href="ses-nitrogen-uptake.html"><i class="fa fa-check"></i><b>12.3</b> Nitrogen uptake</a></li>
 <li class="chapter" data-level="12.4" data-path="sec-nitrogen-dynamic.html"><a href="sec-nitrogen-dynamic.html"><i class="fa fa-check"></i><b>12.4</b> Nitrogen dynamic</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>13</b> Variable</a><ul>
-<li class="chapter" data-level="13.1" data-path="sec-variable-input.html"><a href="sec-variable-input.html"><i class="fa fa-check"></i><b>13.1</b> Input</a></li>
-<li class="chapter" data-level="13.2" data-path="sec-variable-output.html"><a href="sec-variable-output.html"><i class="fa fa-check"></i><b>13.2</b> Output</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>14</b> Reference</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="cha-variable.html"><a href="cha-variable.html"><i class="fa fa-check"></i><b>A</b> Variable</a></li>
+<li class="chapter" data-level="B" data-path="cha-list.html"><a href="cha-list.html"><i class="fa fa-check"></i><b>B</b> Figures and Tables</a></li>
+<li class="chapter" data-level="C" data-path="cha-reference.html"><a href="cha-reference.html"><i class="fa fa-check"></i><b>C</b> Reference</a></li>
 <li class="divider"></li>
 <li><a href="https://apsim-wheat-sens.bangyou.me" target="blank">Sensitivity analysis</a></li>
 <li><a href="http://www.apsim.info/" target="blank">APSIM</a></li>
@@ -279,7 +279,7 @@ Figure 8.7: Maximum leaf area by leaf rank
 </p>
 </div>
 </div>
-<p>The stress factor of cell division is the minimum multipliers of water stress and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-daily">8.8</a>). Multipliers of water stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-water">8.9</a>) is a function of water supply and demand ratio (Fig. <a href="cha-water.html#fig:water-supply-demand-ratio">11.1</a>). Multipliers of nitrogen stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-nitrogen">8.10</a>) is a function of ratio of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.40</a>).</p>
+<p>The stress factor of cell division is the minimum multipliers of water stress and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-daily">8.8</a>). Multipliers of water stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-water">8.9</a>) is a function of water supply and demand ratio (Fig. <a href="cha-water.html#fig:water-supply-demand-ratio">11.1</a>). Multipliers of nitrogen stress (Fig. <a href="sec-leaf-area.html#fig:leaf-cell-division-nitrogen">8.10</a>) is a function of ratio of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.34</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-cell-division-daily"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-cell-division-daily-1.png" alt="Daily stress of cell division" width="80%" />
@@ -328,7 +328,7 @@ Figure 8.12: The size function of leaf area development. The maximum leaf area s
 </div>
 <div id="sec:leaf-water-area" class="section level3">
 <h3><span class="header-section-number">8.2.3</span> Water constrained leaf area</h3>
-<p>The water constrained leaf area equals to the daily potential increase of leaf area which reduced by <code>ExpansionStress</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-daily">8.13</a>) which is a minimum value among temperature, water and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-stress">8.14</a>). Temperature stress is related with daily mean temperature; water stress is related with water tension factor in root; nitrogen stress related with fraction of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.40</a>).</p>
+<p>The water constrained leaf area equals to the daily potential increase of leaf area which reduced by <code>ExpansionStress</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-daily">8.13</a>) which is a minimum value among temperature, water and nitrogen stresses (Fig. <a href="sec-leaf-area.html#fig:leaf-expansion-stress">8.14</a>). Temperature stress is related with daily mean temperature; water stress is related with water tension factor in root; nitrogen stress related with fraction of functional nitrogen in leaf (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.34</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-expansion-daily"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-expansion-daily-1.png" alt="Daily stress of leaf expansion" width="80%" />
@@ -411,7 +411,7 @@ Figure 8.18: Coverage
 </div>
 <div id="specific-leaf-area" class="section level3">
 <h3><span class="header-section-number">8.2.8</span> Specific leaf area</h3>
-<p>The minimum and maximum specific leaf areas are defined in the <code>CohortParameters</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.19</a>), which related with fraction of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.40</a>) and stage, respectively.</p>
+<p>The minimum and maximum specific leaf areas are defined in the <code>CohortParameters</code> (Fig. <a href="sec-leaf-area.html#fig:leaf-sla">8.19</a>), which related with fraction of functional nitrogen (Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-functional-n">8.34</a>) and stage, respectively.</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:leaf-sla"></span>
 <img src="APSIM-Wheat_files/figure-html/leaf-sla-1.png" alt="Maximum and minimum specific leaf area." width="80%" />

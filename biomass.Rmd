@@ -44,47 +44,86 @@ g_report %>%
 
 
 
+```{r biomass-supply-fig-infor, results='asis'}
+c("Figure,Reference",
+    "Total supply by components,Fig. \\@ref(fig:biomass-supply-total)",
+    "Total supply by organs,Fig. \\@ref(fig:biomass-supply-organ)",
+    "Fixation by organs,Fig. \\@ref(fig:biomass-supply-fixation)",
+    "Retranslocation by organs,Fig. \\@ref(fig:biomass-supply-retranslocation)",
+    "Reallocation by organs,Fig. \\@ref(fig:biomass-supply-reallocation)") %>%
+    paste(collapse = "\r\n") %>% 
+    textConnection() %>% 
+    read.csv() %>% 
+    knitr::kable(align = "lc",
+                 caption = 'Figures about biomass supply.')
+```
+
 <div class="fig-output">
-```{r biomass-supply-total, fig.asp = 1, fig.cap='Biomass total supply from all organs'}
-y_cols <- c('Wheat.DMSupply')
+```{r biomass-supply-total, fig.asp = 1, fig.cap='Biomass total supply by components'}
+y_cols <- c("Wheat.DMSupply.Fixation",
+            'Wheat.DMSupply.Retranslocation',
+            "Wheat.DMSupply.Reallocation",
+            'Wheat.DMSupply')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Fixation (g/m2/d)')
+            ncol = 4,
+            y_labels = c("Fixation", "Retranslocation", "Reallocation", 'Total'),
+    y_lab = expression('Daily biomass supply (g biomass'~m^-2~' ground'~d^-1~')'))
 
 ```
 </div>
+
+
+
+<div class="fig-output">
+```{r biomass-supply-organ, fig.asp = 1, fig.cap='Biomass total supply by organs'}
+y_cols <- c(sprintf("Wheat.DMSupply.%s", g_organs), "Wheat.DMSupply")
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            ncol = 6,
+            y_labels = c(g_organs, "Total"),
+    y_lab = expression('Biomass supply (g biomass'~m^-2~' ground'~d^-1~')'))
+
+```
+</div>
+
+
+
 
 
 
 
 <div class="fig-output">
 ```{r biomass-supply-fixation, fig.asp = 1, fig.cap='Biomass fixation from all organs'}
-y_cols <- sprintf('Wheat.%s.DMSupply.Fixation', g_organs)
+y_cols <- c(sprintf('Wheat.%s.DMSupply.Fixation', g_organs), "Wheat.DMSupply.Fixation")
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Fixation (g/m2/d)', y_labels = g_organs,
-            ncol = 5)
+            y_lab = expression('Fixation (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c(g_organs, 'Total'),
+            ncol = 6)
 ```
 </div>
 
 
 <div class="fig-output">
 ```{r biomass-supply-retranslocation, fig.asp = 1, fig.cap='Biomass retranslocation from all organs'}
-y_cols <- sprintf('Wheat.%s.DMSupply.Retranslocation', g_organs)
+y_cols <- c(sprintf('Wheat.%s.DMSupply.Retranslocation', g_organs),
+            "Wheat.DMSupply.Retranslocation")
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Retranslocation (g/m2/d)', y_labels = g_organs,
-            ncol = 5)
+            y_lab =  expression('Retranslocation (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c(g_organs, "Total"),
+            ncol = 6)
 
 ```
 </div>
 
 
 
-
 <div class="fig-output">
 ```{r biomass-supply-reallocation, fig.asp = 0.5, fig.cap='Biomass reallocation from all organs'}
-y_cols <- sprintf('Wheat.%s.DMSupply.Reallocation', g_organs)
+y_cols <- c(sprintf('Wheat.%s.DMSupply.Reallocation', g_organs),
+           "Wheat.DMSupply.Reallocation")
 plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
-            y_lab = 'Reallocation (g/m2/d)', y_labels = g_organs,
-            ncol = 5)
+            y_lab =  expression('rReallocation (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c(g_organs, "Total"),
+            ncol = 6)
 ```
 </div>
 
@@ -171,6 +210,7 @@ path <- sprintf("Wheat.%s.DMConversionEfficiency", g_organs)
 g_organs_df %>% 
     mutate(`Conversion efficiency` = get_fixed_value(g_pmf, path)) %>% 
     kable(caption = "Biomass conversion efficiency for all organs.")
+
 register_chunk(path, paste0('tab:', opts_current$get("label")),
                    type = 'input')
 
