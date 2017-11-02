@@ -46,3 +46,68 @@ g_xlab2 <- 'Growth stage'
 # Names of organ as vector and data.frame
 g_organs <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
 g_organs_df <- data_frame(Organ = g_organs)
+
+
+
+# Get the list of tables and figures
+rmd <- readLines('_bookdown.yml')
+files <- rmd[grepl('.*\\.Rmd"$', rmd)]
+files <- gsub('^.*"(.*\\.Rmd)"$', '\\1', files)
+files <- files[!grepl('^.*(list|variable|reference|index)\\.Rmd.*$', files)]
+
+
+
+g_list_tbl <- files %>%
+    map_df(function(x) {
+        # x <- files[4]
+        text <- readLines(x)
+        start_pos <- grep('^```\\{r.*\\}', text)
+        end_pos <- grep('^```$', text)
+        chunk_name <- NULL
+        tbl_cap <- NULL
+        for (i in seq(along = start_pos)) {
+            # i <- 1
+            text_i <- text[seq(start_pos[i], end_pos[i])]
+            if (sum(grepl('kable', text_i)) == 0) {
+                next
+            }
+            # text_i <- paste(text_i, collapse = 'aaaaaaaaaaaaa')
+            chunk_name <- c(chunk_name,
+                            gsub('^```\\{r ([_a-zA-Z0-9\\-]+).*\\}.*$', '\\1', text_i[1]))
+            cap <- text_i[grepl('caption *= *(\'|")(.*)(\'|")', text_i)]
+
+            tbl_cap <- c(tbl_cap,
+                         gsub('^.*caption *= *(\'|")(.*)(\'|").*$', '\\2', cap))
+
+        }
+
+        if (is.null(tbl_cap)) {
+            return(NULL)
+        }
+        data_frame(chunk_name = chunk_name, tbl_cap = tbl_cap)
+    }) %>%
+    mutate(Reference = sprintf('Table \\@ref(tab:%s)', chunk_name)) %>%
+    rename(Caption = tbl_cap)
+
+g_list_fig <-
+    files %>%
+    map_df(function(x) {
+        # x <- files[4]
+        text <- readLines(x)
+        fig_chunk <- text[grepl('^```\\{r.*fig\\.cap=.*$', text)]
+        if (length(fig_chunk) == 0) {
+            return(NULL)
+        }
+        gsub('^```\\{r (.*)\\}$', '\\1', fig_chunk)
+        strsplit(fig_chunk, ', *')
+
+        chunk_name <- gsub('^```\\{r ([_a-zA-Z0-9\\-]+),.*fig\\.cap=(\'|")(.*)(\'|").*$',
+                           '\\1', fig_chunk)
+        fig_cap <- gsub('^```\\{r ([_a-zA-Z0-9\\-]+),.*fig\\.cap=(\'|")(.*)(\'|").*$',
+                        '\\3', fig_chunk)
+        data_frame(chunk_name = chunk_name, fig_cap = fig_cap)
+    }) %>%
+    mutate(Reference = sprintf('Fig. \\@ref(fig:%s)', chunk_name)) %>%
+    rename(Caption = fig_cap)
+
+

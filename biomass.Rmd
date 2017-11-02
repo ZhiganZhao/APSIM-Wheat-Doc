@@ -45,21 +45,16 @@ g_report %>%
 
 
 ```{r biomass-supply-fig-infor, results='asis'}
-c("Figure,Reference",
-    "Total supply by components,Fig. \\@ref(fig:biomass-supply-total)",
-    "Total supply by organs,Fig. \\@ref(fig:biomass-supply-organ)",
-    "Fixation by organs,Fig. \\@ref(fig:biomass-supply-fixation)",
-    "Retranslocation by organs,Fig. \\@ref(fig:biomass-supply-retranslocation)",
-    "Reallocation by organs,Fig. \\@ref(fig:biomass-supply-reallocation)") %>%
-    paste(collapse = "\r\n") %>% 
-    textConnection() %>% 
-    read.csv() %>% 
-    knitr::kable(align = "lc",
-                 caption = 'Figures about biomass supply.')
+g_list_fig %>% 
+    filter(grepl('^biomass-supply-([a-z]+)$', chunk_name)) %>% 
+    select(Reference, Caption) %>% 
+    knitr::kable(caption = 'Figures about biomass supply.')
+
+
 ```
 
 <div class="fig-output">
-```{r biomass-supply-total, fig.asp = 1, fig.cap='Biomass total supply by components'}
+```{r biomass-supply-total, fig.asp = 1, fig.cap='Biomass total supply in three components including total supply.'}
 y_cols <- c("Wheat.DMSupply.Fixation",
             'Wheat.DMSupply.Retranslocation',
             "Wheat.DMSupply.Reallocation",
@@ -75,7 +70,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r biomass-supply-organ, fig.asp = 1, fig.cap='Biomass total supply by organs'}
+```{r biomass-supply-organ, fig.asp = 1, fig.cap='Biomass total supply in all organs including total supply.'}
 y_cols <- c(sprintf("Wheat.DMSupply.%s", g_organs), "Wheat.DMSupply")
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             ncol = 6,
@@ -92,7 +87,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r biomass-supply-fixation, fig.asp = 1, fig.cap='Biomass fixation from all organs'}
+```{r biomass-supply-fixation, fig.asp = 1, fig.cap='Biomass supply form fixation in all organs including total fixation.'}
 y_cols <- c(sprintf('Wheat.%s.DMSupply.Fixation', g_organs), "Wheat.DMSupply.Fixation")
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = expression('Fixation (g biomass'~m^-2~" ground"~d^-1~')'), 
@@ -103,7 +98,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r biomass-supply-retranslocation, fig.asp = 1, fig.cap='Biomass retranslocation from all organs'}
+```{r biomass-supply-retranslocation, fig.asp = 1, fig.cap='Biomass supply from retranslocation in all organs including total retranslocation.'}
 y_cols <- c(sprintf('Wheat.%s.DMSupply.Retranslocation', g_organs),
             "Wheat.DMSupply.Retranslocation")
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
@@ -117,7 +112,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r biomass-supply-reallocation, fig.asp = 0.5, fig.cap='Biomass reallocation from all organs'}
+```{r biomass-supply-reallocation, fig.asp = 0.5, fig.cap='Biomass supply from reallocation in all organs including total reallocation.'}
 y_cols <- c(sprintf('Wheat.%s.DMSupply.Reallocation', g_organs),
            "Wheat.DMSupply.Reallocation")
 plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
@@ -131,6 +126,7 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2,
 ## Demand {#sec:biomass-demand}
 
 Depending on the organ, not all components are considered (Table \@ref(tab:biomass-component-type)). `Structural` component is considered in all organs. `Metabolic` component is only considered in `Leaf` (Chapter \@ref(cha:leaf)). `Storage` component is only considered in `Stem` (Chapter \@ref(cha:stem)) and `Spike` (Chapter \@ref(cha:spike)).
+
 
 ```{r biomass-component-type, results='asis'}
 g_report %>% 
@@ -150,6 +146,18 @@ g_report %>%
 
 
 `Stem` and `Root` demands determine as the fraction of daily `Fixation` (Fig. \@ref(fig:stem-demand-fraction), and \@ref(fig:root-demand-fraction)). The `Spike` demand determines as the head number and growth duration (Fig. \@ref(fig:spike-demand)).
+
+
+
+```{r biomass-demand-fig-infor, results='asis'}
+g_list_fig %>% 
+    filter(grepl('^biomass-demand-([a-z]+)$', chunk_name)) %>% 
+    select(Reference, Caption) %>% 
+    knitr::kable(caption = 'Figures about biomass demand')
+
+
+```
+
 
 
 
