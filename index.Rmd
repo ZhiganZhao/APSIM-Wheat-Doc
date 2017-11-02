@@ -4,10 +4,10 @@ author: "Bangyou Zheng, Karine Chenu, Scott Chapman, Enli Wang, Fernanda Dreccer
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-bibliography: [citation.bib]
-biblio-style: citation.csl
+bibliography: [_citation/citation.bib]
+biblio-style: _citation/citation.csl
 link-citations: yes
-github-repo: byzheng/APSIM-Wheat
+github-repo: byzheng/APSIM-Wheat-Doc
 description: "Documentation of APSIM-Wheat"
 
 ---
