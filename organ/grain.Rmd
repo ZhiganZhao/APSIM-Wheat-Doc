@@ -3,7 +3,7 @@
 
 
 ```{r grain-setup, message=FALSE, warning=FALSE, echo=FALSE}
-source('_setup.R')
+source('_script/setup.R')
 ```
 
 

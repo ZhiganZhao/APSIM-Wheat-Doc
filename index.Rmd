@@ -21,7 +21,7 @@ A simulation is setup to demo the relationship among traits based on the cv. Har
 
 
 ```{r index-setup, message=FALSE, warning=FALSE, echo=FALSE, cache=FALSE}
-source('_setup.R')
+source('_script/setup.R')
 ```
 
 

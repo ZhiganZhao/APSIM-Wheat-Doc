@@ -2,7 +2,7 @@
 
 
 ```{r spike-setup, message=FALSE, warning=FALSE, echo=FALSE}
-source('_setup.R')
+source('_script/setup.R')
 ```
 
 `Spike` provides biomass through retranslocation, requires biomass depending on the population and potential spike weight. The biomass is allocated into two components, i..e `Structural` and `Storage`. No `Metabolic` is considered.

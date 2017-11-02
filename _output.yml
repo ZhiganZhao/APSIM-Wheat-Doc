@@ -1,8 +1,8 @@
 bookdown::gitbook:
   includes:
-    in_header: _includes/header.html
-    after_body: _includes/after_body.html
-  css: _includes/style.css
+    in_header: _include/header.html
+    after_body: _include/after_body.html
+  css: _include/style.css
   split_bib: false
   split_by: section
   toc_depth: 3

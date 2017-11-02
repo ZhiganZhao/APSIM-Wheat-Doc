@@ -3,7 +3,7 @@
 
 
 ```{r str-setup, message=FALSE, warning=FALSE, echo=FALSE}
-source('_setup.R')
+source('_script/setup.R')
 ```
 
 The development of wheat leaves and tillers are simulated with an apex model which is further developed from leaf cohort model [@BrownPlantModellingFramework2014]. The basic assumptions include

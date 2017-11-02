@@ -2,7 +2,7 @@
 
 
 ```{r setup, message=FALSE, warning=FALSE, echo=FALSE}
-source('_setup.R')
+source('_script/setup.R')
 ```
 
 ## Thermal time {#sec:phe-thermal-time}

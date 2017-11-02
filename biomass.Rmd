@@ -2,7 +2,7 @@
 
 
 ```{r biomass-setup, message=FALSE, warning=FALSE, echo=FALSE}
-source('_setup.R')
+source('_script/setup.R')
 ```
 
 Wheat plants are separated into `r length(g_organs)` organs, (i.e. `r paste(g_organs, collapse = ', ')`). Leaf includes only leaf blades. Stem is defined in a functional rather than a morphological manner and includes nodes, internodes and leaf sheaths. Spike is the head parts without grain including pedicel and glunes.

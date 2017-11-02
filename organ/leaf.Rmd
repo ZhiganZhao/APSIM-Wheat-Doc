@@ -2,7 +2,7 @@
 
 
 ```{r leaf-setup, message=FALSE, warning=FALSE, echo=FALSE}
-source('_setup.R')
+source('_script/setup.R')
 ```
 
 The apex model is developed to simulate leaf dynamic based on leaf cohort model.

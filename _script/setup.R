@@ -1,4 +1,4 @@
-options(chunk_folder = '_chunks')
+options(chunk_folder = '_chunk')
 library(knitr)
 library(magrittr)
 opts_chunk$set(
@@ -11,7 +11,7 @@ suppressPackageStartupMessages(library(assertive))
 library(xml2)
 library(DiagrammeR)
 library(RSQLite)
-source('_utility.R')
+source('_script/utility.R')
 
 # Read the raw data
 if (!exists('g_report', envir = .GlobalEnv)) {
