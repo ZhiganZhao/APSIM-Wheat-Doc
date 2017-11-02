@@ -47,6 +47,8 @@ g_xlab2 <- 'Growth stage'
 g_organs <- c('Grain', 'Root', 'Leaf', 'Spike', 'Stem')
 g_organs_df <- data_frame(Organ = g_organs)
 
+# List of demand component
+g_demand <- c('Structural', "Metabolic", "Storage")
 
 
 # Get the list of tables and figures

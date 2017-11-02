@@ -4,6 +4,13 @@
 
 
 
+# Filter table and figure list
+filter_list <-  function(df, prefix) {
+    df %>%
+        filter(grepl(sprintf('^%s-([a-z]+)$', prefix), chunk_name)) %>%
+        select(Reference, Caption)
+}
+
 
 new_breaks <- function(x) {
     if (max(x) < 11) {

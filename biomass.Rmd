@@ -44,13 +44,10 @@ g_report %>%
 
 
 
-```{r biomass-supply-fig-infor, results='asis'}
+```{r biomass-supply-fig-infor, results='asis', cache=FALSE}
 g_list_fig %>% 
-    filter(grepl('^biomass-supply-([a-z]+)$', chunk_name)) %>% 
-    select(Reference, Caption) %>% 
+    filter_list('biomass-supply') %>%  
     knitr::kable(caption = 'Figures about biomass supply.')
-
-
 ```
 
 <div class="fig-output">
@@ -116,7 +113,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 y_cols <- c(sprintf('Wheat.%s.DMSupply.Reallocation', g_organs),
            "Wheat.DMSupply.Reallocation")
 plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
-            y_lab =  expression('rReallocation (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_lab =  expression('Reallocation (g biomass'~m^-2~" ground"~d^-1~')'), 
             y_labels = c(g_organs, "Total"),
             ncol = 6)
 ```
@@ -125,10 +122,10 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2,
 
 ## Demand {#sec:biomass-demand}
 
-Depending on the organ, not all components are considered (Table \@ref(tab:biomass-component-type)). `Structural` component is considered in all organs. `Metabolic` component is only considered in `Leaf` (Chapter \@ref(cha:leaf)). `Storage` component is only considered in `Stem` (Chapter \@ref(cha:stem)) and `Spike` (Chapter \@ref(cha:spike)).
+Depending on the organ, not all components are considered (Table \@ref(tab:biomass-demand-componenttype)). `Structural` component is considered in all organs. `Metabolic` component is only considered in `Leaf` (Chapter \@ref(cha:leaf)). `Storage` component is only considered in `Stem` (Chapter \@ref(cha:stem)) and `Spike` (Chapter \@ref(cha:spike)).
 
 
-```{r biomass-component-type, results='asis'}
+```{r biomass-demand-componenttype, results='asis'}
 g_report %>% 
     select(matches('Wheat\\..+\\.DMDemand\\..+')) %>% 
     assertr::verify(ncol(.) == 15) %>% 
@@ -149,24 +146,61 @@ g_report %>%
 
 
 
-```{r biomass-demand-fig-infor, results='asis'}
+```{r biomass-demand-fig-infor, results='asis', cache=FALSE}
 g_list_fig %>% 
-    filter(grepl('^biomass-demand-([a-z]+)$', chunk_name)) %>% 
-    select(Reference, Caption) %>% 
+    filter_list('biomass-demand') %>%  
     knitr::kable(caption = 'Figures about biomass demand')
-
-
 ```
+
+
+
+<div class="fig-output">
+```{r biomass-demand-totalcomponent, fig.asp = 1, fig.cap='Biomass demand in all components including the total demand.'}
+y_cols <- c(sprintf('Wheat.DMDemand.%s', g_demand), 'Wheat.DMDemand')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Biomass demand (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c(g_demand, "Total"),
+            ncol = length(g_demand) + 1)
+```
+</div>
+
+
+<div class="fig-output">
+```{r biomass-demand-totalorgan, fig.asp = 1, fig.cap='Biomass demand in all organs including the total demand.'}
+y_cols <- c(sprintf('Wheat.DMDemand.%s', g_organs), 'Wheat.DMDemand')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Biomass demand (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c(g_organs, "Total"),
+            ncol = 6)
+```
+</div>
+
 
 
 
 
 <div class="fig-output">
-```{r biomass-demand-organ, fig.asp = 1, fig.cap='Total biomass demand for structural and metabolic from each organ'}
-y_cols <- sprintf('Wheat.DMDemand.SM.%s', g_organs)
+```{r biomass-demand-smcomponent, fig.asp = 1, fig.cap='Biomass demand for structural and metabolic components including the total structural and metabolic demands. The structural and metabolic demands are allocated in the first step.'}
+y_cols <- c(sprintf('Wheat.DMDemand.%s', c('Structural', "Metabolic")),
+            'Wheat.DMDemand.StructuralMetabolic')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Structural and metabolic demand (g/m2/d)', y_labels = g_organs,
-            ncol = 5)
+            y_lab = expression('Biomass demand (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c('Structural', "Metabolic", "Total"),
+            ncol = 3)
+```
+</div>
+
+
+
+
+
+<div class="fig-output">
+```{r biomass-demand-smorgan, fig.asp = 1, fig.cap='Total biomass demand for structural and metabolic components in all organs including the total structural and metabolic demands. The structural and metabolic demands are allocated in the first step.'}
+y_cols <- c(sprintf('Wheat.DMDemand.SM.%s', g_organs), 'Wheat.DMDemand.StructuralMetabolic')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Biomass demand (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c(g_organs, "Total"),
+            ncol = 6)
 ```
 </div>
 
@@ -174,11 +208,12 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r biomass-demand-structural, fig.asp = 1, fig.cap='Biomass structural demand from all organs'}
-y_cols <- sprintf('Wheat.%s.DMDemand.Structural', g_organs)
+```{r biomass-demand-structural, fig.asp = 1, fig.cap='Biomass structural demand in all organs including the total structural demand.'}
+y_cols <- c(sprintf('Wheat.%s.DMDemand.Structural', g_organs), "Wheat.DMDemand.Structural")
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Structural demand (g/m2/d)', y_labels = g_organs,
-            ncol = 5)
+            y_lab = expression('Biomass demand (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c(g_organs, "Total"),
+            ncol = 6)
 
 ```
 </div>
@@ -186,25 +221,28 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r biomass-demand-metabolic, fig.asp = 1, fig.cap='Biomass metabolic demand from all organs'}
-y_cols <- sprintf('Wheat.%s.DMDemand.Metabolic', g_organs)
+```{r biomass-demand-metabolic, fig.asp = 1, fig.cap='Biomass metabolic demand in all organs including the total metabolic demand. Only leaf has metabolic demand, so the lines of leaf and total overlap each other.'}
+y_cols <- c(sprintf('Wheat.%s.DMDemand.Metabolic', g_organs), "Wheat.DMDemand.Metabolic")
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Metabolic demand (g/m2/d)', 
-            y_labels = g_organs,
-            ncol = 5)
+            y_lab = expression('Biomass demand (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c(g_organs, "Total"),
+            ncol = 6)
 
 ```
 </div>
 
 <div class="fig-output">
-```{r biomass-demand-storage, fig.asp = 1, fig.cap='Biomass storage demand from all organs'}
-y_cols <- sprintf('Wheat.%s.DMDemand.Storage', g_organs)
+```{r biomass-demand-storage, fig.asp = 1, fig.cap='Biomass storage demand in all organs including total storage demand.'}
+y_cols <- c(sprintf('Wheat.%s.DMDemand.Storage', g_organs), "Wheat.DMDemand.Storage")
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Storage demand (g/m2/d)', y_labels = g_organs,
-            ncol = 5)
+            y_lab = expression('Biomass demand (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c(g_organs, "Total"),
+            ncol = 6)
 
 ```
 </div>
+
+
 
 ## Respiration {#sec-respiration}
 
@@ -227,10 +265,11 @@ register_chunk(path, paste0('tab:', opts_current$get("label")),
 
 
 <div class="fig-output">
-```{r biomass-growth-respiration, fig.asp = 1, fig.cap='Growth respiration for all organs'}
+```{r biomass-respiration-growth, fig.asp = 1, fig.cap='Growth respiration for all organs'}
 y_cols <- sprintf('Wheat.%s.GrowthRespiration', g_organs)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Storage demand (g/m2/d)', y_labels = g_organs,
+            y_lab = expression('Growth respiration (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = g_organs,
             ncol = 5)
 
 ```
