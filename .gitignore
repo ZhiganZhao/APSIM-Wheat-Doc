@@ -7,5 +7,5 @@ APSIM-Wheat.rds
 *_cache
 APSIM-Wheat.Rmd
 /*.html
-_chunks
+/_chunk
 /APSIM-Wheat.*
