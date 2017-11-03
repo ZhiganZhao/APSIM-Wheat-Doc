@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sec-stem-nitrogen.html">
-<link rel="next" href="cha-variable.html">
+<link rel="prev" href="cha-stem.html">
+<link rel="next" href="sec-stem-nitrogen.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -221,15 +221,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.3" data-path="spike-biomass.html"><a href="spike-biomass.html"><i class="fa fa-check"></i><b>11.3</b> Biomass dynamic</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="cha-stem.html"><a href="cha-stem.html"><i class="fa fa-check"></i><b>12</b> Stem</a><ul>
-<li class="chapter" data-level="12.1" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html"><i class="fa fa-check"></i><b>12.1</b> Nitrogen</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#demand"><i class="fa fa-check"></i><b>12.1.1</b> Demand</a></li>
-<li class="chapter" data-level="12.1.2" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#supply"><i class="fa fa-check"></i><b>12.1.2</b> Supply</a></li>
+<li class="chapter" data-level="12.1" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html"><i class="fa fa-check"></i><b>12.1</b> Biomass</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#sec:stem-dm-supply"><i class="fa fa-check"></i><b>12.1.1</b> Supply</a></li>
+<li class="chapter" data-level="12.1.2" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#sec:stem-dm-demand"><i class="fa fa-check"></i><b>12.1.2</b> Demand</a></li>
+<li class="chapter" data-level="12.1.3" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#sec:stem-dm-dynamic"><i class="fa fa-check"></i><b>12.1.3</b> Biomass dynamic</a></li>
+<li class="chapter" data-level="12.1.4" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#ses:stem-wsc"><i class="fa fa-check"></i><b>12.1.4</b> Water soluble carbohydrate</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html"><i class="fa fa-check"></i><b>12.2</b> Biomass</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#sec:stem-dm-supply"><i class="fa fa-check"></i><b>12.2.1</b> Supply</a></li>
-<li class="chapter" data-level="12.2.2" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#sec:stem-dm-demand"><i class="fa fa-check"></i><b>12.2.2</b> Demand</a></li>
-<li class="chapter" data-level="12.2.3" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#sec:stem-dm-dynamic"><i class="fa fa-check"></i><b>12.2.3</b> Biomass dynamic</a></li>
-<li class="chapter" data-level="12.2.4" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#ses:stem-wsc"><i class="fa fa-check"></i><b>12.2.4</b> Water soluble carbohydrate</a></li>
+<li class="chapter" data-level="12.2" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html"><i class="fa fa-check"></i><b>12.2</b> Nitrogen</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#demand"><i class="fa fa-check"></i><b>12.2.1</b> Demand</a></li>
+<li class="chapter" data-level="12.2.2" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#supply"><i class="fa fa-check"></i><b>12.2.2</b> Supply</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -259,15 +259,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="sec:stem-biomass" class="section level2">
-<h2><span class="header-section-number">12.2</span> Biomass</h2>
+<h2><span class="header-section-number">12.1</span> Biomass</h2>
 <div id="sec:stem-dm-supply" class="section level3">
-<h3><span class="header-section-number">12.2.1</span> Supply</h3>
-<p>In <code>Stem</code>, the biomass supply only sources from retranslocation (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-supply">12.4</a>). Daily retranslocation is the proportion of current storage (<span class="math inline">\(W_{stem, storage}\)</span>). The default value of proportion is 0.5 since <code>StartGrainFill</code>, i.e. retranslocatable biomsss is 50% during grain filling (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-retran-factor">12.3</a>).</p>
+<h3><span class="header-section-number">12.1.1</span> Supply</h3>
+<p>In <code>Stem</code>, the biomass supply only sources from retranslocation (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-supply">12.2</a>). Daily retranslocation is the proportion of current storage (<span class="math inline">\(W_{stem, storage}\)</span>). The default value of proportion is 0.5 since <code>StartGrainFill</code>, i.e. retranslocatable biomsss is 50% during grain filling (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-retran-factor">12.1</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-retran-factor"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-retran-factor-1.png" alt="The fraction of stem storage which can be retranslocated in every day." width="80%" />
 <p class="caption">
-Figure 12.3: The fraction of stem storage which can be retranslocated in every day.
+Figure 12.1: The fraction of stem storage which can be retranslocated in every day.
 </p>
 </div>
 </div>
@@ -275,19 +275,19 @@ Figure 12.3: The fraction of stem storage which can be retranslocated in every d
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-supply"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-supply-1.png" alt="Daily biomass supply of stem." width="80%" />
 <p class="caption">
-Figure 12.4: Daily biomass supply of stem.
+Figure 12.2: Daily biomass supply of stem.
 </p>
 </div>
 </div>
 </div>
 <div id="sec:stem-dm-demand" class="section level3">
-<h3><span class="header-section-number">12.2.2</span> Demand</h3>
-<p>The daily biomass demand of <code>Stem</code> is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (<code>Emergence</code>) to Stage 6 (<code>Flowering time</code>) (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-demand-fraction">12.5</a>) and increases at Stage 4 (<code>Terminal spikelet</code>) (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-demand-fraction">12.5</a>). After <code>Flowering time</code>, no biomass allocated into stem (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-demand">12.6</a>).</p>
+<h3><span class="header-section-number">12.1.2</span> Demand</h3>
+<p>The daily biomass demand of <code>Stem</code> is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (<code>Emergence</code>) to Stage 6 (<code>Flowering time</code>) (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-demand-fraction">12.3</a>) and increases at Stage 4 (<code>Terminal spikelet</code>) (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-demand-fraction">12.3</a>). After <code>Flowering time</code>, no biomass allocated into stem (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-demand">12.4</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-demand-fraction"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-demand-fraction-1.png" alt="Stem demand as a fraction of daily total fixation (i.e. photosynthesis)." width="80%" />
 <p class="caption">
-Figure 12.5: Stem demand as a fraction of daily total fixation (i.e. photosynthesis).
+Figure 12.3: Stem demand as a fraction of daily total fixation (i.e. photosynthesis).
 </p>
 </div>
 </div>
@@ -295,19 +295,19 @@ Figure 12.5: Stem demand as a fraction of daily total fixation (i.e. photosynth
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-demand"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-demand-1.png" alt="Daily biomass demand of stem for three components." width="80%" />
 <p class="caption">
-Figure 12.6: Daily biomass demand of stem for three components.
+Figure 12.4: Daily biomass demand of stem for three components.
 </p>
 </div>
 </div>
 </div>
 <div id="sec:stem-dm-dynamic" class="section level3">
-<h3><span class="header-section-number">12.2.3</span> Biomass dynamic</h3>
-<p>The actual allocation reflects the increase of structural component, and retranslocation of storage component (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-allocated">12.7</a>). <code>Stem</code> only considers the <code>Live</code> biomass (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-live">12.9</a>, no <code>Dead</code> biomass (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-dead">12.10</a>).</p>
+<h3><span class="header-section-number">12.1.3</span> Biomass dynamic</h3>
+<p>The actual allocation reflects the increase of structural component, and retranslocation of storage component (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-allocated">12.5</a>). <code>Stem</code> only considers the <code>Live</code> biomass (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-live">12.7</a>, no <code>Dead</code> biomass (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-dead">12.8</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-allocated"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-allocated-1.png" alt="Actual allocated biomass to stem for three components. The negative values of Storage indicate biomass is ratranslocated into other organs." width="80%" />
 <p class="caption">
-Figure 12.7: Actual allocated biomass to stem for three components. The negative values of Storage indicate biomass is ratranslocated into other organs.
+Figure 12.5: Actual allocated biomass to stem for three components. The negative values of Storage indicate biomass is ratranslocated into other organs.
 </p>
 </div>
 </div>
@@ -315,7 +315,7 @@ Figure 12.7: Actual allocated biomass to stem for three components. The negative
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-weight"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-weight-1.png" alt="Dynamic of stem dry weights for three components and total." width="80%" />
 <p class="caption">
-Figure 12.8: Dynamic of stem dry weights for three components and total.
+Figure 12.6: Dynamic of stem dry weights for three components and total.
 </p>
 </div>
 </div>
@@ -323,7 +323,7 @@ Figure 12.8: Dynamic of stem dry weights for three components and total.
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-live"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-live-1.png" alt="Dynamic of stem biomass in Live pool for three components and total." width="80%" />
 <p class="caption">
-Figure 12.9: Dynamic of stem biomass in Live pool for three components and total.
+Figure 12.7: Dynamic of stem biomass in Live pool for three components and total.
 </p>
 </div>
 </div>
@@ -331,30 +331,26 @@ Figure 12.9: Dynamic of stem biomass in Live pool for three components and total
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-dead"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-dead-1.png" alt="Dynamic of stem biomass in Dead pool for three components and total." width="80%" />
 <p class="caption">
-Figure 12.10: Dynamic of stem biomass in Dead pool for three components and total.
+Figure 12.8: Dynamic of stem biomass in Dead pool for three components and total.
 </p>
 </div>
 </div>
 </div>
 <div id="ses:stem-wsc" class="section level3">
-<h3><span class="header-section-number">12.2.4</span> Water soluble carbohydrate</h3>
+<h3><span class="header-section-number">12.1.4</span> Water soluble carbohydrate</h3>
 <p>Water soluble carbohydrates (WSC) are sugars such as fructans, sucrose, glucose and fructose which are accumulated in the stem as reserves.</p>
 <p>In APSIM Next Gen, the WSC of stem is defined as the ratio of storage and total weights in the <code>Live</code> pool of stem.</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-wsc"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-wsc-1.png" alt="Water soluble carbohydrate in stem." width="80%" />
 <p class="caption">
-Figure 12.11: Water soluble carbohydrate in stem.
+Figure 12.9: Water soluble carbohydrate in stem.
 </p>
 </div>
 </div>
 
 </div>
 </div>
-<!-- </div> -->
-
-
-
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106612662-3"></script>
 <script>
@@ -369,8 +365,8 @@ Figure 12.11: Water soluble carbohydrate in stem.
           </div>
         </div>
       </div>
-<a href="sec-stem-nitrogen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cha-variable.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cha-stem.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sec-stem-nitrogen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
