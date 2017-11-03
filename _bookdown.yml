@@ -19,6 +19,8 @@ rmd_files:
   - "organ/leaf/leaf-nitrogen.Rmd"
   - "organ/spike.Rmd"
   - "organ/stem.Rmd"
+  - "organ/stem/stem-nitrogen.Rmd"
+  - "organ/stem/stem-biomass.Rmd"
   - "appendix/variable.Rmd"
   - "appendix/list.Rmd"
   - "appendix/reference.Rmd"
