@@ -5,18 +5,26 @@
 source('_script/setup.R')
 ```
 
-Wheat plants are separated into `r length(g_organs)` organs, (i.e. `r paste(g_organs, collapse = ', ')`). Leaf includes only leaf blades. Stem is defined in a functional rather than a morphological manner and includes nodes, internodes and leaf sheaths. Spike is the head parts without grain including pedicel and glunes.
+Wheat plants are separated into `r length(g_organs)` organs, (i.e. `r paste(g_organs, collapse = ', ')`). Leaf includes only leaf blades (Chapter \@ref(cha:leaf)). Stem is defined in a functional rather than a morphological manner and includes nodes, internodes and leaf sheaths (Chapter \@ref(cha:stem)). Spike is the head parts without grain including pedicel and glunes (Chapter \@ref(cha:spike)). Grain is the grain part of heads (Chapter \@ref(cha:grain)). Root is the whole root system below ground (Chapter \@ref(cha:root)).
 
 
+The biomass supply comes from three sources (`Fixation` (`Photosynthesis`), `Retranslocation`, `Reallocation`, Section \@ref(sec:biomass-supply)). In theory, all organs can provide `Fixation` through photosynthesis, but only `Leaf` is considered in the current wheat model. 
 
-The biomass and nitrogen of each organ is separated into two pools (i.e. `Live` and `Dead`). Each pool is separated into three components (i.e. `Structural`, `Metabolic`, `Storage`) [@BrownPlantModellingFramework2014].
+
+* **Fixation** The wheat model in the APSIM next generation uses the gross photosynthesis rate, not the net photosynthesis rate in the old APSIM. 
+* **Retranslocation**   
+* **Reallocation**  
 
 
-* **Structural biomass and N** are essential for the growth of the organ. They remain within the organ once it has been allocated and are passed from Live to Dead pools as the organ senescence.
-* **Metabolic biomass and N** are essential for growth and their concentration can influence the function of organs (e.g. photosynthetic efficiency of the leaf depends on Metabolic nitrogen content). Metabolic biomass and nitrogen may be reallocated (moved to another organ upon senescence of this organ) or retranslocated
-(moved to another organ at any time when supplies do not meet the structural and metabolic biomass demands of growing organs).
-* **Storage biomass and N** are non-essential to the function of an organ. They will be allocated to an organ only when all other organs have received their Structural and Metabolic allocations and may be reallocated or retranslocated.
+The biomass and nitrogen of each organ is separated into two pools (i.e. `Live` and `Dead`, Section \@ref(sec:biomass-pool)). Each pool is separated into three components (i.e. `Structural`, `Metabolic`, `Storage`, (Section \@ref(sec:biomass-demand)) ) [@BrownPlantModellingFramework2014].
 
+
+* **Structural biomass** are essential for the growth of the organ. They remain within the organ once it has been allocated and are passed from Live to Dead pools as the organ senescence.
+* **Metabolic biomass** are essential for growth and their concentration can influence the function of organs (e.g. photosynthetic efficiency of the leaf depends on Metabolic nitrogen content). Metabolic biomass may be reallocated (moved to another organ upon senescence of this organ) or retranslocated (moved to another organ at any time when supplies do not meet the structural and metabolic biomass demands of growing organs).
+* **Storage biomass** are non-essential to the function of an organ. They will be allocated to an organ only when all other organs have received their Structural and Metabolic allocations and may be reallocated or retranslocated.
+
+
+Daily biomass supply (Section \@ref(sec:biomass-supply)) is comsumed by growth respiration (Section \@ref(sec:biomass-respiration-growth)) , then partitioned into structural and metabolic components in the Live organs (Fig. \@ref(fig:biomass-demand-smorgan)) according to the relative demand of each organ (Section \@ref(sec:biomass-demand)). The remaining biomass is partitioned into storage (i.e. `Stem` (Chapter \@ref(cha:stem))  and `Spike` (Chapter \@ref(cha:spike)) , Fig. \@ref(fig:biomass-demand-storage)). Meanwhile, the metabolic and storage biomass are comsumed by maintenance respiration (Section \@ref(sec:biomass-respiration-maintenance)) .
 
 
 ## Supply {#sec:biomass-supply}
@@ -49,6 +57,7 @@ g_list_fig %>%
     filter_list('biomass-supply') %>%  
     knitr::kable(caption = 'Figures about biomass supply.')
 ```
+
 
 <div class="fig-output">
 ```{r biomass-supply-total, fig.asp = 1, fig.cap='Biomass total supply in three components including total supply.'}
@@ -142,7 +151,7 @@ g_report %>%
 ```
 
 
-`Stem` and `Root` demands determine as the fraction of daily `Fixation` (Fig. \@ref(fig:stem-demand-fraction), and \@ref(fig:root-demand-fraction)). The `Spike` demand determines as the head number and growth duration (Fig. \@ref(fig:spike-demand)).
+`Stem` and `Root` demands determine as the fraction of daily `Fixation` (Fig. \@ref(fig:stem-dm-demand-fraction), and \@ref(fig:root-demand-fraction)). The `Spike` demand determines as the head number and growth duration (Fig. \@ref(fig:spike-demand)).
 
 
 
@@ -248,10 +257,23 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 As the major roles of carbon balance of crop, respiration is separated into two components, i.e. growth and maintenance respiration [@vanIerselGrowthRespirationMaintenance2000; @ChiarielloGrowthcarbonallocation2000]. @vanIerselGrowthRespirationMaintenance2000 described "growth respiration is referred as the amount of carbohydrates respired in a net gain in plant biomass. This includes the production of ATP and reductant for biosynthetic processes, transport processes, and nutrient uptake and reduction. Maintenance respiration is defined as the respiration needed to provide the energy for all plant processes that do not result in a net increase in plant dry matter, such as maintenance of ion gradients across membranes and the resynthesis of degraded organic compounds".
 
-### Growth respiration (Conversion efficiency))
+
+<div class="fig-output">
+```{r biomass-respiration-all, fig.asp = 1, fig.cap='The growth and maintenance respirations.'}
+y_cols <- c("Wheat.GrowthRespiration", 
+            "Wheat.MaintenanceRespiration")
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Respiration (g biomass'~m^-2~" ground"~d^-1~')'), 
+            y_labels = c("Growth", "Maintenance"),
+            ncol = 2)
+```
+</div>
+
+
+### Growth respiration (Conversion efficiency)) {#sec:biomass-respiration-growth}
 The allocated biomass of an organ losses through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).
 
-```{r biomass-conversion-efficiency, results='asis'}
+```{r biomass-respiration-conversion-efficiency, results='asis'}
 path <- sprintf("Wheat.%s.DMConversionEfficiency", g_organs)
 g_organs_df %>% 
     mutate(`Conversion efficiency` = get_fixed_value(g_pmf, path)) %>% 
@@ -266,18 +288,30 @@ register_chunk(path, paste0('tab:', opts_current$get("label")),
 
 <div class="fig-output">
 ```{r biomass-respiration-growth, fig.asp = 1, fig.cap='Growth respiration for all organs'}
-y_cols <- sprintf('Wheat.%s.GrowthRespiration', g_organs)
+y_cols <- c(sprintf('Wheat.%s.GrowthRespiration', g_organs), 
+            "Wheat.GrowthRespiration")
+g_report %>% 
+    select(y_cols) %>% 
+    gather(trait, value, y_cols) %>% 
+    group_by(trait) %>% 
+    summarise(n = sum(value > 0)) %>% 
+    filter(n == 0) %>% 
+    ungroup() %>% 
+    assertr::verify(nrow(.) == 0) %>% 
+    invisible()
+    
+
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = expression('Growth respiration (g biomass'~m^-2~" ground"~d^-1~')'), 
-            y_labels = g_organs,
-            ncol = 5)
+            y_labels = c(g_organs, "Total"),
+            ncol = 6)
 
 ```
 </div>
 
-### Maintenance respiration
+### Maintenance respiration {#sec:biomass-respiration-maintenance}
 
-The maintenance respiration is required for metabolic and storage components (Table \@ref(tab:biomass-component-type)). The metabolic and storage components of `Live` pool is daily reduced according to a fraction which is used for maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration-fraction)). The maintenance fraction is calculated as reference maintenance fraction at 20 C and a beta function [@WangSimulationphenologicaldevelopment1998] with three cardinal temperatures (i.e. minimum, optimal and maximum temperatures). All organs have the same cardinal temperatures, but different maintenance fraction at 20C (Table \@ref(tab:biomass-wefuncton)). Finally, the actual maintenance fraction depends on the daily mean temperature (Fig. \@ref(fig:biomass-maintenance-respiration-fraction). `Leaf` and `Stem` have the major contributions to maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)). Root and Grain don't have maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)).
+The maintenance respiration is required for metabolic and storage components (Table \@ref(tab:biomass-demand-componenttype)). The metabolic and storage components of `Live` pool is daily reduced according to a fraction which is used for maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration-fraction)). The maintenance fraction is calculated as reference maintenance fraction at 20 C and a beta function [@WangSimulationphenologicaldevelopment1998] with three cardinal temperatures (i.e. minimum, optimal and maximum temperatures). All organs have the same cardinal temperatures, but different maintenance fraction at 20C (Table \@ref(tab:biomass-wefuncton)). Finally, the actual maintenance fraction depends on the daily mean temperature (Fig. \@ref(fig:biomass-maintenance-respiration-fraction). `Leaf` and `Stem` have the major contributions to maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)). Root and Grain don't have maintenance respiration (Fig. \@ref(fig:biomass-maintenance-respiration)).
 
 
 ```{r biomass-wefuncton, results='asis'}
@@ -365,16 +399,19 @@ The biomass partitions into structural and metabolic components firstly accordin
 
 The daily supply is distributed into `Structural` and `Metabolic` components, then `Storage` component. The daily demand cannot be satisfied if the structural and metabolic demands are more than daily supply, then the allocated biomasses of all organs are proportionally reduced to match daily supply (Fig. \@ref(fig:biomass-supply-demand-str-met)). The extra daily supply is distributed into storage, i.e. `Stem` for wheat model, as the extreme higher storage demand for stem (Fig. \@ref(fig:biomass-supply-demand-sto)).
 
+
+
 <div class="fig-output">
-```{r biomass-supply-demand-str-met, fig.asp = 1, fig.cap='Daily biomass supply, and structural and metabolic demands for all organs.'}
-y_cols <- c('Wheat.DMSupply', 'Wheat.DMDemand.StructuralMetabolic')
-y_labels <- c('Supply', 'Demand')
+```{r biomass-supply-demand-str-met, fig.asp = 1, fig.cap='Biomass total supply and demand of structural and metabolic components which are allocated in the first step.'}
+y_cols <- c('Wheat.DMSupply', "Wheat.DMDemand.StructuralMetabolic")
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = 'Biomass supply and demand (g/m2/d)', y_labels = y_labels,
-            ncol = 5)
+            ncol = 4,
+            y_labels = c("Supply", "Demand (Structural and Metabolic)"),
+    y_lab = expression('Biomass supply and demand (g biomass'~m^-2~' ground'~d^-1~')'))
 
 ```
 </div>
+
 
 <div class="fig-output">
 ```{r biomass-supply-demand-sto, fig.asp = 1, fig.cap='Daily biomass supply and storage demand for all organs'}

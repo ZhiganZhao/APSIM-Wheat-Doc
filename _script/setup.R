@@ -55,7 +55,7 @@ g_demand <- c('Structural', "Metabolic", "Storage")
 rmd <- readLines('_bookdown.yml')
 files <- rmd[grepl('.*\\.Rmd"$', rmd)]
 files <- gsub('^.*"(.*\\.Rmd)"$', '\\1', files)
-files <- files[!grepl('^.*(list|variable|reference|index)\\.Rmd.*$', files)]
+files <- files[!grepl('^appendix.*\\.Rmd.*$', files)]
 
 
 

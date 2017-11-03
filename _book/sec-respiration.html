@@ -151,8 +151,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1" data-path="sec-biomass-supply.html"><a href="sec-biomass-supply.html"><i class="fa fa-check"></i><b>5.1</b> Supply</a></li>
 <li class="chapter" data-level="5.2" data-path="sec-biomass-demand.html"><a href="sec-biomass-demand.html"><i class="fa fa-check"></i><b>5.2</b> Demand</a></li>
 <li class="chapter" data-level="5.3" data-path="sec-respiration.html"><a href="sec-respiration.html"><i class="fa fa-check"></i><b>5.3</b> Respiration</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="sec-respiration.html"><a href="sec-respiration.html#growth-respiration-conversion-efficiency"><i class="fa fa-check"></i><b>5.3.1</b> Growth respiration (Conversion efficiency))</a></li>
-<li class="chapter" data-level="5.3.2" data-path="sec-respiration.html"><a href="sec-respiration.html#maintenance-respiration"><i class="fa fa-check"></i><b>5.3.2</b> Maintenance respiration</a></li>
+<li class="chapter" data-level="5.3.1" data-path="sec-respiration.html"><a href="sec-respiration.html#sec:biomass-respiration-growth"><i class="fa fa-check"></i><b>5.3.1</b> Growth respiration (Conversion efficiency))</a></li>
+<li class="chapter" data-level="5.3.2" data-path="sec-respiration.html"><a href="sec-respiration.html#sec:biomass-respiration-maintenance"><i class="fa fa-check"></i><b>5.3.2</b> Maintenance respiration</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="biomass-partitioning.html"><a href="biomass-partitioning.html"><i class="fa fa-check"></i><b>5.4</b> Biomass partitioning</a></li>
 <li class="chapter" data-level="5.5" data-path="sec-biomass-pool.html"><a href="sec-biomass-pool.html"><i class="fa fa-check"></i><b>5.5</b> Biomass pool</a></li>
@@ -221,13 +221,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.3" data-path="spike-biomass.html"><a href="spike-biomass.html"><i class="fa fa-check"></i><b>11.3</b> Biomass dynamic</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="cha-stem.html"><a href="cha-stem.html"><i class="fa fa-check"></i><b>12</b> Stem</a><ul>
-<li class="chapter" data-level="12.1" data-path="sec-stem-supply.html"><a href="sec-stem-supply.html"><i class="fa fa-check"></i><b>12.1</b> Supply</a></li>
-<li class="chapter" data-level="12.2" data-path="sec-stem-demand.html"><a href="sec-stem-demand.html"><i class="fa fa-check"></i><b>12.2</b> Demand</a></li>
-<li class="chapter" data-level="12.3" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html"><i class="fa fa-check"></i><b>12.3</b> Biomass dynamic</a></li>
-<li class="chapter" data-level="12.4" data-path="ses-stem-wsc.html"><a href="ses-stem-wsc.html"><i class="fa fa-check"></i><b>12.4</b> Water soluble carbohydrate</a></li>
-<li class="chapter" data-level="12.5" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html"><i class="fa fa-check"></i><b>12.5</b> Nitrogen</a><ul>
-<li class="chapter" data-level="12.5.1" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#demand"><i class="fa fa-check"></i><b>12.5.1</b> Demand</a></li>
-<li class="chapter" data-level="12.5.2" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#supply"><i class="fa fa-check"></i><b>12.5.2</b> Supply</a></li>
+<li class="chapter" data-level="12.1" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html"><i class="fa fa-check"></i><b>12.1</b> Biomass</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#sec:stem-dm-supply"><i class="fa fa-check"></i><b>12.1.1</b> Supply</a></li>
+<li class="chapter" data-level="12.1.2" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#sec:stem-dm-demand"><i class="fa fa-check"></i><b>12.1.2</b> Demand</a></li>
+<li class="chapter" data-level="12.1.3" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#sec:stem-dm-dynamic"><i class="fa fa-check"></i><b>12.1.3</b> Biomass dynamic</a></li>
+<li class="chapter" data-level="12.1.4" data-path="sec-stem-biomass.html"><a href="sec-stem-biomass.html#ses:stem-wsc"><i class="fa fa-check"></i><b>12.1.4</b> Water soluble carbohydrate</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html"><i class="fa fa-check"></i><b>12.2</b> Nitrogen</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#demand"><i class="fa fa-check"></i><b>12.2.1</b> Demand</a></li>
+<li class="chapter" data-level="12.2.2" data-path="sec-stem-nitrogen.html"><a href="sec-stem-nitrogen.html#supply"><i class="fa fa-check"></i><b>12.2.2</b> Supply</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -259,11 +261,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="sec-respiration" class="section level2">
 <h2><span class="header-section-number">5.3</span> Respiration</h2>
 <p>As the major roles of carbon balance of crop, respiration is separated into two components, i.e. growth and maintenance respiration <span class="citation">(van Iersel and Seymour <a href="cha-reference.html#ref-vanIerselGrowthRespirationMaintenance2000">2000</a>; Chiariello, Mooney, and Williams <a href="cha-reference.html#ref-ChiarielloGrowthcarbonallocation2000">2000</a>)</span>. <span class="citation">van Iersel and Seymour (<a href="cha-reference.html#ref-vanIerselGrowthRespirationMaintenance2000">2000</a>)</span> described “growth respiration is referred as the amount of carbohydrates respired in a net gain in plant biomass. This includes the production of ATP and reductant for biosynthetic processes, transport processes, and nutrient uptake and reduction. Maintenance respiration is defined as the respiration needed to provide the energy for all plant processes that do not result in a net increase in plant dry matter, such as maintenance of ion gradients across membranes and the resynthesis of degraded organic compounds”.</p>
-<div id="growth-respiration-conversion-efficiency" class="section level3">
+<div class="fig-output">
+<div class="figure" style="text-align: center"><span id="fig:biomass-respiration-all"></span>
+<img src="APSIM-Wheat_files/figure-html/biomass-respiration-all-1.png" alt="The growth and maintenance respirations." width="80%" />
+<p class="caption">
+Figure 5.13: The growth and maintenance respirations.
+</p>
+</div>
+</div>
+<div id="sec:biomass-respiration-growth" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Growth respiration (Conversion efficiency))</h3>
 <p>The allocated biomass of an organ losses through growth respiration (i.e, 1 - Conversion efficiency). The growth respiration is applied to all components of an organ (i.e. structural, metabolic, storage).</p>
 <table>
-<caption><span id="tab:biomass-conversion-efficiency">Table 5.5: </span>Biomass conversion efficiency for all organs.</caption>
+<caption><span id="tab:biomass-respiration-conversion-efficiency">Table 5.5: </span>Biomass conversion efficiency for all organs.</caption>
 <thead>
 <tr class="header">
 <th align="left">Organ</th>
@@ -294,17 +304,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tbody>
 </table>
 <div class="fig-output">
-<div class="figure" style="text-align: center"><span id="fig:biomass-growth-respiration"></span>
-<img src="APSIM-Wheat_files/figure-html/biomass-growth-respiration-1.png" alt="Growth respiration for all organs" width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:biomass-respiration-growth"></span>
+<img src="APSIM-Wheat_files/figure-html/biomass-respiration-growth-1.png" alt="Growth respiration for all organs" width="80%" />
 <p class="caption">
-Figure 5.10: Growth respiration for all organs
+Figure 5.14: Growth respiration for all organs
 </p>
 </div>
 </div>
 </div>
-<div id="maintenance-respiration" class="section level3">
+<div id="sec:biomass-respiration-maintenance" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Maintenance respiration</h3>
-<p>The maintenance respiration is required for metabolic and storage components (Table <a href="sec-biomass-demand.html#tab:biomass-component-type">5.3</a>). The metabolic and storage components of <code>Live</code> pool is daily reduced according to a fraction which is used for maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.12</a>). The maintenance fraction is calculated as reference maintenance fraction at 20 C and a beta function <span class="citation">(Wang and Engel <a href="cha-reference.html#ref-WangSimulationphenologicaldevelopment1998">1998</a>)</span> with three cardinal temperatures (i.e. minimum, optimal and maximum temperatures). All organs have the same cardinal temperatures, but different maintenance fraction at 20C (Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.6</a>). Finally, the actual maintenance fraction depends on the daily mean temperature (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.12</a>. <code>Leaf</code> and <code>Stem</code> have the major contributions to maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.13</a>). Root and Grain don’t have maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.13</a>).</p>
+<p>The maintenance respiration is required for metabolic and storage components (Table <a href="sec-biomass-demand.html#tab:biomass-demand-componenttype">5.3</a>). The metabolic and storage components of <code>Live</code> pool is daily reduced according to a fraction which is used for maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.16</a>). The maintenance fraction is calculated as reference maintenance fraction at 20 C and a beta function <span class="citation">(Wang and Engel <a href="cha-reference.html#ref-WangSimulationphenologicaldevelopment1998">1998</a>)</span> with three cardinal temperatures (i.e. minimum, optimal and maximum temperatures). All organs have the same cardinal temperatures, but different maintenance fraction at 20C (Table <a href="sec-respiration.html#tab:biomass-wefuncton">5.6</a>). Finally, the actual maintenance fraction depends on the daily mean temperature (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration-fraction">5.16</a>. <code>Leaf</code> and <code>Stem</code> have the major contributions to maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.17</a>). Root and Grain don’t have maintenance respiration (Fig. <a href="sec-respiration.html#fig:biomass-maintenance-respiration">5.17</a>).</p>
 <table>
 <caption><span id="tab:biomass-wefuncton">Table 5.6: </span>The parameter values of maintenance fractions for all organs. <span class="math inline">\(T_{min}\)</span>, <span class="math inline">\(T_{opt}\)</span> and <span class="math inline">\(T_{max}\)</span> are the minimum, optimum and maximum temperatures in the Wang and Engle’s beta equation. The <span class="math inline">\(W\)</span> is the weighting of maximum temperature when calculats daily mean temperature. The <span class="math inline">\(T_{ref}\)</span> and <span class="math inline">\(M_{20}\)</span> are the reference temperature and fraction of maintenance fractions at reference temperature.</caption>
 <thead>
@@ -370,7 +380,7 @@ Figure 5.10: Growth respiration for all organs
 <div class="figure" style="text-align: center"><span id="fig:biomass-maintenance-respiration-beta"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-maintenance-respiration-beta-1.png" alt="The response of maintenance respiration on daily average temperature with a beta function [@WangSimulationphenologicaldevelopment1998]." width="80%" />
 <p class="caption">
-Figure 5.11: The response of maintenance respiration on daily average temperature with a beta function <span class="citation">(Wang and Engel <a href="cha-reference.html#ref-WangSimulationphenologicaldevelopment1998">1998</a>)</span>.
+Figure 5.15: The response of maintenance respiration on daily average temperature with a beta function <span class="citation">(Wang and Engel <a href="cha-reference.html#ref-WangSimulationphenologicaldevelopment1998">1998</a>)</span>.
 </p>
 </div>
 </div>
@@ -378,7 +388,7 @@ Figure 5.11: The response of maintenance respiration on daily average temperatur
 <div class="figure" style="text-align: center"><span id="fig:biomass-maintenance-respiration-fraction"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-maintenance-respiration-fraction-1.png" alt="Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain)." width="80%" />
 <p class="caption">
-Figure 5.12: Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).
+Figure 5.16: Daily fraction of maintenance respiration for all organs. The maintenance respirations of two groups of organs overlap each other (i.e. stem and root, spike and grain).
 </p>
 </div>
 </div>
@@ -386,7 +396,7 @@ Figure 5.12: Daily fraction of maintenance respiration for all organs. The maint
 <div class="figure" style="text-align: center"><span id="fig:biomass-maintenance-respiration"></span>
 <img src="APSIM-Wheat_files/figure-html/biomass-maintenance-respiration-1.png" alt="Daily maintenance respiration for all organs." width="80%" />
 <p class="caption">
-Figure 5.13: Daily maintenance respiration for all organs.
+Figure 5.17: Daily maintenance respiration for all organs.
 </p>
 </div>
 </div>

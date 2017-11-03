@@ -25,10 +25,11 @@ new_breaks <- function(x) {
 # plot report
 plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
                         panel = FALSE, y_labels = NULL, ncol = 1, type = 'both',
-                        chunk_type = 'output') {
+                        chunk_type = 'output', interacive = FALSE) {
 
 
     library(ggplot2)
+    library(ggiraph)
     # x_var_name <- gsub('.*\\.(.*)', '\\1', x_var)
     # x_var_n <- list()
     # x_var_n[[x_var_name]] <- x_var
@@ -57,6 +58,8 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
 
     register_chunk(y_cols, paste0('fig:', opts_current$get("label")),
                    type = chunk_type)
+    pd <- pd %>%
+        mutate(tooltip = paste0(Trait, ", X: ", round(XValue, 2), " Y: ", round(YValue,2)))
 
     p <- ggplot(pd, aes(XValue, YValue))
 
@@ -72,20 +75,38 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
         }
     } else {
         if (length(y_cols) > 1) {
-            if (type == 'area') {
-                p <- p +
-                    geom_area(aes(fill = Trait))
-            }
-            if (type %in% c('both', 'point')) {
-                p <- p + geom_point(aes(colour = Trait, shape = Trait))
-            }
-            if (type %in% c('both', 'line')) {
-                p <- p + geom_line(aes(colour = Trait))
+            if (interacive) {
+                if (type == 'area') {
+                    stop('Not implemented')
+                }
+                if (type %in% c('both', 'point')) {
+                    p <- p + geom_point_interactive(aes(colour = Trait, tooltip = tooltip))
+                }
+                if (type %in% c('both', 'line')) {
+                    p <- p + geom_line(aes(colour = Trait))
+                }
+            } else {
+                if (type == 'area') {
+                    p <- p +
+                        geom_area(aes(fill = Trait))
+                }
+                if (type %in% c('both', 'point')) {
+                    p <- p + geom_point(aes(colour = Trait, shape = Trait))
+                }
+                if (type %in% c('both', 'line')) {
+                    p <- p + geom_line(aes(colour = Trait))
+                }
             }
         } else {
-            p <- p +
-                geom_line() +
-                geom_point()
+            if (interacive) {
+                p <- p +
+                    geom_line_interactive() +
+                    geom_point_interactive()
+            } else {
+                p <- p +
+                    geom_line() +
+                    geom_point()
+            }
         }
         if (length(x_var) > 1) {
             p <- p + facet_wrap(~XVar, scales = 'free_x', ncol = 1)
@@ -114,10 +135,12 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
             key_stage <- bind_rows(key_stage, ks2)
 
         }
-        y_rng <- ggplot_build(p)$layout$panel_ranges[[1]]$y.range
-
+        y_rng <- ggplot_build(p)$layout$panel_scales_y[[1]]$range$range
         p <- p + geom_text(aes(x, y = y_rng[1], label = name), data = key_stage, vjust = 0) +
             ylim(y_rng)
+    }
+    if (interacive) {
+        p <- ggiraph(code = print(p), zoom_max = 5)
     }
     p
 }

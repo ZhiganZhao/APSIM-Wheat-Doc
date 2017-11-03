@@ -22,6 +22,9 @@
         <string>[Wheat].Root.WaterUptake</string>
         <string />
         <string>[Wheat].Root.NUptake</string>
+        <string>[Wheat].Stem.Live.StorageWt + [Wheat].Stem.Dead.StorageWt as Wheat.Stem.StorageWt</string>
+        <string>[Wheat].Stem.Live.StructuralWt + [Wheat].Stem.Dead.StructuralWt as Wheat.Stem.StructuralWt</string>
+        <string>[Wheat].Stem.Live.MetabolicWt + [Wheat].Stem.Dead.MetabolicWt as Wheat.Stem.MetabolicWt</string>
         <string />
         <string>[Wheat].Root.NSupplyUptake</string>
         <string>[Wheat].Root.NSupply.Uptake</string>
@@ -214,6 +217,8 @@
         <string>[Wheat].Stem.GrowthRespiration</string>
         <string>[Wheat].Spike.GrowthRespiration</string>
         <string />
+        <string>[Wheat].Grain.GrowthRespiration + [Wheat].Root.GrowthRespiration + [Wheat].Leaf.GrowthRespiration + [Wheat].Stem.GrowthRespiration + [Wheat].Spike.GrowthRespiration as Wheat.GrowthRespiration</string>
+        <string />
         <string>[Wheat].Stem.PercentWSC</string>
         <string />
         <string>[Wheat].Grain.MaintenanceRespiration</string>
@@ -221,6 +226,8 @@
         <string>[Wheat].Leaf.MaintenanceRespiration</string>
         <string>[Wheat].Spike.MaintenanceRespiration</string>
         <string>[Wheat].Stem.MaintenanceRespiration</string>
+        <string />
+        <string>[Wheat].Grain.MaintenanceRespiration + [Wheat].Root.MaintenanceRespiration + [Wheat].Leaf.MaintenanceRespiration + [Wheat].Spike.MaintenanceRespiration + [Wheat].Stem.MaintenanceRespiration as Wheat.MaintenanceRespiration</string>
         <string />
         <string>[Wheat].Root.MaintenanceRespirationFunction.Value() as Wheat.Root.MaintenanceRespirationFunction</string>
         <string>[Wheat].Grain.MaintenanceRespirationFunction.Value() as Wheat.Grain.MaintenanceRespirationFunction</string>
@@ -3376,7 +3383,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
         <MicroClimatePresent>true</MicroClimatePresent>
         <KDead>0.3</KDead>
         <MaximumMainStemLeafNumber>30</MaximumMainStemLeafNumber>
-        <DMConversionEfficiency>0</DMConversionEfficiency>
         <TipsAtEmergence>0</TipsAtEmergence>
         <CohortsAtInitialisation>0</CohortsAtInitialisation>
         <FractionDied>0</FractionDied>

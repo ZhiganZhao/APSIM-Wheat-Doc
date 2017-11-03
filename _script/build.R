@@ -4,9 +4,14 @@
 # unlink('_bookdown_files', recursive = TRUE)
 
 tryCatch({
+    # Remove existing files
     if (file.exists('APSIM-Wheat.Rmd')) {
         file.remove('APSIM-Wheat.Rmd')
     }
+    suppressPackageStartupMessages(library(tidyverse))
+    list.files('_book/', '\\.(html|png)$', full.names = TRUE, recursive = TRUE) %>%
+        lapply(file.remove) %>%
+        invisible()
 
     bookdown::render_book('.', output_format = 'bookdown::gitbook')
     # bookdown::render_book('.', output_format = 'bookdown::word_document2')

@@ -56,3 +56,7 @@ g_report %>%
                 x_lab = 'Days after sowing',
                 y_lab = expression('Nitrogen concentration (g N ' ~g^-1~'leaf)'),
                 ncol = 3)
+
+
+
+# plot_ly(pd, x = ~XValue, y = ~YValue, color = ~Trait, type = 'scatter', mode = 'lines+markers')

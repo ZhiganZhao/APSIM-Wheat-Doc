@@ -1,6 +1,6 @@
 # Grain {#cha:grain}
 
-
+Grain is only the grain part of head.
 
 ```{r grain-setup, message=FALSE, warning=FALSE, echo=FALSE}
 source('_script/setup.R')
