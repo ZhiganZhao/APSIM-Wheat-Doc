@@ -5,16 +5,31 @@
 source('_script/setup.R')
 ```
 
-`Spike` provides biomass through retranslocation, requires biomass depending on the population and potential spike weight. The biomass is allocated into two components, i..e `Structural` and `Storage`. No `Metabolic` is considered.
+```{r spike-biomass-parameter}
+spike_max_weight <- get_fixed_value(g_pmf, 'Wheat.Spike.DMDemandFunction.MaximumOrganWt')
+spike_duration <- max(g_report$Wheat.Spike.DMDemandFraction.GrowthDuration)
+spike_structure_fraction <- get_fixed_value(g_pmf, 'Wheat.Spike.StructuralFraction')
+spike_max_weight2 <- round(spike_max_weight * spike_structure_fraction, 2)
+spike_number <- g_report$Wheat.Structure.TotalStemPopn[nrow(g_report)]
+spike_max_weight_p <- round(spike_number * spike_max_weight2)
+spike_growth_rate_p <- round(spike_max_weight_p / spike_duration, 2)
+spike_retranslocation <- get_fixed_value(g_pmf, 'Wheat.Spike.DMRetranslocationFactor.ReproductiveGrowth.DMRetranslocationFactor')
 
-## Supply {#sec:spike-supply}
+```
 
-In `Spike`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:spike-supply)). Daily retranslocation is the proportion of current storage ($W_{spike, storage}$). The default value of proportion is 0.5 since `StartGrainFill`, i.e. retranslocatable biomsss is 50% during grain filling (Fig. \@ref(fig:spike-retran-factor)).
 
+Spike is the head parts without grain including pedicel and glunes. `Spike` provides biomass through retranslocation, requires biomass depending on the population and potential spike weight. The biomass is allocated into two components, i..e `Structural` and `Storage`. No `Metabolic` is considered.
+
+## Biomass {#sec:spike-biomass}
+
+### Supply {#sec:spike-dm-supply}
+
+In `Spike`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:spike-dm-supply)). Daily retranslocation is the proportion of current storage ($B_{spike, storage}$) from `StartGrainFill` to `EndGrainFill` with default value `r spike_retranslocation`, i.e. daily retranslocatable biomsss is 50% of total storage during grain filling (Fig. \@ref(fig:spike-dm-retran-factor)).
 
 
 <div class="fig-input">
-```{r spike-retran-factor, fig.asp = 0.5, fig.cap='Growth duration of spike development'}
+```{r spike-dm-retran-factor, fig.asp = 0.5, fig.cap='Growth duration of spike development'}
+
 y_cols <- c('Wheat.Spike.DMRetranslocationFactor')
 g_report %>% 
     # filter(Wheat.Phenology.Stage > 5) %>% 
@@ -24,10 +39,9 @@ g_report %>%
 </div>
 
 
- 
 
 <div class="fig-output">
-```{r spike-supply, fig.asp = 1, fig.cap='Biomass supply from spike'}
+```{r spike-dm-supply, fig.asp = 1, fig.cap='Biomass supply from spike'}
 y_cols <- c('Wheat.Spike.DMSupply.Fixation',
             'Wheat.Spike.DMSupply.Retranslocation',
             'Wheat.Spike.DMSupply.Reallocation')
@@ -40,26 +54,32 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 </div>
 
 
-## Demand {#spike-demand}
+### Demand {#spike-dm-demand}
 
-The Structural demand of `Spike` ($D_{spike, structural}$) is determined by the population based demand function since Stage 5 (`FlagLeaf`) to Stage 7 (`StartGrainFill`). The structural demand includes the growth respiration. 
+
+
+The biomass demand is calculated as the total demands of two components (i.e. stuctural $BD_{spike,\,structural}$ and storage $BD_{spike,\,storage}$) as no metabolic demand is considered in the wheat model. The structural fraction $F_{spike, structure}$ is defined as the fraction of structural component as total biomass (`r spike_structure_fraction`), i.e. $1-F_{spike, structure}$ is the fraction of storage biomass.  
+
+The spike demand depends on the the potential weight of a spike ($B_{max, spike}$) and head number ($N_{head}$) during spike growth period. In theory, $B_{max, spike}$ contains the structural and metabolic components (`r spike_max_weight` g per spike in default value). However, no metabolic component is considered in spike. The potential weight of a spike is `r spike_max_weight2` g per spike and `r spike_max_weight_p` g m^-2^ in the population only for structural component.
+
+
+**Structural demand** of `Spike` ($BD_{spike, structural}$) is determined by the population based demand function since Stage 5 (`FlagLeaf`) to Stage 7 (`StartGrainFill`). The structural demand includes the growth respiration (Section \@ref(sec:biomass-respiration-growth)). 
 
 $$
-D_{spike, structural} = \Delta TT \times N_{head} \frac {W_{max, grain}}{T_{growth}} \times F_{spike, structure} / C_{spike, efficiency}
+BD_{spike, structural} = \Delta TT \times N_{head} \frac {B_{max, spike}}{T_{growth}} \times F_{spike, structure} / C_{spike, efficiency}
 $$
-where $\Delta TT$ is the daily thermal time in the phenology module (Fig. \@ref(fig:phenology-tt)); $N_{head}$ is the head number per unit area, i.e. total stem population at flowering time (Fig. \@ref(fig:str-live-stem-number)); $W_{max, grain}$ is the potential weight per spike (g) with default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMDemandFunction.MaximumOrganWt')`; $T_{growth}$ is the growth duration of spike ($TT$, the thermal time target from `FlagLeaf` to `StartGrainFill`). As the target of `EarlyReproductive` is sensitive to photoperiod (Section \@ref(sec:phe-stage-period)), the growth duration can be changed during spike development depending on the photoperiod (Fig. \@ref(fig:spike-growth-duration)). The head number, growth duration and potential spike weight are defined as potential spike weight including the structural and storage conponents and the growth respiration. 
+where $\Delta TT$ is the daily thermal time in the phenology module (Fig. \@ref(fig:phenology-tt)); $N_{head}$ is the head number per unit area ( # m^-2^ ground), i.e. total stem population at flowering time (Fig. \@ref(fig:str-live-stem-number)); $W_{max, spike}$ is the potential weight of spike (`r spike_max_weight` g per spike). $T_{growth}$ is the growth duration of spike ($TT$, the thermal time target from `FlagLeaf` to `StartGrainFill`). As the target of `EarlyReproductive` is sensitive to photoperiod (Section \@ref(sec:phe-stage-period)), the growth duration can be changed during spike development depending on the photoperiod (Fig. \@ref(fig:spike-growth-duration)). Consequntly, the potential growth rate is `r spike_growth_rate_p` g m^-2^ ground &deg;Cd^-2^.
 
-
-$F_{spike, structure}$ is the structura fraction of `Spike` with default value `e get_fixed_value(g_pmf, 'Wheat.Spike.StructuralFraction')`. $C_{spike,efficiency}$ is the conversion efficiency of `Spike`, i.e. the efficiency of alloction biomass converted into carbon (growth respiration). $C_{efficiency}$ has the default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMConversionEfficiency')` and is counted befor allocation. 
+$F_{spike, structure}$ is the structura fraction of `Spike` with default value `r get_fixed_value(g_pmf, 'Wheat.Spike.StructuralFraction')`. $C_{spike,efficiency}$ is the conversion efficiency of `Spike`, i.e. the efficiency of alloction biomass converted into carbon (growth respiration). $C_{efficiency}$ has the default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMConversionEfficiency')` and is counted befor allocation. 
 
 
 <div class="fig-output">
-```{r spike-number, fig.asp = 1, fig.cap='Head number'}
+```{r spike-number, fig.asp = 1, fig.cap='Head, live stem and total population in unit area. The head number is determined at flag leaf stage as the total stem population.'}
 y_cols <- c('Wheat.Spike.HeadNumber',
             'Wheat.Leaf.LiveStemNumber',
             'Wheat.Structure.TotalStemPopn')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = expression('Demand (g biomass'~m^-2~' ground ' ~d^-1~')'),
+            y_lab = expression('Number (#'~m^-2~' ground )'),
             ncol = 3)
 ```
 </div>
@@ -67,7 +87,6 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 <div class="fig-input">
 ```{r spike-growth-duration, fig.asp = 0.5, fig.cap='Growth duration of spike development'}
-
 y_cols <- c('Wheat.Spike.DMDemandFraction.GrowthDuration')
 g_report %>% 
     filter(Wheat.Phenology.Stage > 5) %>% 
@@ -77,20 +96,18 @@ g_report %>%
 </div>
 
 
-
-Storage demand is to fill the non-structural components (i.e. storage for `Spike`). Current structural biomass and structural demand are used to calculate the potential total biomass of `Spike` (structural plus storage). The difference of potental total biomas and current biomass are the storage demand. Storage demand also include the growth respiration.    
+**Storage demand** ($BD_{spike,\,storage}$) is to fill the non-structural components (i.e. storage for `Spike`) as the difference of theoretical maximum and base allocated biomass, and then divides growth respiration (Section \@ref(sec:biomass-respiration-growth)). 
 
 $$
-D_{spike, storage} = \frac {(W_{spike, structural} + D_{spike, structural}) / F_{spike, structure} - W_{spike, structural} + W_{spike, storage} + D_{spike, structural}} {C_{spike, efficiency}}
+BD_{spike,\,storage} = [\frac{B_{spike,\,structural} + BD_{spike,\,structural}}{F_{spike, structure}} - (B_{spike} + BD_{spike,\,structural})] / C_{spike, efficiency}
 $$
 
-No metabolic demand is calculated for `Spike`. 
+The theoretical maximum biomass equals to current spike structural weight ($B_{spike,\,structural}$) plus structural demand ($BD_{spike,\,structural}$), then divide the structural fraction ($F_{spike, structure}$). The base allocated biomass equals to curent spike weight ($B_{spike}$) plus structural demand ($BD_{spike,\,structural}$). 
 
-
-The figure below shows the demands of `Spike` in the test simulation (Fig. \@(fig:spike-demand)).
+Consequently, the spike grows from `FlagLeaf` to `StartGrainFill`, and can store more biomass until maturity (Fig. \@ref(fig:spike-dm-demand)). The actual growth rate of spike depends on the potential size and daily thermal time. 
 
 <div class="fig-output">
-```{r spike-demand, fig.asp = 1, fig.cap='Biomass demand by spike'}
+```{r spike-dm-demand, fig.asp = 1, fig.cap='Biomass demand by spike'}
 y_cols <- c('Wheat.Spike.DMDemand.Structural',
             'Wheat.Spike.DMDemand.Metabolic',
             'Wheat.Spike.DMDemand.Storage')
@@ -101,13 +118,13 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 </div>
 
 
-## Biomass dynamic {#spike-biomass}
+### Biomass dynamic {#spike-dm-dynamic}
 
-The actual allocation reflects the increase of structural component, and retranslocation of storage component (Fig. \@ref(fig:spike-allocated)). `Spike` only considers the `Live` biomass (Fig. \@ref(fig:spike-live), no `Dead` biomass (Fig. \@ref(fig:spike-dead)).
+The actual allocation reflects the increase of structural component, and retranslocation of storage component (Fig. \@ref(fig:spike-dm-allocated)). `Spike` only considers the `Live` biomass (Fig. \@ref(fig:spike-dm-live)), no `Dead` biomass (Fig. \@ref(fig:spike-dm-dead)).
 
 
 <div class="fig-output">
-```{r spike-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for spike'}
+```{r spike-dm-allocated, fig.asp = 1, fig.cap='Actual allocated biomass to spike for three components. The negative values of Storage indicate biomass is ratranslocated into other organs.'}
 y_cols <- c('Wheat.Spike.Allocated.StructuralWt',
             'Wheat.Spike.Allocated.MetabolicWt',
             'Wheat.Spike.Allocated.StorageWt')
@@ -121,10 +138,12 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r spike-weight, fig.asp = 1, fig.cap='Dynamic of spike biomass (Total)'}
-y_cols <- c('Wheat.SpikeWt')
+```{r spike-dm-weight, fig.asp = 1, fig.cap='Dynamic of spike dry weights for three components and total.'}
+y_cols <- c(sprintf('Wheat.Spike.%sWt', g_demand), 'Wheat.SpikeWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = expression('Biomass (g biomass '~m^-2~' ground)'))
+            y_lab = expression('Dry weight (g biomass '~m^-2~' ground '~d^-1~')'),
+            y_labels = c(g_demand, 'Total'),
+            ncol = 4)
 
 ```
 </div>
@@ -132,28 +151,38 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r spike-live, fig.asp = 1, fig.cap='Dynamic of spike biomass (Live component)'}
-y_cols <- c('Wheat.Spike.Live.StructuralWt',
-            'Wheat.Spike.Live.MetabolicWt',
-            'Wheat.Spike.Live.StorageWt')
+```{r spike-dm-live, fig.asp = 1, fig.cap='Dynamic of spike biomass in Live pool for three components and total.'}
+y_cols <- c(sprintf('Wheat.Spike.Live.%sWt', g_demand), 'Wheat.Spike.LiveWt')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
-            y_lab = expression('Biomass (g biomass '~m^-2~' ground)'),
-            ncol = 3)
-
+            y_lab = expression('Dry weight (g biomass '~m^-2~' ground '~d^-1~')'),
+             y_labels = c(g_demand, 'Total'),
+            ncol = 4)
 ```
 </div>
-
 
 <div class="fig-output">
-```{r spike-dead, fig.asp = 0.5, fig.cap='Dynamic of spike biomass (Dead component)'}
-y_cols <- c('Wheat.Spike.Dead.StructuralWt',
-            'Wheat.Spike.Dead.MetabolicWt',
-            'Wheat.Spike.Dead.StorageWt')
+```{r spike-dm-dead, fig.asp = 1, fig.cap='Dynamic of spike biomass in Dead pool for three components and total.'}
+y_cols <- c(sprintf('Wheat.Spike.Dead.%sWt', g_demand), 'Wheat.Spike.DeadWt')
 
-
-plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
-            y_lab = expression('Biomass (g biomass '~m^-2~' ground)'), 
-            ncol = 3)
-
+# Check all components equal to zero.
+g_report %>% 
+    select(y_cols) %>% 
+    gather(trait, value, y_cols) %>% 
+    group_by(trait) %>% 
+    summarise(n = sum(value > 0)) %>% 
+    filter(n > 0) %>% 
+    ungroup() %>% 
+    assertr::verify(nrow(.) == 0) %>% 
+    invisible()
+    
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Dry weight (g biomass '~m^-2~' ground '~d^-1~')'),
+             y_labels = c(g_demand, 'Total'),
+            ncol = 4)
 ```
 </div>
+
+
+
+## Nitrogen {#sec:spike-nitrogen}
+

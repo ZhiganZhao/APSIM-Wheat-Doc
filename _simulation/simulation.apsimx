@@ -11,6 +11,16 @@
       <VariableNames>
         <string>[Clock].Today</string>
         <string />
+        <string />
+        <string>[Wheat].Stem.Live.StorageWt + [Wheat].Stem.Dead.StorageWt as Wheat.Stem.StorageWt</string>
+        <string>[Wheat].Stem.Live.StructuralWt + [Wheat].Stem.Dead.StructuralWt as Wheat.Stem.StructuralWt</string>
+        <string>[Wheat].Stem.Live.MetabolicWt + [Wheat].Stem.Dead.MetabolicWt as Wheat.Stem.MetabolicWt</string>
+        <string>[Wheat].Spike.Live.StorageWt + [Wheat].Spike.Dead.StorageWt as Wheat.Spike.StorageWt</string>
+        <string>[Wheat].Spike.Live.StructuralWt + [Wheat].Spike.Dead.StructuralWt as Wheat.Spike.StructuralWt</string>
+        <string>[Wheat].Spike.Live.MetabolicWt + [Wheat].Spike.Dead.MetabolicWt as Wheat.Spike.MetabolicWt</string>
+        <string />
+        <string />
+        <string />
         <string>[Wheat].Arbitrator.N.TotalUptakeSupply</string>
         <string />
         <string>[Weather].MaxT</string>
@@ -22,9 +32,6 @@
         <string>[Wheat].Root.WaterUptake</string>
         <string />
         <string>[Wheat].Root.NUptake</string>
-        <string>[Wheat].Stem.Live.StorageWt + [Wheat].Stem.Dead.StorageWt as Wheat.Stem.StorageWt</string>
-        <string>[Wheat].Stem.Live.StructuralWt + [Wheat].Stem.Dead.StructuralWt as Wheat.Stem.StructuralWt</string>
-        <string>[Wheat].Stem.Live.MetabolicWt + [Wheat].Stem.Dead.MetabolicWt as Wheat.Stem.MetabolicWt</string>
         <string />
         <string>[Wheat].Root.NSupplyUptake</string>
         <string>[Wheat].Root.NSupply.Uptake</string>

@@ -29,7 +29,7 @@ Daily biomass supply (Section \@ref(sec:biomass-supply)) is comsumed by growth r
 
 ## Supply {#sec:biomass-supply}
 
-Biomass supplies are divided into three sources, i.e fixation (i.e. photosynthesis), retanslocation, reallocation (Table \@ref(tab:biomass-supply-type)). The only source of fixation is organ `Leaf`. The sources of retanslocation include organs `Spike` and `Stem`. No reallocation is considered in the wheat model. See details in the organs about the dynamic of biomass supply. 
+Biomass supplies are divided into three sources, i.e fixation (i.e. photosynthesis), retanslocation, reallocation (Table \@ref(tab:biomass-supply-type)). The only source of fixation is organ `Leaf` (Section \@ref(sec:leaf-dm-supply)). The sources of retanslocation include organs `Spike` (Section \@ref(sec:spike-dm-supply)) and `Stem` (Section \@ref(sec:stem-dm-supply)) since stage `StartOfGrainFill`. No reallocation is considered in the wheat model. No biomass supply from `Root` (Chapter \@ref(cha:root)) and `Grain`. See details in the organs about the dynamic of biomass supply. 
 
 
 ```{r biomass-supply-type, results='asis'}
@@ -151,7 +151,7 @@ g_report %>%
 ```
 
 
-`Stem` and `Root` demands determine as the fraction of daily `Fixation` (Fig. \@ref(fig:stem-dm-demand-fraction), and \@ref(fig:root-demand-fraction)). The `Spike` demand determines as the head number and growth duration (Fig. \@ref(fig:spike-demand)).
+`Stem` and `Root` demands determine as the fraction of daily `Fixation` (Fig. \@ref(fig:stem-dm-demand-fraction), and \@ref(fig:root-demand-fraction)). The `Spike` demand determines as the head number and growth duration (Fig. \@ref(fig:spike-dm-demand)).
 
 
 

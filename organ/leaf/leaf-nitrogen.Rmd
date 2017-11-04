@@ -1,5 +1,6 @@
 ## Nitrogen {#sec:leaf-nigrogen}
 
+
 ### Functional nitrogen
 
 Ratio of leaf functional nitrogen ($f_{N,\,leaf}$) quantifys the nitrogen stress status of the plant and represents the concentration of metabolic N relative the maximum potentil metabolic N content of the leaf.

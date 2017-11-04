@@ -1,4 +1,4 @@
-## Demand {#sec:leaf-deman}
+## Biomass demand {#sec:leaf-dm-demand}
 
 The leaf demand is summarised for all leaf cohorts in the expanding period (Figs \@ref(fig:leaf-life-cycle) and \@ref(fig:leaf-cohort-changing-no)), so that there is no leaf demand after `FlagLeaf`. No `Storage` demand is considered in the leaf organ. As the structural fraction is defined as `r get_fixed_value(g_pmf, 'Wheat.Leaf.StructuralFraction')`, the structural and metabolic demands have the same values in the whole life cycle. 
 

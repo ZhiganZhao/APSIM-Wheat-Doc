@@ -1,4 +1,4 @@
-## Supply {#sec:leaf-supply}
+## Biomass supply {#sec:leaf-dm-supply}
 
 In `Leaf` organ, the biomass supply only sources from `Fixation` (i.e. photosynthesis, Fig. \@ref(fig:leaf-supply)). Three photosynthesis models are implemented in the APSIM next generation. 
 
@@ -200,7 +200,7 @@ plot_report(g_report, 'Wheat.Leaf.LAI', y_cols,
 The actual gross photosynthesis supply is simulated by SPASS model.
 
 <div class="fig-output">
-```{r leaf-supply, fig.asp = 1, fig.cap='Biomass supply from leaf'}
+```{r leaf-lm-supply, fig.asp = 1, fig.cap='Biomass supply from leaf'}
 y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
             'Wheat.Leaf.DMSupply.Retranslocation',
             'Wheat.Leaf.DMSupply.Reallocation')
