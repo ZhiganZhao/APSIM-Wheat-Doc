@@ -205,7 +205,8 @@ g_report %>%
 
 * Reallocation from senescence part
 * Retranslocaion from storage
-
+* No fixation
+* No uptake
 
 <div class="fig-output">
 ```{r stem-nitrogen-supply, fig.cap='The stem nitrogen supply for all components'}

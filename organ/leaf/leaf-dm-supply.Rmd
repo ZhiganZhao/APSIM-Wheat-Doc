@@ -200,7 +200,7 @@ plot_report(g_report, 'Wheat.Leaf.LAI', y_cols,
 The actual gross photosynthesis supply is simulated by SPASS model.
 
 <div class="fig-output">
-```{r leaf-lm-supply, fig.asp = 1, fig.cap='Biomass supply from leaf'}
+```{r leaf-dm-supply, fig.asp = 1, fig.cap='Biomass supply from leaf'}
 y_cols <- c('Wheat.Leaf.DMSupply.Fixation',
             'Wheat.Leaf.DMSupply.Retranslocation',
             'Wheat.Leaf.DMSupply.Reallocation')
