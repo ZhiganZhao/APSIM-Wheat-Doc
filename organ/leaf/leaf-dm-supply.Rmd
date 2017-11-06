@@ -1,6 +1,6 @@
 ## Biomass supply {#sec:leaf-dm-supply}
 
-In `Leaf` organ, the biomass supply only sources from `Fixation` (i.e. photosynthesis, Fig. \@ref(fig:leaf-supply)). Three photosynthesis models are implemented in the APSIM next generation. 
+In `Leaf` organ, the biomass supply only sources from `Fixation` (i.e. photosynthesis, Fig. \@ref(fig:leaf-dm-supply)). Three photosynthesis models are implemented in the APSIM next generation. 
 
 ```{r leaf-supply-config}
 name_rue <- 'Wheat.Leaf.Photosynthesis_RUE'

@@ -24,7 +24,7 @@ Spike is the head parts without grain including pedicel and glunes. `Spike` prov
 
 ### Supply {#sec:spike-dm-supply}
 
-In `Spike`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:spike-dm-supply)). Daily retranslocation is the proportion of current storage ($B_{spike, storage}$) from `StartGrainFill` to `EndGrainFill` with default value `r spike_retranslocation`, i.e. daily retranslocatable biomsss is 50% of total storage during grain filling (Fig. \@ref(fig:spike-dm-retran-factor)).
+In `Spike`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:spike-dm-supply)). Daily retranslocation is the proportion of current storage ($B_{spike, storage}$) from `StartGrainFill` to `EndGrainFill` with default value `r spike_retranslocation`, i.e. daily retranslocatable biomass is `r spike_retranslocation * 100`% of total storage during grain filling (Fig. \@ref(fig:spike-dm-retran-factor)).
 
 
 <div class="fig-input">
@@ -58,7 +58,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 
-The biomass demand is calculated as the total demands of two components (i.e. stuctural $BD_{spike,\,structural}$ and storage $BD_{spike,\,storage}$) as no metabolic demand is considered in the wheat model. The structural fraction $F_{spike, structure}$ is defined as the fraction of structural component as total biomass (`r spike_structure_fraction`), i.e. $1-F_{spike, structure}$ is the fraction of storage biomass.  
+The biomass demand is calculated as the total demands of two components (i.e. structural $BD_{spike,\,structural}$ and storage $BD_{spike,\,storage}$) as no metabolic demand is considered in the wheat model. The structural fraction $F_{spike, structure}$ is defined as the fraction of structural component as total biomass (`r spike_structure_fraction`), i.e. $1-F_{spike, structure}$ is the fraction of storage biomass.  
 
 The spike demand depends on the the potential weight of a spike ($B_{max, spike}$) and head number ($N_{head}$) during spike growth period. In theory, $B_{max, spike}$ contains the structural and metabolic components (`r spike_max_weight` g per spike in default value). However, no metabolic component is considered in spike. The potential weight of a spike is `r spike_max_weight2` g per spike and `r spike_max_weight_p` g m^-2^ in the population only for structural component.
 
@@ -68,9 +68,9 @@ The spike demand depends on the the potential weight of a spike ($B_{max, spike}
 $$
 BD_{spike, structural} = \Delta TT \times N_{head} \frac {B_{max, spike}}{T_{growth}} \times F_{spike, structure} / C_{spike, efficiency}
 $$
-where $\Delta TT$ is the daily thermal time in the phenology module (Fig. \@ref(fig:phenology-tt)); $N_{head}$ is the head number per unit area ( # m^-2^ ground), i.e. total stem population at flowering time (Fig. \@ref(fig:str-live-stem-number)); $W_{max, spike}$ is the potential weight of spike (`r spike_max_weight` g per spike). $T_{growth}$ is the growth duration of spike ($TT$, the thermal time target from `FlagLeaf` to `StartGrainFill`). As the target of `EarlyReproductive` is sensitive to photoperiod (Section \@ref(sec:phe-stage-period)), the growth duration can be changed during spike development depending on the photoperiod (Fig. \@ref(fig:spike-growth-duration)). Consequntly, the potential growth rate is `r spike_growth_rate_p` g m^-2^ ground &deg;Cd^-2^.
+where $\Delta TT$ is the daily thermal time in the phenology module (Fig. \@ref(fig:phenology-tt)); $N_{head}$ is the head number per unit area ( # m^-2^ ground), i.e. total stem population at flowering time (Fig. \@ref(fig:str-live-stem-number)); $W_{max, spike}$ is the potential weight of spike (`r spike_max_weight` g per spike). $T_{growth}$ is the growth duration of spike ($TT$, the thermal time target from `FlagLeaf` to `StartGrainFill`). As the target of `EarlyReproductive` is sensitive to photoperiod (Section \@ref(sec:phe-stage-period)), the growth duration can be changed during spike development depending on the photoperiod (Fig. \@ref(fig:spike-growth-duration)). Consequently, the potential growth rate is `r spike_growth_rate_p` g m^-2^ ground &deg;Cd^-2^.
 
-$F_{spike, structure}$ is the structura fraction of `Spike` with default value `r get_fixed_value(g_pmf, 'Wheat.Spike.StructuralFraction')`. $C_{spike,efficiency}$ is the conversion efficiency of `Spike`, i.e. the efficiency of alloction biomass converted into carbon (growth respiration). $C_{efficiency}$ has the default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMConversionEfficiency')` and is counted befor allocation. 
+$F_{spike, structure}$ is the structural fraction of `Spike` with default value `r get_fixed_value(g_pmf, 'Wheat.Spike.StructuralFraction')`. $C_{spike,efficiency}$ is the conversion efficiency of `Spike`, i.e. the efficiency of allocation biomass converted into carbon (growth respiration). $C_{efficiency}$ has the default value `r get_fixed_value(g_pmf, 'Wheat.Spike.DMConversionEfficiency')` and is counted before allocation. 
 
 
 <div class="fig-output">
@@ -102,7 +102,7 @@ $$
 BD_{spike,\,storage} = [\frac{B_{spike,\,structural} + BD_{spike,\,structural}}{F_{spike, structure}} - (B_{spike} + BD_{spike,\,structural})] / C_{spike, efficiency}
 $$
 
-The theoretical maximum biomass equals to current spike structural weight ($B_{spike,\,structural}$) plus structural demand ($BD_{spike,\,structural}$), then divide the structural fraction ($F_{spike, structure}$). The base allocated biomass equals to curent spike weight ($B_{spike}$) plus structural demand ($BD_{spike,\,structural}$). 
+The theoretical maximum biomass equals to current spike structural weight ($B_{spike,\,structural}$) plus structural demand ($BD_{spike,\,structural}$), then divide the structural fraction ($F_{spike, structure}$). The base allocated biomass equals to current spike weight ($B_{spike}$) plus structural demand ($BD_{spike,\,structural}$). 
 
 Consequently, the spike grows from `FlagLeaf` to `StartGrainFill`, and can store more biomass until maturity (Fig. \@ref(fig:spike-dm-demand)). The actual growth rate of spike depends on the potential size and daily thermal time. 
 
@@ -118,7 +118,10 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 </div>
 
 
-### Biomass dynamic {#spike-dm-dynamic}
+### Actual allocation {#spike-dm-allocation}
+
+The actual allocation is constrained by the nitrogen allocation. 
+
 
 The actual allocation reflects the increase of structural component, and retranslocation of storage component (Fig. \@ref(fig:spike-dm-allocated)). `Spike` only considers the `Live` biomass (Fig. \@ref(fig:spike-dm-live)), no `Dead` biomass (Fig. \@ref(fig:spike-dm-dead)).
 

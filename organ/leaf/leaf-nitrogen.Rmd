@@ -20,9 +20,9 @@ double functionalNConc = (CohortParameters.CriticalNConc.Value() -
 
 <div class="fig-input">
 ```{r leaf-nconc, fig.asp = 1, fig.cap='Minimum, critical and maximum nitrogen concentration in leaf.'}
-y_cols <- c('Wheat.Leaf.CohortParameters.MinimumNConc',
-'Wheat.Leaf.CohortParameters.CriticalNConc',
-'Wheat.Leaf.CohortParameters.MaximumNConc')
+y_cols <- c('Wheat.Leaf.MinimumNConc',
+'Wheat.Leaf.CriticalNConc',
+'Wheat.Leaf.MaximumNConc')
 y_labels <- c('Minimum', 'Critical', 'Maximum')
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
         y_lab = expression('Nitrogen concentration (g N'~g^-1~' leaf)'), 

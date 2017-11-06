@@ -40,36 +40,34 @@ g_report %>%
 
 
 
-## Demand {#sec:nitrogen-demand}
 
 
 <div class="fig-output">
-```{r nitrogen-demand-organ, fig.cap='The plant nitrogen demand for all organs'}
-y_cols <- sprintf('Wheat.%s.NDemand.Total', g_organs)
+```{r root-nitrogen-minimumnconc, fig.asp=2, fig.cap='The parameter values of nitrogen concentrations in all organs including minimum, critical and maximum concentrations. Grain misses the critical nitrogen concentration. Root has the same minimum, critical and maximum concentration. Spike and stem have the same minimum and critical concentration.'}
+y_labels <- list(Organ = g_organs,
+     Para = c('MinimumNConc', "MaximumNConc", "CriticalNConc")) %>% 
+    expand.grid(stringsAsFactors = FALSE)
+
+y_cols <- y_labels %>% 
+    apply(1, function(x) paste0('Wheat.', x["Organ"], '.', x["Para"]))
+y_labels <- y_labels %>% 
+    mutate(Trait = y_cols,
+           Label = y_cols,
+           Organ = factor(Organ, levels = g_organs),
+           Para = gsub('NConc', '', Para),
+           Para = factor(Para, 
+                         levels = c('Minimum', 'Critical', "Maximum")))
 
 g_report %>% 
-    plot_report(g_xvar, y_cols, ncol = 5,
-                y_labels = g_organs,
-                x_lab = g_xlab, 
-                y_lab = expression(atop('Nitrogen demand', 
-                                        '(g N'~m^-2~' ground'~d^-1~')')))
+    plot_report(g_xvar2, y_cols, ncol = 6,
+                x_lab = g_xlab2,
+                y_labels = y_labels,
+                panel = 'Organ', color = 'Para',
+                y_lab = expression(atop('Nitrogen concentration', 
+                                        '(g N'~g^-1~' biomass)')))
 ```
 </div>
 
-
-<div class="fig-output">
-```{r nitrogen-demand-component, fig.cap='The plant nitrogen demand for all components'}
-y_cols <- c('Wheat.NDemand.Structural', 'Wheat.NDemand.Metabolic',
-            'Wheat.NDemand.Storage')
-
-g_report %>% 
-    plot_report(g_xvar, y_cols, ncol = 5,
-                x_lab = g_xlab, 
-                y_lab = expression(atop('Nitrogen demand', 
-                                        '(g N'~m^-2~' ground'~d^-1~')')))
-
-```
-</div>
 
 
 ## Supply {#sec:nitrogen-supply}
@@ -101,6 +99,39 @@ g_report %>%
 
 ```
 </div>
+
+
+## Demand {#sec:nitrogen-demand}
+
+
+<div class="fig-output">
+```{r nitrogen-demand-organ, fig.cap='The plant nitrogen demand for all organs'}
+y_cols <- sprintf('Wheat.%s.NDemand.Total', g_organs)
+
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 5,
+                y_labels = g_organs,
+                x_lab = g_xlab, 
+                y_lab = expression(atop('Nitrogen demand', 
+                                        '(g N'~m^-2~' ground'~d^-1~')')))
+```
+</div>
+
+
+<div class="fig-output">
+```{r nitrogen-demand-component, fig.cap='The plant nitrogen demand for all components'}
+y_cols <- c('Wheat.NDemand.Structural', 'Wheat.NDemand.Metabolic',
+            'Wheat.NDemand.Storage')
+
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 5,
+                x_lab = g_xlab, 
+                y_lab = expression(atop('Nitrogen demand', 
+                                        '(g N'~m^-2~' ground'~d^-1~')')))
+
+```
+</div>
+
 
 ## Nitrogen uptake {#ses:nitrogen-uptake}
 <!--
@@ -144,5 +175,22 @@ g_report %>%
 
 ```
 </div>
+
+
+
+<div class="fig-output">
+```{r root-nitrogen-concentration, fig.cap='The plant nitrogen concentration'}
+
+y_cols <- c(paste0('Wheat.', g_organs, '.Nconc'), 'Wheat.Total.NConc')
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 6,
+                x_lab = g_xlab,
+                y_labels = c(g_organs, 'Total'),
+                y_lab = expression(atop('Nitrogen concentration', 
+                                        '(g N'~m^-2~' ground)')))
+
+```
+</div>
+
 
 

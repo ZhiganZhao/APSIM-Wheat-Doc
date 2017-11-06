@@ -24,8 +24,9 @@ new_breaks <- function(x) {
 
 # plot report
 plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
-                        panel = FALSE, y_labels = NULL, ncol = 1, type = 'both',
-                        chunk_type = 'output', interacive = FALSE) {
+                        panel = NULL, color = "Trait",
+                        y_labels = NULL, ncol = 1, type = 'both',
+                        chunk_type = 'output') {
 
 
     library(ggplot2)
@@ -45,11 +46,19 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
         mutate(XVar = gsub('.*\\.(.*)', '\\1', XVar))    %>%
         mutate(XVar = factor(XVar, levels = x_var_name))
     if (!is.null(y_labels)) {
+
+        if (is.vector(y_labels))  {
+            cols <- data_frame(Trait = y_cols, Label = y_labels)
+        } else if (is.data.frame(y_labels)) {
+            cols <- y_labels
+        } else {
+            stop('Not implemented')
+        }
         pd <- pd %>%
-            left_join(data_frame(Trait = y_cols, Label = y_labels), by = 'Trait') %>%
+            left_join(cols, by = 'Trait') %>%
             select(-Trait) %>%
             rename(Trait = Label) %>%
-            mutate(Trait = factor(Trait, levels = y_labels))
+            mutate(Trait = factor(Trait, levels = cols$Label))
     } else {
         pd <- pd %>%
             mutate(Trait = gsub('.*\\.(.*)', '\\1', Trait)) %>%
@@ -58,60 +67,30 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
 
     register_chunk(y_cols, paste0('fig:', opts_current$get("label")),
                    type = chunk_type)
-    pd <- pd %>%
-        mutate(tooltip = paste0(Trait, ", X: ", round(XValue, 2), " Y: ", round(YValue,2)))
 
     p <- ggplot(pd, aes(XValue, YValue))
 
+    if (length(y_cols) > 1) {
 
-    if (panel) {
+        if (type %in% c('both', 'point')) {
+            p <- p + geom_point(aes_string(colour = color, shape = color))
+        }
+        if (type %in% c('both', 'line')) {
+            p <- p + geom_line(aes_string(colour = color))
+        }
+    } else {
         p <- p +
             geom_line() +
             geom_point()
-        if (length(x_var) == 1) {
-            p <- p + facet_wrap(~Trait, scales = 'free_y', ncol = 1)
-        } else {
-            p <- p + facet_grid(Trait~XVar, scales = 'free')
-        }
-    } else {
-        if (length(y_cols) > 1) {
-            if (interacive) {
-                if (type == 'area') {
-                    stop('Not implemented')
-                }
-                if (type %in% c('both', 'point')) {
-                    p <- p + geom_point_interactive(aes(colour = Trait, tooltip = tooltip))
-                }
-                if (type %in% c('both', 'line')) {
-                    p <- p + geom_line(aes(colour = Trait))
-                }
-            } else {
-                if (type == 'area') {
-                    p <- p +
-                        geom_area(aes(fill = Trait))
-                }
-                if (type %in% c('both', 'point')) {
-                    p <- p + geom_point(aes(colour = Trait, shape = Trait))
-                }
-                if (type %in% c('both', 'line')) {
-                    p <- p + geom_line(aes(colour = Trait))
-                }
-            }
-        } else {
-            if (interacive) {
-                p <- p +
-                    geom_line_interactive() +
-                    geom_point_interactive()
-            } else {
-                p <- p +
-                    geom_line() +
-                    geom_point()
-            }
-        }
-        if (length(x_var) > 1) {
-            p <- p + facet_wrap(~XVar, scales = 'free_x', ncol = 1)
-        }
     }
+    if (length(x_var) > 1 & is.null(panel)) {
+        p <- p + facet_wrap(~XVar, scales = 'free_x', ncol = 1)
+    } else if (length(x_var) > 1 & !is.null(panel)) {
+        p <- p + facet_grid(reformulate('XVar', panel), scales = 'free_x')
+    } else if (length(x_var) == 1 & !is.null(panel)) {
+        p <- p + facet_wrap(reformulate(panel), scales = 'free_x', ncol = 1)
+    }
+
     p <- p + theme_bw() +
         theme(legend.position = 'bottom') +
         xlab(x_lab) + ylab(y_lab) +
@@ -135,13 +114,11 @@ plot_report <- function(df, x_var, y_cols, x_lab = x_var, y_lab = 'Value',
             key_stage <- bind_rows(key_stage, ks2)
 
         }
-        y_rng <- ggplot_build(p)$layout$panel_scales_y[[1]]$range$range
+        y_rng <- ggplot_build(p)$layout$panel_ranges[[1]]$y.range
         p <- p + geom_text(aes(x, y = y_rng[1], label = name), data = key_stage, vjust = 0) +
             ylim(y_rng)
     }
-    if (interacive) {
-        p <- ggiraph(code = print(p), zoom_max = 5)
-    }
+
     p
 }
 

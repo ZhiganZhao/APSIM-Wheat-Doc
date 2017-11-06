@@ -11,6 +11,50 @@
       <VariableNames>
         <string>[Clock].Today</string>
         <string />
+        <string>[Wheat].Grain.Allocated.StructuralN</string>
+        <string>[Wheat].Root.Allocated.StructuralN</string>
+        <string>[Wheat].Leaf.Allocated.StructuralN</string>
+        <string>[Wheat].Spike.Allocated.StructuralN</string>
+        <string>[Wheat].Stem.Allocated.StructuralN</string>
+        <string>[Wheat].Grain.Allocated.StorageN</string>
+        <string>[Wheat].Root.Allocated.StorageN</string>
+        <string>[Wheat].Leaf.Allocated.StorageN</string>
+        <string>[Wheat].Spike.Allocated.StorageN</string>
+        <string>[Wheat].Stem.Allocated.StorageN</string>
+        <string>[Wheat].Grain.Allocated.MetabolicN</string>
+        <string>[Wheat].Root.Allocated.MetabolicN</string>
+        <string>[Wheat].Leaf.Allocated.MetabolicN</string>
+        <string>[Wheat].Spike.Allocated.MetabolicN</string>
+        <string>[Wheat].Stem.Allocated.MetabolicN</string>
+        <string>[Wheat].Grain.Allocated.StructuralN + [Wheat].Grain.Allocated.StorageN + [Wheat].Grain.Allocated.MetabolicN as Wheat.Grain.AllocatedN</string>
+        <string>[Wheat].Leaf.Allocated.StructuralN + [Wheat].Leaf.Allocated.StorageN + [Wheat].Leaf.Allocated.MetabolicN as Wheat.Leaf.AllocatedN</string>
+        <string>[Wheat].Root.Allocated.StructuralN + [Wheat].Root.Allocated.StorageN + [Wheat].Root.Allocated.MetabolicN as Wheat.Root.AllocatedN</string>
+        <string>[Wheat].Spike.Allocated.StructuralN + [Wheat].Spike.Allocated.StorageN + [Wheat].Spike.Allocated.MetabolicN as Wheat.Spike.AllocatedN</string>
+        <string>[Wheat].Stem.Allocated.StructuralN + [Wheat].Stem.Allocated.StorageN + [Wheat].Stem.Allocated.MetabolicN as Wheat.Stem.AllocatedN</string>
+        <string />
+        <string />
+        <string>[Wheat].Spike.StructuralFraction.Value() as Wheat.Spike.StructuralFraction</string>
+        <string>[Wheat].Stem.StructuralFraction.Value() as Wheat.Stem.StructuralFraction</string>
+        <string>[Wheat].Grain.StructuralFraction.Value() as Wheat.Grain.StructuralFraction</string>
+        <string>[Wheat].Leaf.StructuralFraction.Value() as Wheat.Leaf.StructuralFraction</string>
+        <string>[Wheat].Root.StructuralFraction.Value() as Wheat.Root.StructuralFraction</string>
+        <string />
+        <string>[Wheat].Leaf.CohortParameters.MinimumNConc.Value() as Wheat.Leaf.MinimumNConc</string>
+        <string>[Wheat].Leaf.CohortParameters.CriticalNConc.Value() as Wheat.Leaf.CriticalNConc</string>
+        <string>[Wheat].Leaf.CohortParameters.MaximumNConc.Value() as Wheat.Leaf.MaximumNConc</string>
+        <string>[Wheat].Stem.MinimumNConc.Value() as Wheat.Stem.MinimumNConc</string>
+        <string>[Wheat].Stem.CriticalNConc.Value() as Wheat.Stem.CriticalNConc</string>
+        <string>[Wheat].Stem.MaximumNConc.Value() as Wheat.Stem.MaximumNConc</string>
+        <string>[Wheat].Spike.MinimumNConc.Value() as Wheat.Spike.MinimumNConc</string>
+        <string>[Wheat].Spike.CriticalNConc.Value() as Wheat.Spike.CriticalNConc</string>
+        <string>[Wheat].Spike.MaximumNConc.Value() as Wheat.Spike.MaximumNConc</string>
+        <string>[Wheat].Root.MinimumNConc.Value() as Wheat.Root.MinimumNConc</string>
+        <string>[Wheat].Root.CriticalNConc.Value() as Wheat.Root.CriticalNConc</string>
+        <string>[Wheat].Root.MaximumNConc.Value() as Wheat.Root.MaximumNConc</string>
+        <string>[Wheat].Grain.MinimumNConc.Value() as Wheat.Grain.MinimumNConc</string>
+        <string>[Wheat].Grain.CriticalNConc.Value() as Wheat.Grain.CriticalNConc</string>
+        <string>[Wheat].Grain.MaximumNConc.Value() as Wheat.Grain.MaximumNConc</string>
+        <string />
         <string />
         <string>[Wheat].Stem.Live.StorageWt + [Wheat].Stem.Dead.StorageWt as Wheat.Stem.StorageWt</string>
         <string>[Wheat].Stem.Live.StructuralWt + [Wheat].Stem.Dead.StructuralWt as Wheat.Stem.StructuralWt</string>
@@ -51,7 +95,34 @@
         <string>[Wheat].Leaf.DeltaStressConstrainedArea</string>
         <string>[Wheat].Leaf.DeltaCarbonConstrainedArea</string>
         <string />
+        <string />
+        <string>[Wheat].Spike.Nconc</string>
+        <string>[Wheat].Leaf.Nconc</string>
+        <string>[Wheat].Stem.Nconc</string>
+        <string>[Wheat].Root.Nconc</string>
+        <string>[Wheat].Grain.Nconc</string>
+        <string>[Wheat].Total.NConc</string>
+        <string />
+        <string />
+        <string />
         <string>[Wheat].Leaf.N</string>
+        <string />
+        <string>[Wheat].Leaf.Live.MetabolicN + [Wheat].Leaf.Dead.MetabolicN as Wheat.Leaf.MetabolicN</string>
+        <string>[Wheat].Leaf.Live.StorageN + [Wheat].Leaf.Dead.StorageN as Wheat.Leaf.StorageN</string>
+        <string>[Wheat].Leaf.Live.StructuralN + [Wheat].Leaf.Dead.StructuralN  as Wheat.Leaf.StructuralN</string>
+        <string>[Wheat].Grain.Live.MetabolicN + [Wheat].Grain.Dead.MetabolicN as Wheat.Grain.MetabolicN</string>
+        <string>[Wheat].Grain.Live.StorageN + [Wheat].Grain.Dead.StorageN as Wheat.Grain.StorageN</string>
+        <string>[Wheat].Grain.Live.StructuralN + [Wheat].Grain.Dead.StructuralN  as Wheat.Grain.StructuralN</string>
+        <string>[Wheat].Stem.Live.MetabolicN + [Wheat].Stem.Dead.MetabolicN as Wheat.Stem.MetabolicN</string>
+        <string>[Wheat].Stem.Live.StorageN + [Wheat].Stem.Dead.StorageN as Wheat.Stem.StorageN</string>
+        <string>[Wheat].Stem.Live.StructuralN + [Wheat].Stem.Dead.StructuralN  as Wheat.Stem.StructuralN</string>
+        <string>[Wheat].Spike.Live.MetabolicN + [Wheat].Spike.Dead.MetabolicN as Wheat.Spike.MetabolicN</string>
+        <string>[Wheat].Spike.Live.StorageN + [Wheat].Spike.Dead.StorageN as Wheat.Spike.StorageN</string>
+        <string>[Wheat].Spike.Live.StructuralN + [Wheat].Spike.Dead.StructuralN  as Wheat.Spike.StructuralN</string>
+        <string>[Wheat].Root.Live.MetabolicN + [Wheat].Root.Dead.MetabolicN as Wheat.Root.MetabolicN</string>
+        <string>[Wheat].Root.Live.StorageN + [Wheat].Root.Dead.StorageN as Wheat.Root.StorageN</string>
+        <string>[Wheat].Root.Live.StructuralN + [Wheat].Root.Dead.StructuralN  as Wheat.Root.StructuralN</string>
+        <string />
         <string>[Wheat].Leaf.Live.N</string>
         <string>[Wheat].Leaf.Dead.N</string>
         <string>[Wheat].Leaf.Live.NConc</string>
@@ -255,9 +326,7 @@
         <string>[Wheat].Leaf.CohortParameters.SenescenceDuration.Value() as Wheat.Leaf.CohortParameters.SenescenceDuration</string>
         <string>[Wheat].Leaf.CohortParameters.DetachmentLagDuration.Value() as Wheat.Leaf.CohortParameters.DetachmentLagDuration</string>
         <string>[Wheat].Leaf.CohortParameters.DetachmentDuration.Value() as Wheat.Leaf.CohortParameters.DetachmentDuration</string>
-        <string>[Wheat].Leaf.CohortParameters.MinimumNConc.Value() as Wheat.Leaf.CohortParameters.MinimumNConc</string>
-        <string>[Wheat].Leaf.CohortParameters.CriticalNConc.Value() as Wheat.Leaf.CohortParameters.CriticalNConc</string>
-        <string>[Wheat].Leaf.CohortParameters.MaximumNConc.Value() as Wheat.Leaf.CohortParameters.MaximumNConc</string>
+        <string />
         <string>[Wheat].Leaf.CohortParameters.MaxArea.Value() as Wheat.Leaf.CohortParameters.MaxArea</string>
         <string>[Wheat].Leaf.CohortParameters.CellDivisionStress.Value() as Wheat.Leaf.CohortParameters.CellDivisionStress</string>
         <string>[Wheat].Leaf.CohortParameters.ExpansionStress.Value() as Wheat.Leaf.CohortParameters.ExpansionStress</string>
@@ -3120,102 +3189,6 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
             </VariableReference>
             <IncludeInDocumentation>true</IncludeInDocumentation>
           </RUEModel>
-          <Photosynthesis>
-            <Name>PhotosynthesisDCaps</Name>
-            <Constant>
-              <Name>Cmodel</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>3</FixedValue>
-              <Units>3 for C3, 4 for C4</Units>
-            </Constant>
-            <Constant>
-              <Name>MinLAI</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0.1</FixedValue>
-              <Units />
-            </Constant>
-            <Constant>
-              <Name>RSR</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0</FixedValue>
-            </Constant>
-            <Constant>
-              <Name>LeafAngle</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>60</FixedValue>
-            </Constant>
-            <Constant>
-              <Name>B</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>1</FixedValue>
-            </Constant>
-            <Constant>
-              <Name>SLNRatioTop</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>1.4</FixedValue>
-            </Constant>
-            <Constant>
-              <Name>psiVc</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0.9</FixedValue>
-              <Units>μmol CO2 mmol-1 N s-1</Units>
-            </Constant>
-            <Constant>
-              <Name>psiJ</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>1.3</FixedValue>
-              <Units>μmol CO2 mmol-1 N s-1</Units>
-            </Constant>
-            <Constant>
-              <Name>psiRd</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0</FixedValue>
-              <Units>μmol CO2 mmol-1 N s-1</Units>
-            </Constant>
-            <Constant>
-              <Name>PsiFactor</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>1</FixedValue>
-            </Constant>
-            <Constant>
-              <Name>Ca</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>400</FixedValue>
-            </Constant>
-            <Constant>
-              <Name>CiCaRatio</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0.7</FixedValue>
-              <Units>μbar</Units>
-            </Constant>
-            <Constant>
-              <Name>gm25</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0.55</FixedValue>
-              <Units>mol CO2 m-2 ground s-1 bar-1</Units>
-            </Constant>
-            <Constant>
-              <Name>StructuralN</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>14</FixedValue>
-            </Constant>
-            <Constant>
-              <Name>psiVp</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0</FixedValue>
-            </Constant>
-            <Constant>
-              <Name>gbs</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0</FixedValue>
-            </Constant>
-            <Constant>
-              <Name>Vpr</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
-              <FixedValue>0</FixedValue>
-            </Constant>
-            <IncludeInDocumentation>true</IncludeInDocumentation>
-          </Photosynthesis>
           <IncludeInDocumentation>true</IncludeInDocumentation>
         </LessThanFunction>
         <CanopyPhotosynthesis>
@@ -3612,25 +3585,36 @@ A function is used to provide maturity date as days after sowing(DAS).]]></MemoT
             <Name>VegetativeGrowth</Name>
             <Constant>
               <Name>Fraction</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <IncludeInDocumentation>false</IncludeInDocumentation>
               <FixedValue>0.7</FixedValue>
             </Constant>
-            <IncludeInDocumentation>true</IncludeInDocumentation>
+            <IncludeInDocumentation>false</IncludeInDocumentation>
             <Start>Sowing</Start>
             <End>FlagLeaf</End>
           </PhaseLookupValue>
           <PhaseLookupValue>
-            <Name>ReproductiveGrowth</Name>
+            <Name>Reproductive</Name>
             <Constant>
               <Name>Fraction</Name>
-              <IncludeInDocumentation>true</IncludeInDocumentation>
+              <IncludeInDocumentation>false</IncludeInDocumentation>
               <FixedValue>0.7</FixedValue>
             </Constant>
-            <IncludeInDocumentation>true</IncludeInDocumentation>
+            <IncludeInDocumentation>false</IncludeInDocumentation>
             <Start>FlagLeaf</Start>
+            <End>Flowering</End>
+          </PhaseLookupValue>
+          <PhaseLookupValue>
+            <Name>GrainFilling</Name>
+            <Constant>
+              <Name>Fraction</Name>
+              <IncludeInDocumentation>false</IncludeInDocumentation>
+              <FixedValue>0.05</FixedValue>
+            </Constant>
+            <IncludeInDocumentation>false</IncludeInDocumentation>
+            <Start>Flowering</Start>
             <End>HarvestRipe</End>
           </PhaseLookupValue>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <IncludeInDocumentation>false</IncludeInDocumentation>
         </PhaseLookup>
         <Constant>
           <Name>SenescenceRate</Name>

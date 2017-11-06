@@ -5,13 +5,21 @@ source('_script/setup.R')
 ```
 
 
-`Stem` provides biomass through retranslocation, requires biomass a proportion of daily fixation (i.e. photosynthesis in `Leaf`). The biomass is allocated into two components, i..e `Structural` and `Storage`. No `Metabolic` is considered.
+
+```{r stem-biomass-parameter}
+
+stem_retranslocation <- get_fixed_value(g_pmf, 'Wheat.Stem.DMRetranslocationFactor.ReproductiveGrowth.DMRetranslocationFactor')
+
+```
+
+
+Stem is defined in a functional rather than a morphological manner and includes nodes, internodes and leaf sheaths. `Stem` provides biomass through retranslocation, requires biomass a proportion of daily fixation (i.e. photosynthesis in `Leaf`). The biomass is allocated into two components, i..e `Structural` and `Storage`. No `Metabolic` is considered.
 
 ## Biomass {#sec:stem-biomass}
 
 ### Supply {#sec:stem-dm-supply}
 
-In `Stem`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:stem-dm-supply)). Daily retranslocation is the proportion of current storage ($W_{stem, storage}$). The default value of proportion is 0.5 since `StartGrainFill`, i.e. retranslocatable biomsss is 50% during grain filling (Fig. \@ref(fig:stem-dm-retran-factor)).
+In `Stem`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:stem-dm-supply)). Daily retranslocation is the proportion of current storage ($B_{stem, storage}$) from `StartGrainFill` to `EndGrainFill` with default value `r stem_retranslocation`, i.e. daily retranslocatable biomass is `r stem_retranslocation * 100`% of total storage during grain filling (Fig. \@ref(fig:stem-dm-retran-factor)).
 
 
 <div class="fig-input">
@@ -40,7 +48,42 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 ### Demand {#sec:stem-dm-demand}
 
-The daily biomass demand of `Stem` is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (`Emergence`) to Stage 6 (`Flowering time`) (Fig. \@ref(fig:stem-dm-demand-fraction)) and increases at Stage 4 (`Terminal spikelet`) (Fig. \@ref(fig:stem-dm-demand-fraction)). After `Flowering time`, no biomass allocated into stem (Fig. \@ref(fig:stem-dm-demand)).  
+
+The biomass demand is calculated as the total demands of two components (i.e. structural $BD_{stem,\,structural}$ and storage $BD_{stem,\,storage}$) as no metabolic demand is considered in the wheat model. The structural fraction $F_{stem, structure}$ is defined as the fraction of structural component as total biomass (Fig. \@ref(fig:stem-dm-structure-fraction)), i.e. $1-F_{stem, structure}$ is the fraction of storage biomass.  
+
+
+<div class="fig-input">
+```{r stem-dm-structure-fraction, fig.asp = 0.5, fig.cap='Structure fraction of stem as a function of growth stage. The lower structure fraction after flowering can cause the big storage demand of stem and make sure all remaining biomass allocates into stem storage.'}
+y_cols <- c('Wheat.Stem.StructuralFraction')
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab, 
+            y_lab = 'Fraction of total fixation ([-])')
+
+```
+</div>
+
+
+
+**Structural demand** of stem ($BD_{stem}$) is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (`Emergence`) to Stage 6 (`Flowering time`) (Fig. \@ref(fig:stem-dm-demand-fraction)) and increases at Stage 4 (`Terminal spikelet`) (Fig. \@ref(fig:stem-dm-demand-fraction)). In theory, $BD_{stem}$ contains the structural and metabolic components. However, no metabolic component is considered in stem. The actual stem demand ($BD_{stem}$) is a fraction of daily fixation (Fig. \@ref(fig:stem-dm-demand-fraction)) multiplying structure fraction (Fig. \@ref(fig:stem-dm-structure-fraction)).
+
+
+$$
+BD_{stem, structural} = F_{stem,\,P} \times P \times F_{stem,\,structure} / C_{stem,\,efficiency}
+$$
+where $F_{stem,\,P}$ is the fraction of daily fixation allocated to stem; $F_{stem, structure}$ is the structural fraction of `Stem` (Fig. \@ref(fig:stem-dm-structure-fraction)). $C_{stem,\,efficiency}$ is the conversion efficiency of `Stem`, i.e. the efficiency of allocation biomass converted into carbon (growth respiration). $C_{stem,\,efficiency}$ has the default value `r get_fixed_value(g_pmf, 'Wheat.Stem.DMConversionEfficiency')` and is counted before allocation. 
+
+
+
+**Storage demand** ($BD_{stem,\,storage}$) is to fill the non-structural components (i.e. storage for `Stem`) as the difference of theoretical maximum and base allocated biomass, and then divides growth respiration (Section \@ref(sec:biomass-respiration-growth)). 
+
+$$
+BD_{stem,\,storage} = [\frac{B_{stem,\,structural} + BD_{stem,\,structural}}{F_{stem, structure}} - (B_{stem} + BD_{stem,\,structural})] / C_{stem, efficiency}
+$$
+
+The theoretical maximum biomass equals to current stem structural weight ($B_{stem,\,structural}$) plus structural demand ($BD_{stem,\,structural}$), then divide the structural fraction ($F_{stem, structure}$). The base allocated biomass equals to current stem weight ($B_{stem}$) plus structural demand ($BD_{stem,\,structural}$). 
+
+Consequently, the stem grows from `Emergence` to `Flowering`, and can store more biomass until `EndOfGrainFill` (Fig. \@ref(fig:stem-dm-demand)). 
+
+
 
 <div class="fig-input">
 ```{r stem-dm-demand-fraction, fig.asp = 0.5, fig.cap='Stem demand as a fraction of daily total fixation (i.e. photosynthesis).'}
@@ -66,7 +109,10 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 </div>
 
 
-### Biomass dynamic {#sec:stem-dm-dynamic}
+### Actual allocation {#stem-dm-allocation}
+
+The actual allocation is constrained by the nitrogen allocation. 
+
 
 The actual allocation reflects the increase of structural component, and retranslocation of storage component (Fig. \@ref(fig:stem-dm-allocated)). `Stem` only considers the `Live` biomass (Fig. \@ref(fig:stem-dm-live), no `Dead` biomass (Fig. \@ref(fig:stem-dm-dead)).
 
@@ -141,8 +187,8 @@ Water soluble carbohydrates (WSC) are sugars such as fructans, sucrose, glucose 
 In APSIM Next Gen, the WSC of stem is defined as the ratio of storage and total weights in the `Live` pool of stem.  
 
 <div class="fig-output">
-```{r stem-dm-wsc, fig.asp = 1, fig.cap='Water soluble carbohydrate in stem.'}
-y_cols <- c('Wheat.Stem.Live.StorageWt')
+```{r stem-dm-wsc, fig.asp = 1, fig.cap='Water soluble carbohydrate in stem (Storage component).'}
+y_cols <- c('Wheat.Stem.Live.StorageWt', 'Wheat.StemWt')
 g_report %>% 
     filter(Wheat.Phenology.Stage > 3) %>% 
     plot_report(g_xvar, y_cols, x_lab = g_xlab, 
@@ -154,7 +200,49 @@ g_report %>%
 
 ## Nitrogen {#sec:stem-nitrogen}
 
-### Demand
+
+### Supply {#sec:stem-nitrogen-supply}
+
+* Reallocation from senescence part
+* Retranslocaion from storage
+
+
+<div class="fig-output">
+```{r stem-nitrogen-supply, fig.cap='The stem nitrogen supply for all components'}
+y_cols <- c('Wheat.Stem.NSupply.Fixation', 'Wheat.Stem.NSupply.Retranslocation',
+            'Wheat.Stem.NSupply.Reallocation')
+
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 5,
+                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
+
+```
+</div>
+
+
+
+### Demand {#sec:stem-nitrogen-demand}
+
+Structural nitrogen is used to satisfy minimum concentration, metabolic to fit critical concentration, storage to fit maximum concentration. 
+
+
+
+<div class="fig-input">
+```{r stem-nitrogen-para-conc, fig.asp = 1, fig.cap='Minimum, critical and maximum nitrogen concentration in stem. Stem has the same minimum and critical nitrogen concentration.'}
+y_cols <- c('Wheat.Stem.MinimumNConc',
+'Wheat.Stem.CriticalNConc',
+'Wheat.Stem.MaximumNConc')
+y_labels <- c('Minimum', 'Critical', 'Maximum')
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+        y_lab = expression('Nitrogen concentration (g N'~g^-1~' stem)'), 
+        ncol = 3,
+        y_labels = y_labels)
+
+```
+</div>
+
+
+
 <div class="fig-output">
 ```{r stem-nitrogen-demand, fig.cap='The stem nitrogen demand for all components'}
 y_cols <- c('Wheat.Stem.NDemand.Structural', 'Wheat.Stem.NDemand.Metabolic',
@@ -167,16 +255,73 @@ g_report %>%
 ```
 </div>
 
-### Supply
-<div class="fig-output">
-```{r stem-nitrogen-supply, fig.cap='The stem nitrogen supply for all components'}
-y_cols <- c('Wheat.Stem.NSupply.Fixation', 'Wheat.Stem.NSupply.Retranslocation',
-            'Wheat.Stem.NSupply.Reallocation')
+### Actual allocation {#sec:stem-nitrogen-allocated}
 
-g_report %>% 
-    plot_report(g_xvar, y_cols, ncol = 5,
-                x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
+
+
+<div class="fig-output">
+```{r stem-nitrogen-allocated, fig.asp = 1, fig.cap='Actual allocated nitrogen to stem for three components. The negative values of Storage indicate nitrogen is ratranslocated into other organs.'}
+y_cols <- sprintf('Wheat.Stem.Allocated.%sN', g_demand)
+            
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Allocated biomass (g biomass '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand, ncol = 3)
 
 ```
 </div>
+
+
+
+<div class="fig-output">
+```{r stem-nitrogen-wt, fig.asp = 1, fig.cap='Dynamic of stem nitrogen for three components and total.'}
+y_cols <- c(sprintf('Wheat.Stem.%sN', g_demand), 'Wheat.Stem.N')
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+             y_labels = c(g_demand, 'Total'),
+            ncol = 4)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r stem-nitrogen-live, fig.asp = 1, fig.cap='Dynamic of stem nitrogen in Live pool for three components and total.'}
+y_cols <- c(sprintf('Wheat.Stem.Live.%sN', g_demand), 'Wheat.Stem.Live.N')
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+             y_labels = c(g_demand, 'Total'),
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r stem-nitrogen-dead, fig.asp = 0.5, fig.cap='Dynamic of stem nitrogen in Dead pool for three components and total.'}
+y_cols <- c(sprintf('Wheat.Stem.Dead.%sN', g_demand), 'Wheat.Stem.Dead.N')
+
+# Check all components equal to zero.
+g_report %>% 
+    select(y_cols) %>% 
+    gather(trait, value, y_cols) %>% 
+    group_by(trait) %>% 
+    summarise(n = sum(value > 0)) %>% 
+    filter(n > 0) %>% 
+    ungroup() %>% 
+    assertr::verify(nrow(.) == 0) %>% 
+    invisible()
+    
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+             y_labels = c(g_demand, 'Total'),
+            ncol = 4)
+
+```
+</div>
+
 
