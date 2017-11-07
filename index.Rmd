@@ -15,7 +15,7 @@ description: "Documentation of APSIM-Wheat"
 
 # Introduction {#cha:intro}
 
-This documentation is based on the current version of [APSIM-Wheat module](https://github.com/APSIMInitiative/ApsimX/tree/d9717df5ef24f6d3f1eb4c301726c213960017bb) with a few modifications in the next generation updated on 17-August-2017.
+This documentation is based on the current version of [APSIM Wheat model](https://github.com/APSIMInitiative/ApsimX/) in the next generation with [a few modifications](https://github.com/byzheng/ApsimX).
 
 A simulation is setup to demo the relationship among traits based on the cv. Hartog with high nitrogen and irrigation management under 15TraitMod experiment. The values in the figures below could be variable in other environments.
 

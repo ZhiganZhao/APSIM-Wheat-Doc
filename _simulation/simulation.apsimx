@@ -5181,11 +5181,12 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
       <IncludeInDocumentation>true</IncludeInDocumentation>
     </Factors>
     <Simulation>
-      <Name>15TraitMod</Name>
+      <Name>15TraitMod1</Name>
       <Weather>
         <Name>Weather</Name>
         <IncludeInDocumentation>true</IncludeInDocumentation>
         <FileName>gatton-15-g3.met</FileName>
+        <ExcelWorkSheetName />
       </Weather>
       <Clock>
         <Name>Clock</Name>
@@ -5468,14 +5469,29 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
             <Name>Initial nitrogen</Name>
             <IncludeInDocumentation>true</IncludeInDocumentation>
             <Thickness>
-              <double>200</double>
-              <double>1800</double>
+              <double>150</double>
+              <double>150</double>
+              <double>300</double>
+              <double>300</double>
+              <double>300</double>
+              <double>300</double>
+              <double>300</double>
             </Thickness>
             <NO3>
               <double>20</double>
-              <double>12</double>
+              <double>20</double>
+              <double>10</double>
+              <double>3</double>
+              <double>2</double>
+              <double>1</double>
+              <double>1</double>
             </NO3>
             <NH4>
+              <double>1</double>
+              <double>1</double>
+              <double>1</double>
+              <double>1</double>
+              <double>1</double>
               <double>1</double>
               <double>1</double>
             </NH4>
@@ -5543,7 +5559,7 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
           <FractionFaecesAdded>0.5</FractionFaecesAdded>
         </SurfaceOrganicMatter>
         <Plant>
-          <Name>wheat</Name>
+          <Name>Wheat</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <ResourceName>wheat</ResourceName>
           <CropType>Wheat</CropType>
@@ -5552,8 +5568,8 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
           <Name>Sowing</Name>
           <IncludeInDocumentation>true</IncludeInDocumentation>
           <Operation>
-            <Date>2015-05-21</Date>
-            <Action>[wheat].Sow(cultivar:"hartog", population:150, depth:40, rowSpacing:250);</Action>
+            <Date>2015-05-21T00:00:00</Date>
+            <Action>[wheat].Sow(cultivar:"ega_gregory", population:150, depth:50, rowSpacing:250);</Action>
           </Operation>
         </Operations>
         <MicroClimate>
@@ -5616,71 +5632,24 @@ The Ear composite biomass object includes the Live and dead pools of all organs 
           <VariableNames>
             <string>[Clock].Today</string>
             <string>[Wheat].Phenology.DaysAfterSowing</string>
-            <string>[Wheat].Phenology.ThermalTime.Value as Wheat.Phenology.ThermalTime</string>
-            <string>[Wheat].Phenology.AccumulateThermalTime.Value as Wheat.Phenology.AccumulateThermalTime</string>
             <string>[Wheat].Phenology.CurrentPhaseName</string>
-            <string>[Wheat].Phenology.CurrentStageName</string>
             <string>[Wheat].Phenology.Stage</string>
-            <string>[Wheat].Structure.MainStemPrimordiaNo</string>
-            <string>[Wheat].Structure.MainStemNodeNo</string>
-            <string>[Wheat].Structure.PlantTotalNodeNo</string>
-            <string>[Wheat].Structure.InitialiseStage</string>
-            <string>[Wheat].Structure.FinalLeafNumber</string>
-            <string>[Wheat].Structure.BranchNumber</string>
-            <string>[Wheat].Structure.RemainingNodeNo</string>
-            <string>[Wheat].Structure.DeltaNodeNumber</string>
-            <string>[Wheat].Structure.ProportionBranchMortality</string>
-            <string>[Wheat].Structure.ProportionPlantMortality</string>
-            <string>[Wheat].Structure.BranchingRate.Value as Wheat.Structure.BranchingRate</string>
-            <string>[Wheat].Structure.BranchMortality.Value as Wheat.Structure.BranchMortality</string>
-            <string>[Wheat].Structure.PrimaryBudNo</string>
-            <string>[Wheat].Structure.PrimaryBudTotalNodeNo</string>
-            <string>[Wheat].Structure.MainStemPopn</string>
-            <string>[Wheat].Structure.TotalStemPopn</string>
-            <string>[Wheat].Structure.PlantTotalNodeNo</string>
-            <string>[Wheat].Structure.MeanTillerGrowthRate.Value as Wheat.Structure.MeanTillerGrowthRate</string>
-            <string>[Wheat].Structure.RelativeNodeApperance</string>
-            <string>[Wheat].Arbitrator.FN</string>
-            <string>[Wheat].Arbitrator.DMSupply</string>
-            <string>[Wheat].Leaf.CohortAge[1:11]</string>
-            <string>[Wheat].Leaf.MaxLeafArea[1:11]</string>
-            <string>[Wheat].Leaf.CohortArea[1:11]</string>
-            <string>[Wheat].Leaf.CohortSize[1:11]</string>
-            <string>[Wheat].Leaf.CohortSLA[1:11]</string>
-            <string>[Wheat].Leaf.CohortLagDuration[1:11]</string>
-            <string>[Wheat].Leaf.CohortGrowthDuration[1:11]</string>
-            <string>[Wheat].Leaf.CohortDeltaWaterConstrainedArea[1:11]</string>
-            <string>[Wheat].Leaf.CohortDeltaCarbonConstrainedArea[1:11]</string>
-            <string>[Wheat].Leaf.LivePopulation[1:11]</string>
-            <string />
-            <string>[Wheat].Leaf.AppearedCohortNo</string>
-            <string>[Wheat].Leaf.InitialisedCohortNo</string>
-            <string>[Wheat].Leaf.ExpandingCohortNo</string>
-            <string>[Wheat].Leaf.GreenCohortNo</string>
-            <string>[Wheat].Leaf.SenescingCohortNo</string>
-            <string>[Wheat].Leaf.DeadCohortNo</string>
-            <string>[Wheat].Leaf.ExpandedCohortNo</string>
-            <string>[Wheat].Leaf.PlantAppearedGreenLeafNo</string>
-            <string>[Wheat].Leaf.PlantAppearedLeafNo</string>
-            <string>[Wheat].Leaf.PlantsenescedLeafNo</string>
-            <string>[Wheat].Leaf.FinalLeafFraction</string>
-            <string />
-            <string />
+            <string>[Wheat].Phenology.Zadok.Stage</string>
+            <string>[Wheat].AboveGround.Wt</string>
             <string>[Wheat].Leaf.LAI</string>
-            <string>[Wheat].Leaf.LAIDead</string>
-            <string>[Wheat].Leaf.LAITotal</string>
-            <string>[Wheat].Leaf.CoverDead</string>
+            <string>[Wheat].Leaf.Live.Wt</string>
             <string>[Wheat].Leaf.CoverGreen</string>
             <string>[Wheat].Leaf.CoverTotal</string>
-            <string />
-            <string>[Wheat].Leaf.Live.Wt as Wheat.Leaf.LiveWeight</string>
-            <string>[Wheat].Leaf.Dead.Wt as Wheat.Leaf.DeadWeight</string>
-            <string>[Wheat].Leaf.SpecificArea</string>
-            <string>[Wheat].Leaf.Fn</string>
-            <string />
+            <string>[Wheat].Spike.Wt</string>
+            <string>[Wheat].Stem.Live.Wt</string>
+            <string>[Wheat].Structure.TotalStemPopn</string>
+            <string>[Wheat].Structure.MainStemPrimordiaNo</string>
+            <string>[Wheat].Structure.LeafTipsAppeared</string>
+            <string>[Wheat].Structure.PlantTotalNodeNo</string>
+            <string>[Wheat].Grain.Number</string>
+            <string>[Wheat].Grain.Wt</string>
             <string>[Wheat].WaterSupplyDemandRatio</string>
-            <string>[Wheat].Leaf.CohortParameters.LeafRankAfterTerminalSpikelet.Value</string>
-            <string>[Wheat].Leaf.CohortParameters.LeafNumberAtTerminalSpikelet.Value</string>
+            <string>[Wheat].Leaf.SpecificArea</string>
           </VariableNames>
           <EventNames>
             <string>[Clock].DoReport</string>

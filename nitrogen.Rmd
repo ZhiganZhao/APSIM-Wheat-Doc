@@ -42,8 +42,8 @@ g_report %>%
 
 
 
-<div class="fig-output">
-```{r root-nitrogen-minimumnconc, fig.asp=2, fig.cap='The parameter values of nitrogen concentrations in all organs including minimum, critical and maximum concentrations. Grain misses the critical nitrogen concentration. Root has the same minimum, critical and maximum concentration. Spike and stem have the same minimum and critical concentration.'}
+<div class="fig-input">
+```{r root-nitrogen-cadinalnitrogen, fig.asp=2, fig.cap='The parameter values of nitrogen concentrations in all organs including minimum, critical and maximum concentrations. Grain misses the critical nitrogen concentration. Root has the same minimum, critical and maximum concentration. Spike and stem have the same minimum and critical concentration.'}
 y_labels <- list(Organ = g_organs,
      Para = c('MinimumNConc', "MaximumNConc", "CriticalNConc")) %>% 
     expand.grid(stringsAsFactors = FALSE)
@@ -188,6 +188,15 @@ g_report %>%
                 y_labels = c(g_organs, 'Total'),
                 y_lab = expression(atop('Nitrogen concentration', 
                                         '(g N'~m^-2~' ground)')))
+
+y_cols <- c(paste0('Wheat.', 'Root', '.Nconc'))
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 6,
+                x_lab = g_xlab,
+                y_labels = c('Root'),
+                y_lab = expression(atop('Nitrogen concentration', 
+                                        '(g N'~m^-2~' ground)')))
+
 
 ```
 </div>
