@@ -266,7 +266,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">12.1</span> Biomass</h2>
 <div id="sec:stem-dm-supply" class="section level3">
 <h3><span class="header-section-number">12.1.1</span> Supply</h3>
-<p>In <code>Stem</code>, the biomass supply only sources from retranslocation (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-supply">12.2</a>). Daily retranslocation is the proportion of current storage (<span class="math inline">\(B_{stem, storage}\)</span>) from <code>StartGrainFill</code> to <code>EndGrainFill</code> with default value 0.5, i.e. daily retranslocatable biomass is 50% of total storage during grain filling (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-retran-factor">12.1</a>).</p>
+<p>In <code>Stem</code>, the biomass supply only sources from retranslocation (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-supply">12.2</a>). Daily retranslocation is the proportion of current storage (<span class="math inline">\(B_{stem, storage}\)</span>) from <code>StartGrainFill</code> to <code>EndGrainFill</code> with default value 0.5, i.e. daily retranslocatable biomass is 50% of total storage during grain filling (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-retran-factor">12.1</a>). No reallocation occurs from the senescence stem as the senescence rate is set as 0 for stem.</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-retran-factor"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-dm-retran-factor-1.png" alt="The fraction of stem storage which can be retranslocated in every day." width="80%" />
@@ -324,7 +324,7 @@ Figure 12.5: Daily biomass demand of stem for three components.
 </div>
 <div id="stem-dm-allocation" class="section level3">
 <h3><span class="header-section-number">12.1.3</span> Actual allocation</h3>
-<p>The actual allocation is constrained by the nitrogen allocation.</p>
+<p>TO DO: The actual allocation is constrained by the nitrogen allocation.</p>
 <p>The actual allocation reflects the increase of structural component, and retranslocation of storage component (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-allocated">12.6</a>). <code>Stem</code> only considers the <code>Live</code> biomass (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-live">12.8</a>, no <code>Dead</code> biomass (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-dead">12.9</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:stem-dm-allocated"></span>

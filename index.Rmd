@@ -61,12 +61,13 @@ The key stages are displayed in all figures (Section \@ref(sec:phe-stage-period)
 This documentation is wrote by [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org). I suggest you firstly to read the introduction about [RMarkdown](rmarkdown.rstudio.com) and [bookdown](bookdown.org), then fork this repository into your github account. Feel free to submit a pull request and/or an [issue](https://github.com/byzheng/APSIM-Wheat-Doc/issues) if you notice any errors or have any comments. 
 
 
-The new document can be easily generated for any other simulations using following steps.
+A new document can be easily generated for any other simulations using following steps.
 
 * Install the required software including [R](https://cran.r-project.org/), [RStudio](https://www.rstudio.com/), [Bookdown](https://bookdown.org/yihui/bookdown) and other depended packages.
+
 * Fork or download all source codes from [git repository](https://github.com/byzheng/APSIM-Wheat-Doc).
 * Replace your own simulation.apsimx under simulation subfolder. Your apsimx file should only have `ONE` simulation and include all report variables used in the report, which can be found in the report replacement of the existing apsimx file.
-* Click `Build book` in the RStudio interface.
+* Click `Build All` in the RStudio interface.
 
 ### Retrieve fixed value
 

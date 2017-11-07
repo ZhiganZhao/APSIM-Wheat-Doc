@@ -6,6 +6,11 @@
 source('_script/setup.R')
 ```
 
+<div class="fig-input">
+```{r nitrogen-diagram-dynamic, fig.cap="A diagram to represent the relationship between three nitrogen components (structural, metabolic and storage), three cadinal parameters of nitrogen concentrations (minimum, critical and maximum), three biomass pools (live, senescing and dead), and two nitrogen supply sources (retranslocation and rellocation)."}
+knitr::include_graphics('_include/figures/nitrogen-dynamic.png')
+```
+</div>
 
 <div class="fig-output">
 ```{r nitrogen-demand-supply, fig.cap='The plant total nitrogen demand and supply'}
@@ -175,7 +180,6 @@ g_report %>%
 
 ```
 </div>
-
 
 
 <div class="fig-output">

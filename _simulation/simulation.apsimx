@@ -11,6 +11,8 @@
       <VariableNames>
         <string>[Clock].Today</string>
         <string />
+        <string>[Wheat].Stem.NRetranslocationFactor</string>
+        <string />
         <string>[Wheat].Grain.Allocated.StructuralN</string>
         <string>[Wheat].Root.Allocated.StructuralN</string>
         <string>[Wheat].Leaf.Allocated.StructuralN</string>

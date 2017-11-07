@@ -9,7 +9,11 @@ source('_script/setup.R')
 ```{r stem-biomass-parameter}
 
 stem_retranslocation <- get_fixed_value(g_pmf, 'Wheat.Stem.DMRetranslocationFactor.ReproductiveGrowth.DMRetranslocationFactor')
+# Wheat.Stem.SenescenceRate should equal to 0
+stem_senesce_rate <- get_fixed_value(g_pmf, "Wheat.Stem.SenescenceRate")
+assert_all_are_equal_to(stem_senesce_rate, 0)
 
+stem_nretranslocation <- get_fixed_value(g_pmf, "Wheat.Stem.NRetranslocationFactor.ReproductiveGrowth.Fraction")
 ```
 
 
@@ -19,7 +23,7 @@ Stem is defined in a functional rather than a morphological manner and includes 
 
 ### Supply {#sec:stem-dm-supply}
 
-In `Stem`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:stem-dm-supply)). Daily retranslocation is the proportion of current storage ($B_{stem, storage}$) from `StartGrainFill` to `EndGrainFill` with default value `r stem_retranslocation`, i.e. daily retranslocatable biomass is `r stem_retranslocation * 100`% of total storage during grain filling (Fig. \@ref(fig:stem-dm-retran-factor)).
+In `Stem`, the biomass supply only sources from retranslocation (Fig. \@ref(fig:stem-dm-supply)). Daily retranslocation is the proportion of current storage ($B_{stem, storage}$) from `StartGrainFill` to `EndGrainFill` with default value `r stem_retranslocation`, i.e. daily retranslocatable biomass is `r stem_retranslocation * 100`% of total storage during grain filling (Fig. \@ref(fig:stem-dm-retran-factor)). No reallocation occurs from the senescence stem as the senescence rate is set as `r stem_senesce_rate` for stem.   
 
 
 <div class="fig-input">
@@ -111,7 +115,8 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 ### Actual allocation {#stem-dm-allocation}
 
-The actual allocation is constrained by the nitrogen allocation. 
+TO DO: The actual allocation is constrained by the nitrogen allocation. 
+
 
 
 The actual allocation reflects the increase of structural component, and retranslocation of storage component (Fig. \@ref(fig:stem-dm-allocated)). `Stem` only considers the `Live` biomass (Fig. \@ref(fig:stem-dm-live), no `Dead` biomass (Fig. \@ref(fig:stem-dm-dead)).
@@ -200,13 +205,48 @@ g_report %>%
 
 ## Nitrogen {#sec:stem-nitrogen}
 
+Stem nitrogen is only allocated into two components (i.e. structural and storage) as the same minimum and critical nitrogen concentrations (Figs \@ref(fig:stem-nitrogen-diagram-dynamic) and \@ref(fig:stem-nitrogen-cardinal)). The nitrogen in the storage can be retranslocated into other organs as a daily fraction (Section \@ref(sec:stem-nitrogen-supply)). No reallocation of nitrogen occurs in stem as no senescing and dead pool of biomass and nitrogen.
+
+<div class="fig-input">
+```{r stem-nitrogen-diagram-dynamic, out.width="50%", fig.cap="A diagram to represent the relationship of nitrogen in stem for two nitrogen components (structural and storage), three cadinal parameters of nitrogen concentrations (minimum, critical and maximum), one biomass pool (live), and one nitrogen supply source (retranslocation)."}
+knitr::include_graphics('_include/figures/nitrogen-dynamic-stem.png')
+```
+</div>
+
+The minimum and critical nitrogen concentrations keep constant during whole season, but the maximum nitrogen concentrations graudally reducing from `Emergence` until `Flowering` (Fig. \@ref(fig:stem-nitrogen-cardinal)).
+
+<div class="fig-input">
+```{r stem-nitrogen-cardinal, fig.asp = 0.5, fig.cap='Three cardinal nitrogen concentration in stem (Minimum, critical and maximum).'}
+y_cols <- c('Wheat.Stem.MinimumNConc',
+'Wheat.Stem.CriticalNConc',
+'Wheat.Stem.MaximumNConc')
+y_labels <- c('Minimum', 'Critical', 'Maximum')
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+        y_lab = expression('Nitrogen concentration (g N'~g^-1~' stem)'), 
+        ncol = 3,
+        y_labels = y_labels)
+
+```
+</div>
+
 
 ### Supply {#sec:stem-nitrogen-supply}
 
-* Reallocation from senescence part
-* Retranslocaion from storage
-* No fixation
-* No uptake
+In `Stem`, the nitrogen supply only sources from retranslocation (Fig. \@ref(fig:stem-dm-supply)) from storage component. Daily retranslocation is the proportion of current storage ($N_{stem, storage}$) from `Flowering` to `HarvestRipe` with default value `r stem_nretranslocation`, i.e. daily storage nitrogen is `r stem_nretranslocation * 100`% of total storage during grain filling (Fig. \@ref(fig:stem-nitrogen-retran-factor)). 
+
+
+
+<div class="fig-input">
+```{r stem-nitrogen-retran-factor, fig.asp = 0.5, fig.cap='The fraction of stem storage which can be retranslocated in every day.'}
+y_cols <- c('Wheat.Stem.NRetranslocationFactor')
+g_report %>% 
+    plot_report(g_xvar2, y_cols, x_lab = g_xlab2,
+            y_lab = 'Fraction of stem storage ([-])')
+```
+</div>
+
+
+No reallocation of nitrogen occurs from the senescence stem as the senescence rate is set as `r stem_senesce_rate` for stem (Fig. \@ref(fig:stem-nitrogen-supply)). No reallocation of nitrogen occurs from metabolic component as no metabolic is simulated in stem (Fig. \@ref(fig:stem-dm-weight)). No fixation and uptake nitrogens are simulated in stem (Fig. \@ref(fig:stem-nitrogen-supply)).
 
 <div class="fig-output">
 ```{r stem-nitrogen-supply, fig.cap='The stem nitrogen supply for all components'}
@@ -216,7 +256,6 @@ y_cols <- c('Wheat.Stem.NSupply.Fixation', 'Wheat.Stem.NSupply.Retranslocation',
 g_report %>% 
     plot_report(g_xvar, y_cols, ncol = 5,
                 x_lab = g_xlab, y_lab = 'Nitrogen demand (g/m2/d)')
-
 ```
 </div>
 
