@@ -264,7 +264,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="sec:stem-nitrogen" class="section level2">
 <h2><span class="header-section-number">12.2</span> Nitrogen</h2>
-<p>Stem nitrogen is only allocated into two components (i.e. structural and storage) as the same minimum and critical nitrogen concentrations (Figs <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-diagram-dynamic">12.11</a> and <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-cardinal">12.12</a>). The nitrogen in the storage can be retranslocated into other organs as a daily fraction (Section <a href="sec-stem-nitrogen.html#sec:stem-nitrogen-supply">12.2.1</a>). No reallocation of nitrogen occurs in stem as no senescing and dead pool of biomass and nitrogen.</p>
+<p>Stem nitrogen is only allocated into two components (i.e. structural and storage) as the same minimum and critical nitrogen concentrations (Figs <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-diagram-dynamic">12.11</a> and <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-cardinal">12.12</a>). The nitrogen in the storage can be retranslocated into other organs as a daily fraction (Section <a href="sec-stem-nitrogen.html#sec:stem-nitrogen-supply">12.2.1</a>). No reallocation of nitrogen occurs in stem as no senescence and dead pool of biomass and nitrogen.</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-diagram-dynamic"></span>
 <img src="_include/figures/nitrogen-dynamic-stem.png" alt="A diagram to represent the relationship of nitrogen in stem for two nitrogen components (structural and storage), three cadinal parameters of nitrogen concentrations (minimum, critical and maximum), one biomass pool (live), and one nitrogen supply source (retranslocation)." width="50%" />
@@ -273,7 +273,7 @@ Figure 12.11: A diagram to represent the relationship of nitrogen in stem for tw
 </p>
 </div>
 </div>
-<p>The minimum and critical nitrogen concentrations keep constant during whole season, but the maximum nitrogen concentrations graudally reducing from <code>Emergence</code> until <code>Flowering</code> (Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-cardinal">12.12</a>).</p>
+<p>The minimum and critical nitrogen concentrations keep constant during whole season, but the maximum nitrogen concentrations gradually reducing from <code>Emergence</code> until <code>Flowering</code> (Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-cardinal">12.12</a>).</p>
 <div class="fig-input">
 <div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-cardinal"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-nitrogen-cardinal-1.png" alt="Three cardinal nitrogen concentration in stem (Minimum, critical and maximum)." width="80%" />
@@ -293,7 +293,7 @@ Figure 12.13: The fraction of stem storage which can be retranslocated in every 
 </p>
 </div>
 </div>
-<p>No reallocation of nitrogen occurs from the senescence stem as the senescence rate is set as 0 for stem (Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-supply">12.14</a>). No reallocation of nitrogen occurs from metabolic component as no metabolic is simulated in stem (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-weight">12.7</a>). No fixation and uptake nitrogens are simulated in stem (Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-supply">12.14</a>).</p>
+<p>No reallocation of nitrogen occurs from the senescence stem as the senescence rate is set as 0 for stem (Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-supply">12.14</a>). No reallocation of nitrogen occurs from metabolic component as no metabolic is simulated in stem (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-weight">12.7</a>). No fixation and uptake nitrogen are simulated in stem (Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-supply">12.14</a>).</p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-supply"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-nitrogen-supply-1.png" alt="The stem nitrogen supply for all components" width="80%" />
@@ -305,20 +305,18 @@ Figure 12.14: The stem nitrogen supply for all components
 </div>
 <div id="sec:stem-nitrogen-demand" class="section level3">
 <h3><span class="header-section-number">12.2.2</span> Demand</h3>
-<p>Structural nitrogen is used to satisfy minimum concentration, metabolic to fit critical concentration, storage to fit maximum concentration.</p>
-<div class="fig-input">
-<div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-para-conc"></span>
-<img src="APSIM-Wheat_files/figure-html/stem-nitrogen-para-conc-1.png" alt="Minimum, critical and maximum nitrogen concentration in stem. Stem has the same minimum and critical nitrogen concentration." width="80%" />
-<p class="caption">
-Figure 12.15: Minimum, critical and maximum nitrogen concentration in stem. Stem has the same minimum and critical nitrogen concentration.
-</p>
-</div>
-</div>
+<p>In general, the nitrogen demand is determined by the potential allocation of biomass and three cardinal nitrogen concentrations, i.e. minimum, critical and maximum concentrations for structural, metabolic and storage, respectively. Firstly, nitrogen supply fills the structural component, then extra nitrogen allocates into metabolic and storage. The actual allocation of biomass shrinks to guarantee the minimum nitrogen concentration under nitrogen deficiency. For stem, nitrogen allocates into structural and storage components as stem does not simulate metabolic component (Fig. <a href="sec-stem-biomass.html#fig:stem-dm-weight">12.7</a>) and has the same minimum and critical nitrogen concentration (Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-cardinal">12.12</a>).</p>
+<p><span class="math display" id="eq:stem-nitrogen-demand">\[ 
+ND_{stem,\,potential} = (B_{stem} + \Delta B_{stem,\,P})) \times NC_{max,\,stem} - N_{stem} \\
+ND_{stem,\,structural} = \Delta B_{stem,\,structural,\,P} * NC_{min,\,stem} \\
+ND_{stem,\,storage} = ND_{stem,\,potential} - ND_{stem,\,structural}
+\tag{12.3}
+\]</span></p>
 <div class="fig-output">
 <div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-demand"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-nitrogen-demand-1.png" alt="The stem nitrogen demand for all components" width="80%" />
 <p class="caption">
-Figure 12.16: The stem nitrogen demand for all components
+Figure 12.15: The stem nitrogen demand for all components
 </p>
 </div>
 </div>
@@ -329,7 +327,7 @@ Figure 12.16: The stem nitrogen demand for all components
 <div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-allocated"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-nitrogen-allocated-1.png" alt="Actual allocated nitrogen to stem for three components. The negative values of Storage indicate nitrogen is ratranslocated into other organs." width="80%" />
 <p class="caption">
-Figure 12.17: Actual allocated nitrogen to stem for three components. The negative values of Storage indicate nitrogen is ratranslocated into other organs.
+Figure 12.16: Actual allocated nitrogen to stem for three components. The negative values of Storage indicate nitrogen is ratranslocated into other organs.
 </p>
 </div>
 </div>
@@ -337,7 +335,7 @@ Figure 12.17: Actual allocated nitrogen to stem for three components. The negati
 <div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-wt"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-nitrogen-wt-1.png" alt="Dynamic of stem nitrogen for three components and total." width="80%" />
 <p class="caption">
-Figure 12.18: Dynamic of stem nitrogen for three components and total.
+Figure 12.17: Dynamic of stem nitrogen for three components and total.
 </p>
 </div>
 </div>
@@ -345,7 +343,7 @@ Figure 12.18: Dynamic of stem nitrogen for three components and total.
 <div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-live"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-nitrogen-live-1.png" alt="Dynamic of stem nitrogen in Live pool for three components and total." width="80%" />
 <p class="caption">
-Figure 12.19: Dynamic of stem nitrogen in Live pool for three components and total.
+Figure 12.18: Dynamic of stem nitrogen in Live pool for three components and total.
 </p>
 </div>
 </div>
@@ -353,7 +351,7 @@ Figure 12.19: Dynamic of stem nitrogen in Live pool for three components and tot
 <div class="figure" style="text-align: center"><span id="fig:stem-nitrogen-dead"></span>
 <img src="APSIM-Wheat_files/figure-html/stem-nitrogen-dead-1.png" alt="Dynamic of stem nitrogen in Dead pool for three components and total." width="80%" />
 <p class="caption">
-Figure 12.20: Dynamic of stem nitrogen in Dead pool for three components and total.
+Figure 12.19: Dynamic of stem nitrogen in Dead pool for three components and total.
 </p>
 </div>
 </div>
