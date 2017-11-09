@@ -134,7 +134,7 @@ $$
 ### Layered Canopy Photosynthesis Model with Transpiration (or DCaPS)
 
 
-### Comporison of three photosynthesis models
+### Comparison of three photosynthesis models
 
 The daily photosynthesis is calculated by SPASS's model, but is exported for all three models to compare model performance. So the input parameters are the same for three models, e.g. leaf area index, temperature and radiation. 
 
@@ -145,6 +145,7 @@ The daily photosynthesis is calculated by SPASS's model, but is exported for all
 y_cols <- c('Wheat.Leaf.Photosynthesis_RUE',
             'Wheat.Leaf.Photosynthesis_SPASS',
             'Wheat.Leaf.Photosynthesis_DCaPS')
+
 
 
 p1 <- plot_report(g_report, 'Wheat.Phenology.DaysAfterSowing', y_cols, 
