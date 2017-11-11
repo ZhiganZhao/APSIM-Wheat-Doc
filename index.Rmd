@@ -35,7 +35,8 @@ The main contents include
 - Figures of general outputs
 
 
-## Contributors {#sec:intro-contribution}
+**Contributors**
+
  * [Bangyou Zheng](https://www.bangyou.me) <bangyou.zheng@csiro.au>
  * [Karine Chenu](https://qaafi.uq.edu.au/profile/18/karine-chenu) <karine.chenu@uq.edu.au>
  * [Scott Chapman](http://people.csiro.au/C/S/Scott-Chapman) <scott.chapman@csiro.au>

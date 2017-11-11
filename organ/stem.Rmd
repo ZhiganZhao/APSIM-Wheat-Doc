@@ -308,13 +308,15 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 
+### Nitrogen contents {#sec:stem-nitrogen-contents}
+
 <div class="fig-output">
-```{r stem-nitrogen-wt, fig.asp = 1, fig.cap='Dynamic of stem nitrogen for three components and total.'}
-y_cols <- c(sprintf('Wheat.Stem.%sN', g_demand), 'Wheat.Stem.N')
+```{r stem-nitrogen-wt, fig.asp = 1, fig.cap='Dynamic of stem nitrogen for three components.'}
+y_cols <- sprintf('Wheat.Stem.%sN', g_demand)
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
-             y_labels = c(g_demand, 'Total'),
+            y_labels = g_demand,
             ncol = 4)
 
 ```
@@ -324,12 +326,12 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r stem-nitrogen-live, fig.asp = 1, fig.cap='Dynamic of stem nitrogen in Live pool for three components and total.'}
-y_cols <- c(sprintf('Wheat.Stem.Live.%sN', g_demand), 'Wheat.Stem.Live.N')
+```{r stem-nitrogen-live, fig.asp = 1, fig.cap='Dynamic of stem nitrogen in Live pool for three components.'}
+y_cols <- sprintf('Wheat.Stem.Live.%sN', g_demand)
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
-             y_labels = c(g_demand, 'Total'),
+             y_labels = g_demand,
             ncol = 4)
 
 ```
@@ -338,8 +340,8 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r stem-nitrogen-dead, fig.asp = 0.5, fig.cap='Dynamic of stem nitrogen in Dead pool for three components and total.'}
-y_cols <- c(sprintf('Wheat.Stem.Dead.%sN', g_demand), 'Wheat.Stem.Dead.N')
+```{r stem-nitrogen-dead, fig.asp = 0.5, fig.cap='Dynamic of stem nitrogen in Dead pool for three components.'}
+y_cols <- sprintf('Wheat.Stem.Dead.%sN', g_demand)
 
 # Check all components equal to zero.
 g_report %>% 
@@ -354,7 +356,55 @@ g_report %>%
     
 plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
             y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
-             y_labels = c(g_demand, 'Total'),
+            y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
+
+### Nitrogen concentration {#sec:stem-nitrogen-conc}
+
+<div class="fig-output">
+```{r stem-nitrogen-concentration, fig.asp = 0.5, fig.cap='Dynamic of stem nitrogen concentration in Live and Dead.'}
+y_cols <- c('Wheat.Stem.Live.NConc', 'Wheat.Stem.Dead.NConc',
+            "Wheat.Stem.Nconc")
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c("Live", "Dead", 'Whole stem'),
+            ncol = 4)
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r stem-nitrogen-concentration-live, fig.asp = 0.5, fig.cap='Dynamic of stem nitrogen concentration in Live pool for three components.'}
+y_cols <- sprintf('Wheat.Stem.Live.%sNConc', g_demand)
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c(g_demand),
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r stem-nitrogen-concentration-dead, fig.asp = 0.5, fig.cap='Dynamic of stem nitrogen concentration in Dead pool for three components.'}
+y_cols <- sprintf('Wheat.Stem.Dead.%sNConc', g_demand)
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = g_demand,
             ncol = 4)
 
 ```
