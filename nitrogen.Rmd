@@ -138,7 +138,7 @@ g_report %>%
 </div>
 
 
-## Nitrogen uptake {#ses:nitrogen-uptake}
+## Uptake {#ses:nitrogen-uptake}
 <!--
 Potential N uptake by the root system is calculated for each soil layer that the roots have extended into. In each layer potential uptake is calculated as the product of the mineral nitrogen in the layer, a factor controlling the rate of extraction (kNO3 or kNH4), the concentration of N form (ppm), and a soil moisture factor (NUptakeSWFactor) which typically decreases as the soil dries.  
 _NO3 uptake = NO3<sub>i</sub> x KNO3 x NO3<sub>ppm, i</sub> x NUptakeSWFactor_
@@ -149,6 +149,7 @@ Nitrogen uptake demand is limited to the maximum daily potential uptake (MaxDail
     /// each plant instance will be allowed to take up.
     ///
 -->
+
 <div class="fig-output">
 ```{r root-nitrogen-uptake, fig.cap='The plant nitrogen uptake'}
 
@@ -164,9 +165,8 @@ g_report %>%
 ```
 </div>
 
+
 ## Actual allocation {#sec:nitrogen-actual-allocation}
-
-
 
 <div class="fig-output">
 ```{r nitrogen-uptake-allocated-difference, fig.asp = 1, fig.cap='The daily biomass supply from all organs, allocated biomass into all organs, and allocated + growth respiration in all organs.'}
@@ -180,19 +180,14 @@ g_report %>%
             y_labels = c("UptakeSupply", "TotalSupply", "Allocated"),
     y_lab = expression('Daily biomass (g biomass'~m^-2~' ground'~d^-1~')'))
 
-g_report %>% 
-    select(c('Wheat.Phenology.Stage', y_cols)) %>% 
-    filter(Wheat.Phenology.Stage > 6) %>% 
-    summarise(a = sum(Wheat.AllocatedN),
-              b = sum(Wheat.Arbitrator.N.TotalUptakeSupply))
-
 ```
 </div>
 
 
+## Content
 
 <div class="fig-output">
-```{r root-nitrogen-dynamic, fig.cap='The plant nitrogen uptake'}
+```{r root-nitrogen-content-organ, fig.cap='The plant nitrogen uptake'}
 
 y_cols <- c(paste0('Wheat.', g_organs, '.N'), 'Wheat.Total.N')
 g_report %>% 
@@ -206,24 +201,9 @@ g_report %>%
 </div>
 
 
-<div class="fig-output">
-```{r nitrogen-concentration, fig.cap='The plant nitrogen concentration'}
-
-y_cols <- c(paste0('Wheat.', g_organs, '.Nconc'), 'Wheat.Total.NConc')
-g_report %>% 
-    plot_report(g_xvar, y_cols, ncol = 6,
-                x_lab = g_xlab,
-                y_labels = c(g_organs, 'Total'),
-                y_lab = expression(atop('Nitrogen concentration', 
-                                        '(g N'~m^-2~' ground)')))
-
-
-```
-</div>
-
 
 <div class="fig-output">
-```{r nitrogen-structural, fig.cap='Structural nitrogen'}
+```{r nitrogen-content-structural, fig.cap='Structural nitrogen'}
 
 y_cols <- paste0('Wheat.', g_organs, '.Live.StructuralN')
 g_report %>% 
@@ -241,7 +221,7 @@ g_report %>%
 
 
 <div class="fig-output">
-```{r nitrogen-metabolic, fig.cap='Metabolic nitrogen'}
+```{r nitrogen-content-metabolic, fig.cap='Metabolic nitrogen'}
 
 y_cols <- paste0('Wheat.', g_organs, '.Live.MetabolicN')
 g_report %>% 
@@ -257,7 +237,7 @@ g_report %>%
 
 
 <div class="fig-output">
-```{r nitrogen-storage, fig.cap='Storage nitrogen'}
+```{r nitrogen-content-storage, fig.cap='Storage nitrogen'}
 
 y_cols <- paste0('Wheat.', g_organs, '.Live.StorageN')
 g_report %>% 
@@ -269,6 +249,60 @@ g_report %>%
 
 ```
 </div>
+
+## Concentration
+
+<div class="fig-output">
+```{r nitrogen-concentration, fig.cap='The plant nitrogen concentration'}
+
+y_cols <- paste0('Wheat.', g_organs, '.Nconc')
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 6,
+                x_lab = g_xlab,
+                y_labels = g_organs,
+                y_lab = expression(atop('Nitrogen concentration', 
+                                        '(g N'~m^-2~' ground)')))
+
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r nitrogen-concentration-live, fig.cap='The plant nitrogen concentration in Live pool for all organs'}
+
+y_cols <- paste0('Wheat.', g_organs, '.Live.NConc')
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 6,
+                x_lab = g_xlab,
+                y_labels = g_organs,
+                y_lab = expression(atop('Nitrogen concentration', 
+                                        '(g N'~m^-2~' ground)')))
+
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r nitrogen-concentration-dead, fig.cap='The plant nitrogen concentration in Dead pool for all organs'}
+
+y_cols <- paste0('Wheat.', g_organs, '.Dead.NConc')
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 6,
+                x_lab = g_xlab,
+                y_labels = g_organs,
+                y_lab = expression(atop('Nitrogen concentration', 
+                                        '(g N'~m^-2~' ground)')))
+
+
+```
+</div>
+
+
+
+
 
 ```{r find-my-nitrogen}
 grain_n <- g_report %>% 

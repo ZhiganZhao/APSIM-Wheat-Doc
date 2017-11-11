@@ -159,8 +159,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="cha-nitrogen.html"><a href="cha-nitrogen.html"><i class="fa fa-check"></i><b>6</b> Nitrogen</a><ul>
 <li class="chapter" data-level="6.1" data-path="sec-nitrogen-supply.html"><a href="sec-nitrogen-supply.html"><i class="fa fa-check"></i><b>6.1</b> Supply</a></li>
 <li class="chapter" data-level="6.2" data-path="sec-nitrogen-demand.html"><a href="sec-nitrogen-demand.html"><i class="fa fa-check"></i><b>6.2</b> Demand</a></li>
-<li class="chapter" data-level="6.3" data-path="ses-nitrogen-uptake.html"><a href="ses-nitrogen-uptake.html"><i class="fa fa-check"></i><b>6.3</b> Nitrogen uptake</a></li>
+<li class="chapter" data-level="6.3" data-path="ses-nitrogen-uptake.html"><a href="ses-nitrogen-uptake.html"><i class="fa fa-check"></i><b>6.3</b> Uptake</a></li>
 <li class="chapter" data-level="6.4" data-path="sec-nitrogen-actual-allocation.html"><a href="sec-nitrogen-actual-allocation.html"><i class="fa fa-check"></i><b>6.4</b> Actual allocation</a></li>
+<li class="chapter" data-level="6.5" data-path="content.html"><a href="content.html"><i class="fa fa-check"></i><b>6.5</b> Content</a></li>
+<li class="chapter" data-level="6.6" data-path="concentration.html"><a href="concentration.html"><i class="fa fa-check"></i><b>6.6</b> Concentration</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="cha-water.html"><a href="cha-water.html"><i class="fa fa-check"></i><b>7</b> Water</a><ul>
 <li class="chapter" data-level="7.1" data-path="sec-water-uptake.html"><a href="sec-water-uptake.html"><i class="fa fa-check"></i><b>7.1</b> Uptake</a></li>
@@ -633,7 +635,7 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Grain.Dead.NConc</td>
-<td align="left">Fig. <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-concentration">8.12</a></td>
+<td align="left">Fig. <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-concentration">8.12</a>, <a href="concentration.html#fig:nitrogen-concentration-dead">6.17</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Grain.Dead.StorageN</td>
@@ -693,7 +695,7 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Grain.Live.MetabolicN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-metabolic">6.14</a>, <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-live">8.10</a></td>
+<td align="left">Fig. <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-live">8.10</a>, <a href="content.html#fig:nitrogen-content-metabolic">6.13</a></td>
 </tr>
 <tr class="even">
 <td align="left">Grain.Live.MetabolicNConc</td>
@@ -705,11 +707,11 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Grain.Live.NConc</td>
-<td align="left">Fig. <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-concentration">8.12</a></td>
+<td align="left">Fig. <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-concentration">8.12</a>, <a href="concentration.html#fig:nitrogen-concentration-live">6.16</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Grain.Live.StorageN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-storage">6.15</a>, <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-live">8.10</a></td>
+<td align="left">Fig. <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-live">8.10</a>, <a href="content.html#fig:nitrogen-content-storage">6.14</a></td>
 </tr>
 <tr class="even">
 <td align="left">Grain.Live.StorageNConc</td>
@@ -721,7 +723,7 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Grain.Live.StructuralN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-structural">6.13</a>, <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-live">8.10</a></td>
+<td align="left">Fig. <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-live">8.10</a>, <a href="content.html#fig:nitrogen-content-structural">6.12</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Grain.Live.StructuralNConc</td>
@@ -757,11 +759,11 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Grain.N</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:root-nitrogen-dynamic">6.11</a></td>
+<td align="left">Fig. <a href="content.html#fig:root-nitrogen-content-organ">6.11</a></td>
 </tr>
 <tr class="even">
 <td align="left">Grain.Nconc</td>
-<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-concentration">6.12</a>, <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-concentration">8.12</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="concentration.html#fig:nitrogen-concentration">6.15</a>, <a href="sec-grain-nitrogen.html#fig:grain-nitrogen-concentration">8.12</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Grain.NDemand.Total</td>
@@ -889,7 +891,7 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Leaf.Dead.NConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">10.40</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">10.40</a>, <a href="concentration.html#fig:nitrogen-concentration-dead">6.17</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Dead.StorageN</td>
@@ -1001,7 +1003,7 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Leaf.Live.MetabolicN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-metabolic">6.14</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-live">10.38</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-live">10.38</a>, <a href="content.html#fig:nitrogen-content-metabolic">6.13</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Live.MetabolicNConc</td>
@@ -1013,11 +1015,11 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Live.NConc</td>
-<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">10.40</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">10.40</a>, <a href="concentration.html#fig:nitrogen-concentration-live">6.16</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.Live.StorageN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-storage">6.15</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-live">10.38</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-live">10.38</a>, <a href="content.html#fig:nitrogen-content-storage">6.14</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Live.StorageNConc</td>
@@ -1029,7 +1031,7 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Live.StructuralN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-structural">6.13</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-live">10.38</a></td>
+<td align="left">Fig. <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-live">10.38</a>, <a href="content.html#fig:nitrogen-content-structural">6.12</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.Live.StructuralNConc</td>
@@ -1073,11 +1075,11 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Leaf.N</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:root-nitrogen-dynamic">6.11</a></td>
+<td align="left">Fig. <a href="content.html#fig:root-nitrogen-content-organ">6.11</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Leaf.Nconc</td>
-<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-concentration">6.12</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">10.40</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="concentration.html#fig:nitrogen-concentration">6.15</a>, <a href="sec-leaf-nigrogen.html#fig:leaf-nitrogen-concentration">10.40</a></td>
 </tr>
 <tr class="even">
 <td align="left">Leaf.NDemand.Metabolic</td>
@@ -1233,7 +1235,7 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Root.Dead.NConc</td>
-<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration-dead">9.23</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration-dead">9.23</a>, <a href="concentration.html#fig:nitrogen-concentration-dead">6.17</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Root.Dead.StorageN</td>
@@ -1333,7 +1335,7 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Root.Live.MetabolicN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-metabolic">6.14</a>, <a href="sec-root-nitrogen.html#fig:root-nitrogen-live">9.19</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-live">9.19</a>, <a href="content.html#fig:nitrogen-content-metabolic">6.13</a></td>
 </tr>
 <tr class="even">
 <td align="left">Root.Live.MetabolicNConc</td>
@@ -1349,11 +1351,11 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Root.Live.NConc</td>
-<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration-live">9.22</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration-live">9.22</a>, <a href="concentration.html#fig:nitrogen-concentration-live">6.16</a></td>
 </tr>
 <tr class="even">
 <td align="left">Root.Live.StorageN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-storage">6.15</a>, <a href="sec-root-nitrogen.html#fig:root-nitrogen-live">9.19</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-live">9.19</a>, <a href="content.html#fig:nitrogen-content-storage">6.14</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Root.Live.StorageNConc</td>
@@ -1365,7 +1367,7 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Root.Live.StructuralN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-structural">6.13</a>, <a href="sec-root-nitrogen.html#fig:root-nitrogen-live">9.19</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-live">9.19</a>, <a href="content.html#fig:nitrogen-content-structural">6.12</a></td>
 </tr>
 <tr class="even">
 <td align="left">Root.Live.StructuralNConc</td>
@@ -1401,11 +1403,11 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Root.N</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:root-nitrogen-dynamic">6.11</a>, <a href="sec-root-nitrogen.html#fig:root-nitrogen-wt">9.18</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-wt">9.18</a>, <a href="content.html#fig:root-nitrogen-content-organ">6.11</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Root.Nconc</td>
-<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-concentration">6.12</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="concentration.html#fig:nitrogen-concentration">6.15</a></td>
 </tr>
 <tr class="even">
 <td align="left">Root.NDemand.Total</td>
@@ -1489,7 +1491,7 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Spike.Dead.NConc</td>
-<td align="left">Fig. <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-concentration">11.14</a></td>
+<td align="left">Fig. <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-concentration">11.14</a>, <a href="concentration.html#fig:nitrogen-concentration-dead">6.17</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Spike.Dead.StorageN</td>
@@ -1561,7 +1563,7 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Spike.Live.MetabolicN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-metabolic">6.14</a>, <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-live">11.12</a></td>
+<td align="left">Fig. <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-live">11.12</a>, <a href="content.html#fig:nitrogen-content-metabolic">6.13</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Spike.Live.MetabolicNConc</td>
@@ -1573,11 +1575,11 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Spike.Live.NConc</td>
-<td align="left">Fig. <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-concentration">11.14</a></td>
+<td align="left">Fig. <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-concentration">11.14</a>, <a href="concentration.html#fig:nitrogen-concentration-live">6.16</a></td>
 </tr>
 <tr class="even">
 <td align="left">Spike.Live.StorageN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-storage">6.15</a>, <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-live">11.12</a></td>
+<td align="left">Fig. <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-live">11.12</a>, <a href="content.html#fig:nitrogen-content-storage">6.14</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Spike.Live.StorageNConc</td>
@@ -1589,7 +1591,7 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Spike.Live.StructuralN</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-structural">6.13</a>, <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-live">11.12</a></td>
+<td align="left">Fig. <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-live">11.12</a>, <a href="content.html#fig:nitrogen-content-structural">6.12</a></td>
 </tr>
 <tr class="even">
 <td align="left">Spike.Live.StructuralNConc</td>
@@ -1629,11 +1631,11 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Spike.N</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:root-nitrogen-dynamic">6.11</a></td>
+<td align="left">Fig. <a href="content.html#fig:root-nitrogen-content-organ">6.11</a></td>
 </tr>
 <tr class="even">
 <td align="left">Spike.Nconc</td>
-<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-concentration">6.12</a>, <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-concentration">11.14</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="concentration.html#fig:nitrogen-concentration">6.15</a>, <a href="sec-spike-nitrogen.html#fig:spike-nitrogen-concentration">11.14</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Spike.NDemand.Total</td>
@@ -1709,7 +1711,7 @@ Output
 </tr>
 <tr class="odd">
 <td align="left">Stem.Dead.NConc</td>
-<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-concentration">12.20</a></td>
+<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-concentration">12.20</a>, <a href="concentration.html#fig:nitrogen-concentration-dead">6.17</a></td>
 </tr>
 <tr class="even">
 <td align="left">Stem.Dead.StorageN</td>
@@ -1777,7 +1779,7 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Stem.Live.MetabolicN</td>
-<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-live">12.18</a>, <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-metabolic">6.14</a></td>
+<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-live">12.18</a>, <a href="content.html#fig:nitrogen-content-metabolic">6.13</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Stem.Live.MetabolicNConc</td>
@@ -1793,11 +1795,11 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Stem.Live.NConc</td>
-<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-concentration">12.20</a></td>
+<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-concentration">12.20</a>, <a href="concentration.html#fig:nitrogen-concentration-live">6.16</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Stem.Live.StorageN</td>
-<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-live">12.18</a>, <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-storage">6.15</a></td>
+<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-live">12.18</a>, <a href="content.html#fig:nitrogen-content-storage">6.14</a></td>
 </tr>
 <tr class="even">
 <td align="left">Stem.Live.StorageNConc</td>
@@ -1809,7 +1811,7 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Stem.Live.StructuralN</td>
-<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-live">12.18</a>, <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-structural">6.13</a></td>
+<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-live">12.18</a>, <a href="content.html#fig:nitrogen-content-structural">6.12</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Stem.Live.StructuralNConc</td>
@@ -1849,11 +1851,11 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Stem.N</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:root-nitrogen-dynamic">6.11</a>, <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-wt">12.17</a></td>
+<td align="left">Fig. <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-wt">12.17</a>, <a href="content.html#fig:root-nitrogen-content-organ">6.11</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Stem.Nconc</td>
-<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-concentration">6.12</a>, <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-concentration">12.20</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="concentration.html#fig:nitrogen-concentration">6.15</a>, <a href="sec-stem-nitrogen.html#fig:stem-nitrogen-concentration">12.20</a></td>
 </tr>
 <tr class="even">
 <td align="left">Stem.NDemand.Metabolic</td>
@@ -2001,11 +2003,11 @@ Output
 </tr>
 <tr class="even">
 <td align="left">Total.N</td>
-<td align="left">Fig. <a href="sec-nitrogen-actual-allocation.html#fig:root-nitrogen-dynamic">6.11</a></td>
+<td align="left">Fig. <a href="content.html#fig:root-nitrogen-content-organ">6.11</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Total.NConc</td>
-<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="sec-nitrogen-actual-allocation.html#fig:nitrogen-concentration">6.12</a></td>
+<td align="left">Fig. <a href="sec-root-nitrogen.html#fig:root-nitrogen-concentration">9.21</a>, <a href="concentration.html#fig:nitrogen-concentration">6.15</a></td>
 </tr>
 <tr class="even">
 <td align="left">TotalDeadWt</td>
