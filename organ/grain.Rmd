@@ -20,13 +20,15 @@ where $W_{stem}$ and $W_{spike}$ are the stem and spkie total biomass at floweri
 
 
 
-## Supply {#sec:grain-supply}
+## Biomass {#grain-biomass}
 
-No biomass supply is considered in the `Grain` organ (Fig. \@ref(fig:grain-supply)).
+### Supply {#sec:grain-biomass-supply}
+
+No biomass supply is considered in the `Grain` organ (Fig. \@ref(fig:grain-biomass-supply)).
 
 
 <div class="fig-output">
-```{r grain-supply, fig.asp = 0.5, fig.cap='Biomass supply from grain'}
+```{r grain-biomass-supply, fig.asp = 0.5, fig.cap='Biomass supply from grain'}
 y_cols <- c('Wheat.Grain.DMSupply.Fixation',
             'Wheat.Grain.DMSupply.Retranslocation',
             'Wheat.Grain.DMSupply.Reallocation')
@@ -39,12 +41,12 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab,
 </div>
 
 
-## Demand {#sec:grain-demand}
+### Demand {#sec:grain-biomass-demand}
 The grain demand is seperated into two periods (i.e. from `Flowering` to `StartGrainFill` and from `StartGrainFill` to `EndGrainFill`). 
 
 
 <div class="fig-output">
-```{r grain-demand, fig.asp = 1, fig.cap='Biomass demand by grain'}
+```{r grain-biomass-demand, fig.asp = 1, fig.cap='Biomass demand by grain'}
 y_cols <- c('Wheat.Grain.DMDemand.Structural', 
             'Wheat.Grain.DMDemand.Metabolic', 
             'Wheat.Grain.DMDemand.Storage')
@@ -55,14 +57,14 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 ```
 </div>
 
-## Biomass dynamic {#sec:grain-dynamic}
+### Actual allocation {#sec:grain-biomass-allocation}
 
 `Grain` only considers the `Live` conponent, No `Dead` component.
 
 
 
 <div class="fig-output">
-```{r grain-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for grain'}
+```{r grain-biomass-allocated, fig.asp = 1, fig.cap='Actual allocated biomass for grain'}
 y_cols <- c('Wheat.Grain.Allocated.StructuralWt',
             'Wheat.Grain.Allocated.MetabolicWt',
             'Wheat.Grain.Allocated.StorageWt')
@@ -76,7 +78,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r grain-weight, fig.asp = 1, fig.cap='Dynamic of grain biomass (Total)'}
+```{r grain-biomass-weight, fig.asp = 1, fig.cap='Dynamic of grain biomass (Total)'}
 y_cols <- c('Wheat.GrainWt')
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
@@ -90,7 +92,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r grain-live, fig.asp = 1, fig.cap='Dynamic of grain biomass (Live component)'}
+```{r grain-biomass-live, fig.asp = 1, fig.cap='Dynamic of grain biomass (Live component)'}
 y_cols <- c('Wheat.Grain.Live.StructuralWt',
             'Wheat.Grain.Live.MetabolicWt',
             'Wheat.Grain.Live.StorageWt')
@@ -104,7 +106,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 <div class="fig-output">
-```{r grain-dead, fig.asp = 0.5, fig.cap='Dynamic of grain biomass (Dead component)'}
+```{r grain-biomass-dead, fig.asp = 0.5, fig.cap='Dynamic of grain biomass (Dead component)'}
 y_cols <- c('Wheat.Grain.Dead.StructuralWt',
             'Wheat.Grain.Dead.MetabolicWt',
             'Wheat.Grain.Dead.StorageWt')
@@ -125,7 +127,7 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab,
 The total grain weight at harvest can be considered as the final yield without moisture content in the grain. The normal range of moisture content in the grain is 10-15% with 12% as standard
 
 <div class="fig-output">
-```{r grain-yield, fig.asp = 0.5, fig.cap='Final yield with different moisture content.'}
+```{r grain-biomass-yield, fig.asp = 0.5, fig.cap='Final yield with different moisture content.'}
 
 final_yield <- max(g_report$Wheat.GrainWt)
 mos <- seq(0, 15)
@@ -139,3 +141,129 @@ data_frame(Moisture = mos,
  
 ```
 </div>
+
+## Nitrogen {#sec:grain-nitrogen}
+
+
+### Actual allocation {#sec:grain-nitrogen-allocated}
+
+
+
+<div class="fig-output">
+```{r grain-nitrogen-allocated, fig.asp = 1, fig.cap='Actual allocated nitrogen to grain for three components. The negative values of Storage indicate nitrogen is ratranslocated into other organs.'}
+y_cols <- sprintf('Wheat.Grain.Allocated.%sN', g_demand)
+            
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Allocated biomass (g biomass '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand, ncol = 3)
+
+
+```
+</div>
+
+
+
+### Nitrogen contents {#sec:grain-nitrogen-contents}
+
+<div class="fig-output">
+```{r grain-nitrogen-wt, fig.asp = 1, fig.cap='Dynamic of grain nitrogen for three components.'}
+y_cols <- sprintf('Wheat.Grain.%sN', g_demand)
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r grain-nitrogen-live, fig.asp = 1, fig.cap='Dynamic of grain nitrogen in Live pool for three components.'}
+y_cols <- sprintf('Wheat.Grain.Live.%sN', g_demand)
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+             y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r grain-nitrogen-dead, fig.asp = 0.5, fig.cap='Dynamic of grain nitrogen in Dead pool for three components.'}
+y_cols <- sprintf('Wheat.Grain.Dead.%sN', g_demand)
+
+# Check all components equal to zero.
+g_report %>% 
+    select(y_cols) %>% 
+    gather(trait, value, y_cols) %>% 
+    group_by(trait) %>% 
+    summarise(n = sum(value > 0)) %>% 
+    filter(n > 0) %>% 
+    ungroup() %>% 
+    assertr::verify(nrow(.) == 0) %>% 
+    invisible()
+    
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
+
+### Nitrogen concentration {#sec:grain-nitrogen-conc}
+
+<div class="fig-output">
+```{r grain-nitrogen-concentration, fig.asp = 0.5, fig.cap='Dynamic of grain nitrogen concentration in Live and Dead.'}
+y_cols <- c('Wheat.Grain.Live.NConc', 'Wheat.Grain.Dead.NConc',
+            "Wheat.Grain.Nconc")
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c("Live", "Dead", 'Whole grain'),
+            ncol = 4)
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r grain-nitrogen-concentration-live, fig.asp = 0.5, fig.cap='Dynamic of grain nitrogen concentration in Live pool for three components.'}
+y_cols <- sprintf('Wheat.Grain.Live.%sNConc', g_demand)
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c(g_demand),
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r grain-nitrogen-concentration-dead, fig.asp = 0.5, fig.cap='Dynamic of grain nitrogen concentration in Dead pool for three components.'}
+y_cols <- sprintf('Wheat.Grain.Dead.%sNConc', g_demand)
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+

@@ -291,6 +291,7 @@ g_report %>%
 ```
 </div>
 
+
 ### Actual allocation {#sec:stem-nitrogen-allocated}
 
 
@@ -302,6 +303,7 @@ y_cols <- sprintf('Wheat.Stem.Allocated.%sN', g_demand)
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
             y_lab = expression('Allocated biomass (g biomass '~m^-2~' ground '~d^-1~')'),
             y_labels = g_demand, ncol = 3)
+
 
 ```
 </div>

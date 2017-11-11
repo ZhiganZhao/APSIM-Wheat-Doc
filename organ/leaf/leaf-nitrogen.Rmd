@@ -65,74 +65,35 @@ plot_report(g_report, g_xvar,
 
 
 
-### Nitrogen amount
+### Actual allocation {#sec:leaf-nitrogen-allocated}
 
-<div class="fig-output">
-```{r leaf-nitrogen-content, fig.asp=1, fig.cap='Nitrogen contents in live and dead pools of leaf.'}
-y_cols <- c('Wheat.Leaf.Live.N', 'Wheat.Leaf.Dead.N')
-plot_report(g_report, g_xvar, 
-            y_cols, x_lab = g_xlab, 
-            y_labels = c('Live', "Dead"),
-            y_lab = expression('Nitrogen content (g N ' ~m^-2~'ground)'),
-            ncol = 2)
-```
-</div>
 
 
 <div class="fig-output">
-```{r leaf-nitrogen-content-component-live, fig.asp=1, fig.cap='Nitrogen contents of three components in live pool of leaf.'}
-y_cols <- c("Wheat.Leaf.Live.N", 
-            'Wheat.Leaf.Live.StructuralN', 
-            'Wheat.Leaf.Live.MetabolicN',
-            'Wheat.Leaf.Live.StorageN')
-plot_report(g_report, g_xvar, 
-            y_cols, x_lab = g_xlab, 
-            y_labels = c("Total", 'Structural', "Metabolic", 'Storage'),
-            ncol = 4,
-            y_lab = expression('Nitrogen content (g N ' ~m^-2~'ground)'))
+```{r leaf-nitrogen-allocated, fig.asp = 1, fig.cap='Actual allocated nitrogen to leaf for three components. The negative values of Storage indicate nitrogen is ratranslocated into other organs.'}
+y_cols <- sprintf('Wheat.Leaf.Allocated.%sN', g_demand)
+            
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Allocated biomass (g biomass '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand, ncol = 3)
+
+
 ```
 </div>
 
 
 
-<div class="fig-output">
-```{r leaf-nitrogen-content-component-dead, fig.asp=1, fig.cap='Nitrogen contents of three components in dead pool of leaf.'}
-y_cols <- c("Wheat.Leaf.Dead.N",
-            'Wheat.Leaf.Dead.StructuralN', 
-            'Wheat.Leaf.Dead.MetabolicN',
-            'Wheat.Leaf.Dead.StorageN')
-plot_report(g_report, g_xvar, 
-            y_cols, x_lab = g_xlab, 
-            y_labels = c("Total", 'Structural', "Metabolic", 'Storage'),
-            ncol = 4,
-            y_lab = expression('Nitrogen content (g N ' ~m^-2~'ground)'))
-```
-</div>
-
+### Nitrogen contents {#sec:leaf-nitrogen-contents}
 
 <div class="fig-output">
-```{r leaf-nitrogen-concentration, fig.asp=0.5, fig.cap='Nitrogen concentration in live and dead pools of leaf.'}
-y_cols <- c('Wheat.Leaf.Live.NConc', 'Wheat.Leaf.Dead.NConc')
-plot_report(g_report, g_xvar, 
-            y_cols, x_lab = g_xlab, 
-            y_labels = c('Live', "Dead"),
-            y_lab = expression('Nitrogen concentration (g N ' ~g^-1~'leaf)'),
-            ncol = 2)
-```
-</div>
+```{r leaf-nitrogen-wt, fig.asp = 1, fig.cap='Dynamic of leaf nitrogen for three components.'}
+y_cols <- sprintf('Wheat.Leaf.%sN', g_demand)
 
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand,
+            ncol = 4)
 
-<div class="fig-output">
-```{r leaf-nitrogen-concentration-component-live, fig.asp=1, fig.cap='Nitrogen concentration of three components in live pool of leaf.'}
-y_cols <- c('Wheat.Leaf.Live.NConc',
-            'Wheat.Leaf.Live.StructuralNConc', 
-            'Wheat.Leaf.Live.MetabolicNConc',
-            'Wheat.Leaf.Live.StorageNConc')
-plot_report(g_report, g_xvar, 
-            y_cols, x_lab = g_xlab, 
-            y_labels = c('Leaf', 'Structural', "Metabolic", 'Storage'),
-            ncol = 4,
-            y_lab = expression('Nitrogen concentration (g N ' ~g^-1~'leaf)'))
 ```
 </div>
 
@@ -140,16 +101,75 @@ plot_report(g_report, g_xvar,
 
 
 <div class="fig-output">
-```{r leaf-nitrogen-concentration-component-dead, fig.asp=1, fig.cap='Nitrogen concentration of three components in dead pool of leaf.'}
-y_cols <- c('Wheat.Leaf.Dead.NConc',
-            'Wheat.Leaf.Dead.StructuralNConc', 
-            'Wheat.Leaf.Dead.MetabolicNConc',
-            'Wheat.Leaf.Dead.StorageNConc')
-plot_report(g_report, g_xvar, 
-            y_cols, x_lab = g_xlab, 
-            y_labels = c('Leaf', 'Structural', "Metabolic", 'Storage'),
-            ncol = 4,
-            y_lab = expression('Nitrogen concentration (g N ' ~g^-1~'leaf)'))
+```{r leaf-nitrogen-live, fig.asp = 1, fig.cap='Dynamic of leaf nitrogen in Live pool for three components.'}
+y_cols <- sprintf('Wheat.Leaf.Live.%sN', g_demand)
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+             y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r leaf-nitrogen-dead, fig.asp = 0.5, fig.cap='Dynamic of leaf nitrogen in Dead pool for three components.'}
+y_cols <- sprintf('Wheat.Leaf.Dead.%sN', g_demand)
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
+
+### Nitrogen concentration {#sec:leaf-nitrogen-conc}
+
+<div class="fig-output">
+```{r leaf-nitrogen-concentration, fig.asp = 0.5, fig.cap='Dynamic of leaf nitrogen concentration in Live and Dead.'}
+y_cols <- c('Wheat.Leaf.Live.NConc', 'Wheat.Leaf.Dead.NConc',
+            "Wheat.Leaf.Nconc")
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c("Live", "Dead", 'Whole leaf'),
+            ncol = 4)
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r leaf-nitrogen-concentration-live, fig.asp = 0.5, fig.cap='Dynamic of leaf nitrogen concentration in Live pool for three components.'}
+y_cols <- sprintf('Wheat.Leaf.Live.%sNConc', g_demand)
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c(g_demand),
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r leaf-nitrogen-concentration-dead, fig.asp = 0.5, fig.cap='Dynamic of leaf nitrogen concentration in Dead pool for three components.'}
+y_cols <- sprintf('Wheat.Leaf.Dead.%sNConc', g_demand)
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = g_demand,
+            ncol = 4)
+
 ```
 </div>
 
@@ -158,7 +178,7 @@ plot_report(g_report, g_xvar,
 
 
 <div class="fig-output">
-```{r leaf-sln, fig.asp = 1, fig.cap='Specific leaf nitrogen'}
+```{r leaf-nitrogen-sln, fig.asp = 1, fig.cap='Specific leaf nitrogen'}
 y_cols <- c('Wheat.Leaf.SpecificLeafNitrogen')
 
 plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 

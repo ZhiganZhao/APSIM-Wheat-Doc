@@ -189,3 +189,128 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 ## Nitrogen {#sec:spike-nitrogen}
 
+
+
+
+### Actual allocation {#sec:spike-nitrogen-allocated}
+
+
+
+<div class="fig-output">
+```{r spike-nitrogen-allocated, fig.asp = 1, fig.cap='Actual allocated nitrogen to spike for three components. The negative values of Storage indicate nitrogen is ratranslocated into other organs.'}
+y_cols <- sprintf('Wheat.Spike.Allocated.%sN', g_demand)
+            
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Allocated biomass (g biomass '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand, ncol = 3)
+
+
+```
+</div>
+
+
+
+### Nitrogen contents {#sec:spike-nitrogen-contents}
+
+<div class="fig-output">
+```{r spike-nitrogen-wt, fig.asp = 1, fig.cap='Dynamic of spike nitrogen for three components.'}
+y_cols <- sprintf('Wheat.Spike.%sN', g_demand)
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r spike-nitrogen-live, fig.asp = 1, fig.cap='Dynamic of spike nitrogen in Live pool for three components.'}
+y_cols <- sprintf('Wheat.Spike.Live.%sN', g_demand)
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+             y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r spike-nitrogen-dead, fig.asp = 0.5, fig.cap='Dynamic of spike nitrogen in Dead pool for three components.'}
+y_cols <- sprintf('Wheat.Spike.Dead.%sN', g_demand)
+
+# Check all components equal to zero.
+g_report %>% 
+    select(y_cols) %>% 
+    gather(trait, value, y_cols) %>% 
+    group_by(trait) %>% 
+    summarise(n = sum(value > 0)) %>% 
+    filter(n > 0) %>% 
+    ungroup() %>% 
+    assertr::verify(nrow(.) == 0) %>% 
+    invisible()
+    
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
+
+### Nitrogen concentration {#sec:spike-nitrogen-conc}
+
+<div class="fig-output">
+```{r spike-nitrogen-concentration, fig.asp = 0.5, fig.cap='Dynamic of spike nitrogen concentration in Live and Dead.'}
+y_cols <- c('Wheat.Spike.Live.NConc', 'Wheat.Spike.Dead.NConc',
+            "Wheat.Spike.Nconc")
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c("Live", "Dead", 'Whole spike'),
+            ncol = 4)
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r spike-nitrogen-concentration-live, fig.asp = 0.5, fig.cap='Dynamic of spike nitrogen concentration in Live pool for three components.'}
+y_cols <- sprintf('Wheat.Spike.Live.%sNConc', g_demand)
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c(g_demand),
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r spike-nitrogen-concentration-dead, fig.asp = 0.5, fig.cap='Dynamic of spike nitrogen concentration in Dead pool for three components.'}
+y_cols <- sprintf('Wheat.Spike.Dead.%sNConc', g_demand)
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = g_demand,
+            ncol = 4)
+
+```
+</div>
+
+
+
