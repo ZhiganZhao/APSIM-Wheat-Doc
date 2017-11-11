@@ -164,7 +164,31 @@ g_report %>%
 ```
 </div>
 
-## Nitrogen dynamic {#sec:nitrogen-dynamic}
+## Actual allocation {#sec:nitrogen-actual-allocation}
+
+
+
+<div class="fig-output">
+```{r nitrogen-uptake-allocated-difference, fig.asp = 1, fig.cap='The daily biomass supply from all organs, allocated biomass into all organs, and allocated + growth respiration in all organs.'}
+y_cols <- c('Wheat.Arbitrator.N.TotalUptakeSupply', 
+            'Wheat.Arbitrator.N.TotalPlantSupply',
+            'Wheat.AllocatedN')
+g_report %>% 
+    # assertr::verify(sum((Wheat.DMSupply - Wheat.ActualAllocatedDM) < -10E-5) == 0) %>% 
+    plot_report(g_xvar, y_cols, x_lab = g_xlab, 
+            ncol = 3,
+            y_labels = c("UptakeSupply", "TotalSupply", "Allocated"),
+    y_lab = expression('Daily biomass (g biomass'~m^-2~' ground'~d^-1~')'))
+
+g_report %>% 
+    select(c('Wheat.Phenology.Stage', y_cols)) %>% 
+    filter(Wheat.Phenology.Stage > 6) %>% 
+    summarise(a = sum(Wheat.AllocatedN),
+              b = sum(Wheat.Arbitrator.N.TotalUptakeSupply))
+
+```
+</div>
+
 
 
 <div class="fig-output">
@@ -183,7 +207,7 @@ g_report %>%
 
 
 <div class="fig-output">
-```{r root-nitrogen-concentration, fig.cap='The plant nitrogen concentration'}
+```{r nitrogen-concentration, fig.cap='The plant nitrogen concentration'}
 
 y_cols <- c(paste0('Wheat.', g_organs, '.Nconc'), 'Wheat.Total.NConc')
 g_report %>% 
@@ -193,17 +217,83 @@ g_report %>%
                 y_lab = expression(atop('Nitrogen concentration', 
                                         '(g N'~m^-2~' ground)')))
 
-y_cols <- c(paste0('Wheat.', 'Root', '.Nconc'))
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r nitrogen-structural, fig.cap='Structural nitrogen'}
+
+y_cols <- paste0('Wheat.', g_organs, '.Live.StructuralN')
 g_report %>% 
     plot_report(g_xvar, y_cols, ncol = 6,
                 x_lab = g_xlab,
-                y_labels = c('Root'),
-                y_lab = expression(atop('Nitrogen concentration', 
+                y_labels = g_organs,
+                y_lab = expression(atop('Nitrogen contents', 
                                         '(g N'~m^-2~' ground)')))
+
 
 
 ```
 </div>
 
 
+
+<div class="fig-output">
+```{r nitrogen-metabolic, fig.cap='Metabolic nitrogen'}
+
+y_cols <- paste0('Wheat.', g_organs, '.Live.MetabolicN')
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 6,
+                x_lab = g_xlab,
+                y_labels = g_organs,
+                y_lab = expression(atop('Nitrogen contents', 
+                                        '(g N'~m^-2~' ground)')))
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r nitrogen-storage, fig.cap='Storage nitrogen'}
+
+y_cols <- paste0('Wheat.', g_organs, '.Live.StorageN')
+g_report %>% 
+    plot_report(g_xvar, y_cols, ncol = 6,
+                x_lab = g_xlab,
+                y_labels = g_organs,
+                y_lab = expression(atop('Nitrogen contents', 
+                                        '(g N'~m^-2~' ground)')))
+
+```
+</div>
+
+```{r find-my-nitrogen}
+grain_n <- g_report %>% 
+    select(Wheat.Grain.N) %>% 
+    filter(Wheat.Grain.N == max(Wheat.Grain.N)) %>% 
+    slice(1) %>% 
+    magrittr::use_series(Wheat.Grain.N)
+y_cols <- c(paste0('Wheat.', g_organs, '.Live.StorageN'), 
+            paste0('Wheat.', g_organs, '.Live.MetabolicN'))
+plant_n <- g_report %>% 
+    filter(Wheat.Phenology.Stage > 6) %>% 
+    filter(Wheat.Phenology.Stage == min(Wheat.Phenology.Stage)) %>% 
+    select(y_cols) %>% 
+    gather(Source, Value) %>% 
+    summarise(total = sum(Value)) %>% 
+    magrittr::use_series(total)
+
+soil_n <- g_report %>% 
+    filter(Wheat.Phenology.Stage <= 8,
+           Wheat.Phenology.Stage > 6) %>% 
+    select(Wheat.Arbitrator.N.TotalUptakeSupply) %>% 
+    summarise(total = sum(Wheat.Arbitrator.N.TotalUptakeSupply)) %>% 
+    magrittr::use_series(total)
+
+# soil_n + plant_n - grain_n
+
+```
 

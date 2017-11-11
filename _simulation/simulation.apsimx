@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Simulations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="19">
+<Simulations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="20">
   <Name>Simulations</Name>
   <Replacements>
     <Name>Replacements</Name>
@@ -33,6 +33,8 @@
         <string>[Wheat].Root.Allocated.StructuralN + [Wheat].Root.Allocated.StorageN + [Wheat].Root.Allocated.MetabolicN as Wheat.Root.AllocatedN</string>
         <string>[Wheat].Spike.Allocated.StructuralN + [Wheat].Spike.Allocated.StorageN + [Wheat].Spike.Allocated.MetabolicN as Wheat.Spike.AllocatedN</string>
         <string>[Wheat].Stem.Allocated.StructuralN + [Wheat].Stem.Allocated.StorageN + [Wheat].Stem.Allocated.MetabolicN as Wheat.Stem.AllocatedN</string>
+        <string>[Wheat].Grain.Allocated.StructuralN + [Wheat].Grain.Allocated.StorageN + [Wheat].Grain.Allocated.MetabolicN + [Wheat].Leaf.Allocated.StructuralN + [Wheat].Leaf.Allocated.StorageN + [Wheat].Leaf.Allocated.MetabolicN + [Wheat].Root.Allocated.StructuralN + [Wheat].Root.Allocated.StorageN + [Wheat].Root.Allocated.MetabolicN + [Wheat].Spike.Allocated.StructuralN + [Wheat].Spike.Allocated.StorageN + [Wheat].Spike.Allocated.MetabolicN + [Wheat].Stem.Allocated.StructuralN + [Wheat].Stem.Allocated.StorageN + [Wheat].Stem.Allocated.MetabolicN as Wheat.AllocatedN</string>
+        <string />
         <string />
         <string />
         <string>[Wheat].Spike.StructuralFraction.Value() as Wheat.Spike.StructuralFraction</string>
@@ -142,7 +144,6 @@
         <string>[Wheat].Leaf.Dead.StructuralN</string>
         <string>[Wheat].Leaf.Dead.StructuralNConc</string>
         <string />
-        <string />
         <string>[Wheat].Spike.N</string>
         <string>[Wheat].Spike.Live.N</string>
         <string>[Wheat].Spike.Dead.N</string>
@@ -199,6 +200,17 @@
         <string>[Wheat].Root.Dead.StorageNConc</string>
         <string>[Wheat].Root.Dead.StructuralN</string>
         <string>[Wheat].Root.Dead.StructuralNConc</string>
+        <string />
+        <string />
+        <string />
+        <string>[Wheat].Root.Detached.N</string>
+        <string>[Wheat].Root.Detached.NConc</string>
+        <string>[Wheat].Root.Detached.MetabolicN</string>
+        <string>[Wheat].Root.Detached.MetabolicNConc</string>
+        <string>[Wheat].Root.Detached.StorageN</string>
+        <string>[Wheat].Root.Detached.StorageNConc</string>
+        <string>[Wheat].Root.Detached.StructuralN</string>
+        <string>[Wheat].Root.Detached.StructuralNConc</string>
         <string />
         <string />
         <string />
@@ -589,6 +601,13 @@
         <string>[Wheat].Root.DMDemand.Metabolic + [Wheat].Grain.DMDemand.Metabolic + [Wheat].Spike.DMDemand.Metabolic + [Wheat].Stem.DMDemand.Metabolic + [Wheat].Leaf.DMDemand.Metabolic as Wheat.DMDemand.Metabolic</string>
         <string>[Wheat].Root.DMDemand.Storage + [Wheat].Grain.DMDemand.Storage + [Wheat].Spike.DMDemand.Storage + [Wheat].Stem.DMDemand.Storage + [Wheat].Leaf.DMDemand.Storage as Wheat.DMDemand.Storage</string>
         <string>[Wheat].Root.DMDemand.Structural + [Wheat].Grain.DMDemand.Structural + [Wheat].Spike.DMDemand.Structural + [Wheat].Stem.DMDemand.Structural + [Wheat].Leaf.DMDemand.Structural + [Wheat].Root.DMDemand.Metabolic + [Wheat].Grain.DMDemand.Metabolic + [Wheat].Spike.DMDemand.Metabolic + [Wheat].Stem.DMDemand.Metabolic + [Wheat].Leaf.DMDemand.Metabolic as Wheat.DMDemand.StructuralMetabolic</string>
+        <string>[Wheat].Spike.Allocated.StructuralWt + [Wheat].Spike.Allocated.StorageWt + [Wheat].Spike.Allocated.MetabolicWt as Wheat.Spike.AllocatedDM</string>
+        <string>[Wheat].Stem.Allocated.StructuralWt + [Wheat].Stem.Allocated.StorageWt + [Wheat].Stem.Allocated.MetabolicWt as Wheat.Stem.AllocatedDM</string>
+        <string>[Wheat].Leaf.Allocated.StructuralWt + [Wheat].Leaf.Allocated.StorageWt + [Wheat].Leaf.Allocated.MetabolicWt as Wheat.Leaf.AllocatedDM</string>
+        <string>[Wheat].Root.Allocated.StructuralWt + [Wheat].Root.Allocated.StorageWt + [Wheat].Root.Allocated.MetabolicWt as Wheat.Root.AllocatedDM</string>
+        <string>[Wheat].Grain.Allocated.StructuralWt + [Wheat].Grain.Allocated.StorageWt + [Wheat].Grain.Allocated.MetabolicWt as Wheat.Grain.AllocatedDM</string>
+        <string />
+        <string>[Wheat].Spike.Allocated.StructuralWt + [Wheat].Spike.Allocated.StorageWt + [Wheat].Spike.Allocated.MetabolicWt + [Wheat].Stem.Allocated.StructuralWt + [Wheat].Stem.Allocated.StorageWt + [Wheat].Stem.Allocated.MetabolicWt + [Wheat].Leaf.Allocated.StructuralWt + [Wheat].Leaf.Allocated.StorageWt + [Wheat].Leaf.Allocated.MetabolicWt + [Wheat].Root.Allocated.StructuralWt + [Wheat].Root.Allocated.StorageWt + [Wheat].Root.Allocated.MetabolicWt + [Wheat].Grain.Allocated.StructuralWt + [Wheat].Grain.Allocated.StorageWt + [Wheat].Grain.Allocated.MetabolicWt as Wheat.AllocatedDM</string>
       </VariableNames>
       <EventNames>
         <string>[Clock].DoReport</string>

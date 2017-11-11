@@ -1,3 +1,8 @@
+
+format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+if (is.null(format)){
+    rm(list = ls())
+}
 options(chunk_folder = '_chunk')
 library(knitr)
 library(magrittr)

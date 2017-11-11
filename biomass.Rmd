@@ -392,9 +392,29 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 
-## Biomass partitioning
+## Actual allocation {#sec:biomass-actual-allocation}
+
+The actual allocation is constrained by 
 
 The biomass partitions into structural and metabolic components firstly according to the relative demands. The remaining biomass allocates into storage according to the relative demands. The greatest storage demand of stem can store all remaining daily supply. 
+
+
+
+<div class="fig-output">
+```{r biomass-supply-allocated-difference, fig.asp = 1, fig.cap='The daily biomass supply from all organs, allocated biomass into all organs, and allocated + growth respiration in all organs.'}
+y_cols <- c("Wheat.DMSupply", 'Wheat.AllocatedDM', "Wheat.ActualAllocatedDM")
+g_report %>% 
+    mutate(Wheat.ActualAllocatedDM = Wheat.AllocatedDM + Wheat.GrowthRespiration) %>%
+    assertr::verify(sum((Wheat.DMSupply - Wheat.ActualAllocatedDM) < -10E-5) == 0) %>% 
+    plot_report(g_xvar, y_cols, x_lab = g_xlab, 
+            ncol = 3,
+            y_labels = c("Supply", "Allocated", "Allocated + Respiration"),
+    y_lab = expression('Daily biomass (g biomass'~m^-2~' ground'~d^-1~')'))
+
+
+```
+</div>
+
 
 
 The daily supply is distributed into `Structural` and `Metabolic` components, then `Storage` component. The daily demand cannot be satisfied if the structural and metabolic demands are more than daily supply, then the allocated biomasses of all organs are proportionally reduced to match daily supply (Fig. \@ref(fig:biomass-supply-demand-str-met)). The extra daily supply is distributed into storage, i.e. `Stem` for wheat model, as the extreme higher storage demand for stem (Fig. \@ref(fig:biomass-supply-demand-sto)).

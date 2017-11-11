@@ -146,7 +146,9 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 
 
 
-## Supply {#sec:root-supply}
+
+## Biomass {#sec:root-biomass}
+### Supply {#sec:root-biomass-supply}
 
 No biomass supply is considered in the `Root` organ (Fig. \@ref(fig:root-supply)).
 
@@ -164,7 +166,7 @@ plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2,
 </div>
 
 
-## Demand {#sec:root-demand}
+### Demand {#sec:root-biomass-demand}
 
 The daily biomass demand of `Root` is calculated as a fraction of daily fixation (i.e. photosynthesis) from Stage 3 (`Emergence`) to Stage 8 (`End of grain filling`). The fraction of root demand is 0.2 until `Flowering time`, then reduces into 0.02 until `End of grain filling` (Fig. \@ref(fig:root-demand-fraction)). Only structural demand is considered in the `Root` organ (Fig. \@ref(fig:root-demand)). 
 
@@ -196,7 +198,7 @@ plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab,
 ```
 </div>
 
-## Biomass dynamic {#sec:root-biomass}
+### Biomass dynamic {#sec:root-biomass-dynamic}
 
 The actual allocation (Fig. \@ref(fig:root-allocated)) is determined by the actual daily biomass supply (Fig. \@ref(fig:biomass-supply-total)) which may be smaller than than biomass demand (Fig. \@ref(fig:root-demand)). 
 
@@ -261,6 +263,145 @@ y_cols <- c('Wheat.Root.Dead.StructuralWt',
 plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
             y_lab = expression('Dry weight (g biomass'~m^-2~' ground)'),
             ncol = 3)
+
+```
+</div>
+
+
+
+
+## Nitrogen {#sec:root-nitrogen}
+
+
+### Actual allocation {#sec:root-nitrogen-allocated}
+
+
+
+<div class="fig-output">
+```{r root-nitrogen-allocated, fig.asp = 1, fig.cap='Actual allocated nitrogen to root for three components. The negative values of Storage indicate nitrogen is ratranslocated into other organs.'}
+y_cols <- sprintf('Wheat.Root.Allocated.%sN', g_demand)
+            
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Allocated biomass (g biomass '~m^-2~' ground '~d^-1~')'),
+            y_labels = g_demand, ncol = 3)
+
+```
+</div>
+
+
+<div class="fig-output">
+```{r root-nitrogen-detached, fig.asp = 0.5, fig.cap='Dynamic of root nitrogen in Detached pool for three components and total.'}
+y_cols <- c(sprintf('Wheat.Root.Detached.%sN', g_demand), 'Wheat.Root.Detached.N')
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground '~d^-1~')'),
+             y_labels = c(g_demand, 'Total'),
+            ncol = 4)
+
+```
+</div>
+
+
+
+### Nitrogen contents {#sec:root-nitrogen-contents}
+
+<div class="fig-output">
+```{r root-nitrogen-wt, fig.asp = 1, fig.cap='Dynamic of root nitrogen for three components and total.'}
+y_cols <- c(sprintf('Wheat.Root.%sN', g_demand), 'Wheat.Root.N')
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground )'),
+             y_labels = c(g_demand, 'Total'),
+            ncol = 4)
+
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r root-nitrogen-live, fig.asp = 1, fig.cap='Dynamic of root nitrogen in Live pool for three components and total.'}
+y_cols <- c(sprintf('Wheat.Root.Live.%sN', g_demand), 'Wheat.Root.Live.N')
+
+plot_report(g_report, g_xvar, y_cols, x_lab = g_xlab, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground)'),
+             y_labels = c(g_demand, 'Total'),
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r root-nitrogen-dead, fig.asp = 0.5, fig.cap='Dynamic of root nitrogen in Dead pool for three components and total.'}
+y_cols <- c(sprintf('Wheat.Root.Dead.%sN', g_demand), 'Wheat.Root.Dead.N')
+
+# Check all components equal to zero.
+g_report %>% 
+    select(y_cols) %>% 
+    gather(trait, value, y_cols) %>% 
+    group_by(trait) %>% 
+    summarise(n = sum(value > 0)) %>% 
+    filter(n > 0) %>% 
+    ungroup() %>% 
+    assertr::verify(nrow(.) == 0) %>% 
+    invisible()
+    
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression('Nitrogen contents (g N '~m^-2~' ground)'),
+             y_labels = c(g_demand, 'Total'),
+            ncol = 4)
+
+```
+</div>
+
+
+
+
+### Nitrogen concentration {#sec:root-nitrogen-conc}
+
+<div class="fig-output">
+```{r root-nitrogen-concentration, fig.asp = 0.5, fig.cap='Dynamic of root nitrogen concentration in Live and Dead.'}
+y_cols <- c('Wheat.Root.Live.NConc', 'Wheat.Root.Dead.NConc',
+            "Wheat.Root.Nconc")
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c("Live", "Dead", 'Root'),
+            ncol = 4)
+```
+</div>
+
+
+
+
+<div class="fig-output">
+```{r root-nitrogen-concentration-live, fig.asp = 0.5, fig.cap='Dynamic of root nitrogen concentration in Live pool for three components and total.'}
+y_cols <- c(sprintf('Wheat.Root.Live.%sNConc', g_demand), 'Wheat.Root.Live.NConc')
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c(g_demand, 'Live'),
+            ncol = 4)
+
+```
+</div>
+
+
+
+<div class="fig-output">
+```{r root-nitrogen-concentration-dead, fig.asp = 0.5, fig.cap='Dynamic of root nitrogen concentration in Dead pool for three components and total.'}
+y_cols <- c(sprintf('Wheat.Root.Dead.%sNConc', g_demand), 'Wheat.Root.Dead.NConc')
+
+plot_report(g_report, g_xvar2, y_cols, x_lab = g_xlab2, 
+            y_lab = expression(atop('Nitrogen concentration',
+                                    '(g N '~g^-1~' biomass )')),
+            y_labels = c(g_demand, 'Dead'),
+            ncol = 4)
 
 ```
 </div>
