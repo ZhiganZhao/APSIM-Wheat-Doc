@@ -28,23 +28,23 @@ source('_script/setup.R')
 
 This is only a documentation for Wheat model in [next generation of APSIM](https://github.com/APSIMInitiative/ApsimX) with our own understanding.
 
-The main contents include 
+**Content** 
 
-- Detail description of science parts of APSIM-Wheat model
-- Figures of default parameters
-- Figures of general outputs
+* Detail description of science parts of APSIM-Wheat model
+* Figures of default parameters
+* Figures of general outputs
 
 
 **Contributors**
 
- * [Bangyou Zheng](https://www.bangyou.me) <bangyou.zheng@csiro.au>
- * [Karine Chenu](https://qaafi.uq.edu.au/profile/18/karine-chenu) <karine.chenu@uq.edu.au>
- * [Scott Chapman](http://people.csiro.au/C/S/Scott-Chapman) <scott.chapman@csiro.au>
- * [Enli Wang](http://people.csiro.au/W/E/Enli-Wang) <enli.wang@csiro.au>
- * Fernanda Dreccer <Fernanda.Dreccer@csiro.au>
- * Hamish Brown <Hamish.Brown@plantandfood.co.nz>
- * Neil Huth <Neil.Huth@csiro.au>
- * Dean Holzworth <Dean.Holzworth@csiro.au>
+* [Bangyou Zheng](https://www.bangyou.me) <bangyou.zheng@csiro.au>
+* [Karine Chenu](https://qaafi.uq.edu.au/profile/18/karine-chenu) <karine.chenu@uq.edu.au>
+* [Scott Chapman](http://people.csiro.au/C/S/Scott-Chapman) <scott.chapman@csiro.au>
+* [Enli Wang](http://people.csiro.au/W/E/Enli-Wang) <enli.wang@csiro.au>
+* Fernanda Dreccer <Fernanda.Dreccer@csiro.au>
+* Hamish Brown <Hamish.Brown@plantandfood.co.nz>
+* Neil Huth <Neil.Huth@csiro.au>
+* Dean Holzworth <Dean.Holzworth@csiro.au>
 
 
 
