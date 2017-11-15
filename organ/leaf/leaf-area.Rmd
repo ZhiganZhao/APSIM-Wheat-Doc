@@ -3,7 +3,7 @@
 During the growth (expanding) duration of each cohort (Fig. \@ref(fig:leaf-cohort-changing-no)), the daily increase of leaf area is detemined by the minimum increases by water ($\Delta A_{water}$) and carbon ($\Delta A_{carbon}$) constrained leaf area. 
 
 
-### Maximum (potential) leaf area
+### Maximum (potential) leaf area {#sec:leaf-area-potential}
 
 The maximum leaf area of each leaf cohort is determined by potential maximum leaf area and reduced by cell division stress from `Initialization` to `Appearance`. 
 
